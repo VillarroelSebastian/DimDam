@@ -48,6 +48,12 @@ namespace GumRemix.Tests
 
         IEnumerator Frames(int n) { for (int i = 0; i < n; i++) { frame++; yield return null; } }
         IEnumerator Seconds(float s) { float t = 0; while (t < s) { t += Mathf.Min(Time.unscaledDeltaTime, 0.05f); frame++; yield return null; } }
+        /// <summary>The boss is down once the KO banner shows or the game has already moved on to the world-done screen.</summary>
+        IEnumerator UntilBossDown(float timeout)
+        {
+            float t = 0; while (G.mode != Mode.KO && G.mode != Mode.WorldDone && G.mode != Mode.Results && t < timeout) { t += Time.unscaledDeltaTime; frame++; yield return null; }
+            Assert.IsTrue(G.mode == Mode.KO || G.mode == Mode.WorldDone || G.mode == Mode.Results, "the boss never went down (stuck in " + G.mode + ")");
+        }
         IEnumerator UntilMode(Mode m, float timeout)
         {
             float t = 0; while (G.mode != m && t < timeout) { t += Time.unscaledDeltaTime; frame++; yield return null; }
@@ -144,7 +150,7 @@ namespace GumRemix.Tests
             G.DebugDamageBoss(Boss.Phase2Hp + 5); yield return Seconds(2.4f); Assert.AreEqual(3, G.boss.phase);
             yield return Seconds(4f); Shot("c5_boss_phase3");
             G.DebugDamageBoss(Boss.Phase3Hp + 5);
-            yield return UntilMode(Mode.KO, 8f); yield return Seconds(0.4f); Shot("c5_boss_ko");
+            yield return UntilBossDown(8f); yield return Seconds(0.4f); Shot("c5_boss_ko");
             yield return UntilMode(Mode.WorldDone, 8f); yield return Seconds(0.6f); Shot("w_world_complete");
             Log("candy world finished");
 
@@ -174,7 +180,7 @@ namespace GumRemix.Tests
             yield return Seconds(4f); Shot("i5_boss_phase3");
             G.DebugDamageBoss(IceBoss.Phase3Hp + 5);
             yield return Seconds(1.0f); Shot("i5_boss_dying");
-            yield return UntilMode(Mode.KO, 8f); yield return Seconds(0.4f); Shot("i5_boss_ko");
+            yield return UntilBossDown(8f); yield return Seconds(0.4f); Shot("i5_boss_ko");
             yield return UntilMode(Mode.Results, 8f); yield return Seconds(0.6f); Shot("z_results");
             Log("ice world finished, results reached");
 
@@ -237,6 +243,7 @@ namespace GumRemix.Tests
             Log("brittle ledge broke and returned");
 
             // ---- 4) the penguin's shield blocks gum from the front only
+            G.autoFire = false;                                   // the streaming gum would shoot the penguin we are measuring
             var peng = G.SpawnEnemy("penguin", "", new Vector2(4f, G.world.GroundTop + 0.02f)); peng.facing = 1;
             yield return Seconds(0.7f);
             var at = new Vector2(peng.body.pos.x + 1.5f, peng.body.pos.y + 0.6f);
@@ -408,6 +415,11 @@ namespace GumRemix.Tests
             G.DebugClearEnemies(); p1.Place(new Vector2(-6f, G.world.GroundTop + 0.02f)); p0.Place(new Vector2(-6f, G.world.GroundTop + 1.8f));
             yield return Seconds(1.2f);
             Assert.Greater(G.statCoopBounces, 0, "landing on the partner must bounce");
+            int listeners = 0; foreach (var l in UnityEngine.Object.FindObjectsByType<AudioListener>(FindObjectsSortMode.None)) if (l.enabled) listeners++;
+            Assert.AreEqual(1, listeners, "exactly one AudioListener must be active or there is no sound");
+            Assert.IsTrue(Camera.main != null || Camera.allCamerasCount > 0, "something must render to the screen");
+            p0.Place(new Vector2(0f, G.world.GroundTop + 0.02f)); p1.Place(new Vector2(2f, G.world.GroundTop + 0.02f)); yield return Frames(2);
+            Assert.IsTrue(p0.Together, "heroes close together charge each other's gum");
             Log("better together ok: bounces=" + G.statCoopBounces + " peakAlive=" + peak);
             yield return Teardown();
         }

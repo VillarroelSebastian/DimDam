@@ -10,10 +10,11 @@ namespace GumRemix
 
         public PlayerShot(Player o, Vector2 p, Vector2 v, string dir)
         {
-            owner = o; pos = p; vel = v;
+            owner = o; pos = p; vel = v; if (o.Together) dmg = 2;
             var sh = Art.Get("shots");
             sr = Pix.Make("shot", GameCtl.I.entRoot, sh[0], p, 20);
             go = sr.gameObject; sr.flipX = v.x < 0;
+            if (dmg > 1) { sr.color = new Color(1f, .95f, .6f); go.transform.localScale = new Vector3(1.3f, 1.3f, 1f); }       // charged by your partner
             anim = new Anim(sr, sh, dir);
         }
 
@@ -274,10 +275,11 @@ namespace GumRemix
             // ---- shooting
             Vector2 tp; bool haveTarget = G.autoFire && control && FindTarget(out tp);
             tp = Vector2.zero; if (haveTarget) FindTarget(out tp);
+            bool streaming = G.autoFire && control;                          // auto mode: the gum never stops flowing
             if (pad.up) aimDir = Mathf.Abs(pad.x) > 0.1f ? 1 : 2;
             else if (haveTarget) aimDir = AimFor(tp);
             else aimDir = 0;
-            bool fire = pad.shoot || (haveTarget && AimOk(tp, aimDir));
+            bool fire = pad.shoot || streaming;
             if (control && fire && shootCd <= 0 && dashT <= 0)
             {
                 shootCd = 0.125f; shootT = 0.2f; recoilT = 0.09f; Fire();
@@ -358,6 +360,9 @@ namespace GumRemix
             }
             return false;
         }
+
+        /// <summary>Close to the partner: the gum is charged (double damage).</summary>
+        public bool Together { get { foreach (var o in G.players) if (o != this && o.Alive && Alive && (o.Center - Center).sqrMagnitude < 4.5f * 4.5f) return true; return false; } }
 
         void Fire()
         {

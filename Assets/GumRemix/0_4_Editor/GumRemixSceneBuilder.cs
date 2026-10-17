@@ -23,6 +23,9 @@ namespace GumRemix
         {
             CreatePrefab();
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            var camGo = new GameObject("Main Camera") { tag = "MainCamera" };
+            var mc = camGo.AddComponent<Camera>(); mc.clearFlags = CameraClearFlags.SolidColor; mc.backgroundColor = Color.black; mc.orthographic = true; mc.cullingMask = 0; mc.depth = -10;
+            camGo.AddComponent<AudioListener>();
             var go = new GameObject("GumRemixBootstrap");
             go.AddComponent<GumRemixBootstrap>();
             EditorSceneManager.SaveScene(scene, ScenePath);

@@ -63,8 +63,15 @@ namespace GumRemix
             cam.nearClipPlane = 0.1f; cam.farClipPlane = 50f; cam.depth = 0; cam.allowHDR = false; cam.allowMSAA = false;
             rt = new RenderTexture(RW, RH, 24, RenderTextureFormat.ARGB32) { filterMode = FilterMode.Point, antiAliasing = 1 };
             rt.Create(); cam.targetTexture = rt;
-            var d = new GameObject("GumDisplay"); d.transform.SetParent(transform, false);
-            displayCam = d.AddComponent<Camera>(); displayCam.clearFlags = CameraClearFlags.SolidColor; displayCam.backgroundColor = Color.black; displayCam.cullingMask = 0; displayCam.depth = -10;
+            displayCam = Camera.main;
+            if (displayCam == null || displayCam == cam)
+            {
+                var d = new GameObject("GumDisplay"); d.transform.SetParent(transform, false);
+                displayCam = d.AddComponent<Camera>();
+            }
+            if (displayCam.GetComponent<AudioListener>() == null) displayCam.gameObject.AddComponent<AudioListener>();
+            foreach (var l in FindObjectsByType<AudioListener>(FindObjectsSortMode.None)) l.enabled = l.gameObject == displayCam.gameObject;
+            displayCam.clearFlags = CameraClearFlags.SolidColor; displayCam.backgroundColor = Color.black; displayCam.cullingMask = 0; displayCam.depth = -10;
             displayCam.orthographic = true;
         }
 

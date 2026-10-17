@@ -67,7 +67,7 @@ namespace GumRemix
                 if (e.Hittable && Crosses(e.Hurtbox)) { e.Damage(1, p0); did = true; hits++; }
             foreach (var c in g.crystals) if (Crosses(c.Hurtbox)) { c.Hit(1f); did = true; }
             if (g.boss != null && g.boss.Hittable)
-                foreach (var hb in g.boss.Hurtboxes()) if (Crosses(hb)) { g.boss.Damage(2, p0); did = true; hits++; }
+                foreach (var hb in g.boss.Hurtboxes()) if (Crosses(hb)) { g.boss.Damage(3, p0); did = true; hits++; }
             if (did)
             {
                 dmgT = 0.4f; g.Shake(.03f, .08f); p0.AddMeter(0.08f);
