@@ -1,0 +1,11 @@
+PASS Players start with three hearts
+PASS Walker moves under physics
+PASS Jumper moves under physics
+PASS Chaser moves under physics
+PASS Armored moves under physics
+PASS Enemy contact hurts a player
+PASS Invulnerability blocks repeated contact
+PASS Death disables player collider
+PASS Player respawns with restored hearts
+PASS Both players dead produce Game Over
+PASS Scene restart restores menu and three hearts

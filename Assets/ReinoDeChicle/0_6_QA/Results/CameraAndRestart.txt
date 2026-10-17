@@ -1,0 +1,4 @@
+PASS Arena fully visible at aspect 1,333333
+PASS Arena fully visible at aspect 1,777778
+PASS Arena fully visible at aspect 2,333333
+PASS R input during active gameplay reloads the same scene

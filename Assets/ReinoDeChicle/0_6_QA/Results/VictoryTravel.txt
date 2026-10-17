@@ -1,0 +1,11 @@
+PASS All three waves reach victory using beam damage
+PASS Purple droplet uses dedicated victory frames
+PASS Both player controllers locked during travel
+PASS Victory changes real sprite poses
+PASS Victorious heroes ascend through arena
+PASS Automatically loads next candy map
+PASS Arrival automatically starts next level
+PASS Mora - Purple Drop regains controller physics and collision
+PASS Lima - Green Drop regains controller physics and collision
+PASS Next level remains unlocked
+PASS Animated scenery has actual frame loops

@@ -1,0 +1,10 @@
+PASS Editor Play enters Candy_Level_01
+PASS Point-filtered pixel viewport is active
+PASS Pixel HUD replaces old smooth HUD
+PASS Coral uses generated art and hit-flash material
+PASS Celeste uses generated art and hit-flash material
+PASS New hero art preserves simultaneous independent movement
+PASS Both pixel heroes jump
+PASS Dash creates pixel afterimages
+PASS Hit flash and health remain functional
+PASS Restart returns to candy menu with full hearts

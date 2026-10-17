@@ -1,0 +1,21 @@
+PASS Hero has 16 real sprite frames
+PASS Idle visibly cycles through breathing and blink frames
+PASS Running changes actual sprite frames
+FAIL Pushing into wall does not suspend player
+PASS Player can leave wall without getting stuck
+PASS Both players still jump independently
+PASS Dash selects its dedicated pose
+PASS Damage selects recoil frame
+PASS Walker has 8 animation frames
+PASS Jumper has 8 animation frames
+PASS Chaser has 8 animation frames
+PASS Armored has 8 animation frames
+PASS Flyer has 8 animation frames
+PASS Cannon has 8 animation frames
+PASS Boss has 8 animation frames
+PASS Walker turns away from an island edge and keeps moving
+PASS Armored enemy detects ground using its own collider height
+PASS Chaser does not remain oscillating against arena wall
+PASS Enemy death plays before removal and disables contact
+PASS Enemy corpse is cleaned up after its animation
+PASS World contains living ambient decoration

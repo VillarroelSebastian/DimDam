@@ -1,0 +1,4 @@
+PASS URP sprite opacity: faded/opaque contrast=0,210
+PASS URP sprite direction flip: mirrored mismatch=0,0, unflipped mismatch=3471,1
+PASS Build starts with Candy_Level_01
+PASS Static diagnostic target can die without setting static velocity

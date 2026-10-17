@@ -1,0 +1,192 @@
+{
+  "style": "16-bit candy pixel art",
+  "generated": [
+    {
+      "id": "Coral",
+      "path": "Characters/Coral.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "Celeste",
+      "path": "Characters/Celeste.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "CandyWalker",
+      "path": "Characters/CandyWalker.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "GummyJumper",
+      "path": "Characters/GummyJumper.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "ToffeeChaser",
+      "path": "Characters/ToffeeChaser.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "CocoaGuard",
+      "path": "Characters/CocoaGuard.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "FlyingGummy",
+      "path": "Characters/FlyingGummy.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "SugarCannon",
+      "path": "Characters/SugarCannon.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "KingBubble",
+      "path": "Characters/KingBubble.png",
+      "method": "image_gen",
+      "transparent": true
+    },
+    {
+      "id": "Background01",
+      "path": "Backgrounds/Background_01.png",
+      "method": "image_gen",
+      "transparent": false
+    },
+    {
+      "id": "Background02",
+      "path": "Backgrounds/Background_02.png",
+      "method": "image_gen",
+      "transparent": false
+    },
+    {
+      "id": "Background03",
+      "path": "Backgrounds/Background_03.png",
+      "method": "image_gen",
+      "transparent": false
+    },
+    {
+      "id": "Background04",
+      "path": "Backgrounds/Background_04.png",
+      "method": "image_gen",
+      "transparent": false
+    },
+    {
+      "id": "Background05",
+      "path": "Backgrounds/Background_05.png",
+      "method": "image_gen",
+      "transparent": false
+    },
+    {
+      "id": "CandyLogo",
+      "path": "CandyLogo.png",
+      "method": "image_gen",
+      "transparent": true
+    }
+  ],
+  "procedural": [
+    "32x16 platform tiles",
+    "5x7 bitmap font",
+    "pixel particles and hearts"
+  ],
+  "bossNote": "KingBubble.png is an image_gen edit of the generated concept to remove the baked-in core; the actual vulnerable mint core is drawn separately in Unity.",
+  "animationSheets": [
+    {
+      "id": "Coral_animation",
+      "path": "Animations/Coral_Sheet.png",
+      "method": "image_gen",
+      "frames": 16,
+      "transparent": true
+    },
+    {
+      "id": "Celeste_animation",
+      "path": "Animations/Celeste_Sheet.png",
+      "method": "image_gen",
+      "frames": 16,
+      "transparent": true
+    },
+    {
+      "id": "CandyWalker_animation",
+      "path": "Animations/CandyWalker_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "GummyJumper_animation",
+      "path": "Animations/GummyJumper_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "ToffeeChaser_animation",
+      "path": "Animations/ToffeeChaser_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "CocoaGuard_animation",
+      "path": "Animations/CocoaGuard_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "FlyingGummy_animation",
+      "path": "Animations/FlyingGummy_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "SugarCannon_animation",
+      "path": "Animations/SugarCannon_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    },
+    {
+      "id": "KingBubble_animation",
+      "path": "Animations/KingBubble_Sheet.png",
+      "method": "image_gen",
+      "frames": 8,
+      "transparent": true
+    }
+  ],
+  "activeHeroes": [
+    {
+      "id": "Mora",
+      "color": "purple",
+      "sheet": "Animations/Mora_Sheet.png",
+      "frames": 20,
+      "method": "image_gen"
+    },
+    {
+      "id": "Lima",
+      "color": "green",
+      "sheet": "Animations/Lima_Sheet.png",
+      "frames": 20,
+      "method": "image_gen"
+    }
+  ],
+  "livingScenery": {
+    "sheet": "Animations/LivingProps_Sheet.png",
+    "frames": 12,
+    "method": "image_gen",
+    "loops": [
+      "candy blossoms",
+      "factory pistons and steam",
+      "caramel fountain"
+    ]
+  }
+}

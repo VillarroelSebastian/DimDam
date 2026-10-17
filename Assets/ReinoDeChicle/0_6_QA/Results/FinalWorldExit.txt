@@ -1,0 +1,1 @@
+PASS Final stage victory travel returns to world map and sets completed state. Victory state injected for isolated exit branch test.

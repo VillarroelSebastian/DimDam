@@ -1,0 +1,1 @@
+PASS Six prefabs: no missing scripts, sprites, materials or gameplay references.

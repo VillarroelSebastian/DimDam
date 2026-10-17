@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+namespace CoopBeam {
+public class CandyTravelQA:MonoBehaviour {
+ readonly List<string> results=new List<string>();
+ void Check(string name,bool ok){results.Add((ok?"PASS ":"FAIL ")+name);File.WriteAllLines("Assets/ReinoDeChicle/0_6_QA/Results/VictoryTravel.txt",results);Debug.Log(results[results.Count-1]);}
+ IEnumerator Start(){DontDestroyOnLoad(gameObject);Application.runInBackground=true;var game=GameManager.Instance;var beam=FindAnyObjectByType<CoopBeam>();game.Begin();foreach(var p in game.players){p.GetComponent<Rigidbody2D>().simulated=false;p.GetComponent<Collider2D>().enabled=false;}
+  float end=Time.time+30;while(!game.Victory&&Time.time<end){foreach(var enemy in game.enemies.ToArray())if(enemy){enemy.enabled=false;var b=enemy.GetComponent<Rigidbody2D>();b.linearVelocity=Vector2.zero;b.bodyType=RigidbodyType2D.Static;Physics2D.SyncTransforms();beam.DamageSegment((Vector2)enemy.transform.position+Vector2.left*2,(Vector2)enemy.transform.position+Vector2.right*2,100);}yield return null;}
+  Check("All three waves reach victory using beam damage",game.Victory);yield return new WaitForSeconds(.3f);var anim=game.players[0].GetComponentInChildren<PixelSpriteAnimator>();Check("Purple droplet uses dedicated victory frames",anim.State=="Victory"&&anim.CurrentFrame>=16);Check("Both player controllers locked during travel",!game.players[0].GetComponent<PlayerController2D>().enabled&&!game.players[1].GetComponent<PlayerController2D>().enabled);var frames=new HashSet<int>();end=Time.time+.8f;while(Time.time<end){frames.Add(anim.CurrentFrame);yield return null;}Check("Victory changes real sprite poses",frames.Count>=3);ScreenCapture.CaptureScreenshot("Assets/ReinoDeChicle/0_6_QA/Results/Droplets_Victory.png");float initial=game.players[0].transform.position.y;yield return new WaitForSeconds(1.5f);Check("Victorious heroes ascend through arena",game&&game.players[0].transform.position.y>initial+1);ScreenCapture.CaptureScreenshot("Assets/ReinoDeChicle/0_6_QA/Results/Droplets_Ascent.png");yield return new WaitForSeconds(2);game=GameManager.Instance;Check("Automatically loads next candy map",game&&game.level.number==2);yield return new WaitForSeconds(1);Check("Arrival automatically starts next level",game.Started&&game.Running);foreach(var p in game.players)Check(p.name+" regains controller physics and collision",p.GetComponent<PlayerController2D>().enabled&&p.GetComponent<Rigidbody2D>().simulated&&p.GetComponent<Collider2D>().enabled);Check("Next level remains unlocked",CandyCampaign.Unlocked>=2);Check("Animated scenery has actual frame loops",GameObject.Find("Animated candy props")&&GameObject.Find("Animated candy props").GetComponentsInChildren<PixelSurfaceAnimator>().Length==2);Debug.Log("CANDY_TRAVEL_QA_COMPLETE");CandyCampaign.Load(1);Destroy(gameObject);
+ }
+}}

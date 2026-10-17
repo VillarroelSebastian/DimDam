@@ -1,0 +1,46 @@
+PASS Level 1 loads with two players and beam
+PASS Level 1 begins locked to its own progression
+PASS Level 1 wave 1 roster
+PASS Level 1 wave 2 roster
+PASS Level 1 wave 3 roster
+PASS Level 1 wins after all three waves
+PASS Level 1 unlocks its successor
+PASS Level 2 loads with two players and beam
+PASS Level 2 begins locked to its own progression
+PASS Elastic landing provides predictable upward impulse
+PASS Level 2 wave 1 roster
+PASS Level 2 wave 2 roster
+PASS Level 2 wave 3 roster
+PASS Level 2 wins after all three waves
+PASS Level 2 unlocks its successor
+PASS Level 3 loads with two players and beam
+PASS Level 3 begins locked to its own progression
+PASS Conveyor carries stationary player
+PASS Moving platform carries its rider (distance=0,32, error=0,00)
+PASS Telegraphed press damages only during its danger window
+PASS Level 3 wave 1 roster
+PASS Level 3 wave 2 roster
+PASS Level 3 wave 3 roster
+PASS Level 3 wins after all three waves
+PASS Level 3 unlocks its successor
+PASS Level 4 loads with two players and beam
+PASS Level 4 begins locked to its own progression
+PASS Marshmallow disappears after its warning
+PASS Marshmallow rebuilds to avoid permanent dead ends
+PASS Level 4 wave 1 roster
+PASS Level 4 wave 2 roster
+PASS Level 4 wave 3 roster
+PASS Level 4 wins after all three waves
+PASS Level 4 unlocks its successor
+PASS Level 5 loads with two players and beam
+PASS Level 5 begins locked to its own progression
+PASS Level 5 wave 1 roster
+PASS Level 5 wave 2 roster
+PASS Level 5 wave 3 roster
+PASS Boss body is protected from beam damage
+PASS Boss mint core receives beam damage when open
+PASS Boss changes to phase two
+PASS Boss changes to phase three
+PASS Level 5 wins after all three waves
+PASS Level 5 unlocks its successor
+PASS World map returns with all five levels unlocked

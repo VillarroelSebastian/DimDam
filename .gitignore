@@ -1,0 +1,35 @@
+# Unity generated data
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Bb]uild/
+/[Bb]uilds/
+/MemoryCaptures/
+/Recordings/
+# IDE generated files
+/.vs/
+/.vscode/
+/.idea/
+*.csproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.opendb
+*.VC.db
+# OS files and credentials
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.pem
+*.pfx
+*.keystore
+# Unity crash files
+sysinfo.txt
+crashlytics-build.properties

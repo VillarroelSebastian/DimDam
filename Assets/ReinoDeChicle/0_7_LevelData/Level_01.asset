@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44636690c4a16ca418437f007139712e, type: 3}
+  m_Name: Level_01
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.CandyLevelDefinition
+  number: 1
+  title: PRADERAS DE CARAMELO
+  lesson: 'Rodeen a los caramelos y conecten el lazo.
+
+    Prueben a atravesar varios enemigos a la vez.'
+  waves:
+  - enemyTypes: 0000000000000000i
+    spawnPositions:
+    - {x: -2, y: -3.65}
+    - {x: 2, y: -3.65}
+  - enemyTypes: 000000000000000001000000i
+    spawnPositions:
+    - {x: -4, y: -1.25}
+    - {x: 0, y: 1.1}
+    - {x: 4, y: -1.25}
+  - enemyTypes: 000000000100000000000000i
+    spawnPositions:
+    - {x: -4, y: -1.25}
+    - {x: 0, y: 1.1}
+    - {x: 4, y: -1.25}
+  boss: 0

@@ -1,0 +1,20 @@
+PASS Wave 1 has three walkers
+PASS Independent simultaneous opposite movement
+PASS Coral key does not move Celeste
+PASS Both players jump simultaneously
+PASS Both horizontal dashes activate
+PASS Beam anchors follow players
+PASS Lower island reachable from ground
+PASS Center island reachable from lower island
+PASS Upper island reachable from center
+PASS Down input drops through semisolid island
+PASS Horizontal beam damages multiple enemies at DPS times deltaTime
+PASS No damage after losing contact
+PASS Vertical intersection
+PASS Diagonal intersection
+PASS Reversed endpoints
+PASS Coincident anchors cause no damage
+PASS Wave 2 roster
+PASS Wave 3 roster
+PASS Three waves advance and victory stops spawning
+PASS Shared score and combo reward kills
