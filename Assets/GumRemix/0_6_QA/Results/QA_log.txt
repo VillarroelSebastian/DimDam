@@ -1,0 +1,20 @@
+candy 1 natural result after 8,1s: mode=Clear stuck=4 kicks=4 ballKills=1
+candy world finished
+ice: climbed to level 7 (left 4 enemies)
+ice: climbed to level 8 (left 5 enemies)
+ice: climbed to level 9 (left 6 enemies)
+ice: climbed to level 10 (left 4 enemies)
+ice world finished, results reached
+game over reached
+slide: ice 3,66u, snow 0,19u
+thaw by mashing took 0,27s
+brittle ledge broke and returned
+penguin shield ok
+elevator carried the player 0,80u
+elastic launch speed 24,0
+crystals raised the bridge
+wind pushed open player 0,78u, sheltered player 0,00u
+menu and help ok
+phase 1: sun at (4.40, 84.20) hurtbox 1,7u inside shell 3,0x4,7
+phase 2: sun at (4.40, 84.30) hurtbox 1,7u inside shell 3,4x5,3
+phase 3: sun at (1.06, 85.25) hurtbox 1,7u inside shell 3,0x4,7

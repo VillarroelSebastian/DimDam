@@ -1,0 +1,6954 @@
+{
+ "sheets": [
+  {
+   "name": "hero_celeste",
+   "file": "GumRemix/Heroes/hero_celeste",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "hero_celeste_noarm",
+   "file": "GumRemix/Heroes/hero_celeste_noarm",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "arm_celeste",
+   "file": "GumRemix/Heroes/arm_celeste",
+   "cw": 24,
+   "ch": 24,
+   "cols": 9,
+   "count": 9,
+   "ppu": 40,
+   "px": 0.3333333333333333,
+   "py": 0.41666666666666663,
+   "anims": [],
+   "armdata": [
+    8,
+    14,
+    19.0,
+    14.0,
+    8,
+    14,
+    21.0,
+    14.0,
+    8,
+    14,
+    22.0,
+    14.0,
+    8,
+    14,
+    15.92,
+    6.08,
+    8,
+    14,
+    17.36,
+    4.640000000000001,
+    8,
+    14,
+    18.08,
+    3.920000000000001,
+    8,
+    14,
+    8.0,
+    3.0,
+    8,
+    14,
+    8.0,
+    1.0,
+    8,
+    14,
+    8.0,
+    0.0
+   ]
+  },
+  {
+   "name": "hero_celeste_ice",
+   "file": "GumRemix/Heroes/hero_celeste_ice",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "hero_celeste_ice_noarm",
+   "file": "GumRemix/Heroes/hero_celeste_ice_noarm",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "arm_celeste_ice",
+   "file": "GumRemix/Heroes/arm_celeste_ice",
+   "cw": 24,
+   "ch": 24,
+   "cols": 9,
+   "count": 9,
+   "ppu": 40,
+   "px": 0.3333333333333333,
+   "py": 0.41666666666666663,
+   "anims": [],
+   "armdata": [
+    8,
+    14,
+    19.0,
+    14.0,
+    8,
+    14,
+    21.0,
+    14.0,
+    8,
+    14,
+    22.0,
+    14.0,
+    8,
+    14,
+    15.92,
+    6.08,
+    8,
+    14,
+    17.36,
+    4.640000000000001,
+    8,
+    14,
+    18.08,
+    3.920000000000001,
+    8,
+    14,
+    8.0,
+    3.0,
+    8,
+    14,
+    8.0,
+    1.0,
+    8,
+    14,
+    8.0,
+    0.0
+   ]
+  },
+  {
+   "name": "ghost_celeste",
+   "file": "GumRemix/Heroes/ghost_celeste",
+   "cw": 40,
+   "ch": 44,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "hero_coral",
+   "file": "GumRemix/Heroes/hero_coral",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "hero_coral_noarm",
+   "file": "GumRemix/Heroes/hero_coral_noarm",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "arm_coral",
+   "file": "GumRemix/Heroes/arm_coral",
+   "cw": 24,
+   "ch": 24,
+   "cols": 9,
+   "count": 9,
+   "ppu": 40,
+   "px": 0.3333333333333333,
+   "py": 0.41666666666666663,
+   "anims": [],
+   "armdata": [
+    8,
+    14,
+    19.0,
+    14.0,
+    8,
+    14,
+    21.0,
+    14.0,
+    8,
+    14,
+    22.0,
+    14.0,
+    8,
+    14,
+    15.92,
+    6.08,
+    8,
+    14,
+    17.36,
+    4.640000000000001,
+    8,
+    14,
+    18.08,
+    3.920000000000001,
+    8,
+    14,
+    8.0,
+    3.0,
+    8,
+    14,
+    8.0,
+    1.0,
+    8,
+    14,
+    8.0,
+    0.0
+   ]
+  },
+  {
+   "name": "hero_coral_ice",
+   "file": "GumRemix/Heroes/hero_coral_ice",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "hero_coral_ice_noarm",
+   "file": "GumRemix/Heroes/hero_coral_ice_noarm",
+   "cw": 48,
+   "ch": 60,
+   "cols": 10,
+   "count": 41,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "run",
+     "start": 8,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 16,
+     "count": 2,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "rise",
+     "start": 18,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "apex",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "fall",
+     "start": 22,
+     "count": 2,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "land",
+     "start": 24,
+     "count": 3,
+     "fps": 18.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 27,
+     "count": 3,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 30,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "cheer",
+     "start": 33,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    }
+   ],
+   "shoulders": [
+    28.0,
+    40.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    30.0,
+    39.0,
+    30.0,
+    40.0,
+    30.0,
+    41.0,
+    30.0,
+    40.0,
+    28.0,
+    43.0,
+    28.0,
+    44.0,
+    28.0,
+    37.0,
+    28.0,
+    35.0,
+    28.0,
+    35.0,
+    28.0,
+    36.0,
+    28.0,
+    36.0,
+    28.0,
+    35.0,
+    28.0,
+    43.0,
+    28.0,
+    42.0,
+    28.0,
+    41.0,
+    31.0,
+    42.0,
+    33.0,
+    43.0,
+    33.0,
+    43.0,
+    26.0,
+    41.0,
+    25.0,
+    42.0,
+    26.0,
+    41.0,
+    28.0,
+    40.0,
+    28.0,
+    38.0,
+    28.0,
+    37.0,
+    28.0,
+    38.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0,
+    28.0,
+    40.0
+   ]
+  },
+  {
+   "name": "arm_coral_ice",
+   "file": "GumRemix/Heroes/arm_coral_ice",
+   "cw": 24,
+   "ch": 24,
+   "cols": 9,
+   "count": 9,
+   "ppu": 40,
+   "px": 0.3333333333333333,
+   "py": 0.41666666666666663,
+   "anims": [],
+   "armdata": [
+    8,
+    14,
+    19.0,
+    14.0,
+    8,
+    14,
+    21.0,
+    14.0,
+    8,
+    14,
+    22.0,
+    14.0,
+    8,
+    14,
+    15.92,
+    6.08,
+    8,
+    14,
+    17.36,
+    4.640000000000001,
+    8,
+    14,
+    18.08,
+    3.920000000000001,
+    8,
+    14,
+    8.0,
+    3.0,
+    8,
+    14,
+    8.0,
+    1.0,
+    8,
+    14,
+    8.0,
+    0.0
+   ]
+  },
+  {
+   "name": "ghost_coral",
+   "file": "GumRemix/Heroes/ghost_coral",
+   "cw": 40,
+   "ch": 44,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "freeze",
+   "file": "GumRemix/Heroes/freeze",
+   "cw": 52,
+   "ch": 64,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "freeze",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "freeze_break",
+   "file": "GumRemix/Heroes/freeze_break",
+   "cw": 52,
+   "ch": 64,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "break",
+     "start": 0,
+     "count": 5,
+     "fps": 16.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_red",
+   "file": "GumRemix/Enemies/Candy/bear_red",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_red_w",
+   "file": "GumRemix/Enemies/Candy/bear_red_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_red",
+   "file": "GumRemix/Enemies/Candy/ball_bear_red",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_red_w",
+   "file": "GumRemix/Enemies/Candy/ball_bear_red_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_green",
+   "file": "GumRemix/Enemies/Candy/bear_green",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_green_w",
+   "file": "GumRemix/Enemies/Candy/bear_green_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_green",
+   "file": "GumRemix/Enemies/Candy/ball_bear_green",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_green_w",
+   "file": "GumRemix/Enemies/Candy/ball_bear_green_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_orange",
+   "file": "GumRemix/Enemies/Candy/bear_orange",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_orange_w",
+   "file": "GumRemix/Enemies/Candy/bear_orange_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_orange",
+   "file": "GumRemix/Enemies/Candy/ball_bear_orange",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_orange_w",
+   "file": "GumRemix/Enemies/Candy/ball_bear_orange_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_yellow",
+   "file": "GumRemix/Enemies/Candy/bean_yellow",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_yellow_w",
+   "file": "GumRemix/Enemies/Candy/bean_yellow_w",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_yellow",
+   "file": "GumRemix/Enemies/Candy/ball_bean_yellow",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_yellow_w",
+   "file": "GumRemix/Enemies/Candy/ball_bean_yellow_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_purple",
+   "file": "GumRemix/Enemies/Candy/bean_purple",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_purple_w",
+   "file": "GumRemix/Enemies/Candy/bean_purple_w",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_purple",
+   "file": "GumRemix/Enemies/Candy/ball_bean_purple",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_purple_w",
+   "file": "GumRemix/Enemies/Candy/ball_bean_purple_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "lolli",
+   "file": "GumRemix/Enemies/Candy/lolli",
+   "cw": 64,
+   "ch": 60,
+   "cols": 10,
+   "count": 10,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 8,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "lolli_w",
+   "file": "GumRemix/Enemies/Candy/lolli_w",
+   "cw": 64,
+   "ch": 60,
+   "cols": 10,
+   "count": 10,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "hurt",
+     "start": 8,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_lolli",
+   "file": "GumRemix/Enemies/Candy/ball_lolli",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_lolli_w",
+   "file": "GumRemix/Enemies/Candy/ball_lolli_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "cannon",
+   "file": "GumRemix/Enemies/Candy/cannon",
+   "cw": 56,
+   "ch": 48,
+   "cols": 7,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 6.0,
+     "loop": true
+    },
+    {
+     "name": "fire",
+     "start": 4,
+     "count": 7,
+     "fps": 16.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "cannon_w",
+   "file": "GumRemix/Enemies/Candy/cannon_w",
+   "cw": 56,
+   "ch": 48,
+   "cols": 7,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 6.0,
+     "loop": true
+    },
+    {
+     "name": "fire",
+     "start": 4,
+     "count": 7,
+     "fps": 16.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_cannon",
+   "file": "GumRemix/Enemies/Candy/ball_cannon",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_cannon_w",
+   "file": "GumRemix/Enemies/Candy/ball_cannon_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "penguin",
+   "file": "GumRemix/Enemies/Ice/penguin",
+   "cw": 84,
+   "ch": 62,
+   "cols": 10,
+   "count": 22,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0967741935483871,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "waddle",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "slide",
+     "start": 14,
+     "count": 4,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "block",
+     "start": 20,
+     "count": 2,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "penguin_w",
+   "file": "GumRemix/Enemies/Ice/penguin_w",
+   "cw": 84,
+   "ch": 62,
+   "cols": 10,
+   "count": 22,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0967741935483871,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "waddle",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "slide",
+     "start": 14,
+     "count": 4,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "block",
+     "start": 20,
+     "count": 2,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_penguin",
+   "file": "GumRemix/Enemies/Ice/ball_penguin",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_penguin_w",
+   "file": "GumRemix/Enemies/Ice/ball_penguin_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "snowman",
+   "file": "GumRemix/Enemies/Ice/snowman",
+   "cw": 60,
+   "ch": 80,
+   "cols": 10,
+   "count": 38,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.075,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 6,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "idle_nohead",
+     "start": 20,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "run_nohead",
+     "start": 24,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "regrow",
+     "start": 32,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 36,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "snowman_w",
+   "file": "GumRemix/Enemies/Ice/snowman_w",
+   "cw": 60,
+   "ch": 80,
+   "cols": 10,
+   "count": 38,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.075,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 6,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "idle_nohead",
+     "start": 20,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "run_nohead",
+     "start": 24,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "regrow",
+     "start": 32,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 36,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_snowman",
+   "file": "GumRemix/Enemies/Ice/ball_snowman",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_snowman_w",
+   "file": "GumRemix/Enemies/Ice/ball_snowman_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl",
+   "file": "GumRemix/Enemies/Ice/owl",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_w",
+   "file": "GumRemix/Enemies/Ice/owl_w",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_owl",
+   "file": "GumRemix/Enemies/Ice/ball_owl",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_owl_w",
+   "file": "GumRemix/Enemies/Ice/ball_owl_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "jelly",
+   "file": "GumRemix/Enemies/Ice/jelly",
+   "cw": 52,
+   "ch": 72,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6666666666666667,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "flare",
+     "start": 8,
+     "count": 5,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "jelly_w",
+   "file": "GumRemix/Enemies/Ice/jelly_w",
+   "cw": 52,
+   "ch": 72,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6666666666666667,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "flare",
+     "start": 8,
+     "count": 5,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_jelly",
+   "file": "GumRemix/Enemies/Ice/ball_jelly",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_jelly_w",
+   "file": "GumRemix/Enemies/Ice/ball_jelly_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "crab",
+   "file": "GumRemix/Enemies/Ice/crab",
+   "cw": 84,
+   "ch": 54,
+   "cols": 10,
+   "count": 19,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.1111111111111111,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "scuttle",
+     "start": 4,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "charge",
+     "start": 12,
+     "count": 5,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 17,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "crab_w",
+   "file": "GumRemix/Enemies/Ice/crab_w",
+   "cw": 84,
+   "ch": 54,
+   "cols": 10,
+   "count": 19,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.1111111111111111,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "scuttle",
+     "start": 4,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "charge",
+     "start": 12,
+     "count": 5,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 17,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_crab",
+   "file": "GumRemix/Enemies/Ice/ball_crab",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_crab_w",
+   "file": "GumRemix/Enemies/Ice/ball_crab_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "seed",
+   "file": "GumRemix/Enemies/Ice/seed",
+   "cw": 32,
+   "ch": 32,
+   "cols": 10,
+   "count": 11,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 4,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 10,
+     "count": 1,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "seed_w",
+   "file": "GumRemix/Enemies/Ice/seed_w",
+   "cw": 32,
+   "ch": 32,
+   "cols": 10,
+   "count": 11,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 4,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 10,
+     "count": 1,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_seed",
+   "file": "GumRemix/Enemies/Ice/ball_seed",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_seed_w",
+   "file": "GumRemix/Enemies/Ice/ball_seed_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "snowhead",
+   "file": "GumRemix/Enemies/Ice/snowhead",
+   "cw": 28,
+   "ch": 28,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "file": "GumRemix/Bosses/boss",
+   "cw": 128,
+   "ch": 128,
+   "cols": 10,
+   "count": 90,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.015625,
+   "anims": [
+    {
+     "name": "p1_idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p1_spit",
+     "start": 8,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p1_slam",
+     "start": 14,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p1_hurt",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p2",
+     "start": 22,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p2_idle",
+     "start": 30,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p2_swing",
+     "start": 38,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p2_summon",
+     "start": 44,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p2_hurt",
+     "start": 50,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p3",
+     "start": 52,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p3_idle",
+     "start": 60,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p3_blow",
+     "start": 68,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p3_hurt",
+     "start": 74,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p3_dive",
+     "start": 76,
+     "count": 2,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 78,
+     "count": 12,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "boss_w",
+   "file": "GumRemix/Bosses/boss_w",
+   "cw": 128,
+   "ch": 128,
+   "cols": 10,
+   "count": 90,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.015625,
+   "anims": [
+    {
+     "name": "p1_idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p1_spit",
+     "start": 8,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p1_slam",
+     "start": 14,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p1_hurt",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p2",
+     "start": 22,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p2_idle",
+     "start": 30,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p2_swing",
+     "start": 38,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p2_summon",
+     "start": 44,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p2_hurt",
+     "start": 50,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p3",
+     "start": 52,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p3_idle",
+     "start": 60,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p3_blow",
+     "start": 68,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "p3_hurt",
+     "start": 74,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p3_dive",
+     "start": 76,
+     "count": 2,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 78,
+     "count": 12,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "boss_hat",
+   "file": "GumRemix/Bosses/boss_hat",
+   "cw": 48,
+   "ch": 48,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "icemonarch",
+   "file": "GumRemix/Bosses/icemonarch",
+   "cw": 176,
+   "ch": 140,
+   "cols": 10,
+   "count": 100,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.07142857142857142,
+   "anims": [
+    {
+     "name": "p1_idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p1_roll",
+     "start": 8,
+     "count": 6,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "p1_hail",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p1_hurt",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p2",
+     "start": 22,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p2_idle",
+     "start": 30,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p2_stomp",
+     "start": 38,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p2_pillars",
+     "start": 44,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p2_summon",
+     "start": 50,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p2_hurt",
+     "start": 56,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p3",
+     "start": 58,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p3_idle",
+     "start": 66,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p3_ring",
+     "start": 74,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p3_fan",
+     "start": 80,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p3_hurt",
+     "start": 86,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 88,
+     "count": 12,
+     "fps": 9.0,
+     "loop": false
+    }
+   ],
+   "anchors": [
+    88.0,
+    87.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    86.0,
+    88.0,
+    86.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    82.0,
+    88.0,
+    81.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    87.0,
+    89.0,
+    86.0,
+    90.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    90.0,
+    81.0,
+    88.0,
+    82.0,
+    86.0,
+    83.0,
+    87.0,
+    84.0,
+    88.0,
+    84.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    83.0,
+    88.0,
+    83.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    81.0,
+    88.0,
+    80.0,
+    88.0,
+    87.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    84.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    82.0,
+    88.0,
+    81.0,
+    88.0,
+    82.0,
+    88.0,
+    84.0,
+    87.0,
+    86.0,
+    86.0,
+    87.0,
+    88.0,
+    84.0,
+    87.0,
+    82.0,
+    86.0,
+    80.0,
+    86.0,
+    79.0,
+    88.0,
+    83.0,
+    88.0,
+    84.0,
+    88.0,
+    86.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    89.0,
+    88.0,
+    90.0,
+    88.0,
+    89.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.6,
+    88.0,
+    89.2,
+    88.0,
+    89.2,
+    88.0,
+    88.6,
+    88.0,
+    88.0,
+    88.0,
+    87.2,
+    90.0,
+    86.8,
+    91.0,
+    88.0,
+    88.0,
+    89.04280582687443,
+    90.0,
+    88.55124271539506,
+    91.0,
+    87.45355298998325,
+    93.0,
+    87.29041951509717,
+    95.0,
+    88.05260208705691,
+    96.0,
+    88.53258972930966,
+    98.0,
+    88.21518516457452,
+    99.0,
+    87.77523790230146,
+    101.0,
+    87.8043980861786,
+    103.0,
+    88.01747731623423,
+    104.0,
+    88.0,
+    106.0
+   ]
+  },
+  {
+   "name": "icemonarch_w",
+   "file": "GumRemix/Bosses/icemonarch_w",
+   "cw": 176,
+   "ch": 140,
+   "cols": 10,
+   "count": 100,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.07142857142857142,
+   "anims": [
+    {
+     "name": "p1_idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p1_roll",
+     "start": 8,
+     "count": 6,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "p1_hail",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p1_hurt",
+     "start": 20,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p2",
+     "start": 22,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p2_idle",
+     "start": 30,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p2_stomp",
+     "start": 38,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p2_pillars",
+     "start": 44,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p2_summon",
+     "start": 50,
+     "count": 6,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "p2_hurt",
+     "start": 56,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "to_p3",
+     "start": 58,
+     "count": 8,
+     "fps": 9.0,
+     "loop": false
+    },
+    {
+     "name": "p3_idle",
+     "start": 66,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "p3_ring",
+     "start": 74,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p3_fan",
+     "start": 80,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "p3_hurt",
+     "start": 86,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 88,
+     "count": 12,
+     "fps": 9.0,
+     "loop": false
+    }
+   ],
+   "anchors": [
+    88.0,
+    87.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    86.0,
+    88.0,
+    86.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    82.0,
+    88.0,
+    81.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    87.0,
+    89.0,
+    86.0,
+    90.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    90.0,
+    81.0,
+    88.0,
+    82.0,
+    86.0,
+    83.0,
+    87.0,
+    84.0,
+    88.0,
+    84.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    83.0,
+    88.0,
+    83.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    81.0,
+    88.0,
+    80.0,
+    88.0,
+    87.0,
+    88.0,
+    85.0,
+    88.0,
+    84.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    84.0,
+    88.0,
+    84.0,
+    88.0,
+    83.0,
+    88.0,
+    82.0,
+    88.0,
+    81.0,
+    88.0,
+    82.0,
+    88.0,
+    84.0,
+    87.0,
+    86.0,
+    86.0,
+    87.0,
+    88.0,
+    84.0,
+    87.0,
+    82.0,
+    86.0,
+    80.0,
+    86.0,
+    79.0,
+    88.0,
+    83.0,
+    88.0,
+    84.0,
+    88.0,
+    86.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    89.0,
+    88.0,
+    90.0,
+    88.0,
+    89.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    87.0,
+    88.0,
+    88.0,
+    88.0,
+    87.0,
+    88.0,
+    86.0,
+    88.0,
+    85.0,
+    88.0,
+    86.0,
+    88.0,
+    88.0,
+    88.0,
+    88.0,
+    88.6,
+    88.0,
+    89.2,
+    88.0,
+    89.2,
+    88.0,
+    88.6,
+    88.0,
+    88.0,
+    88.0,
+    87.2,
+    90.0,
+    86.8,
+    91.0,
+    88.0,
+    88.0,
+    89.04280582687443,
+    90.0,
+    88.55124271539506,
+    91.0,
+    87.45355298998325,
+    93.0,
+    87.29041951509717,
+    95.0,
+    88.05260208705691,
+    96.0,
+    88.53258972930966,
+    98.0,
+    88.21518516457452,
+    99.0,
+    87.77523790230146,
+    101.0,
+    87.8043980861786,
+    103.0,
+    88.01747731623423,
+    104.0,
+    88.0,
+    106.0
+   ]
+  },
+  {
+   "name": "shots",
+   "file": "GumRemix/Fx/shots",
+   "cw": 24,
+   "ch": 24,
+   "cols": 4,
+   "count": 12,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fwd",
+     "start": 0,
+     "count": 4,
+     "fps": 20.0,
+     "loop": true
+    },
+    {
+     "name": "diag",
+     "start": 4,
+     "count": 4,
+     "fps": 20.0,
+     "loop": true
+    },
+    {
+     "name": "up",
+     "start": 8,
+     "count": 4,
+     "fps": 20.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "splat",
+   "file": "GumRemix/Fx/splat",
+   "cw": 24,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "splat",
+     "start": 0,
+     "count": 5,
+     "fps": 24.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bubbles",
+   "file": "GumRemix/Fx/bubbles",
+   "cw": 24,
+   "ch": 24,
+   "cols": 4,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "pink",
+     "start": 0,
+     "count": 4,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "dark",
+     "start": 4,
+     "count": 4,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "bubble_pops",
+   "file": "GumRemix/Fx/bubble_pops",
+   "cw": 24,
+   "ch": 24,
+   "cols": 4,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "pink",
+     "start": 0,
+     "count": 4,
+     "fps": 20.0,
+     "loop": false
+    },
+    {
+     "name": "dark",
+     "start": 4,
+     "count": 4,
+     "fps": 20.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "dust",
+   "file": "GumRemix/Fx/dust",
+   "cw": 32,
+   "ch": 24,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "dust",
+     "start": 0,
+     "count": 6,
+     "fps": 20.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "spark",
+   "file": "GumRemix/Fx/spark",
+   "cw": 32,
+   "ch": 32,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spark",
+     "start": 0,
+     "count": 5,
+     "fps": 26.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "parry",
+   "file": "GumRemix/Fx/parry",
+   "cw": 48,
+   "ch": 48,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "parry",
+     "start": 0,
+     "count": 6,
+     "fps": 24.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "flash",
+   "file": "GumRemix/Fx/flash",
+   "cw": 16,
+   "ch": 16,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "flash",
+     "start": 0,
+     "count": 3,
+     "fps": 30.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bubble_lift",
+   "file": "GumRemix/Fx/bubble_lift",
+   "cw": 64,
+   "ch": 72,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "lift",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "shock",
+   "file": "GumRemix/Fx/shock",
+   "cw": 64,
+   "ch": 20,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "shock",
+     "start": 0,
+     "count": 6,
+     "fps": 16.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "super",
+   "file": "GumRemix/Fx/super",
+   "cw": 96,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.0,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "super",
+     "start": 0,
+     "count": 6,
+     "fps": 18.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "trail",
+   "file": "GumRemix/Fx/trail",
+   "cw": 16,
+   "ch": 16,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "trail",
+     "start": 0,
+     "count": 4,
+     "fps": 16.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ice_shard",
+   "file": "GumRemix/Fx/ice_shard",
+   "cw": 24,
+   "ch": 24,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 6,
+     "fps": 18.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "ice_flake",
+   "file": "GumRemix/Fx/ice_flake",
+   "cw": 28,
+   "ch": 28,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 6,
+     "fps": 12.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "icicle",
+   "file": "GumRemix/Fx/icicle",
+   "cw": 20,
+   "ch": 44,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "shake",
+     "start": 0,
+     "count": 3,
+     "fps": 24.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "icicle_shatter",
+   "file": "GumRemix/Fx/icicle_shatter",
+   "cw": 40,
+   "ch": 32,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "shatter",
+     "start": 0,
+     "count": 5,
+     "fps": 20.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "crystal_off",
+   "file": "GumRemix/Fx/crystal_off",
+   "cw": 36,
+   "ch": 60,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 4.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "crystal_on",
+   "file": "GumRemix/Fx/crystal_on",
+   "cw": 36,
+   "ch": 60,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.03333333333333333,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 9.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "ice_crack",
+   "file": "GumRemix/Fx/ice_crack",
+   "cw": 40,
+   "ch": 8,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 3,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "ice_pillar",
+   "file": "GumRemix/Fx/ice_pillar",
+   "cw": 32,
+   "ch": 22,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "shock_ice",
+   "file": "GumRemix/Fx/shock_ice",
+   "cw": 64,
+   "ch": 20,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "shock",
+     "start": 0,
+     "count": 6,
+     "fps": 16.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "note",
+   "file": "GumRemix/Fx/note",
+   "cw": 14,
+   "ch": 16,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 3,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "gust",
+   "file": "GumRemix/Fx/gust",
+   "cw": 40,
+   "ch": 6,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 3,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "hearts",
+   "file": "GumRemix/Ui/hearts",
+   "cw": 24,
+   "ch": 24,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "cards",
+   "file": "GumRemix/Ui/cards",
+   "cw": 16,
+   "ch": 24,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "font",
+   "file": "GumRemix/Ui/font",
+   "cw": 96,
+   "ch": 32,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.0,
+   "py": 0.0,
+   "anims": [],
+   "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?.:-'/x, +%<>=()*_",
+   "glyphW": 6,
+   "glyphH": 8,
+   "glyphCols": 16
+  },
+  {
+   "name": "sky_0",
+   "file": "GumRemix/World/Candy/sky_0",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_0",
+   "file": "GumRemix/World/Candy/far_0",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_0",
+   "file": "GumRemix/World/Candy/mid_0",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_0",
+   "file": "GumRemix/World/Candy/plat_0",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_0",
+   "file": "GumRemix/World/Candy/ground_0",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_0",
+   "file": "GumRemix/World/Candy/wall_0",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_1",
+   "file": "GumRemix/World/Candy/sky_1",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_1",
+   "file": "GumRemix/World/Candy/far_1",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_1",
+   "file": "GumRemix/World/Candy/mid_1",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_1",
+   "file": "GumRemix/World/Candy/plat_1",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_1",
+   "file": "GumRemix/World/Candy/ground_1",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_1",
+   "file": "GumRemix/World/Candy/wall_1",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_2",
+   "file": "GumRemix/World/Candy/sky_2",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_2",
+   "file": "GumRemix/World/Candy/far_2",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_2",
+   "file": "GumRemix/World/Candy/mid_2",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_2",
+   "file": "GumRemix/World/Candy/plat_2",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_2",
+   "file": "GumRemix/World/Candy/ground_2",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_2",
+   "file": "GumRemix/World/Candy/wall_2",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_3",
+   "file": "GumRemix/World/Candy/sky_3",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_3",
+   "file": "GumRemix/World/Candy/far_3",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_3",
+   "file": "GumRemix/World/Candy/mid_3",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_3",
+   "file": "GumRemix/World/Candy/plat_3",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_3",
+   "file": "GumRemix/World/Candy/ground_3",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_3",
+   "file": "GumRemix/World/Candy/wall_3",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_4",
+   "file": "GumRemix/World/Candy/sky_4",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_4",
+   "file": "GumRemix/World/Candy/far_4",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_4",
+   "file": "GumRemix/World/Candy/mid_4",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_4",
+   "file": "GumRemix/World/Candy/plat_4",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_4",
+   "file": "GumRemix/World/Candy/ground_4",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_4",
+   "file": "GumRemix/World/Candy/wall_4",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "lollitree_0",
+   "file": "GumRemix/World/Candy/lollitree_0",
+   "cw": 64,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "lollitree_1",
+   "file": "GumRemix/World/Candy/lollitree_1",
+   "cw": 64,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "lollitree_2",
+   "file": "GumRemix/World/Candy/lollitree_2",
+   "cw": 64,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "windmill",
+   "file": "GumRemix/World/Candy/windmill",
+   "cw": 96,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "flower_0",
+   "file": "GumRemix/World/Candy/flower_0",
+   "cw": 32,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "flower_1",
+   "file": "GumRemix/World/Candy/flower_1",
+   "cw": 32,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "flower_2",
+   "file": "GumRemix/World/Candy/flower_2",
+   "cw": 32,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "clouds_0",
+   "file": "GumRemix/World/Candy/clouds_0",
+   "cw": 120,
+   "ch": 44,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "clouds_2",
+   "file": "GumRemix/World/Candy/clouds_2",
+   "cw": 144,
+   "ch": 60,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "crystal_0",
+   "file": "GumRemix/World/Candy/crystal_0",
+   "cw": 48,
+   "ch": 64,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "crystal_1",
+   "file": "GumRemix/World/Candy/crystal_1",
+   "cw": 48,
+   "ch": 64,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "waterfall",
+   "file": "GumRemix/World/Candy/waterfall",
+   "cw": 40,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "pot",
+   "file": "GumRemix/World/Candy/pot",
+   "cw": 64,
+   "ch": 48,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "balloon_0",
+   "file": "GumRemix/World/Candy/balloon_0",
+   "cw": 32,
+   "ch": 56,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "balloon_1",
+   "file": "GumRemix/World/Candy/balloon_1",
+   "cw": 32,
+   "ch": 56,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "balloon_2",
+   "file": "GumRemix/World/Candy/balloon_2",
+   "cw": 32,
+   "ch": 56,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "balloon_3",
+   "file": "GumRemix/World/Candy/balloon_3",
+   "cw": 32,
+   "ch": 56,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "star",
+   "file": "GumRemix/World/Candy/star",
+   "cw": 11,
+   "ch": 11,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 4,
+     "fps": 5.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "gear_l",
+   "file": "GumRemix/World/Candy/gear_l",
+   "cw": 64,
+   "ch": 64,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "gear_s",
+   "file": "GumRemix/World/Candy/gear_s",
+   "cw": 40,
+   "ch": 40,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 9.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "steam",
+   "file": "GumRemix/World/Candy/steam",
+   "cw": 40,
+   "ch": 72,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "vat",
+   "file": "GumRemix/World/Candy/vat",
+   "cw": 72,
+   "ch": 56,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "lamp",
+   "file": "GumRemix/World/Candy/lamp",
+   "cw": 48,
+   "ch": 72,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "bunting",
+   "file": "GumRemix/World/Candy/bunting",
+   "cw": 160,
+   "ch": 40,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "audience",
+   "file": "GumRemix/World/Candy/audience",
+   "cw": 192,
+   "ch": 64,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "beam",
+   "file": "GumRemix/World/Candy/beam",
+   "cw": 64,
+   "ch": 240,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "sprinkles",
+   "file": "GumRemix/World/Candy/sprinkles",
+   "cw": 8,
+   "ch": 8,
+   "cols": 4,
+   "count": 24,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "bubble_small",
+   "file": "GumRemix/World/Candy/bubble_small",
+   "cw": 16,
+   "ch": 16,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "bubble_small_pop",
+   "file": "GumRemix/World/Candy/bubble_small_pop",
+   "cw": 16,
+   "ch": 16,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "pop",
+     "start": 0,
+     "count": 4,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "file": "GumRemix/World/Candy/glint",
+   "cw": 11,
+   "ch": 11,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "glint",
+     "start": 0,
+     "count": 5,
+     "fps": 14.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ember",
+   "file": "GumRemix/World/Candy/ember",
+   "cw": 8,
+   "ch": 8,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "pulse",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "drip",
+   "file": "GumRemix/World/Candy/drip",
+   "cw": 8,
+   "ch": 12,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "drip",
+     "start": 0,
+     "count": 2,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "drip_splash",
+   "file": "GumRemix/World/Candy/drip_splash",
+   "cw": 16,
+   "ch": 8,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "splash",
+     "start": 0,
+     "count": 3,
+     "fps": 14.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "sky_5",
+   "file": "GumRemix/World/Ice/sky_5",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_5",
+   "file": "GumRemix/World/Ice/far_5",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_5",
+   "file": "GumRemix/World/Ice/mid_5",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_5",
+   "file": "GumRemix/World/Ice/plat_5",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_5",
+   "file": "GumRemix/World/Ice/special_5",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_5",
+   "file": "GumRemix/World/Ice/ground_5",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_5",
+   "file": "GumRemix/World/Ice/wall_5",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_6",
+   "file": "GumRemix/World/Ice/sky_6",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_6",
+   "file": "GumRemix/World/Ice/far_6",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_6",
+   "file": "GumRemix/World/Ice/mid_6",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_6",
+   "file": "GumRemix/World/Ice/plat_6",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_6",
+   "file": "GumRemix/World/Ice/special_6",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_6",
+   "file": "GumRemix/World/Ice/ground_6",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_6",
+   "file": "GumRemix/World/Ice/wall_6",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_7",
+   "file": "GumRemix/World/Ice/sky_7",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_7",
+   "file": "GumRemix/World/Ice/far_7",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_7",
+   "file": "GumRemix/World/Ice/mid_7",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_7",
+   "file": "GumRemix/World/Ice/plat_7",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_7",
+   "file": "GumRemix/World/Ice/special_7",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_7",
+   "file": "GumRemix/World/Ice/ground_7",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_7",
+   "file": "GumRemix/World/Ice/wall_7",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_8",
+   "file": "GumRemix/World/Ice/sky_8",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_8",
+   "file": "GumRemix/World/Ice/far_8",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_8",
+   "file": "GumRemix/World/Ice/mid_8",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_8",
+   "file": "GumRemix/World/Ice/plat_8",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_8",
+   "file": "GumRemix/World/Ice/special_8",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_8",
+   "file": "GumRemix/World/Ice/ground_8",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_8",
+   "file": "GumRemix/World/Ice/wall_8",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_9",
+   "file": "GumRemix/World/Ice/sky_9",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_9",
+   "file": "GumRemix/World/Ice/far_9",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_9",
+   "file": "GumRemix/World/Ice/mid_9",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_9",
+   "file": "GumRemix/World/Ice/plat_9",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_9",
+   "file": "GumRemix/World/Ice/special_9",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_9",
+   "file": "GumRemix/World/Ice/ground_9",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_9",
+   "file": "GumRemix/World/Ice/wall_9",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "aurora",
+   "file": "GumRemix/World/Ice/aurora",
+   "cw": 640,
+   "ch": 150,
+   "cols": 2,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 3.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "pine",
+   "file": "GumRemix/World/Ice/pine",
+   "cw": 76,
+   "ch": 124,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "pine_b",
+   "file": "GumRemix/World/Ice/pine_b",
+   "cw": 76,
+   "ch": 124,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "wisp",
+   "file": "GumRemix/World/Ice/wisp",
+   "cw": 36,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "frozenfall",
+   "file": "GumRemix/World/Ice/frozenfall",
+   "cw": 40,
+   "ch": 124,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "igloo",
+   "file": "GumRemix/World/Ice/igloo",
+   "cw": 88,
+   "ch": 106,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "lanterns",
+   "file": "GumRemix/World/Ice/lanterns",
+   "cw": 160,
+   "ch": 56,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "washflags",
+   "file": "GumRemix/World/Ice/washflags",
+   "cw": 160,
+   "ch": 44,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "glowcrystal_0",
+   "file": "GumRemix/World/Ice/glowcrystal_0",
+   "cw": 56,
+   "ch": 80,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "glowcrystal_1",
+   "file": "GumRemix/World/Ice/glowcrystal_1",
+   "cw": 56,
+   "ch": 80,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "glowcrystal_2",
+   "file": "GumRemix/World/Ice/glowcrystal_2",
+   "cw": 56,
+   "ch": 80,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "owlstatue",
+   "file": "GumRemix/World/Ice/owlstatue",
+   "cw": 52,
+   "ch": 88,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "gardenlamp",
+   "file": "GumRemix/World/Ice/gardenlamp",
+   "cw": 32,
+   "ch": 76,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 4,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "chandelier",
+   "file": "GumRemix/World/Ice/chandelier",
+   "cw": 96,
+   "ch": 100,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "royalbanner",
+   "file": "GumRemix/World/Ice/royalbanner",
+   "cw": 40,
+   "ch": 112,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "throne",
+   "file": "GumRemix/World/Ice/throne",
+   "cw": 88,
+   "ch": 120,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 4,
+     "fps": 3.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "snowflakes",
+   "file": "GumRemix/World/Ice/snowflakes",
+   "cw": 8,
+   "ch": 8,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "spark_ice",
+   "file": "GumRemix/World/Ice/spark_ice",
+   "cw": 12,
+   "ch": 12,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spark",
+     "start": 0,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    }
+   ]
+  }
+ ]
+}
