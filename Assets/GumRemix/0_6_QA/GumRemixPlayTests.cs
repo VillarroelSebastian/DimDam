@@ -300,7 +300,7 @@ namespace GumRemix.Tests
             GumInput.Override = i => new Pad();
             G.holdClear = true; G.god = true;
             G.DebugStartAt(9, 1); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
-            var boss = G.boss as IceBoss; Assert.NotNull(boss);
+            var boss = G.boss as IceBoss; Assert.NotNull(boss); boss.forceClosed = true;
             for (int ph = 1; ph <= 3; ph++)
             {
                 yield return Seconds(1.2f);
@@ -315,6 +315,7 @@ namespace GumRemix.Tests
                 var sunPos = boss.SunPos();
                 var hit = new PlayerShot(G.players[0], sunPos, new Vector2(0, 0.01f), "fwd"); G.shots.Add(hit);
                 yield return Frames(3); Assert.Less(boss.hp, before, "gum on the sun must hurt");
+                boss.forceClosed = false; boss.openT = 3f; Assert.AreEqual(0, boss.BlockBoxes().Length, "an open shell must not block gum"); boss.forceClosed = true;
                 Shot("b" + ph + "_sun");
                 Log("phase " + ph + ": sun at " + sunPos + " hurtbox " + sun.width.ToString("0.0") + "u inside shell " + body.width.ToString("0.0") + "x" + body.height.ToString("0.0"));
                 if (ph == 1) { G.DebugDamageBoss(boss.hp - (IceBoss.Phase2Hp + IceBoss.Phase3Hp) + 1); yield return Seconds(2.4f); }

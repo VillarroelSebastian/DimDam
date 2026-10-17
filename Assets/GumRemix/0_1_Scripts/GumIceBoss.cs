@@ -10,7 +10,7 @@ namespace GumRemix
     /// </summary>
     public class IceBoss : BossBase
     {
-        public const int Phase1Hp = 110, Phase2Hp = 110, Phase3Hp = 100;
+        public const int Phase1Hp = 80, Phase2Hp = 80, Phase3Hp = 70;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
         public override string DisplayName { get { return "MONARCA DEL DESHIELO"; } }
@@ -21,6 +21,8 @@ namespace GumRemix
         float homeX = 4.4f, groundY; bool chargeLow; float deathT, explodeT; bool hailGapActive;
         readonly Rect[] hb = new Rect[1]; readonly List<Rect> dg = new List<Rect>(); Rect[] blocks = new Rect[1]; Rect[] balls = new Rect[2];
         const float Frame = 0.001f, Scale = 2f;
+        /// <summary>While > 0 the snowy shell is cracked open and gum reaches the sun (after every attack); tests can force it shut.</summary>
+        public float openT; public bool forceClosed; static readonly Rect[] NoBlock = new Rect[0];
         GameCtl G { get { return GameCtl.I; } }
 
         public IceBoss(float groundTop)
@@ -57,17 +59,23 @@ namespace GumRemix
             return hb;
         }
 
+        Rect ShellRect()
+        {
+            if (phase == 3) return new Rect(x - 1.5f, y + 0.4f, 3.0f, 4.7f);
+            if (phase == 2) return new Rect(x - 1.7f, y, 3.4f, 5.3f);
+            return new Rect(x - 1.5f, y, 3.0f, 4.7f);
+        }
+
         public override Rect[] BlockBoxes()
         {
-            if (phase == 3) blocks[0] = new Rect(x - 1.5f, y + 0.4f, 3.0f, 4.7f);
-            else if (phase == 2) blocks[0] = new Rect(x - 1.7f, y, 3.4f, 5.3f);
-            else blocks[0] = new Rect(x - 1.5f, y, 3.0f, 4.7f);
+            if (openT > 0f && !forceClosed) return NoBlock;
+            blocks[0] = ShellRect();
             return blocks;
         }
 
         public override Rect[] BallBoxes()
         {
-            balls[0] = BlockBoxes()[0]; balls[1] = Hurtboxes()[0];
+            balls[0] = ShellRect(); balls[1] = Hurtboxes()[0];
             return balls;
         }
 
@@ -75,12 +83,12 @@ namespace GumRemix
         {
             dg.Clear();
             if (chargeLow) { dg.Add(new Rect(x - 1.3f, y, 2.6f, 1.6f)); return dg; }
-            var b = BlockBoxes()[0]; b.xMin += 0.6f; b.xMax -= 0.6f; b.yMin += 0.3f; b.yMax -= 1.0f;
+            var b = ShellRect(); b.xMin += 0.6f; b.xMax -= 0.6f; b.yMin += 0.3f; b.yMax -= 1.0f;
             dg.Add(b);
             return dg;
         }
 
-        public override void Activate() { active = true; idleTimer = 2.4f; }
+        public override void Activate() { active = true; idleTimer = 2.4f; openT = 4.5f; G.ShowHint("SU CORAZA SE ABRE: DISPARA AL SOL!", 3f); }
 
         // ------------------------------------------------------------------------------------------ damage
         public override void Damage(int dmg, Player by, bool addMeter = true)
@@ -100,7 +108,7 @@ namespace GumRemix
         public override void Tick(float dt)
         {
             if (dead) return;
-            t += dt; flashT -= dt; flashCd -= dt; anim.flash = flashT > 0f;
+            t += dt; flashT -= dt; flashCd -= dt; openT -= dt; anim.flash = flashT > 0f;
             if (dying) { DieTick(dt); Render(dt); return; }
             if (!active) { anim.Play(Pfx + "idle"); Render(dt); return; }
             if (routine != null)
@@ -108,7 +116,7 @@ namespace GumRemix
                 wait -= dt;
                 while (wait <= 0f)
                 {
-                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); break; }
+                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); openT = phase == 3 ? 4.2f : 4.8f; break; }
                     wait = routine.Current;
                 }
             }
@@ -134,6 +142,7 @@ namespace GumRemix
         void Render(float dt)
         {
             go.transform.position = new Vector3(x, y, 0);
+            sr.color = (openT > 0f && !forceClosed && !dying) ? Color.Lerp(Color.white, new Color(1f, .88f, .45f), 0.45f + 0.45f * Mathf.Sin(t * 9f)) : Color.white;      // the cracked shell glows
             anim.Tick(dt);
         }
 
@@ -330,7 +339,7 @@ namespace GumRemix
             phase = to; trans = false;
             G.Burst(SunPos(), 18, 6f); G.SpawnFx("spark", "spark", SunPos(), 3f, false, 32);
             Sfx.Play("bell", .6f, .8f);
-            routine = null; idleTimer = 1.8f;
+            routine = null; idleTimer = 1.8f; openT = 4.5f;
             yield break;
         }
 

@@ -42,6 +42,8 @@ namespace GumRemix
         public bool inputLocked, god, holdClear; public int statStuck, statKicks, statBallKills, statParries;
         public bool solo = true, autoFire = true; public int statCoopBounces, statHugs; float hugT, hugCd, spawnCd; Bond bond;
         public static void ResetSession() { seenHelp = false; }
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics() { I = null; seenHelp = false; }
 
         void Awake()
         {
@@ -84,7 +86,7 @@ namespace GumRemix
             GUI.DrawTexture(new Rect((Screen.width - w) * 0.5f, (Screen.height - h) * 0.5f, w, h), rt, ScaleMode.StretchToFill, false);
         }
 
-        void OnDestroy() { if (rt != null) rt.Release(); }
+        void OnDestroy() { if (rt != null) rt.Release(); if (I == this) I = null; }
 
         // ------------------------------------------------------------------------------------------ queries used by entities
         public Player NearestPlayer(Vector2 p)
@@ -435,7 +437,7 @@ namespace GumRemix
                 Line(t, y, "TEJAS QUEBRADIZAS Y CAMAS ELASTICAS", "special_5", 3); y -= d;
                 Line(t, y, "VENTISCA: BUSCA UN TECHO PARA RESGUARDARTE", "gust", -1, "loop"); y -= d;
                 Line(t, y, "EL PINGUINO BLOQUEA: DISPARALE POR DETRAS", "penguin", -1, "idle", 0.42f); y -= d;
-                PText.Create(t, new Vector3(0, -2.9f, 0), "EL SOL DEL MONARCA ES SU UNICO PUNTO DEBIL", 1, new Color(1f, .85f, .5f), true, 265);
+                PText.Create(t, new Vector3(0, -2.9f, 0), "TRAS CADA ATAQUE SU CORAZA BRILLA: DISPARA AL SOL", 1, new Color(1f, .85f, .5f), true, 265);
             }
             PText.Create(t, new Vector3(0, -3.6f, 0), "A D PAGINA " + (helpPage + 1) + "/4     ENTER SIGUIENTE     ESC VOLVER", 1, new Color(.9f, .9f, 1f), true, 265);
         }

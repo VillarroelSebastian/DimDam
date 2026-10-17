@@ -84,6 +84,8 @@ namespace GumRemix
         public const int PerWorld = 5;
         static LevelDef[] all;
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics() { all = null; }          // platforms carry state (broken ice, lifts): rebuild them every run
         public static LevelDef[] All { get { if (all == null) all = Build(); return all; } }
         public static readonly string[] WorldNames = { "REINO DE CHICLE", "REINO DE HIELO" };
 

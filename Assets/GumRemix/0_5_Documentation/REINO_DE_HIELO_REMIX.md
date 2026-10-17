@@ -35,3 +35,9 @@ Criatura de nieve con un **sol cautivo en el pecho**: solo el sol recibe daño; 
 2. **Gigante agrietado:** pisotón con ondas de hielo, pilares que emergen de grietas anunciadas, invoca pingüinos y semillas.
 3. **Tormenta hueca con corona:** anillos de escarchas con hueco, abanico giratorio y ventisca con lluvia de cristales.
 Las transformaciones limpian los proyectiles; durante ellas es invulnerable. La posición del sol sale de la propia animación (un punto por fotograma), así que el punto débil sigue al dibujo.
+
+## Monarca del Deshielo: ventana de ataque
+La coraza de nieve detiene el chicle. Tras cada ataque la coraza se agrieta y brilla en dorado durante unos 4-5 s (`IceBoss.openT`): en ese momento el chicle llega al sol y le hace dano. Vida: 80 / 80 / 70 por forma.
+
+## Nota para Unity (Enter Play Mode Options)
+Si el proyecto tiene desactivado el "Reload Domain", los estaticos sobreviven entre ejecuciones. Cada clase estatica del juego (`Art`, `Sfx`, `GameCtl`, `Levels`) se reinicia con `RuntimeInitializeOnLoadMethod(SubsystemRegistration)`; sin eso la pantalla quedaba en negro al volver a darle Play.

@@ -44,6 +44,10 @@ namespace GumRemix
         static readonly Dictionary<string, Sheet> cache = new Dictionary<string, Sheet>();
         static readonly Dictionary<char, Sprite> glyphs = new Dictionary<char, Sprite>();
 
+        // Enter Play Mode Options may leave the domain alive between runs: sprites/textures from the last run are destroyed, so forget them.
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics() { defs = null; cache.Clear(); glyphs.Clear(); }
+
         public static void Init()
         {
             if (defs != null) return;

@@ -80,6 +80,9 @@ namespace GumRemix
 
         struct Seg { public float dur, f0, f1; public int wave; public float vol; public Seg(float d, float a, float b, int w, float v) { dur = d; f0 = a; f1 = b; wave = w; vol = v; } }
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics() { pool = null; next = 0; host = null; clips.Clear(); GumInput.Override = null; GumInput.ForceConfirm = false; }
+
         public static void Init(GameObject hostObj)
         {
             if (pool != null && pool[0] != null && host != null) return;
