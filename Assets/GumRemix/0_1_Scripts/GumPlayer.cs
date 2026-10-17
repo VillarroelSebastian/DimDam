@@ -103,7 +103,7 @@ namespace GumRemix
     public class Player
     {
         public int index; public string hero; public bool joined, ghost;
-        public int hp = 3, maxHp = 3; public float meter;           // meter 0..5 cards
+        public int hp = 4, maxHp = 4; public float meter;           // meter 0..5 cards
         public int facing = 1; public Body body = new Body { w = 0.56f, h = 1.1f };
         public float invuln, superT;
         public int parries, hitsTaken;
@@ -158,7 +158,11 @@ namespace GumRemix
         public void SetVisible(bool v) { if (!joined) return; go.SetActive(v && !ghost); armSr.gameObject.SetActive(v && !ghost); ghostGo.SetActive(v && ghost); if (!v) freezeSr.gameObject.SetActive(false); }
 
         public void Heal(int n) { if (Alive) hp = Mathf.Min(maxHp, hp + n); }
-        public void AddMeter(float v) { meter = Mathf.Min(5f, meter + v); }
+        public void AddMeter(float v, bool share = true)
+        {
+            meter = Mathf.Min(5f, meter + v);
+            if (share) foreach (var o in G.players) if (o != this && o.Alive) o.AddMeter(v * 0.5f, false);      // together: your partner charges too
+        }
 
         public void Revive(int hpAmount)
         {
@@ -254,9 +258,10 @@ namespace GumRemix
             // ---- gravity
             if (dashT <= 0) body.vel.y = Mathf.Max(-21f, body.vel.y - 38f * dt);
             bool wasGround = body.grounded;
-            float preVy = body.vel.y;
+            float preVy = body.vel.y; float prevY = body.pos.y;
             body.Step(dt, G.world, time);
             if (body.bounced) jumpCut = true;
+            TryHeadBounce(prevY);
             if (windDrift != 0f) body.pos.x = Mathf.Clamp(body.pos.x + windDrift * dt, Levels.Left + body.w * 0.5f, Levels.Right - body.w * 0.5f);
             if (wasGround && !body.grounded && body.vel.y <= 0) coyote = 0.09f;
             if (body.grounded) coyote = 0.09f;
@@ -267,8 +272,13 @@ namespace GumRemix
             }
 
             // ---- shooting
-            aimDir = pad.up ? (Mathf.Abs(pad.x) > 0.1f ? 1 : 2) : 0;
-            if (control && pad.shoot && shootCd <= 0 && dashT <= 0)
+            Vector2 tp; bool haveTarget = G.autoFire && control && FindTarget(out tp);
+            tp = Vector2.zero; if (haveTarget) FindTarget(out tp);
+            if (pad.up) aimDir = Mathf.Abs(pad.x) > 0.1f ? 1 : 2;
+            else if (haveTarget) aimDir = AimFor(tp);
+            else aimDir = 0;
+            bool fire = pad.shoot || (haveTarget && AimOk(tp, aimDir));
+            if (control && fire && shootCd <= 0 && dashT <= 0)
             {
                 shootCd = 0.125f; shootT = 0.2f; recoilT = 0.09f; Fire();
             }
@@ -280,6 +290,55 @@ namespace GumRemix
             if (dashT > 0) { trailT -= dt; if (trailT <= 0) { trailT = 0.045f; var f = G.SpawnFx("trail", "trail", Center, 1.6f, false, 9); f.sr.color = new Color(1f, .8f, .93f, .8f); } }
 
             Visuals(dt);
+        }
+
+        // ---- auto-fire assist: pick the closest thing worth shooting that is in front of or above the hero
+        void Consider(Vector2 c, ref float best, ref Vector2 tp, ref bool has)
+        {
+            float dx = c.x - Center.x; if (Mathf.Abs(dx) > 0.9f && Mathf.Sign(dx) != facing) return;
+            float d = (c - Center).sqrMagnitude; if (d < best) { best = d; tp = c; has = true; }
+        }
+
+        bool FindTarget(out Vector2 tp)
+        {
+            tp = Vector2.zero; float best = 11f * 11f; bool has = false;
+            foreach (var e in G.enemies) if (e.Hittable) Consider(e.body.Center, ref best, ref tp, ref has);
+            foreach (var cr in G.crystals) if (!cr.active) Consider(cr.pos + new Vector2(0f, 0.7f), ref best, ref tp, ref has);
+            if (G.boss != null && G.boss.Hittable) foreach (var hb in G.boss.Hurtboxes()) Consider(hb.center, ref best, ref tp, ref has);
+            return has;
+        }
+
+        int AimFor(Vector2 tp)
+        {
+            float dx = Mathf.Abs(tp.x - Center.x), dy = tp.y - Center.y;
+            float ang = Mathf.Atan2(dy, Mathf.Max(0.001f, dx)) * Mathf.Rad2Deg;
+            return ang > 62f ? 2 : (ang > 24f ? 1 : 0);
+        }
+
+        bool AimOk(Vector2 tp, int dir)
+        {
+            float dx = Mathf.Abs(tp.x - Center.x), dy = tp.y - Center.y;
+            float ang = Mathf.Atan2(dy, Mathf.Max(0.001f, dx)) * Mathf.Rad2Deg;
+            float want = dir == 0 ? 0f : (dir == 1 ? 45f : 90f);
+            return Mathf.Abs(ang - want) < 27f;
+        }
+
+        // ---- together: land on your partner's head and you spring up (reach ledges alone you could not)
+        void TryHeadBounce(float prevY)
+        {
+            if (body.grounded || body.vel.y > -1f || dashT > 0f) return;
+            foreach (var o in G.players)
+            {
+                if (o == this || !o.Alive || o.frozenT > 0f) continue;
+                float top = o.body.pos.y + o.body.h;
+                if (Mathf.Abs(body.pos.x - o.body.pos.x) > 0.55f) continue;
+                if (prevY >= top - 0.05f && body.pos.y <= top + 0.1f)
+                {
+                    body.pos.y = top; body.vel.y = pad.jumpHeld ? 19f : 15.5f; jumpCut = false; jumpBuf = 0f; coyote = 0f; G.statCoopBounces++;
+                    Sfx.Play("jump", .7f, 1.5f); G.SpawnFx("spark", "spark", new Vector2(body.pos.x, top), 1.3f, false, 30); AddMeter(0.05f);
+                    return;
+                }
+            }
         }
 
         bool TryParry()
@@ -393,6 +452,11 @@ namespace GumRemix
             float sp = 4.2f;
             p.x += pad.x * sp * dt; p.y += ((pad.up ? 1 : 0) - (pad.down ? 1 : 0)) * sp * dt;
             if (pad.jumpHeld) p.y += sp * 0.6f * dt;
+            if (G.solo && Mathf.Abs(pad.x) < 0.1f && !pad.up && !pad.down && !pad.jumpHeld)
+            {
+                Player buddy = null; foreach (var o in G.players) if (o != this && o.Alive) buddy = o;
+                if (buddy != null) { var to = (buddy.Center + new Vector2(0f, 0.4f)) - (Vector2)p; if (to.magnitude > 0.2f) { var stp = to.normalized * 3.6f * dt; p.x += stp.x; p.y += stp.y; } }
+            }
             p.x = Mathf.Clamp(p.x, Levels.Left + .5f, Levels.Right - .5f);
             p.y = Mathf.Clamp(p.y, G.world.y0 + 1.6f, G.world.y0 + Levels.Height - 1f);
             p.y += Mathf.Sin(G.time * 3f + index) * 0.4f * dt;

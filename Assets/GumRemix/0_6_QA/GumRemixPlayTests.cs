@@ -99,7 +99,8 @@ namespace GumRemix.Tests
             Assert.AreEqual(Mode.Help, G.mode, "first play should open the help screens");
             yield return Seconds(0.4f); Shot("m02_help_controls");
             PressEnter(); yield return Seconds(0.4f); Shot("m03_help_howto");
-            PressEnter(); yield return Seconds(0.4f); Shot("m04_help_ice");
+            PressEnter(); yield return Seconds(0.4f); Shot("m04_help_together");
+            PressEnter(); yield return Seconds(0.4f); Shot("m05_help_ice");
             PressEnter(); yield return Seconds(0.3f);
             Assert.AreEqual(Mode.Banner, G.mode, "closing the help should start the game");
             Log("menu and help ok");
@@ -218,7 +219,7 @@ namespace GumRemix.Tests
             G.god = false; p.invuln = 0f; p.Place(new Vector2(0f, G.world.GroundTop + 0.02f));
             yield return Frames(3);
             p.Hit(1, p.body.pos.x - 1f, true);
-            Assert.Greater(p.frozenT, 2f, "a frost shard should freeze for ~2.4s"); Assert.AreEqual(2, p.hp);
+            Assert.Greater(p.frozenT, 2f, "a frost shard should freeze for ~2.4s"); Assert.AreEqual(3, p.hp);
             yield return Frames(2); Shot("x1_frozen");
             float tf = 0f; int f0 = frame;
             GumInput.Override = i => i == 0 ? new Pad { jumpDown = (frame % 2 == 0) } : new Pad();
@@ -313,6 +314,101 @@ namespace GumRemix.Tests
                 if (ph == 2) { G.DebugDamageBoss(boss.hp - IceBoss.Phase3Hp + 1); yield return Seconds(2.4f); }
             }
             Assert.AreEqual(3, boss.phase);
+            yield return Teardown();
+        }
+
+        // ------------------------------------------------------------------------------------------ music
+        static void WriteWav(string path, float[] interleaved, int sampleRate)
+        {
+            using (var fs = new FileStream(path, FileMode.Create))
+            using (var w = new BinaryWriter(fs))
+            {
+                int n = interleaved.Length;
+                w.Write(Encoding.ASCII.GetBytes("RIFF")); w.Write(36 + n * 2); w.Write(Encoding.ASCII.GetBytes("WAVEfmt "));
+                w.Write(16); w.Write((short)1); w.Write((short)2); w.Write(sampleRate); w.Write(sampleRate * 4); w.Write((short)4); w.Write((short)16);
+                w.Write(Encoding.ASCII.GetBytes("data")); w.Write(n * 2);
+                for (int i = 0; i < n; i++) w.Write((short)(Mathf.Clamp(interleaved[i], -1f, 1f) * 32767f));
+            }
+        }
+
+        [Test, Timeout(600000)]
+        public void EveryTrackRendersCleanly()
+        {
+            string dir = Environment.GetEnvironmentVariable("GUMREMIX_AUDIO");
+            if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
+            var sb = new StringBuilder();
+            foreach (Track t in Enum.GetValues(typeof(Track)))
+            {
+                var song = SongBook.Get(t); int frames;
+                var sw = System.Diagnostics.Stopwatch.StartNew();
+                var d = MusicRenderer.Render(song, out frames);
+                sw.Stop();
+                float peak = 0f; double acc = 0; bool bad = false;
+                for (int i = 0; i < d.Length; i++) { float v = d[i]; if (float.IsNaN(v) || float.IsInfinity(v)) bad = true; float a = Mathf.Abs(v); if (a > peak) peak = a; acc += v * v; }
+                float rms = Mathf.Sqrt((float)(acc / d.Length)); float seconds = frames / (float)MusicRenderer.SR;
+                Assert.IsFalse(bad, t + ": NaN/Infinity in the audio");
+                Assert.LessOrEqual(peak, 0.81f, t + ": the limiter must keep the peak under control");
+                Assert.That(rms, Is.InRange(0.07f, 0.19f), t + ": loudness out of range");
+                if (song.loop)
+                {
+                    Assert.That(seconds, Is.InRange(25f, 95f), t + ": loop length");
+                    float seam = Mathf.Abs(d[0] - d[d.Length - 2]) + Mathf.Abs(d[1] - d[d.Length - 1]);
+                    Assert.Less(seam, 0.35f, t + ": the loop must close without a click (" + seam.ToString("0.000") + ")");
+                }
+                else Assert.That(seconds, Is.InRange(4f, 25f), t + ": jingle length");
+                sb.AppendLine(string.Format("{0,-13} {1,-30} {2,5:0} bpm  {3,5:0.0}s  rms {4:0.000}  peak {5:0.00}  render {6} ms", t, song.name, song.bpm, seconds, rms, peak, sw.ElapsedMilliseconds));
+                if (!string.IsNullOrEmpty(dir)) WriteWav(Path.Combine(dir, ((int)t).ToString("00") + "_" + t + ".wav"), d, MusicRenderer.SR);
+            }
+            Log("music\n" + sb);
+            var outFile = Environment.GetEnvironmentVariable("GUMREMIX_SHOTS");
+            if (!string.IsNullOrEmpty(outFile)) { Directory.CreateDirectory(outFile); File.WriteAllText(Path.Combine(outFile, "music_report.txt"), sb.ToString()); }
+        }
+
+        [UnityTest, Timeout(120000)]
+        public IEnumerator MusicPlaysAndSwitches()
+        {
+            yield return Boot();
+            Assert.NotNull(Sfx.Host, "the music host must exist");
+            float t = 0; while (!(Sfx.Host.Current.HasValue && Sfx.Host.Current.Value == Track.Title) && t < 20f) { t += Time.unscaledDeltaTime; yield return null; }
+            Assert.AreEqual(Track.Title, Sfx.Host.Current, "the title music should start once rendered (took " + t.ToString("0.0") + "s)");
+            Sfx.PlayTrack(Track.Lago, 0.2f); t = 0;
+            while (!(Sfx.Host.Current.HasValue && Sfx.Host.Current.Value == Track.Lago) && t < 20f) { t += Time.unscaledDeltaTime; yield return null; }
+            Assert.AreEqual(Track.Lago, Sfx.Host.Current, "switching tracks must work (took " + t.ToString("0.0") + "s)");
+            Log("music host ok");
+            yield return Teardown();
+        }
+
+        // ------------------------------------------------------------------------------------------ better together / solo
+        [UnityTest, Timeout(300000)]
+        public IEnumerator BetterTogetherAndSolo()
+        {
+            yield return Boot();
+            G.holdClear = true; G.god = true; G.autoFire = true;
+            G.DebugStartAt(0, 1); yield return Frames(2);
+            Assert.AreEqual(Mode.Banner, G.mode);
+            var p0 = G.players[0]; var p1 = G.players[1];
+            Assert.IsTrue(p0.joined && p1.joined, "solo still puts both heroes on stage");
+            float x0 = p0.body.pos.x;
+            GumInput.Override = i => { var pd = new Pad(); if (i == 0) pd.x = 1f; return pd; };
+            yield return Seconds(0.5f);
+            Assert.Greater(p0.body.pos.x, x0 + 0.5f, "heroes must be able to move during the level banner");
+            Assert.AreEqual(0, G.enemies.Count, "enemies wait until the banner ends");
+            GumInput.Override = null;
+            G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+            // spawn throttle: never more than maxAlive at once
+            int peak = 0; float t = 0; while (t < 8f) { t += Time.unscaledDeltaTime; frame++; int live = 0; foreach (var e in G.enemies) if (e.state != EState.Dead) live++; peak = Mathf.Max(peak, live); yield return null; }
+            Assert.LessOrEqual(peak, G.world.def.maxAlive, "too many enemies on screen at once");
+            // auto fire: an enemy in front gets shot without pressing anything
+            G.DebugClearEnemies(); yield return Frames(2);
+            p0.Place(new Vector2(-3f, G.world.GroundTop + 0.02f)); p1.Place(new Vector2(4f, G.world.GroundTop + 0.02f));
+            G.SpawnEnemy("bean", "yellow", new Vector2(2f, G.world.GroundTop + 0.2f));
+            int stuck0 = G.statStuck; yield return Seconds(2.5f);
+            Assert.Greater(G.statStuck, stuck0, "auto-fire should have stuck the enemy without any button");
+            // head bounce: falling on the partner springs you up
+            G.DebugClearEnemies(); p1.Place(new Vector2(-6f, G.world.GroundTop + 0.02f)); p0.Place(new Vector2(-6f, G.world.GroundTop + 1.8f));
+            yield return Seconds(1.2f);
+            Assert.Greater(G.statCoopBounces, 0, "landing on the partner must bounce");
+            Log("better together ok: bounces=" + G.statCoopBounces + " peakAlive=" + peak);
             yield return Teardown();
         }
 

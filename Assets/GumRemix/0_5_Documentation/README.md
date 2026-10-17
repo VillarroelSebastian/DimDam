@@ -62,3 +62,25 @@ Regenerar todo: `python 0_3_Art/ArtSource~/build_all.py`.
 resultados y game over); pruebas dirigidas demuestran con cifras el deslizamiento en hielo, la congelación y el rescate, las plataformas
 quebradizas/móviles/elásticas, los cristales y el puente, la ventisca con refugios, el escudo del pingüino y el punto débil del Monarca.
 Con la variable de entorno `GUMREMIX_SHOTS` guarda capturas de cada paso. No certifica el balance con jugadores humanos.
+
+## Juntos es mejor (Better Together)
+
+Pensado para la temática de la jam: el juego se disfruta más con otra persona, pero también se puede jugar **solo con ambas manos**.
+
+- **Solo (1 JUGADOR)**: una persona controla a los dos héroes (P1 con WASD, P2 con flechas). El disparo es **automático** y apunta solo; se puede cambiar a MANUAL en el menú ("DISPARO"). Si un héroe cae, su fantasma vuela solo hacia el compañero para revivir.
+- **Vínculo de chicle**: mientras los héroes están cerca, una cuerda de chicle los une. Lo que la cruce recibe daño (enemigos, cristales, punto débil del jefe) y revienta los disparos enemigos. Cada uno se coloca a un lado de la amenaza.
+- **Rebote**: caer sobre la cabeza del compañero te impulsa alto (mantén salto para más).
+- **Abrazo**: quedarse juntos y cerca un momento cura 1 corazón (enfriamiento 14 s).
+- **Súper compartido**: lo que carga uno (parry, vínculo) carga la mitad en el otro.
+- **Revivir** tocando al compañero caído (ahora con 2 corazones).
+
+### Ajustes de jugabilidad
+- Los héroes se mueven durante el banner de inicio de nivel; los enemigos esperan a que termine.
+- Máximo de enemigos a la vez por nivel (`maxAlive`); el resto llega en oleadas.
+- 4 corazones; jefes con menos vida, ataques más lentos y espaciados, corazón extra entre formas y corazones completos al empezar el jefe.
+
+## Música
+
+Toda la música se compone y sintetiza dentro del juego (sin archivos de audio), en `GumMusic.cs`: `SongBook` (partituras como texto), `MusicRenderer` (32 kHz estéreo, bucles sin clic) y `MusicHost` (render en segundo plano, fundido cruzado).
+
+Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (Gran Chiclón, 3 formas), Lago, Aldea, Cristales, Jardines, PalacioBoss1-3 (Monarca, 3 formas), Title, Victory, GameOver, WorldDone.

@@ -116,7 +116,7 @@ namespace GumRemix
     public class IcePillar
     {
         public bool dead; float x, y, t, hold; GameObject root; List<SpriteRenderer> segs = new List<SpriteRenderer>(); SpriteRenderer crack; Anim crackAnim; int n = 5;
-        const float Warn = 0.95f, Rise = 0.22f;
+        const float Warn = 1.2f, Rise = 0.22f;
 
         public IcePillar(float px, float groundY, float holdTime = 1.1f)
         {

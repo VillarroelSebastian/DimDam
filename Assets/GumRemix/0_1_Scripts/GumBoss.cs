@@ -7,7 +7,7 @@ namespace GumRemix
     /// <summary>El Gran Chiclon: a three-form gum ringmaster. Attacks are written as small coroutines.</summary>
     public class Boss : BossBase
     {
-        public const int Phase1Hp = 220, Phase2Hp = 220, Phase3Hp = 180;
+        public const int Phase1Hp = 140, Phase2Hp = 120, Phase3Hp = 100;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
         public override string DisplayName { get { return "EL GRAN CHICLON"; } }
@@ -39,13 +39,13 @@ namespace GumRemix
         public override List<Rect> Dangerboxes()
         {
             dg.Clear();
-            var b = Hurtboxes()[0]; b.xMin += 0.3f; b.xMax -= 0.3f; b.yMin += 0.2f; b.yMax -= 0.5f;
+            var b = Hurtboxes()[0]; b.xMin += 0.6f; b.xMax -= 0.6f; b.yMin += 0.3f; b.yMax -= 0.9f;
             dg.Add(b);
             if (sweepActive) dg.Add(sweepRect);
             return dg;
         }
 
-        public override void Activate() { active = true; idleTimer = 1.5f; }
+        public override void Activate() { active = true; idleTimer = 2.4f; }
 
         string Pfx { get { return "p" + phase + "_"; } }
 
@@ -74,7 +74,7 @@ namespace GumRemix
                 wait -= dt;
                 while (wait <= 0f)
                 {
-                    if (!routine.MoveNext()) { routine = null; manual = false; sweepActive = false; diveActive = false; idleTimer = phase == 1 ? 1.1f : (phase == 2 ? 0.8f : 0.7f); break; }
+                    if (!routine.MoveNext()) { routine = null; manual = false; sweepActive = false; diveActive = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); break; }
                     wait = routine.Current;
                 }
             }
@@ -150,8 +150,8 @@ namespace GumRemix
                 float tx = hop == 0 ? Mathf.Clamp(tgt != null ? tgt.body.pos.x : 0f, -3.2f, 5.0f) : homeX;
                 float x0 = x;
                 anim.Apply(0); sr.flipX = false; Sfx.Play("warn", .4f);
-                yield return 0.38f;
-                float dur = 0.85f, u = 0f;
+                yield return 0.6f;
+                float dur = 1.05f, u = 0f;
                 Sfx.Play("jump", .6f, .5f);
                 while (u < 1f)
                 {
@@ -175,14 +175,14 @@ namespace GumRemix
             yield return 0.4f;
             Sfx.Play("wallop", .6f);
             string kind = ph == 1 ? "bean" : "bear", col = ph == 1 ? "purple" : "orange";
-            int cap = 4;
+            int cap = 3;
             var picks = new List<float> { -5.4f, -1.4f, 3.4f };
             // minions drop onto the ledges so the players can stick them and kick them at the boss
             if (G.AliveEnemies() < cap)
             {
                 float[] ys = { 3.2f, 5.4f, 5.4f };
                 float[] xs = { -5.6f, -4.0f, 0.2f };
-                for (int i = 0; i < 2 && G.AliveEnemies() < cap; i++)
+                for (int i = 0; i < (ph == 1 ? 1 : 2) && G.AliveEnemies() < cap; i++)
                 {
                     int j = Random.Range(0, 3);
                     G.SpawnEnemy(kind, col, new Vector2(xs[j] + Random.Range(-.4f, .4f), ys[j]));
@@ -198,10 +198,10 @@ namespace GumRemix
             manual = false; sr.flipX = true;
             anim.Play("p2_swing", true);
             Sfx.Play("warn", .6f);
-            yield return 0.38f;       // wind-up (frames 0..3)
+            yield return 0.65f;       // wind-up (frames 0..3)
             Sfx.Play("dash", .8f, .5f); G.Shake(.12f, .25f);
             sweepActive = true; float t0 = 0;
-            while (t0 < 0.3f)
+            while (t0 < 0.25f)
             {
                 t0 += G.dt;
                 sweepRect = new Rect(x - 7.2f, groundY + 2.45f, 6.0f, 1.0f);
@@ -219,9 +219,9 @@ namespace GumRemix
             for (int i = 0; i < 2; i++)
             {
                 Sfx.Play("boom", .6f, 1.3f);
-                var s = new EnemyShot(new Vector2(x - 2.0f, groundY + 0.6f), new Vector2(-5.2f, 0f), 0f, i == 1, 2f);
+                var s = new EnemyShot(new Vector2(x - 2.0f, groundY + 0.6f), new Vector2(-4.0f, 0f), 0f, i == 1, 2f);
                 s.persistent = true; s.life = 5f; G.eshots.Add(s);
-                yield return 1.15f;
+                yield return 1.7f;
             }
             yield return 0.4f;
         }
@@ -230,13 +230,13 @@ namespace GumRemix
         {
             anim.Play("p2_summon", true); manual = false;
             yield return 0.5f;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 6; i++)
             {
                 float rx = Random.Range(Levels.Left + 0.8f, 2.0f);
                 bool pink = i == 2 || i == 6;
                 G.eshots.Add(new EnemyShot(new Vector2(rx, G.world.y0 + Levels.Height + 0.3f), new Vector2(0f, -2f), 6f, pink, 1.2f));
                 Sfx.Play("spit", .3f, 1.5f);
-                yield return 0.32f;
+                yield return 0.55f;
             }
             yield return 0.4f;
         }
@@ -247,13 +247,13 @@ namespace GumRemix
             anim.Play("p3_blow", true); manual = false;
             yield return 0.3f;
             float a = Random.value * 6.28f;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 9; i++)
             {
-                a += 0.52f;
-                var v = new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 4.4f;
+                a += 0.7f;
+                var v = new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 3.4f;
                 G.eshots.Add(new EnemyShot(new Vector2(x, y + 3.5f), v, 0f, i % 5 == 4, 1f));
                 Sfx.Play("spit", .3f, 1.2f);
-                yield return 0.11f;
+                yield return 0.2f;
             }
             yield return 0.4f;
         }
@@ -265,9 +265,9 @@ namespace GumRemix
             float tx = Mathf.Clamp(tgt != null ? tgt.body.pos.x : 0f, -5f, 5.5f);
             Sfx.Play("warn", .6f);
             float shake = 0f;
-            while (shake < 0.6f) { shake += G.dt; x = Mathf.Lerp(x, tx, 0.1f); y = Mathf.Lerp(y, groundY + 3.3f, 0.1f) + Mathf.Sin(shake * 60f) * 0.06f; yield return Frame; }
+            while (shake < 1.0f) { shake += G.dt; x = Mathf.Lerp(x, tx, 0.1f); y = Mathf.Lerp(y, groundY + 3.3f, 0.1f) + Mathf.Sin(shake * 60f) * 0.06f; yield return Frame; }
             diveActive = true;
-            while (y > groundY + 0.02f) { y = Mathf.Max(groundY, y - 17f * G.dt); yield return Frame; }
+            while (y > groundY + 0.02f) { y = Mathf.Max(groundY, y - 12f * G.dt); yield return Frame; }
             anim.Apply(1); Sfx.Play("boom", 1f); G.Shake(.3f, .35f);
             G.SpawnFx("dust", "dust", new Vector2(x, y), 2f, false, 8);
             G.waves.Add(new Shockwave(x - 1.5f, -1, groundY)); G.waves.Add(new Shockwave(x + 1.5f, 1, groundY));
@@ -284,13 +284,13 @@ namespace GumRemix
             anim.Play("p3_blow", true); manual = false;
             yield return 0.4f;
             float start = Random.Range(-6.5f, -3.5f);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 G.eshots.Add(new EnemyShot(new Vector2(start + i * 1.6f, G.world.y0 + Levels.Height + 0.3f), new Vector2(0, -2.5f), 4f, i % 3 == 1, 1.2f));
                 Sfx.Play("spit", .3f, 1.6f);
-                yield return 0.2f;
+                yield return 0.34f;
             }
-            yield return 0.5f;
+            yield return 0.6f;
         }
 
         // ------------------------------------------------------------------------------------------ transitions & death
@@ -312,7 +312,7 @@ namespace GumRemix
             phase = to; trans = false;
             G.SpawnFx("spark", "spark", new Vector2(x, y + 2.5f), 3f, false, 30);
             Sfx.Play("bell", .6f);
-            routine = null; idleTimer = 1.0f;
+            routine = null; idleTimer = 1.8f;
             yield break;
         }
 

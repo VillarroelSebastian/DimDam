@@ -10,7 +10,7 @@ namespace GumRemix
     /// </summary>
     public class IceBoss : BossBase
     {
-        public const int Phase1Hp = 180, Phase2Hp = 180, Phase3Hp = 160;
+        public const int Phase1Hp = 110, Phase2Hp = 110, Phase3Hp = 100;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
         public override string DisplayName { get { return "MONARCA DEL DESHIELO"; } }
@@ -36,6 +36,7 @@ namespace GumRemix
         // ------------------------------------------------------------------------------------------ geometry
         int AbsFrame()
         {
+            if (sr == null || sr.sprite == null) return 0;
             var n = sr.sprite.name; int u = n.LastIndexOf('_'); int i; return int.TryParse(n.Substring(u + 1), out i) ? i : 0;
         }
 
@@ -73,13 +74,13 @@ namespace GumRemix
         public override List<Rect> Dangerboxes()
         {
             dg.Clear();
-            if (chargeLow) { dg.Add(new Rect(x - 1.5f, y, 3.0f, 1.9f)); return dg; }
-            var b = BlockBoxes()[0]; b.xMin += 0.35f; b.xMax -= 0.35f; b.yMin += 0.2f; b.yMax -= 0.7f;
+            if (chargeLow) { dg.Add(new Rect(x - 1.3f, y, 2.6f, 1.6f)); return dg; }
+            var b = BlockBoxes()[0]; b.xMin += 0.6f; b.xMax -= 0.6f; b.yMin += 0.3f; b.yMax -= 1.0f;
             dg.Add(b);
             return dg;
         }
 
-        public override void Activate() { active = true; idleTimer = 1.6f; }
+        public override void Activate() { active = true; idleTimer = 2.4f; }
 
         // ------------------------------------------------------------------------------------------ damage
         public override void Damage(int dmg, Player by, bool addMeter = true)
@@ -107,7 +108,7 @@ namespace GumRemix
                 wait -= dt;
                 while (wait <= 0f)
                 {
-                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.2f : (phase == 2 ? 0.9f : 0.8f); break; }
+                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); break; }
                     wait = routine.Current;
                 }
             }
@@ -157,37 +158,37 @@ namespace GumRemix
         IEnumerator<float> Hail()
         {
             anim.Play("p1_hail", true); Sfx.Play("warn", .5f, .8f);
-            yield return 0.4f;
+            yield return 0.7f;
             float gap = Random.Range(-5.5f, 3.5f);           // a free corridor 3.4 units wide, so there is always a safe lane
             int pinks = 0;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 10; i++)
             {
                 float px = Random.Range(-7.2f, 7.2f);
-                if (Mathf.Abs(px - gap) < 1.7f) px = gap + (px < gap ? -1 : 1) * Random.Range(1.8f, 3.0f);
+                if (Mathf.Abs(px - gap) < 2.3f) px = gap + (px < gap ? -1 : 1) * Random.Range(2.4f, 3.4f);
                 px = Mathf.Clamp(px, -7.2f, 7.2f);
                 bool pink = (i == 4 || i == 10) && pinks < 2; if (pink) pinks++;
                 Shard(new Vector2(px, G.world.y0 + Levels.Height + 0.3f), new Vector2(0, -2.5f), 7f, pink);
                 Sfx.Play("spit", .25f, 1.7f);
-                yield return 0.13f;
+                yield return 0.18f;
             }
-            yield return 0.6f;
+            yield return 0.7f;
         }
 
         IEnumerator<float> Charge()
         {
             anim.Play("p1_roll", true); Sfx.Play("warn", .6f, .7f);
             float shake = 0f;
-            while (shake < 0.6f) { shake += G.dt; x = homeX + Mathf.Sin(shake * 70f) * 0.05f; yield return Frame; }
+            while (shake < 1.0f) { shake += G.dt; x = homeX + Mathf.Sin(shake * 70f) * 0.05f; yield return Frame; }
             chargeLow = true; Sfx.Play("dash", .8f, .5f); G.Shake(.08f, .5f);
             anim.speed = 1.8f;
             float target = -5.6f;
-            while (x > target) { x -= 9.5f * G.dt; yield return Frame; }
+            while (x > target) { x -= 6.8f * G.dt; yield return Frame; }
             G.Shake(.2f, .3f); Sfx.Play("boom", .8f, 1.2f);
             G.waves.Add(new Shockwave(x + 1.6f, 1, groundY, "shock_ice"));
             chargeLow = false; anim.speed = 1f;
             yield return 0.45f;
             anim.speed = 1.0f; chargeLow = true;
-            while (x < homeX) { x += 5.2f * G.dt; yield return Frame; }
+            while (x < homeX) { x += 4.2f * G.dt; yield return Frame; }
             x = homeX; chargeLow = false; anim.speed = 1f;
             yield return 0.3f;
         }
@@ -202,7 +203,7 @@ namespace GumRemix
                 {
                     var p = Target(); var tgt = p != null ? p.Center : new Vector2(-3f, groundY + 1f);
                     float dx = tgt.x + Random.Range(-1.4f, 1.4f) - mouth.x, dy = tgt.y - mouth.y; const float g = 10f;
-                    float T = Mathf.Clamp(Mathf.Abs(dx) / 6f, 0.8f, 1.6f);
+                    float T = Mathf.Clamp(Mathf.Abs(dx) / 6f, 1.0f, 1.9f);
                     var vel = new Vector2(dx / T, (dy + 0.5f * g * T * T) / T);
                     Shard(mouth, vel, g, i == 1 && v == 0);
                     Sfx.Play("spit", .4f, 1.1f);
@@ -221,8 +222,8 @@ namespace GumRemix
                 float tx = hop == 0 ? Mathf.Clamp(tgt != null ? tgt.body.pos.x : 0f, -3.5f, 5f) : homeX;
                 float x0 = x;
                 anim.Play("p2_stomp", true); Sfx.Play("warn", .5f, .7f);
-                yield return 0.35f;
-                float dur = 0.8f, u = 0f;
+                yield return 0.6f;
+                float dur = 1.0f, u = 0f;
                 while (u < 1f) { u += G.dt / dur; float k = Mathf.Min(u, 1f); x = Mathf.Lerp(x0, tx, k); y = groundY + 1.8f * 4f * k * (1f - k); yield return Frame; }
                 x = tx; y = groundY;
                 Sfx.Play("boom", 1f, .9f); G.Shake(.3f, .35f);
@@ -236,12 +237,12 @@ namespace GumRemix
         {
             anim.Play("p2_pillars", true); Sfx.Play("warn", .5f, .6f);
             yield return 0.45f;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 var p = Target(); float px = p != null ? p.body.pos.x : -3f;
                 px = Mathf.Clamp(px + Random.Range(-0.8f, 0.8f), -7f, 5.5f);
                 G.pillars.Add(new IcePillar(px, groundY));
-                yield return 0.5f;
+                yield return 0.8f;
             }
             yield return 1.8f;
         }
@@ -269,17 +270,17 @@ namespace GumRemix
                 yield return 0.35f;
                 var p = Target(); var origin = SunPos();
                 float aim = p != null ? Mathf.Atan2(p.Center.y - origin.y, p.Center.x - origin.x) : Mathf.PI;
-                float gapHalf = 0.5f;
-                int n = 20;
+                float gapHalf = 0.85f;
+                int n = 18;
                 for (int i = 0; i < n; i++)
                 {
                     float a = i * Mathf.PI * 2f / n;
                     float d = Mathf.Abs(Mathf.DeltaAngle(a * Mathf.Rad2Deg, (aim + (r == 1 ? 0.55f : 0f)) * Mathf.Rad2Deg)) * Mathf.Deg2Rad;
                     if (d < gapHalf) continue;
-                    Shard(origin, new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 4.6f, 0f, i % 7 == 3);
+                    Shard(origin, new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 3.5f, 0f, i % 7 == 3);
                 }
                 Sfx.Play("boom", .5f, 1.6f); G.Shake(.06f, .2f);
-                yield return 1.0f;
+                yield return 1.5f;
             }
         }
 
@@ -289,25 +290,25 @@ namespace GumRemix
             yield return 0.4f;
             var p = Target(); var origin = SunPos();
             float aim = p != null ? Mathf.Atan2(p.Center.y - origin.y, p.Center.x - origin.x) : Mathf.PI;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 9; i++)
             {
-                float a = aim + Mathf.Lerp(-0.9f, 0.9f, i / 13f);
-                Shard(origin, new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 6f, 0f, i == 7);
+                float a = aim + Mathf.Lerp(-0.9f, 0.9f, i / 8f);
+                Shard(origin, new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 4.6f, 0f, i == 4);
                 Sfx.Play("spit", .3f, 1.5f);
-                yield return 0.08f;
+                yield return 0.12f;
             }
-            yield return 0.6f;
+            yield return 0.7f;
         }
 
         IEnumerator<float> GustRain()
         {
             anim.Play("p3_ring", true); G.TriggerGust(Random.value < .5f ? 1 : -1);
             yield return 0.5f;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 6; i++)
             {
                 float px = Random.Range(-7f, 7f);
                 Shard(new Vector2(px, G.world.y0 + Levels.Height + 0.3f), new Vector2(0, -2f), 6f, i == 3 || i == 7);
-                yield return 0.36f;
+                yield return 0.55f;
             }
             yield return 0.6f;
         }
@@ -329,7 +330,7 @@ namespace GumRemix
             phase = to; trans = false;
             G.Burst(SunPos(), 18, 6f); G.SpawnFx("spark", "spark", SunPos(), 3f, false, 32);
             Sfx.Play("bell", .6f, .8f);
-            routine = null; idleTimer = 1.1f;
+            routine = null; idleTimer = 1.8f;
             yield break;
         }
 

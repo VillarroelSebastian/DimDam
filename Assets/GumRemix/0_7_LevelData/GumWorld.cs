@@ -72,6 +72,7 @@ namespace GumRemix
         public float[] playerX = { -2f, 2f };
         public float parTime = 60f;
         public bool wind, icicles;                       // blizzard gusts / falling icicles
+        public int maxAlive = 3;                         // enemies on screen at once; the rest arrive in waves
         public bool ice { get { return world == 1; } }
     }
 
@@ -117,25 +118,25 @@ namespace GumRemix
             // ============================================================ WORLD 1: CHICLE
             l[0] = L("PRADO PIRULETA", "ATRAPA A LOS OSITOS", 0, 0,
                 P(-7.5f, -3f, 3.1f), P(3f, 7.5f, 3.1f), P(-4.5f, 4.5f, 5.2f), P(-7.5f, -2.5f, 7.3f), P(2.5f, 7.5f, 7.3f));
-            S(l[0], "bear", -5f, 3.1f, "red"); S(l[0], "bear", 5f, 3.1f, "red"); S(l[0], "bear", 0f, 5.2f, "red"); S(l[0], "bean", -5f, 7.3f, "yellow"); S(l[0], "bean", 0f, 1f, "yellow");
+            S(l[0], "bear", -5f, 3.1f, "red"); S(l[0], "bear", 5f, 3.1f, "red"); S(l[0], "bean", -5f, 7.3f, "yellow"); S(l[0], "bean", 0f, 5.2f, "yellow");
             l[0].parTime = 55; l[0].hint = "DISPARA AL ENEMIGO PARA ATRAPARLO EN UNA BOLA. LUEGO PATEALA!";
 
             l[1] = L("CUEVA DE CARAMELO", "CUIDADO CON LOS SALTARINES", 1, 0,
                 P(-6f, -1.5f, 3.1f), P(1.5f, 6f, 3.1f), P(-7.5f, -4f, 5.2f), P(-1.5f, 1.5f, 5.2f), P(4f, 7.5f, 5.2f), P(-5f, -1f, 7.3f), P(1f, 5f, 7.3f));
-            S(l[1], "bear", -4f, 3.1f, "green"); S(l[1], "bear", 4f, 3.1f, "green"); S(l[1], "bean", 0f, 5.2f, "purple"); S(l[1], "bean", -6f, 5.2f, "purple");
-            S(l[1], "lolli", 0f, 6.2f, "pink"); S(l[1], "bear", 3f, 7.3f, "green");
+            S(l[1], "bear", -4f, 3.1f, "green"); S(l[1], "bear", 4f, 3.1f, "green"); S(l[1], "bean", 0f, 5.2f, "purple"); 
+            S(l[1], "lolli", 0f, 6.2f, "pink");
             l[1].parTime = 70; l[1].hint = "SALTA SOBRE LAS BURBUJAS ROSAS: ES UN PARRY Y CARGA TU SUPER";
 
             l[2] = L("NUBES DE MALVAVISCO", "LLUVIA DE CARAMELOS", 2, 0,
                 P(-7.5f, -4.5f, 3.1f), P(-2f, 2f, 3.1f), P(4.5f, 7.5f, 3.1f), P(-5.5f, -1.5f, 5.2f), P(1.5f, 5.5f, 5.2f), P(-3f, 3f, 7.3f));
-            S(l[2], "bear", -6f, 3.1f, "orange"); S(l[2], "bear", 6f, 3.1f, "orange"); S(l[2], "lolli", -3f, 6.5f, "pink"); S(l[2], "lolli", 3f, 6.5f, "pink");
+            S(l[2], "bear", -6f, 3.1f, "orange"); S(l[2], "bear", 6f, 3.1f, "orange"); S(l[2], "lolli", -3f, 6.5f, "pink"); 
             S(l[2], "cannon", 0f, 7.3f, "sugar"); S(l[2], "bean", 0f, 3.1f, "yellow");
             l[2].parTime = 80;
 
             l[3] = L("FABRICA DE CHOCOLATE", "LOS CANONES ESTAN CALIENTES", 3, 0,
                 P(-7.5f, -2f, 3.1f), P(2f, 7.5f, 3.1f), P(-6f, -1f, 5.2f), P(1f, 6f, 5.2f), P(-7.5f, -4f, 7.3f), P(-1.5f, 1.5f, 7.3f), P(4f, 7.5f, 7.3f));
             S(l[3], "cannon", -6.5f, 7.3f, "sugar"); S(l[3], "cannon", 6.5f, 7.3f, "sugar"); S(l[3], "bear", -4f, 3.1f, "red"); S(l[3], "bear", 4f, 3.1f, "green");
-            S(l[3], "bean", -3f, 5.2f, "purple"); S(l[3], "bean", 3f, 5.2f, "purple"); S(l[3], "lolli", 0f, 6.9f, "pink"); S(l[3], "lolli", -4f, 6.2f, "pink");
+            S(l[3], "bean", 3f, 5.2f, "purple"); S(l[3], "lolli", 0f, 6.9f, "pink");
             l[3].parTime = 95;
 
             l[4] = L("EL GRAN CHICLON", "JEFE FINAL", 4, 0,
@@ -150,7 +151,7 @@ namespace GumRemix
                 Brittle(-6f, -3f, 5.4f), P(-0.5f, 3.5f, 5.4f),
                 P(-7.5f, -3.5f, 7.5f), P(2f, 6f, 7.5f));
             S(l[5], "penguin", -6f, 3.2f); S(l[5], "penguin", 5f, 3.2f); S(l[5], "seed", -1f, 3.2f); S(l[5], "seed", 1.5f, 5.4f);
-            S(l[5], "snowman", -5f, 7.5f); S(l[5], "penguin", 3.5f, 1f);
+            S(l[5], "snowman", -5f, 7.5f);
             l[5].parTime = 75; l[5].hint = "EL HIELO ES RESBALADIZO. LOS PINGUINOS BLOQUEAN POR DELANTE: DISPARALES POR DETRAS";
 
             // 2) Aldea de Iglus Torcidos: rooftops, a vertical elevator, a brittle alley
@@ -159,7 +160,7 @@ namespace GumRemix
                 P(-7.5f, -4f, 3.1f), P(-1.5f, 1.5f, 3.1f), P(4f, 7.5f, 3.1f),
                 Brittle(-7.5f, -4.5f, 5.3f), Brittle(4.5f, 7.5f, 5.3f), Moving(-1f, 1f, 5.0f, 0f, 1.7f, 1.1f),
                 P(-5f, -1.8f, 7.5f), P(1.8f, 5f, 7.5f));
-            S(l[6], "snowman", -5.5f, 3.1f); S(l[6], "snowman", 5.5f, 3.1f); S(l[6], "penguin", 0f, 3.1f); S(l[6], "crab", 0f, 1f);
+            S(l[6], "snowman", -5.5f, 3.1f); S(l[6], "penguin", 0f, 3.1f); S(l[6], "crab", 0f, 1f);
             S(l[6], "owl", -3f, 6.8f); S(l[6], "seed", 3f, 7.5f);
             l[6].parTime = 85; l[6].hint = "EL ASCENSOR SUBE Y BAJA. LAS TEJAS QUEBRADIZAS TIEMBLAN: NO TE QUEDES";
 
@@ -170,7 +171,7 @@ namespace GumRemix
                 P(-4.5f, -1.5f, 4.6f), P(1.5f, 4.5f, 4.6f),
                 Bridge(-3f, 3f, 7.4f), P(-7.5f, -5.5f, 6.9f), P(5.5f, 7.5f, 6.9f));
             l[7].crystals.Add(new CrystalDef(-0.8f, 1f, 0)); l[7].crystals.Add(new CrystalDef(0.8f, 1f, 0));
-            S(l[7], "jelly", -3f, 6.0f); S(l[7], "jelly", 3f, 6.4f); S(l[7], "owl", 0f, 8.0f); S(l[7], "penguin", -3f, 4.6f); S(l[7], "seed", 3f, 4.6f); S(l[7], "crab", 5f, 1f);
+            S(l[7], "jelly", -3f, 6.0f); S(l[7], "owl", 0f, 8.0f); S(l[7], "penguin", -3f, 4.6f); S(l[7], "seed", 3f, 4.6f); S(l[7], "crab", 5f, 1f);
             l[7].parTime = 90; l[7].icicles = true; l[7].hint = "DISPARA A LOS CRISTALES PARA CONSTRUIR EL PUENTE. LAS ESCARCHAS TE CONGELAN: MARTILLEA BOTONES";
 
             // 4) Jardines Congelados: brittle routes, a central shelter, a ferry; blizzard gusts
@@ -178,7 +179,7 @@ namespace GumRemix
                 new[] { Ground(-8f, -2f, false), Ground(-2f, 2f, true), Ground(2f, 8f, false) },
                 Brittle(-7f, -4f, 3.2f), P(4f, 7.5f, 3.2f), P(-2.5f, 2.5f, 3.5f),
                 Brittle(-7.5f, -4.5f, 5.6f), P(4.5f, 7.5f, 5.6f), Moving(-1.5f, 1.5f, 7.4f, 3.2f, 0f, 0.9f));
-            S(l[8], "penguin", -5f, 1f); S(l[8], "snowman", 5.5f, 3.2f); S(l[8], "owl", 0f, 6.8f); S(l[8], "jelly", -4f, 6.4f); S(l[8], "crab", 5f, 5.6f); S(l[8], "seed", 0f, 3.5f); S(l[8], "penguin", 6f, 1f);
+            S(l[8], "penguin", -5f, 1f); S(l[8], "snowman", 5.5f, 3.2f); S(l[8], "owl", 0f, 6.8f); S(l[8], "jelly", -4f, 6.4f); S(l[8], "crab", 5f, 5.6f); S(l[8], "seed", 0f, 3.5f);
             l[8].parTime = 100; l[8].wind = true; l[8].icicles = true; l[8].hint = "VIENE UNA VENTISCA: PROTEGETE BAJO UN TECHO";
 
             // 5) Palacio de la Ultima Nevada: boss arena (stairs, galleries, a ferry, a high bridge that breaks)
@@ -187,6 +188,7 @@ namespace GumRemix
                 P(-7.2f, -4.2f, 3.2f), P(-2f, 1.2f, 3.2f), P(-6f, -3f, 5.4f),
                 Moving(-3.5f, -0.5f, 5.4f, 1.8f, 0f, 0.8f), Brittle(-4.5f, -1.5f, 7.5f));
             l[9].boss = true; l[9].playerX = new[] { -5.8f, -3.8f }; l[9].parTime = 170; l[9].wind = true;
+            l[3].maxAlive = 4; l[8].maxAlive = 4;
             return l;
         }
     }

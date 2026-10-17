@@ -76,7 +76,7 @@ namespace GumRemix
         public bool Hits(Rect r) { return new Rect(x - 0.55f, y, 1.1f, 0.55f).Overlaps(r); }
         public void Tick(float dt)
         {
-            x += dir * 6.4f * dt; life -= dt; anim.Tick(dt); if (anim.done) anim.Play("shock", true);
+            x += dir * 5.0f * dt; life -= dt; anim.Tick(dt); if (anim.done) anim.Play("shock", true);
             go.transform.position = new Vector3(x, y, 0);
             if (life <= 0 || x < Levels.Left - 1f || x > Levels.Right + 1f) { dead = true; UnityEngine.Object.Destroy(go); }
         }

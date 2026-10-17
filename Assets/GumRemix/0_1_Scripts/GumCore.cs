@@ -76,18 +76,16 @@ namespace GumRemix
         const int SR = 22050;
         static AudioSource[] pool; static int next;
         static readonly Dictionary<string, AudioClip> clips = new Dictionary<string, AudioClip>();
-        static AudioSource musicSrc;
-        static readonly Dictionary<int, AudioClip> music = new Dictionary<int, AudioClip>();
         public static float Volume = 0.55f;
 
         struct Seg { public float dur, f0, f1; public int wave; public float vol; public Seg(float d, float a, float b, int w, float v) { dur = d; f0 = a; f1 = b; wave = w; vol = v; } }
 
-        public static void Init(GameObject host)
+        public static void Init(GameObject hostObj)
         {
-            if (pool != null && pool[0] != null) return;
+            if (pool != null && pool[0] != null && host != null) return;
             pool = new AudioSource[10];
-            for (int i = 0; i < pool.Length; i++) { pool[i] = host.AddComponent<AudioSource>(); pool[i].playOnAwake = false; }
-            musicSrc = host.AddComponent<AudioSource>(); musicSrc.loop = true; musicSrc.volume = 0.22f; musicSrc.playOnAwake = false;
+            for (int i = 0; i < pool.Length; i++) { pool[i] = hostObj.AddComponent<AudioSource>(); pool[i].playOnAwake = false; }
+            Sfx.host = hostObj.GetComponent<MusicHost>() ?? hostObj.AddComponent<MusicHost>();
             if (clips.Count > 0) return;
             Def("shoot", new Seg(.07f, 1500, 500, 1, .5f));
             Def("jump", new Seg(.14f, 300, 760, 0, .8f));
@@ -149,59 +147,13 @@ namespace GumRemix
             s.PlayOneShot(clips[name], vol * Volume);
         }
 
-        // ---- tiny chiptune generator: one loop per world
-        static readonly int[] Roots = { 60, 57, 62, 55, 64, 62, 59, 57, 60, 53 };
-        static readonly int[][] Scales = { new[] { 0, 2, 4, 7, 9 }, new[] { 0, 3, 5, 7, 10 }, new[] { 0, 2, 4, 7, 9 }, new[] { 0, 3, 5, 7, 10 }, new[] { 0, 2, 4, 7, 9 },
-            new[] { 0, 2, 3, 7, 9 }, new[] { 0, 2, 4, 7, 9 }, new[] { 0, 3, 5, 7, 11 }, new[] { 0, 2, 3, 5, 7 }, new[] { 0, 3, 5, 7, 10 } };
-        static float Hz(int midi) { return 440f * Mathf.Pow(2f, (midi - 69) / 12f); }
-
-        static AudioClip BuildMusic(int theme)
-        {
-            float bpm = new[] { 132f, 112f, 120f, 138f, 148f, 96f, 108f, 90f, 126f, 118f }[theme % 10];
-            int leadWave = theme >= 5 ? 3 : 1;      // ice kingdom: bell-like sine lead instead of the square chip lead
-            float step = 60f / bpm / 2f; int steps = 64;
-            int n = (int)(step * steps * SR); var d = new float[n];
-            var rng = new System.Random(theme * 91 + 7);
-            int root = Roots[theme % 10]; var sc = Scales[theme % 10];
-            var phrase = new int[16]; var len = new int[16];
-            for (int i = 0; i < 16; i++) { phrase[i] = rng.NextDouble() < .72 ? root + 12 + sc[rng.Next(5)] + (rng.NextDouble() < .25 ? 12 : 0) : -1; len[i] = rng.Next(1, 3); }
-            for (int s = 0; s < steps; s++)
-            {
-                int pi_ = s % 16; int note = phrase[pi_];
-                if (s >= 48 && rng.NextDouble() < .4) note = root + 12 + sc[rng.Next(5)];
-                if (note > 0) Voice(d, (int)(s * step * SR), (int)(step * len[pi_] * SR * .95f), Hz(note), theme >= 5 ? .26f : .20f, leadWave, .25f);
-                if (s % 4 == 0) Voice(d, (int)(s * step * SR), (int)(step * 2 * SR), Hz(root - 12 + ((s / 4) % 4 == 2 ? sc[3] : 0)), .30f, 2, 0f);
-                if (s % 2 == 1) Noise(d, (int)(s * step * SR), (int)(step * .25f * SR), .08f, rng);
-                if (s % 8 == 0) Noise(d, (int)(s * step * SR), (int)(step * .5f * SR), .16f, rng);
-            }
-            var c = AudioClip.Create("music" + theme, n, 1, SR, false); c.SetData(d, 0); return c;
-        }
-
-        static void Voice(float[] d, int start, int len, float f, float vol, int wave, float duty)
-        {
-            float ph = 0;
-            for (int i = 0; i < len && start + i < d.Length; i++)
-            {
-                ph += f / SR; ph -= Mathf.Floor(ph);
-                float v = wave == 1 ? (ph < (duty > 0 ? duty : .5f) ? 1f : -1f) : (wave == 3 ? Mathf.Sin(ph * 6.2831853f) + 0.35f * Mathf.Sin(ph * 12.566f) : (Mathf.Abs(ph * 4f - 2f) - 1f));
-                float env = Mathf.Clamp01(i / 120f) * Mathf.Clamp01((len - i) / 400f) * (wave == 3 ? Mathf.Pow(1f - i / (float)len, 1.6f) : (0.6f + 0.4f * (1f - i / (float)len)));
-                d[start + i] += v * vol * env;
-            }
-        }
-
-        static void Noise(float[] d, int start, int len, float vol, System.Random rng)
-        {
-            for (int i = 0; i < len && start + i < d.Length; i++) d[start + i] += (float)(rng.NextDouble() * 2 - 1) * vol * (1f - i / (float)len);
-        }
-
-        public static void PlayMusic(int theme)
-        {
-            if (musicSrc == null) return;
-            AudioClip c; if (!music.TryGetValue(theme, out c)) { c = BuildMusic(theme); music[theme] = c; }
-            if (musicSrc.clip == c && musicSrc.isPlaying) return;
-            musicSrc.clip = c; musicSrc.Play();
-        }
-        public static void StopMusic() { if (musicSrc != null) musicSrc.Stop(); }
+        // ---- music lives in GumMusic.cs (composed songs rendered by MusicRenderer, played by MusicHost)
+        static MusicHost host;
+        public static MusicHost Host { get { return host; } }
+        public static void PlayMusic(int theme) { PlayTrack((Track)Mathf.Clamp(theme, 0, 9)); }
+        public static void PlayTrack(Track t, float fade = 0.6f) { if (host != null) host.Play(t, fade); }
+        public static void Prefetch(Track t) { if (host != null) host.Prefetch(t); }
+        public static void StopMusic(float fade = 0.8f) { if (host != null) host.Stop(fade); }
     }
 
     // ------------------------------------------------------------------------------ helpers
