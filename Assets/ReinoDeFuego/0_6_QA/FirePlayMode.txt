@@ -1,0 +1,57 @@
+Fire Play Mode QA: 56 PASS, 0 FAIL. Accelerated traversal with protected players, not human balance certification.
+PASS Real physics jump reaches boss mid gallery
+PASS Real physics jump reaches boss upper gallery
+PASS First kill visibly drops loot
+PASS Reveal delay prevents instant ray collection
+PASS Dropped loot has visible sprite
+PASS Loot becomes collectible after reveal
+PASS Visible loot grants its actual effect
+PASS Kills rotate through all five powers
+PASS Ray collects revealed loot without player contact
+PASS Chain damages a nearby enemy outside the original ray
+PASS Chain respects its range
+PASS Chain cooldown prevents damage per collider/frame
+PASS Solar pulse damages enemies near but not on the thin ray
+PASS Fire warning has no damaging collider
+PASS Fire becomes damaging after cyan warning
+PASS Fire hazard expires
+PASS Fire role 0 has dedicated brain
+PASS Fire role 0 performs its announced attack
+PASS Fire role 1 has dedicated brain
+PASS Fire role 1 performs its announced attack
+PASS Basalt beetle exposes armor during recovery
+PASS Fire role 2 has dedicated brain
+PASS Fire role 2 performs its announced attack
+PASS Fire role 3 has dedicated brain
+PASS Fire role 3 performs its announced attack
+PASS Fire role 4 has dedicated brain
+PASS Fire role 4 performs its announced attack
+PASS Fire role 5 has dedicated brain
+PASS Fire role 5 performs its announced attack
+PASS Closed furnace blocks direct damage
+PASS Solar pulse respects the closed furnace
+PASS Blocked boss damage cannot charge ultimate
+PASS Boss phase 1 pattern 0 reaches recovery
+PASS Boss phase 1 pattern 1 reaches recovery
+PASS Boss phase 1 pattern 2 reaches recovery
+PASS Boss phase 1 pattern 3 reaches recovery
+PASS Boss phase 1 pattern 4 reaches recovery
+PASS Cannot skip fire boss phase 1
+PASS Fire boss transforms to phase 2
+PASS Boss phase 2 pattern 0 reaches recovery
+PASS Boss phase 2 pattern 1 reaches recovery
+PASS Boss phase 2 pattern 2 reaches recovery
+PASS Boss phase 2 pattern 3 reaches recovery
+PASS Boss phase 2 pattern 4 reaches recovery
+PASS Cannot skip fire boss phase 2
+PASS Fire boss transforms to phase 3
+PASS Boss phase 3 pattern 0 reaches recovery
+PASS Boss phase 3 pattern 1 reaches recovery
+PASS Boss phase 3 pattern 2 reaches recovery
+PASS Boss phase 3 pattern 3 reaches recovery
+PASS Boss phase 3 pattern 4 reaches recovery
+PASS Fire boss starts animated defeat
+PASS Boss remains registered during defeat animation
+PASS Boss unregisters after defeat animation
+PASS Boss defeat cleans all its fire hazards
+PASS Observed fire hazard count respects global cap

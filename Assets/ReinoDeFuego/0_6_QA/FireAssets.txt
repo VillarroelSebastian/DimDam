@@ -1,0 +1,55 @@
+Fire asset validation: 54 PASS, 0 FAIL
+PASS Fire scene 1 exists
+PASS Scene 1 correct level definition
+PASS Scene 1 all enemy prefab references
+PASS Scene 1 two playable heroes
+PASS Scene 1 valid three waves
+PASS Scene 1 in build
+PASS Scene 1 no missing scripts
+PASS Fire scene 2 exists
+PASS Scene 2 correct level definition
+PASS Scene 2 all enemy prefab references
+PASS Scene 2 two playable heroes
+PASS Scene 2 valid three waves
+PASS Scene 2 in build
+PASS Scene 2 no missing scripts
+PASS Fire scene 3 exists
+PASS Scene 3 correct level definition
+PASS Scene 3 all enemy prefab references
+PASS Scene 3 two playable heroes
+PASS Scene 3 valid three waves
+PASS Scene 3 in build
+PASS Scene 3 no missing scripts
+PASS Fire scene 4 exists
+PASS Scene 4 correct level definition
+PASS Scene 4 all enemy prefab references
+PASS Scene 4 two playable heroes
+PASS Scene 4 valid three waves
+PASS Scene 4 in build
+PASS Scene 4 no missing scripts
+PASS Fire scene 5 exists
+PASS Scene 5 correct level definition
+PASS Scene 5 all enemy prefab references
+PASS Scene 5 two playable heroes
+PASS Scene 5 valid three waves
+PASS Scene 5 in build
+PASS Scene 5 no missing scripts
+PASS BasaltBeetle animation frames
+PASS BasaltBeetle no missing scripts
+PASS Brontoforno animation frames
+PASS Brontoforno no missing scripts
+PASS EmberPhoenix animation frames
+PASS EmberPhoenix no missing scripts
+PASS FireworkFlower animation frames
+PASS FireworkFlower no missing scripts
+PASS FuseImp animation frames
+PASS FuseImp no missing scripts
+PASS KilnGrenadier animation frames
+PASS KilnGrenadier no missing scripts
+PASS SparkSalamander animation frames
+PASS SparkSalamander no missing scripts
+PASS Original candy scene 1 retained
+PASS Original candy scene 2 retained
+PASS Original candy scene 3 retained
+PASS Original candy scene 4 retained
+PASS Original candy scene 5 retained

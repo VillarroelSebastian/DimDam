@@ -1,0 +1,1 @@
+PASS twelve same-frame drops keep at most six active pickups: 6

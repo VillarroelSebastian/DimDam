@@ -27,3 +27,8 @@ URP e Input System se restauran desde `Packages/manifest.json` y `Packages/packa
 Consultar `Assets/ReinoDeChicle/0_5_Documentation/QA_REPORT.md` y `Assets/ReinoDeChicle/0_6_QA/Results/`. Las pruebas se ejecutaron mediante Unity Editor; no se ha probado una build standalone ni el ghosting de un teclado fisico. Progreso durante la sesion, sin multijugador online.
 
 El arte combina imagenes originales generadas con image_gen y elementos pixel art creados por codigo; su procedencia esta registrada en `Assets/ReinoDeChicle/0_3_Art/PixelArt/AssetManifest.json`.
+
+## Expansiones locales: Hielo y Fuego
+La campaña contiene ahora tres reinos de cinco arenas cada uno. Para probar Fuego directamente, abrir `Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_01.unity`, Play y Enter. En campaña se desbloquea al completar Hielo; TAB cambia de reino en el mapa.
+Cada enemigo derrotado deja botín visible que se recoge tocándolo o cruzándolo con el rayo. Hay Prisma, Burbuja, Corazón, Chispa Encadenada y Anillo Solar; el HUD muestra sus temporizadores. La ulti compartida Resonancia se confirma con Q y Shift derecho.
+Guías: [Hielo y Resonancia](Assets/CoopExpansion/Documentation/EXPANSION.md), [Fuego y botín visible](Assets/ReinoDeFuego/0_5_Documentation/REINO_DE_FUEGO.md). Arte y prompts de Fuego: `Assets/ReinoDeFuego/0_3_Art/`. Resultados de pruebas: `Assets/ReinoDeFuego/0_6_QA/`.

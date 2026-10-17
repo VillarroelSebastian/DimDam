@@ -1,0 +1,9 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {"path":"IceEnemies.png","grid":"8 columns x 6 rows","frames":48,"prompt":"Production transparent pixel-art winter-enemy atlas. Rows: snowman grenadier, crystal-armored polar bear, goggled penguin sledder, aurora snowy owl, ice turret, frost imp. Each row: idle, three locomotion poses, amber windup, attack release, hurt, defeated. Original designs, navy outlines, icy palette, aligned feet, no labels."},
+    {"path":"KingCencellon.png","grid":"4 columns x 4 rows","frames":16,"prompt":"Original nonhuman crystalline monarch, hollow indigo iceberg torso, turquoise aurora heart, jagged floating gold-and-ice crown, four stubby crystalline legs, asymmetric gauntlets, magenta eyes. No human face, beard, blue robe or resemblance to Ice King. Idle, windup, slam/fan/roar/sweep, open heart, hurt, shattering, fallen crown. Transparent side-view pixel art."},
+    {"path":"IceBackgrounds.png","grid":"1 column x 5 rows","frames":5,"prompt":"Five original panoramic 16-bit winter-kingdom backgrounds, navy/cyan/violet aurora palette: snowy pine valley and village, frozen harbor, crystal cave, blizzard mountain citadel, empty monumental frozen throne hall. Side-on, no characters, no foreground platforms, no labels."}
+  ],
+  "procedural": ["FrostTile.png", "power-up icons", "snow particles", "beam resonance", "hazard geometry"]
+}

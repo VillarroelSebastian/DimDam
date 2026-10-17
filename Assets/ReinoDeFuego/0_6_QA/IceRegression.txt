@@ -1,0 +1,43 @@
+Expansion opt-in Play Mode QA: 42 PASS, 0 FAIL. Accelerated state traversal, not human difficulty certification.
+PASS Powers installed on active manager
+PASS Empty ultimate cannot activate
+PASS Both players must confirm
+PASS Shared confirmation activates ultimate
+PASS Ultimate consumes shared charge
+PASS Ultimate cannot recharge itself
+PASS Shield absorbs one hit
+PASS Shield cannot absorb second hit
+PASS Partner has independent shield
+PASS Prism widens cooperative link
+PASS Warning has no damaging collider
+PASS Hazard collider activates after warning
+PASS Hazard expires
+PASS Physical warning overlap does not remove hearts
+PASS Active physical overlap removes one heart
+PASS Invulnerability prevents repeated overlap damage
+PASS Role 0 brain assigned
+PASS Role 0 performs announced attack
+PASS Role 1 brain assigned
+PASS Role 1 performs announced attack
+PASS Role 2 brain assigned
+PASS Role 2 performs announced attack
+PASS Role 3 brain assigned
+PASS Role 3 performs announced attack
+PASS Role 4 brain assigned
+PASS Role 4 performs announced attack
+PASS Role 5 brain assigned
+PASS Role 5 performs announced attack
+PASS Multiple colliders and widened rays damage enemy only once
+PASS Overlapping players produce no ray damage
+PASS Boss closed heart blocks damage
+PASS Boss phase 1 offers recovery window
+PASS Cannot skip phase 1
+PASS Boss transforms to 2
+PASS Boss phase 2 offers recovery window
+PASS Cannot skip phase 2
+PASS Boss transforms to 3
+PASS Boss phase 3 offers recovery window
+PASS Boss starts animated defeat
+PASS Boss stays registered during defeat
+PASS Boss unregisters after animation
+PASS Boss defeat cleans owned hazards

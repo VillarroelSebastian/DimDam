@@ -5,7 +5,7 @@ public class CandyEnemySpecial:MonoBehaviour {
  public float LastShotTime{get;private set;}=-100;
  EnemyBase enemy;Rigidbody2D body;Vector2 origin;float clock,shotTime;int target;
  void Awake(){enemy=GetComponent<EnemyBase>();body=GetComponent<Rigidbody2D>();origin=transform.position;shotTime=shotInterval;}
- void FixedUpdate(){if(!GameManager.Instance||!GameManager.Instance.Running)return;clock+=Time.fixedDeltaTime;
+ void FixedUpdate(){if(enemy.Dead||enemy.externalControl||!GameManager.Instance||!GameManager.Instance.Running)return;clock+=Time.fixedDeltaTime;
   if(enemy.kind==EnemyKind.Flyer){body.MovePosition(origin+new Vector2(Mathf.Sin(clock*1.2f)*flightWidth,Mathf.Sin(clock*2)*flightHeight));return;}
   shotTime-=Time.fixedDeltaTime;Telegraphing=shotTime<1;
   if(telegraph)telegraph.localScale=Vector3.one*(Telegraphing?.2f+Mathf.PingPong(clock*1.5f,.25f):.12f);

@@ -1,0 +1,24 @@
+using System.Collections;
+using UnityEngine;
+namespace CoopBeam {
+public class FireEnemyBrain:MonoBehaviour {
+ public enum Role{Kiln,Beetle,Salamander,Phoenix,Flower,FuseImp}public Role role;public float interval=3.6f;
+ public bool Recovering{get;private set;}public int AttacksPerformed{get;private set;}
+ EnemyBase enemy;Rigidbody2D body;Vector2 origin;float clock,timer;bool busy,cleaned;int target;
+ void Awake(){enemy=GetComponent<EnemyBase>();body=GetComponent<Rigidbody2D>();origin=transform.position;enemy.externalControl=true;timer=.8f+Mathf.Abs(origin.x)*.09f;}
+ public float FilterDamage(float amount)=>role==Role.Beetle&&!Recovering?amount*.4f:amount;
+ void FixedUpdate(){var game=GameManager.Instance;if(!game||!game.Running||enemy.Dead){if(enemy.Dead&&!cleaned){cleaned=true;EncounterHazard.ClearOwned(this);FireFX.Burst(transform.position,new Color(1,.6f,.15f),18);StopAllCoroutines();}if(!enemy.Dead)body.linearVelocity=Vector2.zero;return;}clock+=Time.fixedDeltaTime;if(busy)return;timer-=Time.fixedDeltaTime;if(timer<=0){timer=interval;StartCoroutine(Attack());return;}
+  if(role==Role.Phoenix){body.MovePosition(origin+new Vector2(Mathf.Sin(clock*1.3f)*2.5f,Mathf.Sin(clock*2.2f)*.8f));return;}if(role==Role.Flower){body.linearVelocity=Vector2.zero;return;}float dir=role==Role.FuseImp?Mathf.Sign(game.players[target].transform.position.x-body.position.x):Mathf.Sin(clock*.8f)>=0?1:-1;float speed=role==Role.Beetle?.85f:role==Role.Kiln?.7f:2.2f;float half=GetComponent<Collider2D>().bounds.extents.x;if(Mathf.Abs(body.position.x)>10||Physics2D.Raycast(body.position,Vector2.right*dir,half+.2f,1<<8))dir=-Mathf.Sign(body.position.x);body.linearVelocity=new Vector2(dir*speed,body.linearVelocity.y);if(body.position.y< -6)body.position=new Vector2(Mathf.Clamp(body.position.x,-9,9),-3.6f);
+ }
+ IEnumerator Attack(){busy=true;Recovering=false;var game=GameManager.Instance;target=1-target;if(game.players[target].Dead)target=1-target;Vector2 aim=game.players[target].transform.position;float dir=Mathf.Sign(aim.x-body.position.x);if(dir==0)dir=1;enemy.combatTelegraph=true;body.linearVelocity=Vector2.zero;BeamFX.Burst(transform.position,Color.cyan,5);yield return new WaitForSeconds(role==Role.Beetle?1.15f:1);enemy.combatTelegraph=false;if(enemy.Dead||!game.Running){busy=false;yield break;}enemy.combatAttack=true;AttacksPerformed++;FireFX.Burst(transform.position,new Color(1,.75f,.2f),10);
+  if(role==Role.Kiln){Vector2 launch=body.position+Vector2.up*.55f;float vx=Mathf.Clamp((aim.x-launch.x)/1.3f,-5.5f,5.5f);FireHazard.Spawn(launch,Vector2.one*.55f,.06f,2.6f,new Vector2(vx,6.5f),this,0,true,8);FireHazard.Spawn(new Vector2(Mathf.Clamp(aim.x,-9,9),-3.95f),new Vector2(1.5f,.6f),1.35f,1,Vector2.zero,this,1,false);}
+  else if(role==Role.Beetle){float trail=0;for(float t=0;t<.85f;t+=Time.fixedDeltaTime){if(enemy.Dead||!game.Running)yield break;if(Mathf.Abs(body.position.x)>10||Physics2D.Raycast(body.position,Vector2.right*dir,.9f,1<<8))break;body.linearVelocity=new Vector2(dir*7.5f,body.linearVelocity.y);trail-=Time.fixedDeltaTime;if(trail<=0){trail=.23f;FireHazard.Spawn(body.position+new Vector2(-dir*.6f,-.55f),new Vector2(.85f,.55f),.6f,.85f,Vector2.zero,this,1,false);}yield return new WaitForFixedUpdate();}}
+  else if(role==Role.Salamander){body.linearVelocity=new Vector2(dir*4,11);for(int i=0;i<3;i++){yield return new WaitForSeconds(.22f);if(enemy.Dead||!game.Running)yield break;FireHazard.Spawn(new Vector2(Mathf.Clamp(body.position.x,-9.5f,9.5f),-3.95f),new Vector2(.9f,.6f),.75f,.9f,Vector2.zero,this,1,false);}}
+  else if(role==Role.Phoenix){Vector2 d=(aim-body.position).normalized;for(int i=-2;i<=2;i++){Vector2 velocity=Quaternion.Euler(0,0,i*20)*d;FireHazard.Spawn(body.position+velocity*.6f,new Vector2(.42f,.7f),.08f,2.5f,velocity*4.2f,this,1);}}
+  else if(role==Role.Flower){int count=6;for(int i=0;i<count;i++){float angle=(i*60+30)*Mathf.Deg2Rad;Vector2 d=new Vector2(Mathf.Cos(angle),Mathf.Sin(angle));FireHazard.Spawn(body.position+d*.6f,Vector2.one*.48f,.1f,2.2f,d*3,this);}if(game.level.number>=4){yield return new WaitForSeconds(.8f);if(enemy.Dead||!game.Running)yield break;for(int i=0;i<4;i++){float angle=(i*90)*Mathf.Deg2Rad;Vector2 d=new Vector2(Mathf.Cos(angle),Mathf.Sin(angle));FireHazard.Spawn(body.position+d*.6f,Vector2.one*.4f,.1f,1.8f,d*3.2f,this);}}}
+  else{body.linearVelocity=new Vector2(dir*5,7);FireHazard.Spawn(new Vector2(Mathf.Clamp(aim.x,-9,9),Mathf.Clamp(aim.y,-3.5f,2.5f)),new Vector2(1.7f,1.7f),1.2f,.45f,Vector2.zero,this,2,false);yield return new WaitForSeconds(.5f);}
+  yield return new WaitForSeconds(.32f);if(enemy.Dead||!game.Running)yield break;body.linearVelocity=new Vector2(0,body.linearVelocity.y);enemy.combatAttack=false;Recovering=true;yield return new WaitForSeconds(role==Role.Beetle?1.7f:1.1f);Recovering=false;busy=false;
+ }
+ void OnDisable(){StopAllCoroutines();EncounterHazard.ClearOwned(this);}
+}
+}

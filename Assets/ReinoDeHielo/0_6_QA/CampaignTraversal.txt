@@ -1,0 +1,32 @@
+Campaign traversal QA: 31 PASS, 0 FAIL. Real wave/campaign flow with accelerated beam damage and protected players; not a human playthrough.
+PASS Candy 1 all waves reach victory
+PASS Candy 1 unlocks next level
+PASS Candy 1 transitions to expected destination
+PASS Candy 2 all waves reach victory
+PASS Candy 2 unlocks next level
+PASS Candy 2 transitions to expected destination
+PASS Candy 3 all waves reach victory
+PASS Candy 3 unlocks next level
+PASS Candy 3 transitions to expected destination
+PASS Candy 4 all waves reach victory
+PASS Candy 4 unlocks next level
+PASS Candy 4 transitions to expected destination
+PASS Candy 5 all waves reach victory
+PASS Candy 5 unlocks next level
+PASS Candy 5 transitions to expected destination
+PASS Ice 1 all waves reach victory
+PASS Ice 1 unlocks next level
+PASS Ice 1 transitions to expected destination
+PASS Ice 2 all waves reach victory
+PASS Ice 2 unlocks next level
+PASS Ice 2 transitions to expected destination
+PASS Ice 3 all waves reach victory
+PASS Ice 3 unlocks next level
+PASS Ice 3 transitions to expected destination
+PASS Ice 4 all waves reach victory
+PASS Ice 4 unlocks next level
+PASS Ice 4 transitions to expected destination
+PASS Ice 5 all waves reach victory
+PASS Ice 5 unlocks next level
+PASS Ice 5 transitions to expected destination
+PASS Both kingdoms marked completed

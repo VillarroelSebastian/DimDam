@@ -1,0 +1,55 @@
+Expansion asset validation: 54 PASS, 0 FAIL
+PASS Ice scene 1 exists
+PASS Scene 1 correct level definition
+PASS Scene 1 all enemy prefab references
+PASS Scene 1 two playable heroes
+PASS Scene 1 valid three waves
+PASS Scene 1 in build
+PASS Scene 1 no missing scripts
+PASS Ice scene 2 exists
+PASS Scene 2 correct level definition
+PASS Scene 2 all enemy prefab references
+PASS Scene 2 two playable heroes
+PASS Scene 2 valid three waves
+PASS Scene 2 in build
+PASS Scene 2 no missing scripts
+PASS Ice scene 3 exists
+PASS Scene 3 correct level definition
+PASS Scene 3 all enemy prefab references
+PASS Scene 3 two playable heroes
+PASS Scene 3 valid three waves
+PASS Scene 3 in build
+PASS Scene 3 no missing scripts
+PASS Ice scene 4 exists
+PASS Scene 4 correct level definition
+PASS Scene 4 all enemy prefab references
+PASS Scene 4 two playable heroes
+PASS Scene 4 valid three waves
+PASS Scene 4 in build
+PASS Scene 4 no missing scripts
+PASS Ice scene 5 exists
+PASS Scene 5 correct level definition
+PASS Scene 5 all enemy prefab references
+PASS Scene 5 two playable heroes
+PASS Scene 5 valid three waves
+PASS Scene 5 in build
+PASS Scene 5 no missing scripts
+PASS AuroraOwl animation frames
+PASS AuroraOwl no missing scripts
+PASS CrystalPolarBear animation frames
+PASS CrystalPolarBear no missing scripts
+PASS FrostImp animation frames
+PASS FrostImp no missing scripts
+PASS FrostTurret animation frames
+PASS FrostTurret no missing scripts
+PASS KingCencellon animation frames
+PASS KingCencellon no missing scripts
+PASS PenguinSledder animation frames
+PASS PenguinSledder no missing scripts
+PASS SnowmanGrenadier animation frames
+PASS SnowmanGrenadier no missing scripts
+PASS Original candy scene 1 retained
+PASS Original candy scene 2 retained
+PASS Original candy scene 3 retained
+PASS Original candy scene 4 retained
+PASS Original candy scene 5 retained

@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {"path":"FireEnemies.png","poses":48,"layout":"8 columns, 6 rows; alpha-adjusted row boundaries","prompt":"Original 16-bit fire kingdom sprite atlas. Ceramic furnace grenadier, basalt beetle, molten-tail salamander, ember phoenix, firework carnivorous flower, fuse-haired bomb imp. Each has idle, three locomotion poses, cyan telegraph, spectacular attack, hurt, defeat. Transparent alpha, original designs."},
+    {"path":"Brontoforno.png","poses":16,"layout":"4 x 4","prompt":"Original colossal volcanic salamander living foundry. Obsidian forge gauntlets, axolotl-like broad dragon head with turquoise eyes, chimney horns, magma furnace heart, floating brass forge halo. Idle, windups, slam, solar wheel, fire breath, comet, open heart, hurt, collapse, defeated furnace. Transparent alpha. Follow-up edit removed backdrop pixels while preserving all 16 poses."},
+    {"path":"FireBackgrounds.png","panoramas":5,"layout":"five vertical strips with adjusted crop boundaries","prompt":"Original pixel-art fire realm: ember orchard with volcano, industrial foundry harbor, singing magma geode cathedral, ash-storm fortress, royal living-forge throne chamber. Indigo/charcoal negative space, orange magma, brass and cyan mineral accents. No characters or gameplay platforms."}
+  ],
+  "procedural": ["ForgeTile_0..3.png", "flame frames", "embers", "power-up icons and beacons", "solar pulses and chained lightning"],
+  "reuse": ["Mora and Lima existing prefabs", "shared physics, beam, HUD and wave systems"],
+  "note": "No external image API key; generation used the built-in tool. Runtime does not require image generation or Codex."
+}

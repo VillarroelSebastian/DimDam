@@ -23,5 +23,35 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ReinoDeChicle/0_0_Scenes/Candy_Level_05_Boss.unity
     guid: 53f63eefef4ab5a49a0daccd23b378bb
+  - enabled: 1
+    path: Assets/ReinoDeHielo/0_0_Scenes/Ice_Level_01.unity
+    guid: 4c96607da2f7be041b084c0cfc907234
+  - enabled: 1
+    path: Assets/ReinoDeHielo/0_0_Scenes/Ice_Level_02.unity
+    guid: 7c8db0d7780fd2844a59d78ce44005a9
+  - enabled: 1
+    path: Assets/ReinoDeHielo/0_0_Scenes/Ice_Level_03.unity
+    guid: c5fe9a233b55e9649a50cdf8d2e64684
+  - enabled: 1
+    path: Assets/ReinoDeHielo/0_0_Scenes/Ice_Level_04.unity
+    guid: 8f9f1679b2533914c9c436cb0b5970e4
+  - enabled: 1
+    path: Assets/ReinoDeHielo/0_0_Scenes/Ice_Level_05_Boss.unity
+    guid: 7eccb20c37390db43a36b5753aaa074b
+  - enabled: 1
+    path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_01.unity
+    guid: 140627e03129429489902cc077dfda2c
+  - enabled: 1
+    path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_02.unity
+    guid: e3b84988b8df57b4ab35c2b0f8556742
+  - enabled: 1
+    path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_03.unity
+    guid: 62c171889ccea8142b613e1e4f138e78
+  - enabled: 1
+    path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_04.unity
+    guid: 34ef2398b9c537049a584883a3c541d1
+  - enabled: 1
+    path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_05_Boss.unity
+    guid: 6b55d7e6e13229b44a3ff85261b9f6fd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
