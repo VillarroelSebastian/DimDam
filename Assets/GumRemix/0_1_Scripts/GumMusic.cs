@@ -50,8 +50,8 @@ namespace GumRemix
                 case Track.Nubes: return Nubes();
                 case Track.Fabrica: return Fabrica();
                 case Track.CircoBoss1: return Circo();
-                case Track.CircoBoss2: { var s = Circo(); s.name = "Circo II"; s.transpose = 2; s.bpm = 160f; s.drums = "gallop"; s.harmony = true; return s; }
-                case Track.CircoBoss3: { var s = Circo(); s.name = "Circo III"; s.transpose = 4; s.bpm = 176f; s.drums = "gallop"; s.harmony = true; s.echo = 0.15f; s.pad = true; return s; }
+                case Track.CircoBoss2: { var s = Circo(); s.name = "Salon II"; s.transpose = 2; s.bpm = 150f; s.harmony = true; s.echo = 0.1f; return s; }
+                case Track.CircoBoss3: { var s = Circo(); s.name = "Salon III"; s.transpose = 4; s.bpm = 168f; s.harmony = true; s.echo = 0.22f; s.pad = true; return s; }
                 case Track.Lago: return Lago();
                 case Track.Aldea: return Aldea();
                 case Track.Cristales: return Cristales();
@@ -68,27 +68,26 @@ namespace GumRemix
         // --------------------------------------------------------------------------------------------- menu: the Chicle motif
         static Song Title()
         {
-            var s = S("Chicle", 116f, 0.55f, "pulse", "swing", "walk", "charleston", false, 0f, "A B A B");
-            s.harmony = true;
-            s.Add("A", "C | Am | F | G | C | Am | Dm G | C",
-                "G5:2 E5:2 C5:2 E5:2 G5:4 r:4 | A5:2 C6:2 A5:2 E5:2 A5:4 r:4 | A5:2 F5:2 C5:2 F5:2 A5:4 C6:4 | B5:2 D6:2 G5:2 B5:2 D6:8 | " +
-                "E6:4 D6:2 C6:2 G5:4 E5:4 | C6:4 B5:2 A5:2 E5:4 C5:4 | D5:2 F5:2 A5:4 G5:2 B5:2 D6:4 | C6:12 r:4");
-            s.Add("B", "F | G | Em | Am | F | G | C Am | Dm G7",
-                "C6:4 A5:2 F5:2 A5:4 C6:4 | B5:4 G5:2 D5:2 G5:4 B5:4 | E5:2 G5:2 B5:4 E6:4 B5:2 G5:2 | A5:4 C6:4 E6:4 C6:4 | " +
-                "F5:2 A5:2 C6:2 F6:2 E6:4 C6:4 | D6:4 B5:2 G5:2 D6:8 | E6:2 C6:2 G5:4 A5:2 C6:2 E6:4 | D6:4 A5:4 B5:4 D6:4");
+            var s = S("Chicle", 104f, 0f, "musicbox", "waltz", "waltz", "waltz", true, 0.3f, "A B A B");
+            s.beats = 3; s.harmony = false; s.targetRms = 0.12f;
+            s.Add("A", "Am | Am | F | E | Am | Dm | E | Am",
+                "E5:4 A5:4 C6:4 | B5:4 A5:4 E5:4 | F5:4 A5:4 C6:4 | B5:4 G#5:4 E5:4 | A5:4 C6:4 E6:4 | D6:4 F5:4 A5:4 | G#5:4 B5:4 D6:4 | A5:8 r:4");
+            s.Add("B", "C | G | Am | E | F | Dm | E | Am",
+                "E6:4 G6:4 E6:4 | D6:4 B5:4 G5:4 | C6:4 E6:4 A5:4 | G#5:4 B5:4 E6:4 | F6:4 A5:4 C6:4 | D6:4 A5:4 F5:4 | E5:4 G#5:4 B5:4 | A5:8 r:4");
             return s;
         }
 
         // --------------------------------------------------------------------------------------------- candy world
         static Song Prado()
         {
-            var s = S("Prado Piruleta", 126f, 0.55f, "pulse", "swing", "walk", "charleston", false, 0f);
-            s.Add("A", "C | C | F | F | Am | G | C F | G7",
-                "E5:2 G5:2 C6:4 B5:2 G5:2 E5:4 | D5:2 E5:2 G5:4 r:2 E5:2 D5:4 | F5:2 A5:2 C6:4 A5:2 F5:2 A5:4 | G5:4 F5:2 E5:2 D5:8 | " +
-                "C5:2 E5:2 A5:4 G5:2 E5:2 C5:4 | D5:2 G5:2 B5:4 A5:2 G5:2 D5:4 | E5:2 G5:2 C6:4 A5:2 C6:2 F6:4 | D6:4 B5:2 G5:2 r:2 G5:2 B5:2 D6:2");
-            s.Add("B", "F | F | C | Am | Dm | G | Em Am | Dm G7",
-                "A5:4 C6:4 A5:4 F5:4 | G5:2 A5:2 C6:4 F5:8 | E5:2 G5:2 C6:2 E6:2 D6:4 C6:4 | C6:4 B5:2 A5:2 E5:8 | " +
-                "D5:2 F5:2 A5:4 D6:4 C6:2 A5:2 | B5:2 D6:2 G6:4 F6:2 D6:2 B5:4 | G5:2 B5:2 E6:4 C6:2 A5:2 E5:4 | F5:2 A5:2 D6:4 G5:2 B5:2 D6:2 F6:2");
+            var s = S("Jardin Nocturno", 98f, 0f, "musicbox", "half", "sub", "arp8", true, 0.3f);
+            s.compInst = "pluck"; s.targetRms = 0.12f;
+            s.Add("A", "Am | Am | F | E | Am | Dm | F E | Am",
+                "A5:4 C6:2 E6:2 D6:4 C6:4 | B5:4 A5:4 E5:8 | F5:4 A5:2 C6:2 B5:4 A5:4 | G#5:4 B5:4 E6:8 | " +
+                "A5:4 C6:2 E6:2 A6:4 G6:4 | F6:4 D6:4 A5:4 F5:4 | A5:2 C6:2 F6:4 E6:2 B5:2 G#5:4 | A5:12 r:4");
+            s.Add("B", "C | G | Am | F | Dm | E | F E | Am",
+                "E6:4 G6:4 E6:4 C6:4 | D6:4 B5:4 G5:8 | C6:4 E6:4 A6:4 E6:4 | C6:4 A5:4 F5:8 | " +
+                "D6:4 F6:4 A6:4 F6:4 | G#5:4 B5:4 E6:4 D6:4 | C6:4 A5:4 B5:2 G#5:2 E5:4 | A5:8 E5:4 A5:4");
             return s;
         }
 
@@ -106,14 +105,14 @@ namespace GumRemix
 
         static Song Nubes()
         {
-            var s = S("Nubes de Malvavisco", 92f, 0f, "bell", "half", "pulse", "arp8", true, 0.3f);
+            var s = S("Nubes de Tormenta", 88f, 0f, "bell", "half", "pulse", "arp8", true, 0.35f);
             s.compInst = "pluck";
-            s.Add("A", "Fmaj7 | G | Em7 | Am7 | Dm7 | G | Fmaj7 | C",
-                "A5:4 C6:4 E6:4 C6:4 | B5:4 D6:4 G6:4 D6:4 | G5:4 B5:4 E6:4 B5:4 | E6:6 C6:2 A5:8 | " +
-                "D6:4 F6:4 A6:4 F6:4 | D6:6 B5:2 G5:8 | A5:2 C6:2 F6:4 E6:4 C6:4 | G5:4 E5:4 C5:8");
-            s.Add("B", "Bbmaj7 | Am7 | Gm7 | C | Fmaj7 | Em7 | Dm7 | C",
-                "D6:4 F6:4 A6:4 F6:4 | C6:4 E6:4 G6:4 E6:4 | Bb5:4 D6:4 F6:4 D6:4 | G5:4 C6:4 E6:8 | " +
-                "F6:6 E6:2 C6:8 | E6:6 D6:2 B5:8 | D6:4 F6:4 A6:4 C7:4 | G6:8 E6:8");
+            s.Add("A", "Em7 | Cmaj7 | Am7 | B7 | Em7 | Cmaj7 | Am7 B7 | Em7",
+                "B5:4 E6:4 G6:4 E6:4 | C6:4 E6:4 G6:4 B6:4 | A5:4 C6:4 E6:4 C6:4 | D#6:4 F#6:4 B6:4 F#6:4 | " +
+                "G6:6 E6:2 B5:8 | E6:6 C6:2 G5:8 | A5:2 C6:2 E6:4 D#6:2 F#6:2 B6:4 | E6:12 r:4");
+            s.Add("B", "Am7 | Em7 | Cmaj7 | B7 | Am7 | Em7 | Cmaj7 B7 | Em7",
+                "C6:4 E6:4 A6:4 E6:4 | B5:4 E6:4 G6:4 B6:4 | G6:4 E6:4 C6:4 G5:4 | F#6:4 D#6:4 B5:4 F#5:4 | " +
+                "A5:4 C6:4 E6:8 | G5:4 B5:4 E6:8 | E6:2 G6:2 C7:4 B6:2 D#6:2 F#6:4 | E6:8 B5:4 E6:4");
             return s;
         }
 
@@ -131,13 +130,12 @@ namespace GumRemix
 
         static Song Circo()
         {
-            var s = S("Circo del Chicloso", 148f, 0.2f, "trumpet", "march", "oompah", "offbeat", false, 0f);
-            s.Add("A", "Dm | Dm | A7 | Dm | Gm | Dm | A7 | Dm",
-                "D5:2 F5:2 A5:2 D6:2 C6:2 A5:2 F5:2 A5:2 | D5:2 F5:2 A5:2 D6:2 F6:4 D6:4 | E5:2 G5:2 C#6:2 E6:2 D6:2 C#6:2 A5:2 G5:2 | F5:2 A5:2 D6:4 r:4 D6:4 | " +
-                "G5:2 Bb5:2 D6:2 G6:2 F6:2 D6:2 Bb5:2 D6:2 | A5:2 D6:2 F6:2 A6:2 G6:2 F6:2 D6:2 A5:2 | G5:2 C#6:2 E6:2 G6:2 E6:2 C#6:2 E6:2 A6:2 | D6:8 r:4 A5:2 D6:2");
-            s.Add("B", "Bb | C | Dm | A7 | Bb | C | A7 | A7",
-                "F6:4 D6:2 F6:2 Bb6:4 F6:4 | G6:4 E6:2 G6:2 C7:4 G6:4 | A6:4 F6:2 A6:2 D7:4 A6:4 | E6:2 A6:2 C#7:4 A6:2 E6:2 C#6:4 | " +
-                "D6:2 F6:2 Bb6:2 D7:2 C7:2 Bb6:2 F6:2 D6:2 | E6:2 G6:2 C7:2 E7:2 D7:2 C7:2 G6:2 E6:2 | A6:2 G6:2 E6:2 C#6:2 E6:2 G6:2 A6:2 C#7:2 | E7:12 r:4");
+            var s = S("Salon del Trono", 132f, 0f, "trumpet", "waltz", "waltz", "waltz", true, 0.05f);
+            s.beats = 3; s.compInst = "stab"; s.targetRms = 0.13f;
+            s.Add("A", "Dm | Dm | Gm | A7 | Dm | Bb | A7 | Dm",
+                "D5:4 F5:4 A5:4 | D6:6 C6:2 A5:4 | Bb5:4 D6:4 G6:4 | E6:4 C#6:4 A5:4 | F5:4 A5:4 D6:4 | D6:4 F6:4 Bb6:4 | A6:4 E6:4 C#6:4 | D6:8 r:4");
+            s.Add("B", "Bb | C | Dm | A7 | Gm | Dm | A7 | Dm",
+                "F6:4 D6:4 Bb5:4 | G6:4 E6:4 C6:4 | A6:4 F6:4 D6:4 | C#6:4 E6:4 A6:4 | G6:4 Bb6:4 D7:4 | F6:4 A6:4 D7:4 | E7:4 C#7:4 A6:4 | D7:8 A6:4");
             return s;
         }
 
