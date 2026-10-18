@@ -1,30 +1,35 @@
-Bubblegum Play Mode QA: 0 failures. Input tests plus explicit placement for isolated mechanism tests; not a full manual traversal.
-PASS Exactly two existing players active immediately
-PASS Mimo grounded on starting bridge
-PASS Original keyboard movement
-PASS Original keyboard jump
-PASS Pipo fits through physical tunnel
-PASS Mimo cannot fit through physical tunnel
-PASS Large player cannot operate small auxiliary
-PASS Small auxiliary activates
-PASS Existing S interaction semantics open lever
-PASS Mimo physically pushes rock through gate to unlock A
-PASS Wrong route returns rock safely
-PASS Correct fork with guide block activates pressure plate and door
-PASS Both players commit checkpoint after B
-PASS Fall restores both and preserves solved gates
-PASS Bubble switch requires heavy step positioned
-PASS Pipo cannot push heavy step
-PASS Mimo pushes heavy step to mark
-PASS Pipo activates bubbles after Mimo positions step
-PASS All bubble platforms appear and persist
-PASS Large player lands on bubble collider
-PASS Small player lands on bubble collider
-PASS Player 0 climbs from floor to refuge using original jump controls
-PASS Player 1 climbs from floor to refuge using original jump controls
-PASS Final checkpoint requires both upstairs
+Vertical Bubblegum Play Mode QA: 0 failures. Real input for pushing and staircase traversal; explicit placement for isolated interactions/checkpoints.
+PASS Two existing animated players active immediately
+PASS Swept mint refuses to crush small player
+PASS Original walking controls
+PASS Pipo enters auxiliary tunnel
+PASS Large player cannot enter auxiliary tunnel
+PASS Invalid interaction indices rejected
+PASS Small auxiliary validated
+PASS Repeated interaction debounced
+PASS Lever A validated
+PASS Mimo physically pushes mint to open first ascent
+PASS Player 0 traverses full first vertical staircase with real inputs
+PASS Player 1 traverses full first vertical staircase with real inputs
+PASS Both players commit first floor checkpoint
+PASS Wrong fork returns mint
+PASS Fork becomes green
+PASS Correct route and mark activate physical pressure sensor
+PASS Player 0 traverses second staircase with real inputs
+PASS Player 1 traverses second staircase with real inputs
+PASS Garden checkpoint requires both players
+PASS Fall restores both and keeps solved doors
+PASS Switch refuses missing step
+PASS Small player cannot push heavy block
+PASS Large player physically places step
+PASS Garden switch accepts correctly placed step
+PASS Bubble animation completes with all colliders active
+PASS Interaction key does not drop grounded player through active bubble
+PASS Player 0 climbs step and final bubble garden using original inputs
+PASS Player 1 climbs step and final bubble garden using original inputs
+PASS Treasure checkpoint commits cooperatively
 PASS One player cannot collect fragment
-PASS Both collect fragment with reward animation
+PASS Both players collect fragment
+PASS Reset during reward preserves fragment and bubble state
 PASS Exit waits for second player
-PASS Both players complete with future scene fallback
-PASS Final reset preserves coherent completed progression
+PASS Both players complete tower

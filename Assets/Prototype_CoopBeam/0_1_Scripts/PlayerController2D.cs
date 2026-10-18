@@ -6,6 +6,8 @@ public class PlayerController2D : MonoBehaviour {
  public int playerIndex; public float speed=7, acceleration=55, jumpSpeed=13, dashSpeed=17, dashDuration=.14f, dashCooldown=.65f;
  public Transform visual; public SpriteRenderer sprite; public PlayerHealth health; public bool Grounded {get;private set;} public bool Dashing=>dashTime>0;
  Rigidbody2D body; Collider2D shape; float coyote,buffer,dashTime,cooldown,axis,face=1,dropUntil; bool jumpHeld; readonly RaycastHit2D[] hits=new RaycastHit2D[12];
+ public float MoveAxis=>axis;
+ public bool interactionOnlyDown;
  void Awake(){body=GetComponent<Rigidbody2D>();shape=GetComponent<Collider2D>();}
  void Update(){
   if(!health || health.Dead || !GameManager.Instance || !GameManager.Instance.Running||CoopInteractionDirector.Locked(health))return;
@@ -14,7 +16,7 @@ public class PlayerController2D : MonoBehaviour {
   var jump=playerIndex==0?k.wKey:k.upArrowKey; jumpHeld=jump.isPressed;if(jump.wasPressedThisFrame)buffer=.13f;
   if(axis!=0)face=Mathf.Sign(axis);
   if((playerIndex==0?k.leftShiftKey:k.rightCtrlKey).wasPressedThisFrame && cooldown<=0){dashTime=dashDuration;cooldown=dashCooldown;BeamFX.Burst(transform.position, sprite.color,5);}
-  if((playerIndex==0?k.sKey:k.downArrowKey).wasPressedThisFrame&&!CoopInteractionDirector.Locked(health))StartCoroutine(Drop());
+  if(!interactionOnlyDown&&(playerIndex==0?k.sKey:k.downArrowKey).wasPressedThisFrame&&!CoopInteractionDirector.Locked(health))StartCoroutine(Drop());
   buffer-=Time.deltaTime;cooldown-=Time.deltaTime;
  }
  System.Collections.IEnumerator Drop(){

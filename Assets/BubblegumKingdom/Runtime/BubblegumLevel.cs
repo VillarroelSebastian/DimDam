@@ -9,8 +9,8 @@ public class BubblegumLevel : MonoBehaviour {
  public BubblegumHeavy entryRock,runaway,routeBlock,step;
  public Transform auxiliary,leverA,leverB,bubbleSwitch,stepMark,routeMark,plate,fragment,exit;
  public Transform gateA,gateB;
- public GameObject[] bubbles;
- public string nextScene="Level_TheNeonCore";
+ public GameObject[] bubbles,ascentA,ascentB;
+ public string nextScene="ReinoNeon";
  public bool AuxiliaryOn {get;private set;}
  public bool LeverOn {get;private set;}
  public bool RouteUp {get;private set;}
@@ -22,79 +22,98 @@ public class BubblegumLevel : MonoBehaviour {
  public bool Rolling {get;private set;}
  public int Checkpoint {get;private set;}
  public int FailedRoutes {get;private set;}
- Vector3 gateAHome,gateBHome,plateHome;Coroutine roll;float started,bubbleTime;
+ Vector3 gateAHome,gateBHome;float bubbleTime;readonly float[] interacted={-1,-1};
  string notice="";float noticeUntil;
- void Start(){game.BeginExploration();gateAHome=gateA.position;gateBHome=gateB.position;plateHome=plate.position;started=Time.time;foreach(var b in bubbles)b.SetActive(false);}
- public bool Near(int i,Transform t,float radius=1.4f)=>!game.players[i].Dead&&Vector2.Distance(game.players[i].transform.position,t.position)<radius;
- public bool Interact(int player){
- if(player<0||player>1)return false;
- if(player==1&&Near(1,auxiliary,1)){AuxiliaryOn=true;Lamp(auxiliary,true);Say("Mecanismo auxiliar conectado. Mimo: palanca y roca.");return true;}
- if(Near(player,leverA)){LeverOn=!LeverOn;Lamp(leverA,LeverOn);return true;}
- if(Near(player,leverB)){RouteUp=!RouteUp;Lamp(leverB,RouteUp);Say(RouteUp?"Desvio hacia la placa. Coloca el bloque en la marca.":"Desvio hacia el barranco: la roca regresara.");return true;}
- if(player==1&&DoorBOpen&&Near(1,bubbleSwitch,1)){
- if(Mathf.Abs(step.transform.position.x-stepMark.position.x)>.45f){Say("Mimo debe colocar el escalon en la marca dorada.");return false;}
- BubblesOn=true;step.Locked=true;bubbleTime=Time.time;Lamp(bubbleSwitch,true);Say("Burbujas activadas: aparecen y permanecen. Suban juntos.");return true;}
- return false;
+ void Start(){game.BeginExploration();gateAHome=gateA.position;gateBHome=gateB.position;SetGroup(bubbles,false);SetGroup(ascentA,false);SetGroup(ascentB,false);}
+ static void SetGroup(GameObject[] group,bool on){if(group!=null)foreach(var b in group)if(b)b.SetActive(on);}
+ public bool Near(int i,Transform t,float radius=1.4f)=>i>=0&&i<game.players.Length&&t&&!game.players[i].Dead&&Vector2.Distance(game.players[i].transform.position,t.position)<radius;
+ bool Reach(int i,Transform target,float radius=1.4f){
+ if(!Near(i,target,radius))return false;
+ return !Physics2D.Linecast(game.players[i].transform.position,target.position,1<<8).collider;
  }
+ public bool Interact(int player){
+ if(player<0||player>1||!game.Running||Completed||Time.time-interacted[player]<.2f)return false;
+ bool ok=false;
+ if(player==1&&!AuxiliaryOn&&Reach(1,auxiliary,1)){AuxiliaryOn=true;Lamp(auxiliary,true);Say("Auxiliar listo. Mimo: palanca y mentita.");ok=true;}
+ else if(!DoorAOpen&&Reach(player,leverA)){LeverOn=!LeverOn;Lamp(leverA,LeverOn);ok=true;}
+ else if(DoorAOpen&&!DoorBOpen&&Reach(player,leverB)){RouteUp=!RouteUp;Lamp(leverB,RouteUp);Say(RouteUp?"Desvio verde. Bloque sobre la marca dorada.":"Desvio de retorno: la mentita volvera.");ok=true;}
+ else if(player==1&&DoorBOpen&&!BubblesOn&&Reach(1,bubbleSwitch,1)){
+ if(!OnMark(step,stepMark)){Say("Mimo debe colocar el escalon en la marca.");return false;}
+ BubblesOn=true;step.Locked=true;bubbleTime=Time.time;Lamp(bubbleSwitch,true);Celebrate(bubbleSwitch.position);Say("Burbujas listas. Suban juntos al corazon.");ok=true;
+ }
+ if(ok){interacted[player]=Time.time;game.Tone(LeverOn||RouteUp?660:440,.08f);}return ok;
+ }
+ static bool OnMark(BubblegumHeavy obj,Transform mark)=>Mathf.Abs(obj.transform.position.x-mark.position.x)<.45f&&Mathf.Abs(obj.transform.position.y-mark.position.y)<.25f;
+ bool BothAbove(float y)=>game.players[0].transform.position.y>y&&game.players[1].transform.position.y>y&&game.players[0].GetComponent<PlayerController2D>().Grounded&&game.players[1].GetComponent<PlayerController2D>().Grounded;
  void Update(){
  var k=Keyboard.current;
- if(k!=null){if(k.rKey.wasPressedThisFrame)ResetTogether();if(k.mKey.wasPressedThisFrame){CandyCampaign.Map();return;}if(k.sKey.wasPressedThisFrame)Interact(0);if(k.downArrowKey.wasPressedThisFrame)Interact(1);}
- if(game.players[0].transform.position.y< -4||game.players[1].transform.position.y< -4||game.players[0].Dead||game.players[1].Dead)ResetTogether();
- // Before release, the rail ends at the closed sluice. Both independent controls are required.
- entryRock.maxX=AuxiliaryOn&&LeverOn?17:11.3f;
- if(!DoorAOpen&&AuxiliaryOn&&LeverOn&&entryRock.transform.position.x>=16.7f){DoorAOpen=true;entryRock.Locked=true;Celebrate(entryRock.transform.position);Say("Puerta desbloqueada. Siguiente: la roca fugitiva.");}
- MoveGate(gateA,gateAHome,DoorAOpen||AuxiliaryOn&&LeverOn);
- if(DoorAOpen&&!DoorBOpen&&!Rolling&&runaway.transform.position.x>=27.8f){Rolling=true;runaway.Locked=true;roll=StartCoroutine(Roll());}
+ if(k!=null){if(k.rKey.wasPressedThisFrame){ResetTogether();return;}if(k.mKey.wasPressedThisFrame){CandyCampaign.Map();return;}if(k.sKey.wasPressedThisFrame)Interact(0);if(k.downArrowKey.wasPressedThisFrame)Interact(1);}
+ if(game.players[0].transform.position.y< -4||game.players[1].transform.position.y< -4||game.players[0].Dead||game.players[1].Dead){ResetTogether();return;}
+ entryRock.maxX=AuxiliaryOn&&LeverOn?3:0;
+ if(!DoorAOpen&&AuxiliaryOn&&LeverOn&&entryRock.transform.position.x>=2.75f){DoorAOpen=true;entryRock.Locked=true;SetGroup(ascentA,true);Celebrate(entryRock.transform.position);Say("Piso 1 abierto. Suban por las burbujas de la derecha.");}
+ MoveGate(gateA,gateAHome,DoorAOpen);
+ if(DoorAOpen&&Checkpoint<1&&BothAbove(10)){Checkpoint=1;Say("Control 1: taller de la mentita fugitiva.");}
+ if(DoorAOpen&&!DoorBOpen&&!Rolling&&runaway.transform.position.x>=-2.2f){Rolling=true;runaway.Locked=true;StartCoroutine(Roll());}
  MoveGate(gateB,gateBHome,DoorBOpen);
- if(DoorBOpen){plate.position=Vector3.Lerp(plate.position,plateHome+Vector3.down*.18f,Time.deltaTime*5);if(Checkpoint<1&&BothPast(43)){Checkpoint=1;Say("Punto de control: jardin de burbujas.");}}
- if(BubblesOn)for(int i=0;i<bubbles.Length;i++)if(Time.time-bubbleTime>i*.45f)bubbles[i].SetActive(true);
- if(Checkpoint<2&&BubblesOn&&BothPast(64)&&game.players[0].transform.position.y>6&&game.players[1].transform.position.y>6){Checkpoint=2;Say("Punto de control: camara del tesoro.");}
- if(!Collected&&BubblesOn&&Near(0,fragment,2.2f)&&Near(1,fragment,2.2f)){Collected=true;PlayerPrefs.SetInt("BubblegumKingdom.FirstFriendshipFragment",1);PlayerPrefs.Save();StartCoroutine(Reward());}
- if(Collected&&!Completed&&Near(0,exit,1.5f)&&Near(1,exit,1.5f)){Completed=true;if(Application.CanStreamedLevelBeLoaded(nextScene))SceneManager.LoadScene(nextScene);else Say("Primer fragmento recuperado. The Neon Core: proxima aventura.",60);}
+ if(DoorBOpen&&Checkpoint<2&&BothAbove(20)){Checkpoint=2;Say("Control 2: jardin de burbujas.");}
+ if(BubblesOn)for(int i=0;i<bubbles.Length;i++)if(Time.time-bubbleTime>i*.35f)bubbles[i].SetActive(true);
+ if(BubblesOn&&Checkpoint<3&&BothAbove(28)){Checkpoint=3;Say("Control 3: camara del corazon.");}
+ if(!Collected&&BubblesOn&&Near(0,fragment,2)&&Near(1,fragment,2)){Collected=true;PlayerPrefs.SetInt("BubblegumKingdom.FirstFriendshipFragment",1);PlayerPrefs.Save();StartCoroutine(Reward());}
+ if(Collected&&!Completed&&Near(0,exit,1.5f)&&Near(1,exit,1.5f)){Completed=true;if(nextScene=="Level_TheNeonCore")nextScene="ReinoNeon";if(Application.CanStreamedLevelBeLoaded(nextScene))SceneManager.LoadScene(nextScene);else Say("Fragmento recuperado. The Neon Core: proxima aventura.",60);}
  }
- bool BothPast(float x)=>game.players[0].transform.position.x>x&&game.players[1].transform.position.x>x;
- void MoveGate(Transform gate,Vector3 home,bool open){gate.position=Vector3.MoveTowards(gate.position,home+Vector3.up*(open?12:0),Time.deltaTime*4);Lamp(gate,open);}
- static void Lamp(Transform t,bool on){var s=t.GetComponent<SpriteRenderer>();if(s)s.color=on?new Color(.5f,1,.7f):new Color(1,.55f,.65f);}
- IEnumerator Travel(Vector2 target,float speed){while(Vector2.Distance(runaway.transform.position,target)>.03f){runaway.Place(Vector2.MoveTowards(runaway.transform.position,target,speed*Time.deltaTime));runaway.transform.Rotate(0,0,-160*Time.deltaTime);yield return null;}}
+ void MoveGate(Transform gate,Vector3 home,bool open){var c=gate.GetComponent<Collider2D>();if(c)c.enabled=!open;gate.position=Vector3.MoveTowards(gate.position,home+Vector3.up*(open?3.5f:0),Time.deltaTime*3);Lamp(gate,open);}
+ static void Lamp(Transform t,bool on){var s=t.GetComponent<SpriteRenderer>();if(s)s.color=on?new Color(.58f,.92f,.77f):new Color(.91f,.47f,.69f);}
+ // Fixed-step swept motion pauses when a player is in the path, then returns safely.
+ IEnumerator Travel(Vector2 target,float speed){float blocked=0;
+ while(Vector2.Distance(runaway.transform.position,target)>.04f){
+ yield return new WaitForFixedUpdate();
+ if(runaway.TryMove(Vector2.MoveTowards(runaway.transform.position,target,speed*Time.fixedDeltaTime)))blocked=0;
+ else {blocked+=Time.fixedDeltaTime;if(blocked>.35f)Say("Apartense de la mentita para dejarla pasar.",1);if(blocked>2){routeAborted=true;yield break;}}
+ }}
+ bool routeAborted;
  IEnumerator Roll(){
- Say("¡Roca en marcha! Pipo: desvio. Mimo: bloque sobre la marca.");
- yield return Travel(new Vector2(31,1.2f),2.1f);
- // Evaluate at the fork, giving both players time to adjust the route.
- bool success=RouteUp&&Mathf.Abs(routeBlock.transform.position.x-routeMark.position.x)<.5f;
- if(success){yield return Travel(new Vector2(35,1.2f),2.5f);yield return Travel(new Vector2(39,1.2f),3);
- Physics2D.SyncTransforms();DoorBOpen=plate.GetComponent<Collider2D>().bounds.Intersects(runaway.GetComponent<Collider2D>().bounds);Lamp(plate,DoorBOpen);routeBlock.Locked=true;Celebrate(plate.position);Say("¡Placa activada! El castillo esta abierto.");
- yield return Travel(new Vector2(39,1.65f),3);yield return Travel(new Vector2(39,1.2f),3);
- }else{yield return Travel(new Vector2(34,-3),3);FailedRoutes++;Say("La roca vuelve a salvo. Desvio verde + bloque en la marca.");yield return new WaitForSeconds(.6f);runaway.Restore();}
- Rolling=false;roll=null;
+ routeAborted=false;Say("Mentita en marcha: Pipo cambia el desvio; Mimo coloca el bloque.");
+ yield return Travel(new Vector2(0,11.2f),2);
+ bool success=!routeAborted&&RouteUp&&OnMark(routeBlock,routeMark);
+ // The candy rolls on a separate upper rail, above the guide block and players.
+ if(success){yield return Travel(new Vector2(0,13.2f),2.8f);if(!routeAborted)yield return Travel(new Vector2(7,13.2f),2.8f);if(!routeAborted)yield return Travel(new Vector2(7,11.2f),2.8f);
+ Physics2D.SyncTransforms();success=!routeAborted&&plate.GetComponent<Collider2D>().bounds.Intersects(runaway.GetComponent<Collider2D>().bounds);
  }
- IEnumerator Reward(){Celebrate(fragment.position);game.Tone(990,.3f);Vector3 initial=fragment.localScale;
- for(float t=0;t<1;t+=Time.deltaTime){fragment.localScale=initial*(1+Mathf.Sin(t*Mathf.PI)*.6f);yield return null;}
- fragment.gameObject.SetActive(false);Lamp(exit,true);Say("Primer fragmento recuperado. Reunanse en la salida.",12);
+ if(success){DoorBOpen=true;routeBlock.Locked=true;Lamp(plate,true);SetGroup(ascentB,true);Celebrate(plate.position);Say("Placa activada. Siguiente piso: jardin de burbujas.");}
+ else{FailedRoutes++;Say("Ruta incompleta o bloqueada. La mentita vuelve al inicio.");yield return new WaitForSeconds(.5f);
+ foreach(var p in game.players)if(Vector2.Distance(p.transform.position,runaway.Home)<2.5f)p.ReviveAt(new Vector2(-8+p.GetComponent<PlayerController2D>().playerIndex*1.5f,11));
+ runaway.Restore();}
+ Rolling=false;
  }
- void Celebrate(Vector3 p){BeamFX.Burst(p,new Color(1,.6f,.9f),30);BeamFX.Burst(p,Color.cyan,20);game.Tone(740,.25f);}
+ IEnumerator Reward(){Celebrate(fragment.position);game.Tone(990,.3f);var art=fragment.GetChild(0);Vector3 initial=art.localScale;
+ for(float t=0;t<1;t+=Time.deltaTime){art.localScale=initial*(1+Mathf.Sin(t*Mathf.PI)*.5f);yield return null;}
+ art.localScale=initial;fragment.gameObject.SetActive(false);Lamp(exit,true);Say("Corazon recuperado. Reunanse en la salida.",12);
+ }
+ void Celebrate(Vector3 p){BeamFX.Burst(p,new Color(1,.6f,.9f),24);BeamFX.Burst(p,Color.cyan,16);game.Tone(740,.2f);}
  void Say(string s,float seconds=5){notice=s;noticeUntil=Time.time+seconds;}
  public void ResetTogether(){
- StopAllCoroutines();roll=null;Rolling=false;Completed=false;
- if(Checkpoint==0){AuxiliaryOn=LeverOn=RouteUp=DoorAOpen=DoorBOpen=false;entryRock.Restore();runaway.Restore();routeBlock.Restore();gateA.position=gateAHome;gateB.position=gateBHome;plate.position=plateHome;Lamp(auxiliary,false);Lamp(leverA,false);Lamp(leverB,false);}
- if(Checkpoint<2){BubblesOn=false;step.Restore();foreach(var b in bubbles)b.SetActive(false);Lamp(bubbleSwitch,false);}
- if(Collected)fragment.gameObject.SetActive(false);
- Vector2 spawn=Checkpoint==0?new Vector2(1,1):Checkpoint==1?new Vector2(44,1):new Vector2(65,7.8f);
+ StopAllCoroutines();Rolling=false;Completed=false;
+ if(Checkpoint==0){AuxiliaryOn=LeverOn=RouteUp=DoorAOpen=DoorBOpen=false;entryRock.Restore();routeBlock.Restore();SetGroup(ascentA,false);SetGroup(ascentB,false);gateA.position=gateAHome;gateB.position=gateBHome;Lamp(auxiliary,false);Lamp(leverA,false);Lamp(leverB,false);Lamp(plate,false);}
+ if(Checkpoint<2){runaway.Restore();if(Checkpoint==1){DoorBOpen=false;routeBlock.Restore();RouteUp=false;Lamp(leverB,false);Lamp(plate,false);SetGroup(ascentB,false);}}
+ if(Checkpoint<3){BubblesOn=false;step.Restore();SetGroup(bubbles,false);Lamp(bubbleSwitch,false);}
+ // A reset during the reward coroutine must not leave a visible collected fragment.
+ fragment.gameObject.SetActive(!Collected);
+ Vector2 spawn=Checkpoint==0?new Vector2(-8,1):Checkpoint==1?new Vector2(-8,11):Checkpoint==2?new Vector2(-8,21):new Vector2(-4,29);
  for(int i=0;i<2;i++)game.players[i].ReviveAt(spawn+Vector2.right*(i*1.5f));
- game.BeginExploration();Physics2D.SyncTransforms();Say("Ambos a salvo. R recupera al equipo y los objetos.");
+ interacted[0]=interacted[1]=-1;game.BeginExploration();Physics2D.SyncTransforms();Say("Equipo a salvo. Se conserva el ultimo piso alcanzado.");
  }
  void OnGUI(){
- GUI.matrix=Matrix4x4.Scale(new Vector3(Screen.width/960f,Screen.height/540f,1));
- var style=new GUIStyle(GUI.skin.label){fontSize=17,wordWrap=true};style.normal.textColor=new Color(1,.96f,.85f);
- GUI.Box(new Rect(12,12,936,77),GUIContent.none);
- GUI.Label(new Rect(26,18,915,28),"THE BUBBLEGUM KINGDOM  /  LA ROCA FUGITIVA",style);
- string objective=Collected?"Primer fragmento recuperado · Salida cooperativa → The Neon Core":!DoorAOpen?"A · Pipo conecta el auxiliar. Palanca + Mimo empuja la roca.":!DoorBOpen?"B · Mimo libera la roca y coloca el bloque. Pipo cambia el desvio.":!BubblesOn?"C · Mimo coloca el escalon; Pipo activa las burbujas en el tunel.":"D · Suban juntos y encuentren el primer fragmento del Corazon de la Amistad.";
- GUI.Label(new Rect(26,48,915,40),objective,style);
- GUI.Box(new Rect(12,472,936,57),GUIContent.none);style.fontSize=14;
- GUI.Label(new Rect(25,477,915,25),"Mimo / Coral: A D + W saltar · S palanca    |    Pipo / Celeste: ← → + ↑ saltar · ↓ mecanismo",style);
- GUI.Label(new Rect(25,502,915,24),"Empuja caminando contra objetos · R recuperar equipo · M mapa · Punto de control "+Checkpoint+"/2",style);
- if(Time.time<noticeUntil){GUI.Box(new Rect(160,401,640,58),GUIContent.none);GUI.Label(new Rect(173,408,615,49),notice,style);}
- if(Time.time-started<6){GUI.Box(new Rect(230,110,500,65),GUIContent.none);GUI.Label(new Rect(245,118,470,55),"Encuentra el primer fragmento del Corazon de la Amistad.\nLos dos pueden moverse desde el primer instante.",style);}
+ GUI.depth=0;PixelFont.Begin();PixelFont.Panel(new Rect(2,2,636,36),PixelFont.Ink,PixelFont.Pink);
+ PixelFont.Text(12,8,"BUBBLEGUM KINGDOM / TORRE DE MENTA",1,PixelFont.Cream);
+ string objective=Collected?"CORAZON RECUPERADO / REUNANSE EN LA SALIDA":!DoorAOpen?"A / AUXILIAR + PALANCA + EMPUJAR MENTITA":!DoorBOpen?"B / DESVIO VERDE + BLOQUE EN LA MARCA":!BubblesOn?"C / ESCALON EN MARCA + INTERRUPTOR DE PIPO":"D / SUBAN JUNTOS PARA RECUPERAR EL CORAZON";
+ PixelFont.Text(12,24,objective,1,PixelFont.Mint);
+ PixelFont.Panel(new Rect(2,326,636,32),PixelFont.Ink,PixelFont.Pink);
+ PixelFont.Text(12,332,"MIMO A/D W SALTO S USAR | PIPO FLECHAS ABAJO USAR",1,PixelFont.Cream);
+ PixelFont.Text(12,346,"R RECUPERAR EQUIPO / M MAPA / CONTROL "+Checkpoint+"/3",1,PixelFont.Mint);
+ if(Time.time<noticeUntil){PixelFont.Panel(new Rect(20,298,600,22),PixelFont.Ink,PixelFont.Mint);PixelFont.Text(30,306,notice.ToUpperInvariant(),1,PixelFont.Cream);}
+ for(int i=0;i<2;i++){Transform nearest=null;float distance=1.45f;
+ foreach(var t in new[]{auxiliary,leverA,leverB,bubbleSwitch}){float d=Vector2.Distance(game.players[i].transform.position,t.position);if(d<distance&&Reach(i,t,distance)){distance=d;nearest=t;}}
+ if(nearest)PixelFont.Text(i==0?12:465,46,(i==0?"S":"ABAJO")+" / USAR MECANISMO",1,PixelFont.Mint);
+ }
  }
 }}
-
-

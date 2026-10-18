@@ -1,0 +1,4 @@
+Unity Test Runner EditMode: completed; 0 tests discovered, 0 failed.
+Existing GumRemix.Tests.GumRemixPlayTests.SceneAssetBoots PlayMode regression request: failed to initialize; no test assertions executed. MCP TestJobManager timed out at its default 15000ms initialization window. This is an infrastructure limitation, not a reported gameplay assertion failure.
+ReinoNeon uses its dedicated Editor-only Play Mode harness. See PlayMode-results.txt for the executed gameplay assertions.
+Full unrelated GumRemix combat campaign suite and standalone player build: not run.

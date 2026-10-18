@@ -1,0 +1,2 @@
+PASS Obstructed autonomous candy returns safely after timeout
+PASS Blocking player remains alive and outside candy collider

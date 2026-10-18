@@ -1,0 +1,10 @@
+Missing scripts: 0
+Players: 2; linked reciprocal controls: 6
+Invalid reciprocal references: 0
+New textures: 23; incorrect pixel import settings: 0
+Battery A clearance from lift: True
+Scene build entry: True
+Mimo prefab: Assets/Prototype_CoopBeam/0_2_Prefabs/Coral.prefab
+Pipo prefab: Assets/Prototype_CoopBeam/0_2_Prefabs/Celeste.prefab
+Cable sprite render mode: Sliced
+Scene saved: True

@@ -1,0 +1,44 @@
+Neon Play Mode QA: 1 failures. Real keyboard input for movement, jumps, gate crossing, pushing, vent and timed bridge. Explicit placement isolates mechanisms, checkpoints and joint triggers.
+PASS Both original players active immediately
+PASS Invalid players rejected
+PASS Mimo original walking input
+PASS Pipo reaches approach step with original jump
+PASS Pipo reaches upper reciprocal route with real input
+PASS Pair 0 starts blocked
+PASS Mimo opens only Pipo route 0
+PASS Debounce 0
+PASS Pipo reciprocates 0
+PASS Both physically cross linked gates 0
+PASS Pair 1 starts blocked
+PASS Mimo opens only Pipo route 1
+PASS Debounce 1
+PASS Pipo reciprocates 1
+PASS Both physically cross linked gates 1
+PASS Pair 2 starts blocked
+PASS Mimo opens only Pipo route 2
+PASS Debounce 2
+PASS Pipo reciprocates 2
+PASS Both physically cross linked gates 2
+PASS All six controls release energy gate
+PASS Joint relay checkpoint
+PASS Fall retains solved crossed circuits
+PASS Mimo physically pushes battery into socket A
+PASS Pipo cannot push heavy battery
+FAIL Powered lift carries Pipo
+PASS Pipo traverses narrow vent
+PASS Mimo cannot enter Pipo vent
+PASS Pipo routes battery circuit B
+PASS Mimo physically delivers battery B; relay complete
+PASS Core checkpoint requires both
+PASS Mimo initiates temporary channel
+PASS Timeout restores core attempt and preserves relay
+PASS Core can be retried
+PASS Pipo crosses physical temporary bridge and reverses power
+PASS Role exchange: Mimo crosses with Pipo power and confirms
+PASS Both plates charge reactor and open reward
+PASS Solo reward refused
+PASS Joint reward persists and hides fragment
+PASS Recovery retains collected state
+PASS Solo exit refused
+PASS Joint cooperative completion
+PASS Scene and return map registered in build
