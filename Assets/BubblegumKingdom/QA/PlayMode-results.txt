@@ -1,0 +1,30 @@
+Bubblegum Play Mode QA: 0 failures. Input tests plus explicit placement for isolated mechanism tests; not a full manual traversal.
+PASS Exactly two existing players active immediately
+PASS Mimo grounded on starting bridge
+PASS Original keyboard movement
+PASS Original keyboard jump
+PASS Pipo fits through physical tunnel
+PASS Mimo cannot fit through physical tunnel
+PASS Large player cannot operate small auxiliary
+PASS Small auxiliary activates
+PASS Existing S interaction semantics open lever
+PASS Mimo physically pushes rock through gate to unlock A
+PASS Wrong route returns rock safely
+PASS Correct fork with guide block activates pressure plate and door
+PASS Both players commit checkpoint after B
+PASS Fall restores both and preserves solved gates
+PASS Bubble switch requires heavy step positioned
+PASS Pipo cannot push heavy step
+PASS Mimo pushes heavy step to mark
+PASS Pipo activates bubbles after Mimo positions step
+PASS All bubble platforms appear and persist
+PASS Large player lands on bubble collider
+PASS Small player lands on bubble collider
+PASS Player 0 climbs from floor to refuge using original jump controls
+PASS Player 1 climbs from floor to refuge using original jump controls
+PASS Final checkpoint requires both upstairs
+PASS One player cannot collect fragment
+PASS Both collect fragment with reward animation
+PASS Exit waits for second player
+PASS Both players complete with future scene fallback
+PASS Final reset preserves coherent completed progression

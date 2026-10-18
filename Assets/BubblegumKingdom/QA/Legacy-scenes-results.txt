@@ -1,0 +1,18 @@
+Candy_Level_01: 0 missing scripts
+Candy_WorldMap: 0 missing scripts
+Candy_Level_02: 0 missing scripts
+Candy_Level_03: 0 missing scripts
+Candy_Level_04: 0 missing scripts
+Candy_Level_05_Boss: 0 missing scripts
+Ice_Level_01: 0 missing scripts
+Ice_Level_02: 0 missing scripts
+Ice_Level_03: 0 missing scripts
+Ice_Level_04: 0 missing scripts
+Ice_Level_05_Boss: 0 missing scripts
+Fire_Level_01: 0 missing scripts
+Fire_Level_02: 0 missing scripts
+Fire_Level_03: 0 missing scripts
+Fire_Level_04: 0 missing scripts
+Fire_Level_05_Boss: 0 missing scripts
+
+Candy_Level_01 Play Mode smoke: PASS; explorationOnly=false; Running=true; two players; original LinkPowers and CoopInteractionDirector active; no console errors. Not a complete replay of the campaign.

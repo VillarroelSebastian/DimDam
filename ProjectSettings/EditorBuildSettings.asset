@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ReinoDeFuego/0_0_Scenes/Fire_Level_05_Boss.unity
     guid: 6b55d7e6e13229b44a3ff85261b9f6fd
+  - enabled: 1
+    path: Assets/BubblegumKingdom/0_0_Scenes/Level_BubblegumKingdom.unity
+    guid: 58f5ef31e9056984380b548cbd787030
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
