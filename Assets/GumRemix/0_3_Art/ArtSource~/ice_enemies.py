@@ -10,13 +10,13 @@ EYE = hexc('#1a1230')
 def pal(base, hi, shade, deep, out, out_l=None):
     return dict(base=hexc(base), hi=hexc(hi), shade=hexc(shade), deep=hexc(deep), out=hexc(out), out_l=hexc(out_l or shade))
 
-NAVY = pal('#34457c', '#7a92d0', '#232f5e', '#161e42', '#0a1028', '#2a3a70')
+NAVY = pal('#2a3868', '#6a82bc', '#1c2650', '#121836', '#080c20', '#222f5c')
 SNOW = pal('#f6fcff', '#ffffff', '#c6def4', '#96b4e0', '#34408a', '#b4cdee')
 ICE = pal('#9be0ff', '#e4faff', '#52a6e8', '#2c64b8', '#14306e', '#3a86d0')
-ORANGE = pal('#ffa634', '#ffd890', '#e8702c', '#a8402c', '#40142a')
+ORANGE = pal('#c88a3c', '#ecc080', '#a05a2c', '#6c301c', '#2a1020')
 FROST = pal('#e2f2ff', '#ffffff', '#a8c8ee', '#7898d0', '#283c80', '#98b8e4')
-CORALR = pal('#ff7a68', '#ffb8a4', '#d8504c', '#982c48', '#3a1030', '#b84448')
-LEAF = pal('#5ad08a', '#b4ffc8', '#2ea06c', '#1c6a6a', '#0c2c40')
+CORALR = pal('#b8503e', '#e09284', '#82343c', '#521e30', '#200c1e', '#923c40')
+LEAF = pal('#6aa090', '#b4d8c4', '#46705e', '#2e4a4a', '#0e1c28')
 WOOD = pal('#a8703c', '#d89c60', '#7a4a2c', '#4e2c24', '#2a1418')
 
 # ====================================================================== PENGUIN SQUIRE
@@ -129,15 +129,15 @@ def draw_snowman(dy=0, sq=0, lean=0, head=True, arms=((-9, 4), (9, 4)), eyes='op
     part(cv, low, SNOW)
     mid = ell(bx + lean * .2, 35 + dy, 10.4 - sq * .2, 9.4 + sq * .2)
     part(cv, mid, SNOW)
-    patch(cv, int(bx) - 10, 46 + int(dy * .5) + sq, 8, 6, hexc('#e8625c')); patch(cv, int(bx) + 3, 52 + int(dy * .5) + sq, 7, 5, hexc('#f0c85a'))
-    patch(cv, int(bx) + 1, 30 + dy, 6, 6, hexc('#5ac88a'))
+    patch(cv, int(bx) - 10, 46 + int(dy * .5) + sq, 8, 6, hexc('#6a4a6c')); patch(cv, int(bx) + 3, 52 + int(dy * .5) + sq, 7, 5, hexc('#4a5a7c'))
+    patch(cv, int(bx) + 1, 30 + dy, 6, 6, hexc('#3a4a5c'))
     cv.put({(int(bx) - 6 + k, 40 + dy + (k % 2)) for k in range(0, 10, 2)}, hexc('#3a2a44'))
     for by_ in (34 + dy, 39 + dy): cv.put(ell(bx - 2, by_, 1.5, 1.5), hexc('#2a2a44'))
     if head:
         hx, hy = bx + hdx, 20 + dy + hdy - head_lift
         hd = ell(hx, hy, 9.6, 8.8)
         part(cv, hd, SNOW)
-        patch(cv, int(hx) - 9, int(hy) - 6, 6, 5, hexc('#6a9aef'))
+        patch(cv, int(hx) - 9, int(hy) - 6, 6, 5, hexc('#3a4a6c'))
         if eyes == 'open':
             cv.put(ell(hx - 3.2, hy - 1, 2.5, 2.5), hexc('#2a2a44')); cv.put(ell(hx + 4.4, hy - 1.6, 1.8, 1.8), hexc('#2a2a44'))
             cv.put({(int(hx) - 4, int(hy) - 3), (int(hx) - 3, int(hy) - 3), (int(hx) + 4, int(hy) - 3)}, WHITE)
@@ -147,15 +147,17 @@ def draw_snowman(dy=0, sq=0, lean=0, head=True, arms=((-9, 4), (9, 4)), eyes='op
         else:
             for ex in (hx - 3, hx + 4): cv.put({(int(ex) - 1, int(hy) - 1), (int(ex), int(hy) - 1), (int(ex) + 1, int(hy) - 1)}, hexc('#2a2a44'))
         nose = poly([(hx + 1, hy + 0.5), (hx + 13, hy + 3.5), (hx + 1, hy + 6)])
-        part(cv, nose, pal('#ff8a30', '#ffc890', '#e0602a', '#a03c2c', '#40142a'), hi=False, k=1)
-        if mouth == 'smile':
-            cv.put({(int(hx) - 6 + k, int(hy) + 7 + (0 if 1 < k < 8 else -1)) for k in range(10)}, hexc('#2a2a44'))
+        part(cv, nose, pal('#c8803a', '#e8b878', '#a05a2c', '#6c301c', '#2a1020'), hi=False, k=1)
+        if mouth == 'smile':       # a flat, downturned line of coal: the mournful snowman
+            cv.put({(int(hx) - 6 + k, int(hy) + 7 + (0 if 1 < k < 8 else 1)) for k in range(10)}, hexc('#2a2a44'))
         elif mouth == 'o':
             cv.put(ell(hx + 1, hy + 7, 2.2, 2.0), hexc('#2a2a44'))
-        hat = poly([(hx - 6, hy - 7), (hx + 5, hy - 8), (hx + 1, hy - 17)])
-        part(cv, hat, pal('#e8625c', '#ff9a8a', '#b8403c', '#7a2c3c', '#2a1030'), hi=False, k=1)
-        cv.put({(int(hx) - 1, int(hy) - 11), (int(hx), int(hy) - 10), (int(hx) + 1, int(hy) - 12)}, hexc('#f0c85a'))
-        cv.put(ell(hx + 1, hy - 17.5, 1.8, 1.8), WHITE)       # pompom
+        brim = ell(hx, hy - 8, 10.5, 2.4)                      # a battered black top hat, tilted and dented
+        part(cv, brim, pal('#24243c', '#5a5a80', '#14142a', '#0a0a1a', '#04040c'), hi=False, k=1)
+        crown_ = poly([(hx - 6, hy - 8), (hx + 6, hy - 8), (hx + 5, hy - 19), (hx + 1, hy - 20), (hx - 5, hy - 18)])
+        part(cv, crown_, pal('#24243c', '#5a5a80', '#14142a', '#0a0a1a', '#04040c'), hi=False, k=1)
+        cv.put({(int(hx) - 5 + k, int(hy) - 10) for k in range(10)}, hexc('#5a3a5c'))         # a frayed ribbon
+        cv.put({(int(hx) + 3, int(hy) - 16), (int(hx) + 2, int(hy) - 15)}, hexc('#7a7aa0'))
     else:
         cv.put(ell(bx, 27 + dy, 6.5, 2.4), SNOW['shade'])
     return cv
@@ -264,7 +266,7 @@ OWL_ANIMS = dict(fly=(14, True), dive=(12, False), hurt=(10, False))
 # ====================================================================== BOREAL JELLYFISH
 JW, JH = 52, 72
 
-BANDS = [hexc('#6af0d0'), hexc('#5cc4ff'), hexc('#8a9cff'), hexc('#b074f0')]
+BANDS = [hexc('#3ab8a0'), hexc('#3a86c8'), hexc('#5a62c0'), hexc('#8a4ab8')]
 
 def aurora_shade(x, y, y0, y1, a=None, b=None):
     """Four colour bands (teal > sky > periwinkle > violet), blended with a Bayer dither zone at each edge."""

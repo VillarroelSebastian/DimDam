@@ -29,15 +29,20 @@ Se juega desde el menú (**MUNDO: HIELO**) o continuando tras vencer al la Princ
 - **Cangrejo Iglú:** su caparazón absorbe cada segundo impacto; se mete en la cúpula y rueda, y tras la embestida queda expuesto.
 - **Semilla de Nieve:** pequeña y frágil, siempre salta hacia ti.
 
-## Monarca del Deshielo
+## El Rey de Hielo
 Criatura de nieve con un **sol cautivo en el pecho**: solo el sol recibe daño; el cuerpo detiene el chicle (las bolas de nieve sí rompen el caparazón). Tres formas, 520 de vida.
 1. **Anfitrión en sillón rodante:** granizo con un pasillo libre, carga con el sillón (esquívala con salto desde una plataforma o dash), volea de escarchas.
 2. **Gigante agrietado:** pisotón con ondas de hielo, pilares que emergen de grietas anunciadas, invoca pingüinos y semillas.
 3. **Tormenta hueca con corona:** anillos de escarchas con hueco, abanico giratorio y ventisca con lluvia de cristales.
 Las transformaciones limpian los proyectiles; durante ellas es invulnerable. La posición del sol sale de la propia animación (un punto por fotograma), así que el punto débil sigue al dibujo.
 
-## Monarca del Deshielo: ventana de ataque
-La coraza de nieve detiene el chicle. Tras cada ataque la coraza se agrieta y brilla en dorado durante unos 4-5 s (`IceBoss.openT`): en ese momento el chicle llega al sol y le hace dano. Vida: 80 / 80 / 70 por forma.
+## El Rey de Hielo: ventana de ataque
+La armadura de hielo detiene el chicle. Tras cada ataque la coraza se agrieta y brilla en dorado durante unos 4-5 s (`IceBoss.openT`): en ese momento el chicle llega al sol y le hace dano. Vida: 80 / 80 / 70 por forma.
 
 ## Nota para Unity (Enter Play Mode Options)
 Si el proyecto tiene desactivado el "Reload Domain", los estaticos sobreviven entre ejecuciones. Cada clase estatica del juego (`Art`, `Sfx`, `GameCtl`, `Levels`) se reinicia con `RuntimeInitializeOnLoadMethod(SubsystemRegistration)`; sin eso la pantalla quedaba en negro al volver a darle Play.
+
+## Rediseño sombrío del Reino de Hielo
+- **Jefe: El Rey de Hielo** (`0_3_Art/ArtSource~/ice_king.py`). Forma 1: un rey demacrado en su trono de hierro (corona de hielo, barba de carámbanos, ojos hundidos con luz fría) que guarda el sol cautivo en el pecho dentro de una jaula de hielo. Forma 2: el gigante quebrado (trono destruido, corona rota, grietas que filtran luz, garra de hielo). Forma 3: la tormenta hueca (armadura vacía y corona espectral dentro de una ventisca). Mismas animaciones, tiempos y anclajes del sol que el antiguo Monarca.
+- **Mundo**: cielos sin luna (gris, ciruela, azul casi negro) y todos los fondos, plataformas y suelos pasan por un grading frío y apagado (`grade.py`). Árboles muertos y faroles fríos reemplazan parte de los pinos. Enemigos con paletas apagadas; el muñeco de nieve ahora lleva un sombrero de copa roto y un gesto triste.
+- **Música**: Aldea Abandonada (vals de caja de música en Mi menor), Jardines y Cristales más lentos y con campanas, y el tema del jefe como marcha fúnebre en Do menor que se acelera en cada forma (104, 124 y 144 bpm).

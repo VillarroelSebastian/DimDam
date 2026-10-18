@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GumRemix
 {
     /// <summary>
-    /// Monarca del Deshielo. A snow creature with a captive sun in his chest: only the sun can be hurt, the snowy shell stops gum.
+    /// El Rey de Hielo. A gaunt king in frozen armour with a captive sun in his chest: only the sun can be hurt, the armour stops gum.
     /// Three forms (host in a rolling armchair, cracked giant, hollow storm). Attacks are small coroutines.
     /// </summary>
     public class IceBoss : BossBase
@@ -13,7 +13,7 @@ namespace GumRemix
         public const int Phase1Hp = 100, Phase2Hp = 100, Phase3Hp = 90;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
-        public override string DisplayName { get { return "MONARCA DEL DESHIELO"; } }
+        public override string DisplayName { get { return "EL REY DE HIELO"; } }
         public override int[] PhaseFloors { get { return new[] { Phase2Hp + Phase3Hp, Phase3Hp }; } }
 
         GameObject go; SpriteRenderer sr; Anim anim; Sheet sheet;
@@ -88,7 +88,7 @@ namespace GumRemix
             return dg;
         }
 
-        public override void Activate() { active = true; idleTimer = 2.4f; openT = 4.5f; G.ShowHint("SU CORAZA SE ABRE: DISPARA AL SOL!", 3f); }
+        public override void Activate() { active = true; idleTimer = 2.4f; openT = 4.5f; G.ShowHint("SU ARMADURA SE ABRE: DISPARA AL SOL!", 3f); }
 
         // ------------------------------------------------------------------------------------------ damage
         public override void Damage(int dmg, Player by, bool addMeter = true)

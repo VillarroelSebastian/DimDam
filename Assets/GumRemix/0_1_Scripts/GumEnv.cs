@@ -289,7 +289,7 @@ namespace GumRemix
                 // ------------------------------------------------------------------ ICE KINGDOM
                 case 5:   // Lago de los Susurros
                     Prop(r, new PropDef("aurora", 0f, 9.1f, -97, 1f));
-                    Prop(r, new PropDef("pine", -6.5f, 1.0f, -73, 1f)); Prop(r, new PropDef("pine_b", 6.0f, 1.0f, -73, 0.9f)); Prop(r, new PropDef("pine", 1.8f, 1.0f, -74, 0.7f, true));
+                    Prop(r, new PropDef("dead_tree", -6.5f, 1.0f, -73, 1f)); Prop(r, new PropDef("pine_b", 6.0f, 1.0f, -73, 0.9f)); Prop(r, new PropDef("dead_tree_b", 1.8f, 1.0f, -74, 0.8f, true)); Prop(r, new PropDef("ice_lamp", -2.8f, 1.0f, -72, 1f));
                     Prop(r, new PropDef("wisp", -3.0f, 3.4f, -60, 1f), true); Prop(r, new PropDef("wisp", 3.6f, 4.8f, -60, 1.2f), true); Prop(r, new PropDef("wisp", 0.4f, 6.6f, -60, 0.9f), true);
                     break;
                 case 6:   // Aldea de Iglus Torcidos
@@ -305,7 +305,7 @@ namespace GumRemix
                 case 8:   // Jardines Congelados
                     Prop(r, new PropDef("owlstatue", -6.5f, 1.0f, -71, 1f)); Prop(r, new PropDef("owlstatue", 6.5f, 1.0f, -71, 1f, true));
                     Prop(r, new PropDef("gardenlamp", -3.7f, 1.0f, -70, 1f)); Prop(r, new PropDef("gardenlamp", 3.7f, 1.0f, -70, 1.3f));
-                    Prop(r, new PropDef("pine", -1.6f, 1.0f, -74, 0.6f)); Prop(r, new PropDef("pine_b", 1.7f, 1.0f, -74, 0.6f, true));
+                    Prop(r, new PropDef("dead_tree", -1.6f, 1.0f, -74, 0.7f)); Prop(r, new PropDef("dead_tree_b", 1.7f, 1.0f, -74, 0.7f, true)); Prop(r, new PropDef("ice_lamp", 5.2f, 1.0f, -72, 1f));
                     break;
                 default:  // Palacio de la Ultima Nevada
                     Prop(r, new PropDef("royalbanner", -6.9f, 9.0f, -68, 1f)); Prop(r, new PropDef("royalbanner", 0f, 9.0f, -68, 0.9f)); Prop(r, new PropDef("royalbanner", 6.9f, 9.0f, -68, 1.1f, true));

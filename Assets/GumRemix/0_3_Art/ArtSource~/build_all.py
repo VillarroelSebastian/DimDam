@@ -7,6 +7,8 @@ import heroes, enemies, fx, boss, env_bg, env_props
 import ice_enemies as ie, ice_fx, ice_boss, ice_env, ice_props
 import armor
 import env_gothic
+import ice_king
+from grade import grade
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.normpath(os.path.join(HERE, '..', 'Resources', 'GumRemix'))
@@ -22,6 +24,8 @@ for root, dirs, files in os.walk(OUT):
 
 manifest = []
 FOLDER = ''
+GRADE = None          # per-folder colour grade (dict for grade.grade) and the sheets that keep their own colours
+GRADE_SKIP = ()
 
 def folder(name):
     global FOLDER
@@ -38,6 +42,8 @@ def save_png(name, im):
 
 def register(name, frames, cw, ch, cols, pivot=(0.5, 0.0), anims=None, extra=None, white=False, ppu=40):
     ims = [f.im if isinstance(f, Canvas) else f for f in frames]
+    if GRADE is not None and not name.startswith(GRADE_SKIP):
+        ims = [grade(im, **GRADE) for im in ims]
     sh = sheet(ims, cols, cw, ch)
     save_png(name, sh)
     rel = ('GumRemix/' + FOLDER + '/' if FOLDER else 'GumRemix/') + name
@@ -114,6 +120,7 @@ register('ball_cannon', bf, enemies.GW, enemies.GH, 9, (0.5, 7 / enemies.GH), ba
 
 # =============================================================================================== ICE ENEMIES
 folder('Enemies/Ice')
+GRADE = dict(dark=.72, curve=.30, sat=.62, tint=(-3, 2, 10)); GRADE_SKIP = ('ball_', 'snowhead')
 def reg_creature(name, fam, anims, pivot=None, cols=10, inner=None):
     fr, an = seq_anims(fam, anims)
     cw, ch = fr[0].w, fr[0].h
@@ -138,10 +145,11 @@ register('snowhead', ie.snow_head_frames(8), 28, 28, 8, (0.5, 0.5), [('spin', 0,
 
 # =============================================================================================== BOSSES
 folder('Bosses')
+GRADE = None
 bfr, border = boss.build_boss()
 register('boss', bfr, boss.BW, boss.BH, 10, (0.5, boss.PIVOT_Y), anims_from(border, boss.BOSS_ANIMS), white=True)
 register('boss_hat', boss.hat_frames(8), 48, 48, 8, (0.5, 0.5), [('spin', 0, 8, 14, True)])
-ifr, iorder, ianch = ice_boss.build_boss()
+ifr, iorder, ianch = ice_king.build_boss()
 anch = []
 for a in ianch: anch += [float(a[0]), float(a[1])]
 register('icemonarch', ifr, ice_boss.CW, ice_boss.CHH, 10, (0.5, feet_pivot(ifr[0])), anims_from(iorder, ice_boss.ANIMS), dict(anchors=anch), white=True)
@@ -229,6 +237,7 @@ register('drip_splash', drs, 16, 8, 3, (0.5, 0.0), [('splash', 0, 3, 14, False)]
 
 # =============================================================================================== ICE WORLD
 folder('World/Ice')
+GRADE = dict(dark=.46, curve=.28, sat=.60, tint=(-4, 2, 14)); GRADE_SKIP = ('sky_', 'wisp', 'glowcrystal_', 'spark_ice', 'snowflakes', 'gardenlamp', 'chandelier', 'dead_tree', 'ice_lamp')
 for k, fn in enumerate(ice_env.THEMES):
     t = 5 + k
     sky, far, mid = fn()
@@ -244,6 +253,9 @@ for k, fn in enumerate(ice_env.THEMES):
 IP = ice_props
 aur = IP.aurora(8)
 register('aurora', aur, 640, 150, 2, (0.5, 1.0), [('loop', 0, 8, 3, True)])
+reg_loop('dead_tree', env_gothic.dead_tree(8, 0), 6)
+reg_loop('dead_tree_b', env_gothic.dead_tree(8, 3), 6)
+reg_loop('ice_lamp', env_gothic.ice_lamp(6), 7)
 reg_loop('pine', IP.pine_tree(8, 0), 6, pad=(6, 4, 6, 0))
 reg_loop('pine_b', IP.pine_tree(8, 2), 6, pad=(6, 4, 6, 0))
 reg_loop('wisp', IP.wisp(6), 6, (0.5, 0.5), pad=(4, 2, 4, 2))
@@ -261,6 +273,7 @@ register('snowflakes', IP.snow_sheet(), 8, 8, 8, (0.5, 0.5))
 register('spark_ice', IP.spark_ice(4), 12, 12, 4, (0.5, 0.5), [('spark', 0, 4, 12, False)])
 
 folder('')
+GRADE = None
 json.dump(dict(sheets=manifest), open(os.path.join(OUT, 'manifest.json'), 'w'), indent=1)
 open(os.path.join(OUT, 'manifest.json.meta'), 'w', newline='\n').write(
     'fileFormatVersion: 2\nguid: %s\nTextScriptImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n' % guid_for('manifest.json'))

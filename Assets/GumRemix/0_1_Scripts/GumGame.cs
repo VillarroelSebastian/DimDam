@@ -437,7 +437,7 @@ namespace GumRemix
                 Line(t, y, "TEJAS QUEBRADIZAS Y CAMAS ELASTICAS", "special_5", 3); y -= d;
                 Line(t, y, "VENTISCA: BUSCA UN TECHO PARA RESGUARDARTE", "gust", -1, "loop"); y -= d;
                 Line(t, y, "EL PINGUINO BLOQUEA: DISPARALE POR DETRAS", "penguin", -1, "idle", 0.42f); y -= d;
-                PText.Create(t, new Vector3(0, -2.9f, 0), "TRAS CADA ATAQUE SU CORAZA BRILLA: DISPARA AL SOL", 1, new Color(1f, .85f, .5f), true, 265);
+                PText.Create(t, new Vector3(0, -2.9f, 0), "TRAS CADA ATAQUE SU ARMADURA BRILLA: DISPARA AL SOL", 1, new Color(1f, .85f, .5f), true, 265);
             }
             PText.Create(t, new Vector3(0, -3.6f, 0), "A D PAGINA " + (helpPage + 1) + "/4     ENTER SIGUIENTE     ESC VOLVER", 1, new Color(.9f, .9f, 1f), true, 265);
         }

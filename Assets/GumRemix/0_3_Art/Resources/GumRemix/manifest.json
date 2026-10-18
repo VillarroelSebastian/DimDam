@@ -7009,6 +7009,66 @@
    ]
   },
   {
+   "name": "dead_tree",
+   "file": "GumRemix/World/Ice/dead_tree",
+   "cw": 64,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "dead_tree_b",
+   "file": "GumRemix/World/Ice/dead_tree_b",
+   "cw": 64,
+   "ch": 120,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "ice_lamp",
+   "file": "GumRemix/World/Ice/ice_lamp",
+   "cw": 24,
+   "ch": 64,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
    "name": "pine",
    "file": "GumRemix/World/Ice/pine",
    "cw": 76,

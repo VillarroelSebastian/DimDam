@@ -33,7 +33,7 @@ def snow_dots(cv, rng, n, y0, y1, col=WHITE):
 def theme_lake():
     """T5 Lago de los Susurros: blue dusk with a faint aurora wash, snowy peaks, dark pines."""
     rng = random.Random(51)
-    sky = banded_sky([(50, hexc('#16204e')), (100, hexc('#243a7a')), (150, hexc('#3a5ca8')), (200, hexc('#6a8ed0')), (245, hexc('#a8c4ec')), (360, hexc('#dbe9fb'))], zone=14)
+    sky = banded_sky([(50, hexc('#070a1c')), (100, hexc('#0e1632')), (150, hexc('#182848')), (200, hexc('#2a4468')), (245, hexc('#4a6888')), (360, hexc('#7c94ac'))], zone=14)
     for _ in range(70):   # stars in the dark top
         x, y = rng.randrange(SW), rng.randrange(0, 110)
         sky.put([(x, y)], WHITE if rng.random() < .5 else hexc('#a8c4ec'))
@@ -54,7 +54,7 @@ def theme_lake():
 def theme_village():
     """T6 Aldea de Iglus Torcidos: pale violet dawn, crooked igloos on snowy hills."""
     rng = random.Random(52)
-    sky = banded_sky([(55, hexc('#7a78c8')), (105, hexc('#9c94d8')), (155, hexc('#c4b0e4')), (205, hexc('#e8c8e8')), (250, hexc('#ffdcd8')), (360, hexc('#fff0e8'))], zone=12)
+    sky = banded_sky([(55, hexc('#161430')), (105, hexc('#241e48')), (155, hexc('#3c3060')), (205, hexc('#5a4a78')), (250, hexc('#7c6a88')), (360, hexc('#9a8a98'))], zone=12)
     far = peaks(SW, 220, 118, [(44, 2, 1.1), (26, 6, .6), (10, 13, 2.2)], hexc('#b8aee0'), hexc('#ffffff'), hexc('#9a90d0'), 55, sharp=1.0)
     mid = hills(SW, 230, 100, [(16, 3, .3), (8, 8, 1.4)], hexc('#e4e0fa'), hexc('#ffffff'), hexc('#c0b8ec'), 80)
     # little crooked igloos on the mid hills (static silhouettes; animated ones are props)
@@ -71,7 +71,7 @@ def theme_village():
 def theme_crystal():
     """T7 Cristales Cantores: dark teal cave full of crystal spires."""
     rng = random.Random(53)
-    sky = banded_sky([(60, hexc('#0a1a3a')), (120, hexc('#0e2a54')), (180, hexc('#143c6a')), (240, hexc('#1a5080')), (360, hexc('#226090'))], zone=16)
+    sky = banded_sky([(60, hexc('#050c20')), (120, hexc('#0a1a3a')), (180, hexc('#0e2a50')), (240, hexc('#143a62')), (360, hexc('#1a4870'))], zone=16)
     far = Canvas(SW, 260)
     for x in range(0, SW, 1):
         v = 0
@@ -101,7 +101,7 @@ def theme_crystal():
 def theme_garden():
     """T8 Jardines Congelados: green-grey twilight, frozen hedges and statues."""
     rng = random.Random(54)
-    sky = banded_sky([(60, hexc('#3a5c78')), (110, hexc('#5a8098')), (160, hexc('#86a8b8')), (210, hexc('#b4cdd0')), (260, hexc('#d8e8e4')), (360, hexc('#eef6f2'))], zone=12)
+    sky = banded_sky([(60, hexc('#1c2432')), (110, hexc('#2c3a4c')), (160, hexc('#40566a')), (210, hexc('#5a7084')), (260, hexc('#7488a0')), (360, hexc('#94a4b4'))], zone=12)
     far = peaks(SW, 220, 122, [(34, 2, .9), (20, 6, .1), (8, 14, 1.9)], hexc('#8cb0b0'), hexc('#f0fbff'), hexc('#70989c'), 50, sharp=.9)
     mid = Canvas(SW, 230)
     # frozen hedge wall with arches (periodic)
@@ -118,14 +118,14 @@ def theme_garden():
 def theme_palace():
     """T9 Palacio de la Ultima Nevada: royal-blue throne hall with ice pillars."""
     rng = random.Random(55)
-    sky = banded_sky([(70, hexc('#0c1236')), (140, hexc('#141c4e')), (210, hexc('#1e2a68')), (360, hexc('#2a3c84'))], zone=14)
+    sky = banded_sky([(70, hexc('#04061a')), (140, hexc('#080c28')), (210, hexc('#0e1438')), (360, hexc('#161e48'))], zone=14)
     for _ in range(40):
         x, y = rng.randrange(SW), rng.randrange(0, 160); sky.put([(x, y)], hexc('#8ab4ff') if rng.random() < .5 else WHITE)
     # tall arched windows in the back wall
     for wx in range(20, SW, 96):
         arch = ell(wx + 28, 80, 28, 36) | rect(wx, 80, wx + 56, 220)
-        sky.put(outline_of(arch), hexc('#0a0e2c')); sky.put(arch, hexc('#3a5ccc'))
-        sky.put({p for p in arch if dither(p[0], p[1], (p[1] - 44) / 180.0)}, hexc('#6a8ce8'))
+        sky.put(outline_of(arch), hexc('#0a0e2c')); sky.put(arch, hexc('#1a2866'))
+        sky.put({p for p in arch if dither(p[0], p[1], (p[1] - 44) / 180.0)}, hexc('#2a3a84'))
         sky.put(rect(wx + 26, 44, wx + 30, 220), hexc('#0a0e2c')); sky.put(rect(wx, 130, wx + 56, 133), hexc('#0a0e2c'))
     far = Canvas(SW, SH)
     for px_ in range(48, SW, 160):      # pillars

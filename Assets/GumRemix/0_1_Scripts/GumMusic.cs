@@ -57,8 +57,8 @@ namespace GumRemix
                 case Track.Cristales: return Cristales();
                 case Track.Jardines: return Jardines();
                 case Track.PalacioBoss1: return Palacio();
-                case Track.PalacioBoss2: { var s = Palacio(); s.name = "Palacio II"; s.transpose = 2; s.bpm = 138f; s.drums = "gallop"; s.harmony = true; return s; }
-                case Track.PalacioBoss3: { var s = Palacio(); s.name = "Palacio III"; s.transpose = 3; s.bpm = 156f; s.drums = "gallop"; s.harmony = true; s.echo = 0.3f; return s; }
+                case Track.PalacioBoss2: { var s = Palacio(); s.name = "Palacio II"; s.transpose = 2; s.bpm = 124f; s.drums = "march"; s.harmony = true; s.echo = 0.25f; return s; }
+                case Track.PalacioBoss3: { var s = Palacio(); s.name = "Palacio III"; s.transpose = 3; s.bpm = 144f; s.drums = "gallop"; s.harmony = true; s.echo = 0.32f; return s; }
                 case Track.Victory: return Victory();
                 case Track.WorldDone: return WorldDone();
                 default: return GameOver();
@@ -155,18 +155,18 @@ namespace GumRemix
 
         static Song Aldea()
         {
-            var s = S("Aldea de Iglus Torcidos", 112f, 0f, "musicbox", "waltz", "waltz", "waltz", false, 0.15f);
-            s.beats = 3; s.harmony = false;
-            s.Add("A", "G | Em | C | D | G | Em | Am D | G",
-                "G5:4 B5:4 D6:4 | E6:4 D6:4 B5:4 | C6:4 E6:4 G6:4 | F#6:4 E6:2 D6:2 A5:4 | B5:2 D6:2 G6:4 D6:4 | E6:4 G6:4 B6:4 | A5:4 C6:2 D6:2 F#6:2 A6:2 | G6:8 r:4");
-            s.Add("B", "C | G | Am | D | C | G | Am D | G",
-                "E6:4 G6:4 C7:4 | D6:4 B5:4 G5:4 | A5:4 C6:4 E6:4 | D6:4 F#6:4 A6:4 | G6:4 E6:4 C6:4 | B5:4 D6:4 G6:4 | C6:4 A5:2 F#5:2 A5:2 D6:2 | B5:4 D6:4 G6:4");
+            var s = S("Aldea Abandonada", 92f, 0f, "musicbox", "waltz", "waltz", "waltz", true, 0.35f);
+            s.beats = 3; s.harmony = false; s.targetRms = 0.12f;
+            s.Add("A", "Em | Em | C | B7 | Em | Am | B7 | Em",
+                "E5:4 G5:4 B5:4 | E6:6 D6:2 B5:4 | G5:4 C6:4 E6:4 | F#6:4 D#6:4 B5:4 | G5:4 B5:4 E6:4 | C6:4 A5:4 E5:4 | D#6:4 F#6:4 B5:4 | E6:8 r:4");
+            s.Add("B", "C | G | Am | B7 | C | G | B7 | Em",
+                "E6:4 C6:4 G5:4 | D6:4 B5:4 G5:4 | A5:4 C6:4 E6:4 | F#6:4 D#6:4 B5:4 | G6:4 E6:4 C6:4 | B5:4 D6:4 G6:4 | A6:4 F#6:4 D#6:4 | E6:8 B5:4");
             return s;
         }
 
         static Song Cristales()
         {
-            var s = S("Cristales Cantores", 96f, 0f, "bell", "half", "pulse", "arp8", true, 0.4f);
+            var s = S("Cristales Cantores", 88f, 0f, "bell", "half", "pulse", "arp8", true, 0.4f);
             s.compInst = "pluck";
             s.Add("A", "Em | C | G | D | Em | C | Am B7 | Em",
                 "B5:2 E6:2 G6:4 E6:2 B5:2 G5:4 | C6:2 E6:2 G6:4 E6:2 C6:2 G5:4 | D6:2 G6:2 B6:4 G6:2 D6:2 B5:4 | A5:2 D6:2 F#6:4 D6:2 A5:2 F#5:4 | " +
@@ -179,7 +179,7 @@ namespace GumRemix
 
         static Song Jardines()
         {
-            var s = S("Jardines Congelados", 108f, 0f, "pulse", "bounce", "pulse", "offbeat", true, 0.25f);
+            var s = S("Jardines Congelados", 92f, 0f, "bell", "half", "pulse", "arp8", true, 0.3f); s.compInst = "pluck";
             s.Add("A", "Am | F | C | G | Am | F | G | Am",
                 "A5:2 C6:2 E6:4 C6:2 A5:2 E5:4 | F5:2 A5:2 C6:4 A5:2 F5:2 C5:4 | E5:2 G5:2 C6:4 G5:2 E5:2 C5:4 | D5:2 G5:2 B5:4 D6:4 B5:4 | " +
                 "C6:2 E6:2 A6:4 E6:2 C6:2 A5:4 | A5:2 C6:2 F6:4 C6:2 A5:2 F5:4 | B5:2 D6:2 G6:4 D6:2 B5:2 G5:4 | A5:8 r:4 E5:2 A5:2");
@@ -191,7 +191,7 @@ namespace GumRemix
 
         static Song Palacio()
         {
-            var s = S("Palacio de la Ultima Nevada", 120f, 0f, "trumpet", "march", "pulse", "none", true, 0f);
+            var s = S("Palacio de la Ultima Nevada", 104f, 0f, "trumpet", "half", "pulse", "none", true, 0.2f);
             s.Add("A", "Cm | Cm | Ab | Bb | Cm | Fm | G | Cm",
                 "C5:6 Eb5:2 G5:4 C6:4 | Bb5:4 G5:4 Eb5:8 | Ab5:6 C6:2 Eb6:4 C6:4 | D6:4 Bb5:4 F5:8 | " +
                 "C6:4 Eb6:4 G6:4 Eb6:4 | F6:4 Ab5:4 C6:4 Ab5:4 | B5:4 D6:4 G6:4 F6:4 | Eb6:8 C6:8");

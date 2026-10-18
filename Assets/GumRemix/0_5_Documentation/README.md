@@ -60,7 +60,7 @@ Regenerar todo: `python 0_3_Art/ArtSource~/build_all.py`.
 ## QA
 `0_6_QA/GumRemixPlayTests.cs` (PlayMode): un bot recorre los dos mundos completos (títulos, 10 niveles, ascensos, ambos jefes, K.O.,
 resultados y game over); pruebas dirigidas demuestran con cifras el deslizamiento en hielo, la congelación y el rescate, las plataformas
-quebradizas/móviles/elásticas, los cristales y el puente, la ventisca con refugios, el escudo del pingüino y el punto débil del Monarca.
+quebradizas/móviles/elásticas, los cristales y el puente, la ventisca con refugios, el escudo del pingüino y el punto débil del Rey de Hielo.
 Con la variable de entorno `GUMREMIX_SHOTS` guarda capturas de cada paso. No certifica el balance con jugadores humanos.
 
 ## Juntos es mejor (Better Together)
@@ -89,7 +89,7 @@ Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (la Princesa Chicle
 - **El lazo siempre une a los heroes** (horizontal, diagonal o vertical, largo maximo 9.5 u; mas alla los jala). Daña lo que cruza.
 - **Acorazados** (oso de acero en Chicle, muneco de hierro en Hielo; arte generado con `0_3_Art/ArtSource~/armor.py`): el disparo rebota. Hay que dejar el lazo cruzandolos ~0.65 s para encapsularlos en bolita; hay que rodearlos y usar el plataformeo para quedar a cada lado.
 - **Guardia de jefe**: una vez por forma, al perder ~40 % de la vida de esa forma, el jefe brilla y el disparo rebota; solo el lazo lo daña (hasta quitarle ~22 % de la forma o 20 s).
-- Dificultad: hasta 4-5 enemigos a la vez, jefes con mas vida (Chiclon 170/150/125, Monarca 100/100/90) y menos pausa entre ataques.
+- Dificultad: hasta 4-5 enemigos a la vez, jefes con mas vida (Chiclon 170/150/125, Rey de Hielo 100/100/90) y menos pausa entre ataques.
 - Musica: fundidos de potencia constante (1.8 s entre niveles, 3.2 s entre formas de jefe).
 
 ## Rediseño "dulce gótico" del Reino de Chicle

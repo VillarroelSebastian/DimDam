@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GumRemix
 {
-    /// <summary>What the game needs from any boss, so Gran Chiclon and the Monarca del Deshielo plug into the same flow.</summary>
+    /// <summary>What the game needs from any boss, so the Princesa Chicle and the Rey de Hielo plug into the same flow.</summary>
     public abstract class BossBase
     {
         public bool shotProof, glow; public float lazoT, lazoTaken; public int lazoTarget;      // guard phase: only the string hurts
@@ -18,7 +18,7 @@ namespace GumRemix
         public virtual bool Hittable { get { return active && !trans && !dying && !dead; } }
         public virtual bool Dangerous { get { return active && !trans && !dead; } }
         public abstract Rect[] Hurtboxes();
-        /// <summary>Parts that stop gum without being hurt (the Monarca's snowy shell).</summary>
+        /// <summary>Parts that stop gum without being hurt (the Ice King's armour).</summary>
         public virtual Rect[] BlockBoxes() { return None; }
         /// <summary>Where a rolling snowball counts as a hit.</summary>
         public virtual Rect[] BallBoxes() { return Hurtboxes(); }

@@ -14,6 +14,7 @@ def pal(base, hi, shade, deep, out, out_l=None):
 
 LIC = pal('#2a1838', '#7a5a98', '#1a0e28', '#100818', '#0a0612', '#5a4078')
 GOLD = pal('#f2c14e', '#fff2b0', '#c8892e', '#8a5a22', '#3a1a1a', '#c8892e')
+IRON = pal('#2a2c44', '#5a5e84', '#1c1e30', '#10121e', '#06070e', '#44486c')
 STONE = pal('#4a3a6a', '#7a68a0', '#32264e', '#221a38', '#120c22', '#5a4a80')
 WINE = pal('#7a1838', '#c04068', '#52102c', '#380a20', '#1e0614', '#9a2848')
 
@@ -385,3 +386,52 @@ WALL_PALS = {
     0: (hexc('#7a2a68'), hexc('#c04aa0'), hexc('#4a1a48')),
     4: (hexc('#3a1a40'), hexc('#7a4a80'), hexc('#241028')),
 }
+
+
+# =============================================================================================== ice world: sorrowful props
+def dead_tree(n=8, seed=0):
+    """A leafless frozen tree: twisted bare branches carrying thin snow, with icicles dripping from the twigs."""
+    out = []
+    TRUNK = pal('#2a2e48', '#5a6288', '#1c2038', '#10132a', '#080a18', '#444a70')
+    for i in range(n):
+        cv = Canvas(64, 120)
+        t = i / n * TAU
+        sway = 1.6 * S(t + seed)
+        def tx(y): return 32 + sway * ((112 - y) / 80.0) ** 2 + 2.5 * S(y * .08 + seed)
+        trunk = set()
+        for y in range(114, 36, -2): trunk |= ell(tx(y), y, 3.8 - (114 - y) * .03, 3.4 - (114 - y) * .027)
+        part(cv, trunk, TRUNK, hi=True)
+        rng = random.Random(40 + seed)
+        for k, (by, side, ln) in enumerate(((90, -1, 24), (74, 1, 26), (60, -1, 20), (48, 1, 16), (40, -1, 12))):
+            bx0 = tx(by); lag = sway * .5 * side
+            br = set(); px_, py_ = bx0, by
+            for s_ in range(1, 8):
+                u = s_ / 7.0
+                nx = bx0 + side * ln * u + lag * u; ny = by - 12 * math.sin(u * 2.0) - 5 * u
+                br |= line(px_, py_, nx, ny, 1.9 - u * 1.0)
+                if s_ in (4, 6):                                           # a twig forking off
+                    br |= line(nx, ny, nx + side * 5, ny - 6 - rng.random() * 3, .7)
+                px_, py_ = nx, ny
+            part(cv, br, TRUNK, hi=False)
+            cv.put({(int(x), int(y) - 2) for (x, y) in br if rng.random() < .16 and (x, y - 1) not in br}, hexc('#c8d8f0'))       # snow on top
+            for dx_ in (-2, 3):                                            # icicles hanging from the branch tips
+                cv.put(line(px_ + dx_, py_ + 1, px_ + dx_, py_ + 4 + (i + k + dx_) % 3, .6), hexc('#a8c4e8'))
+        out.append(cv)
+    return out
+
+
+def ice_lamp(n=6):
+    """A cold iron lamp post whose pale flame gutters (pivot at its foot)."""
+    out = []
+    for i in range(n):
+        cv = Canvas(24, 64); t = i / n * TAU
+        part(cv, rect(11, 20, 14, 62), IRON, hi=False)
+        part(cv, ell(12, 62, 7, 2.6), IRON, hi=False)
+        part(cv, rect(7, 12, 18, 21), IRON, hi=False)
+        flick = .5 + .5 * S(t * 2 + 1)
+        _glow(cv, 12, 12, 14, hexc('#2a5a88'), .35 + .15 * flick)
+        part(cv, poly([(8, 12), (17, 12), (15, 3), (10, 3)]), dict(base=hexc('#8ac0e8'), hi=hexc('#e8f8ff'), shade=hexc('#4a88c0'), deep=hexc('#2a5a90'), out=hexc('#0a1230'), out_l=hexc('#4a88c0')), hi=False)
+        cv.put(ell(12.5, 8.5, 2.0 + flick * .6, 3.2 + flick), hexc('#e8fbff'))
+        cv.put(rect(8, 2, 17, 4), IRON['base'])
+        out.append(cv)
+    return out

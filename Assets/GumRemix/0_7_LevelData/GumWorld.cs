@@ -185,7 +185,7 @@ namespace GumRemix
             l[8].parTime = 100; l[8].wind = true; l[8].icicles = true; l[8].hint = "VIENE UNA VENTISCA: PROTEGETE BAJO UN TECHO";
 
             // 5) Palacio de la Ultima Nevada: boss arena (stairs, galleries, a ferry, a high bridge that breaks)
-            l[9] = LG("PALACIO DE LA ULTIMA NEVADA", "EL MONARCA DEL DESHIELO", 9,
+            l[9] = LG("PALACIO DE LA ULTIMA NEVADA", "EL REY DE HIELO", 9,
                 new[] { Ground(-8f, -4f, false), Ground(-4f, 2f, true), Ground(2f, 8f, false) },
                 P(-7.2f, -4.2f, 3.2f), P(-2f, 1.2f, 3.2f), P(-6f, -3f, 5.4f),
                 Moving(-3.5f, -0.5f, 5.4f, 1.8f, 0f, 0.8f), Brittle(-4.5f, -1.5f, 7.5f));
