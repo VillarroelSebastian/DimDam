@@ -1,0 +1,18 @@
+GAME DUO / SECUENCIA NARRATIVA
+
+1 -> Tutorial -> 2 -> 3 -> Neon (portal) -> 4 -> Rey Hielo -> 5
+-> Rescate de pinguinos (rescate completo o fin del tiempo) -> 6 -> 7
+-> Jefe Chicle -> 8 -> the final -> pantalla de campana completada.
+
+Iniciar desde Assets/GameDuo/Scenes/01_Tutorial_Chicle.unity para ver toda la historia.
+Reintentar un capitulo no repite sus videos anteriores; empezar desde el tutorial reproduce el video 1.
+Cada corte usa fundido de 0.4 s, pausa oscura de 1 s y fundido de entrada de 0.4 s.
+Las cargas de escenas son asincronas; el negro permanece hasta que esten listas.
+Los clips se incluyen en builds mediante Resources/GameDuoMovies.asset.
+Si falla un clip, se muestra el error con un boton para continuar.
+El portal vertical se genera al entrar al capitulo Neon y se ilumina al recoger el fragmento.
+Ambos jugadores deben reunirse en el portal para terminar Neon.
+
+Validacion: compilacion C# con referencias locales de Unity completada.
+Verificacion automatica en Play Mode completada: consultar CampaignVerification.txt. Se verifican los cinco capitulos, decodificacion de nueve videos y su orden, enemigos, jefes, portal, rescate, derrota y reinicio. Los videos se adelantan tras decodificar; mecanismos y refugio usan posicionamiento controlado.
+

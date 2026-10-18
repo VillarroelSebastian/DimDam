@@ -1,0 +1,81 @@
+Tutorial factory QA / failures=0
+PASS Two original playable heroes
+PASS Factory environment installed
+PASS Supplied frightened king installed
+PASS Old backdrop and baked characters hidden
+PASS One explanation appears automatically and pauses combat
+PASS Mimo confirms independently; Pipro still has to confirm
+PASS Both confirmations dismiss the only explanation
+PASS Both players move using actual keyboard input
+PASS Both heroes jump high enough to reach throne steps
+PASS Both land safely after jumping
+PASS Both dodge using actual keyboard input
+PASS No movement-gated tutorial panels return
+PASS Tutorial has no door, key or seals
+PASS Image-aligned throne and right staircase colliders installed
+PASS Collider matches painted surface / Suelo del salon
+PASS Collider matches painted surface / Escalon trono inferior
+PASS Collider matches painted surface / Escalon trono medio
+PASS Collider matches painted surface / Escalon trono superior
+PASS Collider matches painted surface / Escalera derecha 1
+PASS Collider matches painted surface / Escalera derecha 2
+PASS Collider matches painted surface / Escalera derecha 3
+PASS Collider matches painted surface / Escalera derecha 4
+PASS Collider matches painted surface / Escalera derecha 5
+PASS Collider matches painted surface / Pedestal izquierdo
+PASS Visible one-way wafer platform / Plataforma este
+PASS Visible one-way wafer platform / Plataforma central alta
+PASS Visible one-way wafer platform / Plataforma oeste
+PASS No solid invisible internal wall / Suelo del salon
+PASS Visible one-way wafer platform / Plataforma este alta
+PASS Visible one-way wafer platform / Plataforma oeste alta
+PASS Five playable floating platforms
+PASS Hero stands on added wafer platform
+PASS Down key drops through added platform
+PASS Hero stands on illustrated staircase / 0
+PASS Hero stands on illustrated staircase / 1
+PASS King changes frightened poses over time
+PASS Energy aura is a narrow ring at hero feet / 1
+PASS Energy aura is a narrow ring at hero feet / 0
+PASS Power readiness adds no blocking explanation
+PASS No decorative lamp objects obscure tutorial
+PASS Bill atlas replaces old art / Walker
+PASS Real beam linecast damages Walker
+PASS Damage flashes red with dedicated hurt expression / Walker
+PASS Bill feet align with physics feet / Walker
+PASS Death progressively disintegrates sprite / Walker
+PASS Ash particles separate on death
+PASS Bill atlas replaces old art / Jumper
+PASS Real beam linecast damages Jumper
+PASS Damage flashes red with dedicated hurt expression / Jumper
+PASS Bill feet align with physics feet / Jumper
+PASS Death progressively disintegrates sprite / Jumper
+PASS Ash particles separate on death
+PASS Bill atlas replaces old art / Walker
+PASS Real beam linecast damages Walker
+PASS Damage flashes red with dedicated hurt expression / Walker
+PASS Bill feet align with physics feet / Walker
+PASS Death progressively disintegrates sprite / Walker
+PASS Ash particles separate on death
+PASS Bill atlas replaces old art / Jumper
+PASS Real beam linecast damages Jumper
+PASS Damage flashes red with dedicated hurt expression / Jumper
+PASS Bill feet align with physics feet / Jumper
+PASS Death progressively disintegrates sprite / Jumper
+PASS Ash particles separate on death
+PASS Bill atlas replaces old art / Walker
+PASS Real beam linecast damages Walker
+PASS Damage flashes red with dedicated hurt expression / Walker
+PASS Bill feet align with physics feet / Walker
+PASS Death progressively disintegrates sprite / Walker
+PASS Ash particles separate on death
+PASS Three waves finished through beam combat; kills=5
+PASS Combat score awarded
+PASS Victory advances to Neon chapter
+PASS Enemies in other arenas also disintegrate
+PASS Disintegrated enemy is cleaned up
+PASS One downed hero keeps cooperative round running
+PASS Partner rescues downed hero through contact
+PASS Both downed heroes trigger defeat
+PASS R restarts tutorial with both heroes restored
+PASS Game View hides audio and light gizmo icons

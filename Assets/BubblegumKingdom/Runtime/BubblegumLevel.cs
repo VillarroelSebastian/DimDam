@@ -24,7 +24,7 @@ public class BubblegumLevel : MonoBehaviour {
  public int FailedRoutes {get;private set;}
  Vector3 gateAHome,gateBHome;float bubbleTime;readonly float[] interacted={-1,-1};
  string notice="";float noticeUntil;
- void Start(){game.BeginExploration();gateAHome=gateA.position;gateBHome=gateB.position;SetGroup(bubbles,false);SetGroup(ascentA,false);SetGroup(ascentB,false);}
+ void Start(){if(!GetComponent<GameDuoMechanisms>())gameObject.AddComponent<GameDuoMechanisms>();game.BeginExploration();gateAHome=gateA.position;gateBHome=gateB.position;SetGroup(bubbles,false);SetGroup(ascentA,false);SetGroup(ascentB,false);}
  static void SetGroup(GameObject[] group,bool on){if(group!=null)foreach(var b in group)if(b)b.SetActive(on);}
  public bool Near(int i,Transform t,float radius=1.4f)=>i>=0&&i<game.players.Length&&t&&!game.players[i].Dead&&Vector2.Distance(game.players[i].transform.position,t.position)<radius;
  bool Reach(int i,Transform target,float radius=1.4f){
@@ -59,7 +59,7 @@ public class BubblegumLevel : MonoBehaviour {
  if(BubblesOn)for(int i=0;i<bubbles.Length;i++)if(Time.time-bubbleTime>i*.35f)bubbles[i].SetActive(true);
  if(BubblesOn&&Checkpoint<3&&BothAbove(28)){Checkpoint=3;Say("Control 3: camara del corazon.");}
  if(!Collected&&BubblesOn&&Near(0,fragment,2)&&Near(1,fragment,2)){Collected=true;PlayerPrefs.SetInt("BubblegumKingdom.FirstFriendshipFragment",1);PlayerPrefs.Save();StartCoroutine(Reward());}
- if(Collected&&!Completed&&Near(0,exit,1.5f)&&Near(1,exit,1.5f)){Completed=true;if(nextScene=="Level_TheNeonCore")nextScene="ReinoNeon";if(Application.CanStreamedLevelBeLoaded(nextScene))SceneManager.LoadScene(nextScene);else Say("Fragmento recuperado. The Neon Core: proxima aventura.",60);}
+ if(Collected&&!Completed&&Near(0,exit,1.5f)&&Near(1,exit,1.5f)){Completed=true;if(GameDuoCampaign.Active)return;if(nextScene=="Level_TheNeonCore")nextScene="ReinoNeon";if(Application.CanStreamedLevelBeLoaded(nextScene))SceneManager.LoadScene(nextScene);else Say("Fragmento recuperado. The Neon Core: proxima aventura.",60);}
  }
  void MoveGate(Transform gate,Vector3 home,bool open){var c=gate.GetComponent<Collider2D>();if(c)c.enabled=!open;gate.position=Vector3.MoveTowards(gate.position,home+Vector3.up*(open?3.5f:0),Time.deltaTime*3);Lamp(gate,open);}
  static void Lamp(Transform t,bool on){var s=t.GetComponent<SpriteRenderer>();if(s)s.color=on?new Color(.58f,.92f,.77f):new Color(.91f,.47f,.69f);}
@@ -72,7 +72,7 @@ public class BubblegumLevel : MonoBehaviour {
  }}
  bool routeAborted;
  IEnumerator Roll(){
- routeAborted=false;Say("Mentita en marcha: Pipo cambia el desvio; Mimo coloca el bloque.");
+ routeAborted=false;Say("Mentita en marcha: Pipro cambia el desvio; Mimo coloca el bloque.");
  yield return Travel(new Vector2(0,11.2f),2);
  bool success=!routeAborted&&RouteUp&&OnMark(routeBlock,routeMark);
  // The candy rolls on a separate upper rail, above the guide block and players.
@@ -104,12 +104,12 @@ public class BubblegumLevel : MonoBehaviour {
  }
  void OnGUI(){
  GUI.depth=0;PixelFont.Begin();PixelFont.Panel(new Rect(2,2,636,36),PixelFont.Ink,PixelFont.Pink);
- PixelFont.Text(12,8,"BUBBLEGUM KINGDOM / TORRE DE MENTA",1,PixelFont.Cream);
- string objective=Collected?"CORAZON RECUPERADO / REUNANSE EN LA SALIDA":!DoorAOpen?"A / AUXILIAR + PALANCA + EMPUJAR MENTITA":!DoorBOpen?"B / DESVIO VERDE + BLOQUE EN LA MARCA":!BubblesOn?"C / ESCALON EN MARCA + INTERRUPTOR DE PIPO":"D / SUBAN JUNTOS PARA RECUPERAR EL CORAZON";
+ PixelFont.Text(12,8,"CAMINO DEL CASTILLO / ENGRANAJES",1,PixelFont.Cream);
+ string objective=Collected?"CORAZON RECUPERADO / REUNANSE EN LA SALIDA":!DoorAOpen?"A / AUXILIAR + PALANCA + EMPUJAR MENTITA":!DoorBOpen?"B / DESVIO VERDE + BLOQUE EN LA MARCA":!BubblesOn?"C / ESCALON EN MARCA + INTERRUPTOR DE PIPRO":"D / SUBAN JUNTOS PARA RECUPERAR EL CORAZON";
  PixelFont.Text(12,24,objective,1,PixelFont.Mint);
- PixelFont.Panel(new Rect(2,326,636,32),PixelFont.Ink,PixelFont.Pink);
- PixelFont.Text(12,332,"MIMO A/D W SALTO S USAR | PIPO FLECHAS ABAJO USAR",1,PixelFont.Cream);
- PixelFont.Text(12,346,"R RECUPERAR EQUIPO / M MAPA / CONTROL "+Checkpoint+"/3",1,PixelFont.Mint);
+ if(!GameDuoCampaign.InCampaignScene){PixelFont.Panel(new Rect(2,326,636,32),PixelFont.Ink,PixelFont.Pink);
+ PixelFont.Text(12,332,"MIMO A/D W SALTO S USAR | PIPRO FLECHAS ABAJO USAR",1,PixelFont.Cream);
+ PixelFont.Text(12,346,"R RECUPERAR EQUIPO / M MAPA / CONTROL "+Checkpoint+"/3",1,PixelFont.Mint);}
  if(Time.time<noticeUntil){PixelFont.Panel(new Rect(20,298,600,22),PixelFont.Ink,PixelFont.Mint);PixelFont.Text(30,306,notice.ToUpperInvariant(),1,PixelFont.Cream);}
  for(int i=0;i<2;i++){Transform nearest=null;float distance=1.45f;
  foreach(var t in new[]{auxiliary,leverA,leverB,bubbleSwitch}){float d=Vector2.Distance(game.players[i].transform.position,t.position);if(d<distance&&Reach(i,t,distance)){distance=d;nearest=t;}}

@@ -1,0 +1,44 @@
+PASS / Candy enemy integration
+PASS Three enemies per introductory wave
+PASS Wasp atlas resolves
+PASS Donut atlas resolves
+PASS Bear atlas resolves
+PASS Cookie atlas resolves
+PASS Turret atlas resolves
+PASS Controller installed for kind 4
+PASS Visible art for kind 4
+PASS Correct replacement sprite for kind 4
+PASS Legacy tactics disabled for kind 4
+PASS Warning precedes attack for kind 4
+PASS Beam damages kind 4
+PASS Controller installed for kind 1
+PASS Visible art for kind 1
+PASS Correct replacement sprite for kind 1
+PASS Legacy tactics disabled for kind 1
+PASS Warning precedes attack for kind 1
+PASS Candy projectiles released for kind 1
+PASS Beam damages kind 1
+PASS Controller installed for kind 0
+PASS Visible art for kind 0
+PASS Correct replacement sprite for kind 0
+PASS Legacy tactics disabled for kind 0
+PASS Warning precedes attack for kind 0
+PASS Beam damages kind 0
+PASS Controller installed for kind 2
+PASS Visible art for kind 2
+PASS Correct replacement sprite for kind 2
+PASS Legacy tactics disabled for kind 2
+PASS Warning precedes attack for kind 2
+PASS Beam damages kind 2
+PASS Controller installed for kind 5
+PASS Visible art for kind 5
+PASS Correct replacement sprite for kind 5
+PASS Legacy tactics disabled for kind 5
+PASS Warning precedes attack for kind 5
+PASS Candy projectiles released for kind 5
+PASS Beam damages kind 5
+PASS Final phase retains vulnerable core
+PASS Boss invokes turret and additional species
+PASS Boss summon cap respected
+PASS Sugar rain retained
+PASS Boss death clears reinforcements

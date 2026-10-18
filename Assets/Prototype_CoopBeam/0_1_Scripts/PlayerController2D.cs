@@ -8,14 +8,14 @@ public class PlayerController2D : MonoBehaviour {
  Rigidbody2D body; Collider2D shape; float coyote,buffer,dashTime,cooldown,axis,face=1,dropUntil; bool jumpHeld; readonly RaycastHit2D[] hits=new RaycastHit2D[12];
  public float MoveAxis=>axis;
  public bool interactionOnlyDown;
- void Awake(){body=GetComponent<Rigidbody2D>();shape=GetComponent<Collider2D>();}
- void Update(){
+ void Awake(){body=GetComponent<Rigidbody2D>();shape=GetComponent<Collider2D>();jumpSpeed=Mathf.Max(jumpSpeed,14.5f);if(!GetComponent<GameDuoHeroIdentity>())gameObject.AddComponent<GameDuoHeroIdentity>();}
+ void Update(){if(GameDuoCinema.Busy)return;
   if(!health || health.Dead || !GameManager.Instance || !GameManager.Instance.Running||CoopInteractionDirector.Locked(health))return;
   var k=Keyboard.current;if(k==null)return;
   axis=playerIndex==0?(k.dKey.isPressed?1:0)-(k.aKey.isPressed?1:0):(k.rightArrowKey.isPressed?1:0)-(k.leftArrowKey.isPressed?1:0);
   var jump=playerIndex==0?k.wKey:k.upArrowKey; jumpHeld=jump.isPressed;if(jump.wasPressedThisFrame)buffer=.13f;
   if(axis!=0)face=Mathf.Sign(axis);
-  if((playerIndex==0?k.leftShiftKey:k.rightCtrlKey).wasPressedThisFrame && cooldown<=0){dashTime=dashDuration;cooldown=dashCooldown;BeamFX.Burst(transform.position, sprite.color,5);}
+  if(!GameDuoCampaign.InCampaignScene&&(playerIndex==0?k.leftShiftKey:k.rightCtrlKey).wasPressedThisFrame && cooldown<=0){dashTime=dashDuration;cooldown=dashCooldown;BeamFX.Burst(transform.position, sprite.color,5);}
   if(!interactionOnlyDown&&(playerIndex==0?k.sKey:k.downArrowKey).wasPressedThisFrame&&!CoopInteractionDirector.Locked(health))StartCoroutine(Drop());
   buffer-=Time.deltaTime;cooldown-=Time.deltaTime;
  }

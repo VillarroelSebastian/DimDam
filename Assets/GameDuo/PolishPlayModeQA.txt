@@ -1,0 +1,33 @@
+PASS / GameDuo Play Mode QA
+PASS Atlas imported in Resources: GumRaiders_32
+PASS Atlas imported in Resources: IceKing_32
+PASS Atlas imported in Resources: GumUncle_32
+PASS Chapter 0 controller installed
+PASS Chapter 0 large and small physics proportions
+PASS Chapter 0 visible hero height ratio: 1,69
+PASS Chapter 0 renders to display without offscreen camera warning
+PASS Chapter 0 uses new animated enemy art
+PASS Chapter 1 controller installed
+PASS Chapter 1 large and small physics proportions
+PASS Chapter 1 visible hero height ratio: 1,69
+PASS Chapter 1 renders to display without offscreen camera warning
+PASS Chapter 2 controller installed
+PASS Chapter 2 large and small physics proportions
+PASS Chapter 2 visible hero height ratio: 1,69
+PASS Chapter 2 renders to display without offscreen camera warning
+PASS Chapter 2 uses new animated enemy art
+PASS Hero 0 jumps from gallery and lands on second ice platform
+PASS Hero 1 jumps from gallery and lands on second ice platform
+PASS Dance accepts twelve timed presses from the indicated player
+PASS Dance completes and returns player control
+PASS Chapter 3 controller installed
+PASS Penguin round preserves hero proportions
+PASS Chapter 4 controller installed
+PASS Chapter 4 large and small physics proportions
+PASS Chapter 4 visible hero height ratio: 1,69
+PASS Chapter 4 renders to display without offscreen camera warning
+PASS Chapter 5 controller installed
+PASS Chapter 5 large and small physics proportions
+PASS Chapter 5 visible hero height ratio: 1,69
+PASS Chapter 5 renders to display without offscreen camera warning
+PASS Chapter 5 uses new animated enemy art

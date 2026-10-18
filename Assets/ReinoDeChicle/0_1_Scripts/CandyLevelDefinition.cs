@@ -19,8 +19,8 @@ public static class CandyCampaign {
  public static string ScenePath(int number,bool ice)=>ScenePath(number,ice?1:0);
  public static string ScenePath(int number,int realm){string root=realm==2?"Assets/ReinoDeFuego/0_0_Scenes/":realm==1?"Assets/ReinoDeHielo/0_0_Scenes/":Root;string prefix=realm==2?"Fire":realm==1?"Ice":"Candy";return root+prefix+(number==5?"_Level_05_Boss":"_Level_0"+number)+".unity";}
  public static void Complete(int number){int realm=GameManager.Instance&&GameManager.Instance.level?GameManager.Instance.level.Realm:0;int next=Mathf.Min(5,number+1);if(realm==2)FireUnlocked=Mathf.Max(FireUnlocked,next);else if(realm==1)IceUnlocked=Mathf.Max(IceUnlocked,next);else Unlocked=Mathf.Max(Unlocked,next);if(number==5){if(realm==2)FireCleared=true;else if(realm==1)IceCleared=true;else WorldCleared=true;}}
- public static void Load(int number){int realm=SelectedRealm;if(number>=1&&number<=UnlockedFor(realm)&&CanEnter(realm))UnityEngine.SceneManagement.SceneManager.LoadScene(ScenePath(number,realm));}
- public static void Advance(int number){SelectRealm(GameManager.Instance&&GameManager.Instance.level?GameManager.Instance.level.Realm:0);if(number<5){ArrivalPending=true;UnityEngine.SceneManagement.SceneManager.LoadScene(ScenePath(number+1,SelectedRealm));}else Map();}
- public static void Map(){ArrivalPending=false;UnityEngine.SceneManagement.SceneManager.LoadScene(Root+"Candy_WorldMap.unity");}
+ public static void Load(int number){if(GameDuoCampaign.TryAdvance())return;int realm=SelectedRealm;if(number>=1&&number<=UnlockedFor(realm)&&CanEnter(realm))UnityEngine.SceneManagement.SceneManager.LoadScene(ScenePath(number,realm));}
+ public static void Advance(int number){if(GameDuoCampaign.TryAdvance())return;SelectRealm(GameManager.Instance&&GameManager.Instance.level?GameManager.Instance.level.Realm:0);if(number<5){ArrivalPending=true;UnityEngine.SceneManagement.SceneManager.LoadScene(ScenePath(number+1,SelectedRealm));}else Map();}
+ public static void Map(){if(GameDuoCampaign.TryMenu())return;ArrivalPending=false;UnityEngine.SceneManagement.SceneManager.LoadScene(Root+"Candy_WorldMap.unity");}
 }
 }

@@ -13,6 +13,7 @@ public class CandyBoss:MonoBehaviour {
   float y=Phase==1?0:Phase==2?.8f+Mathf.Sin(clock*.7f)*.6f:Mathf.Sin(clock*.8f)*1.1f;
   weakSpot.transform.localPosition=new Vector3(0,Mathf.Clamp(-.2f+y,-.75f,1.3f),0);weakArt.transform.localPosition=weakSpot.transform.localPosition;
   body.MovePosition(origin+new Vector2(Mathf.Sin(clock*(Phase==3?.65f:.35f))*(Phase==1?3:5.5f),0));
+  var duo=GetComponent<GameDuoCandyKing>();if(duo&&duo.Summoning){WindingUp=true;Hint="INVOCA REFUERZOS! ROMPAN LAS TORRETAS Y ESQUIVEN SUS AVISOS";return;}
   attackTimer-=Time.fixedDeltaTime;if(attackTimer<=0){for(int i=-1;i<=1;i++){var shot=CandyProjectile.Fire(body.position+new Vector2(i*.3f,1.4f),new Vector2(i*(Phase+1),5.5f),projectile,enemy.sprite.sharedMaterial,.38f);shot.gravity=5;}attackTimer=Phase==1?4:3;LastAttackTime=Time.time;GameManager.Instance.Tone(210,.12f);}
  }
  void OnDisable(){Vulnerable=false;}

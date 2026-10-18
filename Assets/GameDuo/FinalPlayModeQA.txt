@@ -1,0 +1,17 @@
+PASS / GameDuo final encounter
+PASS Final is chapter five
+PASS New throne room installed
+PASS PinkKing transparent atlas imported
+PASS Bats transparent atlas imported
+PASS Throne room sprite resolves in final scene
+PASS Original combat and pink animation installed
+PASS Pink boss pose displayed
+PASS Boss art remains aligned with combat body
+PASS Hands telegraph precedes animated bat flock
+PASS Original sugar rain still fires
+PASS Phase two retained
+PASS Phase three retained
+PASS Bat contact removes one heart
+PASS Changing height avoids flock lane
+PASS Boss defeat removes remaining bats
+PASS Chapter five ends campaign

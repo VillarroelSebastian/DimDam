@@ -1,0 +1,2 @@
+PASS: 23 scene/build checks; all five completion sources present.
+Gameplay traversal requires Play Mode.

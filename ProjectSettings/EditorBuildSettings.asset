@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/GameDuo/Scenes/01_Tutorial_Chicle.unity
+    guid: 8f329f35843141cf9a8d7ff5952bad1c
+  - enabled: 1
+    path: Assets/GameDuo/Scenes/02_ReinoNeon.unity
+    guid: be13b439713849418dbb9fa017484338
+  - enabled: 1
+    path: Assets/GameDuo/Scenes/03_ReyHielo.unity
+    guid: 334c9db3a0434e1f90b0e47a2cf8268a
+  - enabled: 1
+    path: Assets/GameDuo/Scenes/04_RescatePinguinos.unity
+    guid: d959993cfab940ee830f5e51d88928bb
+  - enabled: 1
+    path: Assets/GameDuo/Scenes/05_JefeChicle.unity
+    guid: a8184eb1106243ba8a089624d147b466
+  - enabled: 1
     path: Assets/ReinoDeChicle/0_0_Scenes/Candy_Level_01.unity
     guid: a2e5e58276216b4449dd439d5d317169
   - enabled: 1

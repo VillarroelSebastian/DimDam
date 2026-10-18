@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861de89ad8f1436cbed29a129f40f7b3, type: 3}
+  m_Name: GameDuoMovies
+  m_EditorClassIdentifier:
+  clips:
+  - {fileID: 32900000, guid: 4c82fb32ed891cf42b67997656655e84, type: 3}
+  - {fileID: 32900000, guid: 0f503598c1a3fd54aa3e2bc60bf20869, type: 3}
+  - {fileID: 32900000, guid: 2f7f10c975dc1e84caa81d579395481b, type: 3}
+  - {fileID: 32900000, guid: 5ecb1b53016d66e43948b2778f590dcd, type: 3}
+  - {fileID: 32900000, guid: e30412b18afcd0b43a474da867dbab46, type: 3}
+  - {fileID: 32900000, guid: bccab10c3efa5214891cef99a56b235e, type: 3}
+  - {fileID: 32900000, guid: fd75e66231254ae4f8ee3700fe816c1e, type: 3}
+  - {fileID: 32900000, guid: 4d44bc2c8b01cac448348fc82fca6928, type: 3}
+  - {fileID: 32900000, guid: d26881a9c43a74d4996b3c038dc2bc36, type: 3}
