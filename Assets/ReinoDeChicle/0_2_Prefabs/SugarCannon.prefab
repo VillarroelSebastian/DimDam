@@ -112,13 +112,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 5
   maxHealth: 55
   speed: 0
   sprite: {fileID: 293022366513483795}
   visual: {fileID: 1531265143316485338}
+  externalControl: 0
+  combatTelegraph: 0
+  combatAttack: 0
 --- !u!114 &3686469935278965681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,9 +132,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56cbca4c84ef1f14da02d7ef885db8e6, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.CandyEnemySpecial
-  projectile: {fileID: 21300000, guid: 43aea8032a52b5346b5d747bd1803f38, type: 3}
+  projectile: {fileID: 21300000, guid: 332f50f4c297abd4e90cbef7c0a1410f, type: 2}
   flightWidth: 2
   flightHeight: 0.85
   shotInterval: 3.8
@@ -146,7 +149,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D
 --- !u!1 &2864253726643517567
 GameObject:
@@ -175,7 +178,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.4, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.18382354, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7689782061575264481}
@@ -229,8 +232,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0226184cdf337a9438d9a0c8c8235b67, type: 3}
-  m_Color: {r: 1, g: 0.90588236, b: 0.5529412, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6c29c409117c0ed46a07a9826ea78b11, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -252,6 +255,7 @@ GameObject:
   - component: {fileID: 293022366513483795}
   - component: {fileID: 5304863735507269392}
   - component: {fileID: 2871786478524035992}
+  - component: {fileID: 2891413058579291534}
   m_Layer: 0
   m_Name: Original candy creature
   m_TagString: Untagged
@@ -323,7 +327,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -101823782500522837, guid: 4969529618951574590936212ac6f5a0, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 1cdd41e516229084aaaf92e85881b549, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -344,7 +348,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
 --- !u!114 &2871786478524035992
 MonoBehaviour:
@@ -356,6 +360,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b570d99c1a33df7478da29d78cd1c918, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelSpriteAnimator
   animationSet: {fileID: 11400000, guid: 4969529618951574590936212ac6f5a0, type: 2}
+--- !u!114 &2891413058579291534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815843053499242348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0

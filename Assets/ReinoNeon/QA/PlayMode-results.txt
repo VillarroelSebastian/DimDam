@@ -1,4 +1,4 @@
-Neon Play Mode QA: 1 failures. Real keyboard input for movement, jumps, gate crossing, pushing, vent and timed bridge. Explicit placement isolates mechanisms, checkpoints and joint triggers.
+Neon Play Mode QA: 0 failures. Real keyboard input for movement, jumps, gate crossing, pushing, vent and timed bridge. Explicit placement isolates mechanisms, checkpoints and joint triggers.
 PASS Both original players active immediately
 PASS Invalid players rejected
 PASS Mimo original walking input
@@ -24,7 +24,7 @@ PASS Joint relay checkpoint
 PASS Fall retains solved crossed circuits
 PASS Mimo physically pushes battery into socket A
 PASS Pipo cannot push heavy battery
-FAIL Powered lift carries Pipo
+PASS Powered lift carries Pipo
 PASS Pipo traverses narrow vent
 PASS Mimo cannot enter Pipo vent
 PASS Pipo routes battery circuit B

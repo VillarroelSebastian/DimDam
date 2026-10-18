@@ -110,13 +110,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 0
   maxHealth: 23
   speed: 1.35
   sprite: {fileID: 1083589917206992434}
   visual: {fileID: 3219937023188964625}
+  externalControl: 0
+  combatTelegraph: 0
+  combatAttack: 0
 --- !u!114 &7775427943927681086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +130,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D
 --- !u!1 &7640616618888068676
 GameObject:
@@ -141,6 +144,7 @@ GameObject:
   - component: {fileID: 1083589917206992434}
   - component: {fileID: 3743631116773144248}
   - component: {fileID: 6876535851570429043}
+  - component: {fileID: 2601757092690535945}
   m_Layer: 0
   m_Name: Original candy creature
   m_TagString: Untagged
@@ -212,7 +216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2554597615732074251, guid: 63db57b8edeefa94d9af95d2c3e498ac, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 9c01b70c075a03f49ab711cb9e2ca581, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -233,7 +237,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
 --- !u!114 &6876535851570429043
 MonoBehaviour:
@@ -245,6 +249,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b570d99c1a33df7478da29d78cd1c918, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelSpriteAnimator
   animationSet: {fileID: 11400000, guid: 63db57b8edeefa94d9af95d2c3e498ac, type: 2}
+--- !u!114 &2601757092690535945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640616618888068676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0

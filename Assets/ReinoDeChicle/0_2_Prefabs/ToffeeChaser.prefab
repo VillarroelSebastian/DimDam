@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5323185022309214683}
   - component: {fileID: 3386664209046127351}
   - component: {fileID: 6844842534040967417}
+  - component: {fileID: 6711152095941936581}
   m_Layer: 0
   m_Name: Original candy creature
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5879905126574415670, guid: 6a44f7d4a2ce0bd408d3ffa9256698c5, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 0aca99f34b606d64fa1e530f665b712a, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
 --- !u!114 &6844842534040967417
 MonoBehaviour:
@@ -116,9 +117,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b570d99c1a33df7478da29d78cd1c918, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelSpriteAnimator
   animationSet: {fileID: 11400000, guid: 6a44f7d4a2ce0bd408d3ffa9256698c5, type: 2}
+--- !u!114 &6711152095941936581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428153483760153974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0
 --- !u!1 &5057939154435675709
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,13 +243,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 2
   maxHealth: 42
   speed: 3.3
   sprite: {fileID: 5323185022309214683}
   visual: {fileID: 5574207857265041612}
+  externalControl: 0
+  combatTelegraph: 0
+  combatAttack: 0
 --- !u!114 &1167152909643880914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,5 +263,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D

@@ -1,0 +1,22 @@
+PASS 0 Jump actual=Jump frame=8
+PASS 0 Fall actual=Fall frame=10
+PASS 0 Dash actual=Dash frame=12
+PASS 0 Land actual=Land frame=11
+PASS 0 Hurt actual=Hurt frame=13
+PASS 0 Death actual=Death frame=14
+PASS 0 collapse pose
+PASS 0 Dance actual=Dance frame=16
+PASS 0 Victory actual=Victory frame=16
+PASS 1 Jump actual=Jump frame=8
+PASS 1 Fall actual=Fall frame=10
+PASS 1 Dash actual=Dash frame=12
+PASS 1 Land actual=Land frame=11
+PASS 1 Hurt actual=Hurt frame=13
+PASS 1 Death actual=Death frame=14
+PASS 1 collapse pose
+PASS 1 Dance actual=Dance frame=16
+PASS 1 Victory actual=Victory frame=16
+PASS 0 Idle after landing recovery
+PASS 0 Run after landing recovery
+PASS 1 Idle after landing recovery
+PASS 1 Run after landing recovery

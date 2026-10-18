@@ -21,7 +21,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: -8699600740491893678
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -241,7 +241,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: -6632007921600782779
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -461,7 +461,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: -5832030413144298416
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -681,7 +681,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: -849611406331671167
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -893,15 +893,17 @@ MonoBehaviour:
   m_Name: FlyingGummy_Animation
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelAnimationSet
   frames:
-  - {fileID: 4127397178110252215}
-  - {fileID: -5832030413144298416}
-  - {fileID: 2993625323296914064}
-  - {fileID: -6632007921600782779}
-  - {fileID: 5801338878974973717}
-  - {fileID: 8232735698919490393}
-  - {fileID: -8699600740491893678}
-  - {fileID: -849611406331671167}
+  - {fileID: 21300000, guid: 40d5eac649408da49adab581565fc375, type: 2}
+  - {fileID: 21300000, guid: 06cf30e72854be64fab52d7f30039802, type: 2}
+  - {fileID: 21300000, guid: ed1ca1fa32b115043916c30a41d07744, type: 2}
+  - {fileID: 21300000, guid: b071f704206814d468ae058acb42f53c, type: 2}
+  - {fileID: 21300000, guid: e16503b6ef24cf246950fa0836240481, type: 2}
+  - {fileID: 21300000, guid: 578568550a8b2f546a0c90d063cfef0f, type: 2}
+  - {fileID: 21300000, guid: c6ba71aeab8469644a5f0f9638949a90, type: 2}
+  - {fileID: 21300000, guid: 1a19a1580fb3a4045b8a6c20909d897c, type: 2}
   hero: 0
+  jellyStyle: 0
+  directions: []
   idleFPS: 5
   runFPS: 9
 --- !u!213 &2993625323296914064
@@ -925,7 +927,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: 2993625323296914064
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1145,7 +1147,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: 4127397178110252215
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1365,7 +1367,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: 5801338878974973717
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1585,7 +1587,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    5789e5d0db3f3b54e87208566193fb8b: 8232735698919490393
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:

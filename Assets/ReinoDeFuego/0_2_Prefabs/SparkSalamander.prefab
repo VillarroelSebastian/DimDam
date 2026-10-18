@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8261367689614063612}
   - component: {fileID: 2251557157881648782}
   - component: {fileID: 851724227155726909}
+  - component: {fileID: 6888660593759998146}
   m_Layer: 0
   m_Name: Pixel art
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1820400202407426215, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 2438004cb69d402408da933fd076ed63, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,17 +105,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd61e16272e750e4d9a2f363b7ec2169, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.FireSpriteAnimator
   frames:
-  - {fileID: 1820400202407426215, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: 7233971550654656908, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: -2682916794988100028, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: 6923349843139160428, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: -1051898569756810797, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: 5660899647706160669, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: -1633868785404180261, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
-  - {fileID: 3756422767356897396, guid: 4675b00367189be4ebfec37a2e6a1112, type: 2}
+  - {fileID: 21300000, guid: 2438004cb69d402408da933fd076ed63, type: 2}
+  - {fileID: 21300000, guid: 2a7c32b1d3a9ff844998a66b74f8729f, type: 2}
+  - {fileID: 21300000, guid: 57bbfb366bd24a441bf12c58f849add2, type: 2}
+  - {fileID: 21300000, guid: b82c1a8f72577bf4f9147f41f674edf8, type: 2}
+  - {fileID: 21300000, guid: 1af41aef7484ff5498b67df5b71eb711, type: 2}
+  - {fileID: 21300000, guid: 755a60518f669e1479306dc085e3456e, type: 2}
+  - {fileID: 21300000, guid: 4b03a55b01fbfae48be48332e806a0b5, type: 2}
+  - {fileID: 21300000, guid: 6ac01af2cd8aa9940abaa93f6ac882fd, type: 2}
   boss: 0
 --- !u!114 &851724227155726909
 MonoBehaviour:
@@ -126,8 +127,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
+--- !u!114 &6888660593759998146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834012609924766736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0
 --- !u!1 &2565779750308401495
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +253,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 0
   maxHealth: 46
@@ -259,7 +273,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0705eb1b8ca0dbe4390224e25478791d, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.FireEnemyBrain
   role: 2
   interval: 4.5
@@ -273,5 +287,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D

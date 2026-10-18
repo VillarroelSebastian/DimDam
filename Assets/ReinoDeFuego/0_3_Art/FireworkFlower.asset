@@ -21,7 +21,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: -8708072397100735282
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -241,7 +241,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: -7244920691038724829
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -461,7 +461,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: -5186667966537156269
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -681,7 +681,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: -3514760709146518924
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -901,7 +901,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: -1510777703670762510
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1113,15 +1113,17 @@ MonoBehaviour:
   m_Name: FireworkFlower
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelAnimationSet
   frames:
-  - {fileID: -5186667966537156269}
-  - {fileID: -3514760709146518924}
-  - {fileID: 5406032958467509120}
-  - {fileID: -1510777703670762510}
-  - {fileID: 4878327985281563104}
-  - {fileID: -7244920691038724829}
-  - {fileID: 8930337939762070051}
-  - {fileID: -8708072397100735282}
+  - {fileID: 21300000, guid: 815746a6ec25f5f479b0ea791b914bb0, type: 2}
+  - {fileID: 21300000, guid: 62e2671083025fb41a6819472de53760, type: 2}
+  - {fileID: 21300000, guid: 3cdc18d60993e4d4a9b79cefb9339af3, type: 2}
+  - {fileID: 21300000, guid: d98b0a9665dc3c644b2f61c16a0f4a7d, type: 2}
+  - {fileID: 21300000, guid: 1b45b40beb676c34398ec09fdf14c8d0, type: 2}
+  - {fileID: 21300000, guid: 42489087b33605c4481174682375f681, type: 2}
+  - {fileID: 21300000, guid: b0cfcdaaf41ac9d4dafaa4ed9a40804a, type: 2}
+  - {fileID: 21300000, guid: b0fea2c4abd043840835e9f1c62319ea, type: 2}
   hero: 0
+  jellyStyle: 0
+  directions: []
   idleFPS: 4
   runFPS: 10
 --- !u!213 &4878327985281563104
@@ -1145,7 +1147,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: 4878327985281563104
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1365,7 +1367,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: 5406032958467509120
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1585,7 +1587,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    66e2c88265aac2a438b60d4c31a4e064: 8930337939762070051
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:

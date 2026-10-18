@@ -21,7 +21,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -9175123831889197766
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -241,7 +241,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -6991621823838415006
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -461,7 +461,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -3940230859914911326
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -681,7 +681,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -3267796893187222833
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -901,7 +901,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -2691497755401367255
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1121,7 +1121,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -2687062890286487169
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1341,7 +1341,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: -1327964034178758065
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1553,15 +1553,17 @@ MonoBehaviour:
   m_Name: AuroraOwl
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelAnimationSet
   frames:
-  - {fileID: -2687062890286487169}
-  - {fileID: -1327964034178758065}
-  - {fileID: -6991621823838415006}
-  - {fileID: -3940230859914911326}
-  - {fileID: -9175123831889197766}
-  - {fileID: -3267796893187222833}
-  - {fileID: 4970028406928780411}
-  - {fileID: -2691497755401367255}
+  - {fileID: 21300000, guid: 5d013b9b1ab39404a93b1fd7535baff8, type: 2}
+  - {fileID: 21300000, guid: 18ef47dae4c7f864aad7dbd4b04a834e, type: 2}
+  - {fileID: 21300000, guid: 399bc53f0cc225b498df5eb3a99b2347, type: 2}
+  - {fileID: 21300000, guid: 2ee363d0cbbb27e418888c4b44871b7e, type: 2}
+  - {fileID: 21300000, guid: 464c37b7e61ec184aaef6df8255f17a2, type: 2}
+  - {fileID: 21300000, guid: 1f7a784c4aff5824f879a199884a6ad0, type: 2}
+  - {fileID: 21300000, guid: 7ad4c8e26ab47534eb7e0a1efe758151, type: 2}
+  - {fileID: 21300000, guid: 31eef0e154beac04592e58c0ca51b269, type: 2}
   hero: 0
+  jellyStyle: 0
+  directions: []
   idleFPS: 4
   runFPS: 10
 --- !u!213 &4970028406928780411
@@ -1585,7 +1587,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07a11195b1d64014a9bab3b8f4bdf0ed: 4970028406928780411
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:

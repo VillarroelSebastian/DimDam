@@ -19,5 +19,15 @@ public class PixelSpriteAnimator:MonoBehaviour {
   CurrentFrame=Mathf.Clamp(frame,0,animationSet.frames.Length-1);if(animationSet.frames[CurrentFrame])art.sprite=animationSet.frames[CurrentFrame];
   if(enemy&&dead){var c=art.color;c.a=1-Mathf.Clamp01((Time.time-diedAt-.18f)/.24f);art.color=c;}
  }
+ // Only the visual child is deformed. Controller physics, collision and input remain authoritative.
+ public void ApplyJellyPose(){if(!player||!animationSet||!animationSet.jellyStyle)return;float t=Time.time-stateTime;float wave=Mathf.Sin(t*10+player.playerIndex*.8f);Vector3 scale=transform.localScale;float angle=transform.localEulerAngles.z;
+  if(State=="Death"){scale=new Vector3(1.25f,.14f,1);angle=0;}
+  else if(State=="Land"){float squash=1-Mathf.Clamp01(t/.12f);scale=new Vector3(1+.22f*squash,1-.2f*squash,1);}
+  else if(State=="Hurt"){scale=new Vector3(1.14f,.86f,1);angle=wave*12;}
+  else if(State=="Dance"){scale=new Vector3(1+wave*.12f,1-wave*.12f,1);angle=wave*16;art.flipX=Mathf.Sin(t*5)<0;}
+  else if(State=="Victory"){scale=new Vector3(1-wave*.08f,1+wave*.08f,1);angle=wave*8;}
+  transform.localScale=scale;transform.localRotation=Quaternion.Euler(0,0,angle);
+  if(transform.parent&&art.sprite&&(State=="Death"||player.Grounded&&State!="Dance"&&State!="Victory"))transform.position+=transform.parent.TransformVector(Vector3.up*art.sprite.bounds.extents.y*(scale.y-1));
+ }
 }}
 

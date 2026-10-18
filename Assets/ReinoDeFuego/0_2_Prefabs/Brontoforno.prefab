@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.58018017, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2405693947692369966}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0226184cdf337a9438d9a0c8c8235b67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90b018c9f6216e84bb4b2c498fc2046f, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 3066686276460423166}
   - component: {fileID: 5764600540710294696}
   - component: {fileID: 2280356004727055721}
+  - component: {fileID: 8923529741689825743}
   m_Layer: 0
   m_Name: Living foundry
   m_TagString: Untagged
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3618504734939243841, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 3d1469c37fb8c4d40ba3f3cdccbb60e5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,26 +196,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd61e16272e750e4d9a2f363b7ec2169, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.FireSpriteAnimator
   frames:
-  - {fileID: -3618504734939243841, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -7723090666540026886, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 4405660186965268842, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -8268703058443605113, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -7576822471019545001, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 5068130388966889449, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 2257131865087994954, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 9014056351557049615, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 8276097339735653741, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -8925019971647872251, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -4007770264618023184, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 1987282932985108157, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 3108586112544192117, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -3138706627130776771, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: 2255488022773702383, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
-  - {fileID: -4833890736262326993, guid: d242f74fc8540354b891f54fdcfe072a, type: 2}
+  - {fileID: 21300000, guid: 3d1469c37fb8c4d40ba3f3cdccbb60e5, type: 2}
+  - {fileID: 21300000, guid: 720ebc6ecb6b4fd4298361ca23256bd9, type: 2}
+  - {fileID: 21300000, guid: 8d9b8f0bcad88864cb6c75b077ab2173, type: 2}
+  - {fileID: 21300000, guid: e2a883e386907d846b53ce04c44b99d2, type: 2}
+  - {fileID: 21300000, guid: 2ec7505a997eefa45bf3e771fa539ed5, type: 2}
+  - {fileID: 21300000, guid: 42b8538fa97e02747a47ed06a1973ba9, type: 2}
+  - {fileID: 21300000, guid: 9567498bb745b9742a2364878419dd6b, type: 2}
+  - {fileID: 21300000, guid: 0cc58a6480931b54a93829b40da96557, type: 2}
+  - {fileID: 21300000, guid: 95111684102aab74fb2d4b8bca22d4f0, type: 2}
+  - {fileID: 21300000, guid: 5f5f9e84b5e4b0945b72271df510dcf2, type: 2}
+  - {fileID: 21300000, guid: e2422618a4cd92b49a53b343a51626bd, type: 2}
+  - {fileID: 21300000, guid: 148382fdb3d9d5e479f056c3a61ab09e, type: 2}
+  - {fileID: 21300000, guid: 2a8a0ee1d4fb08d4c8a96ea1e17a82fd, type: 2}
+  - {fileID: 21300000, guid: fcce2ffcad8deff4c985f0af49dbe42a, type: 2}
+  - {fileID: 21300000, guid: 79f3475dd0083564e98ae054834b4228, type: 2}
+  - {fileID: 21300000, guid: 4b4616cc2e873534b9f114deee91542c, type: 2}
   boss: 1
+--- !u!114 &8923529741689825743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258908544763952823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0
 --- !u!1 &5803933221655510239
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +350,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 6
   maxHealth: 1600
@@ -356,7 +370,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 512236feef25577489178e23f483a240, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.FireForgeBoss
   core: {fileID: 5120994534916200139}
   coreArt: {fileID: 1253717300801822534}

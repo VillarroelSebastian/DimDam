@@ -21,7 +21,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: -6029191205677572401
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -241,7 +241,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: -5879905126574415670
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -461,7 +461,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: -2397268453800696224
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -673,15 +673,17 @@ MonoBehaviour:
   m_Name: ToffeeChaser_Animation
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelAnimationSet
   frames:
-  - {fileID: -5879905126574415670}
-  - {fileID: -6029191205677572401}
-  - {fileID: 5424365619513939622}
-  - {fileID: 5671836700160735846}
-  - {fileID: 1315112844924592811}
-  - {fileID: 1536295312598477357}
-  - {fileID: 4955323990394098500}
-  - {fileID: -2397268453800696224}
+  - {fileID: 21300000, guid: 0aca99f34b606d64fa1e530f665b712a, type: 2}
+  - {fileID: 21300000, guid: 18d4e5377e5d6ab4b900e4312d7b269e, type: 2}
+  - {fileID: 21300000, guid: 0da74e1701291a246914a6745395a0df, type: 2}
+  - {fileID: 21300000, guid: fae4b5ae691988d4699b79a3b5fd4e07, type: 2}
+  - {fileID: 21300000, guid: da3b2cd9fee6f464192383380f3ea5b7, type: 2}
+  - {fileID: 21300000, guid: 04bb5dfbc9d567b44bf03ccb1003c5ef, type: 2}
+  - {fileID: 21300000, guid: 766d614ee1f18ed468ac1377cf2d5d13, type: 2}
+  - {fileID: 21300000, guid: 0ea2ba5f54c78b842b49b1c24caed240, type: 2}
   hero: 0
+  jellyStyle: 0
+  directions: []
   idleFPS: 5
   runFPS: 9
 --- !u!213 &1315112844924592811
@@ -705,7 +707,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: 1315112844924592811
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -925,7 +927,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: 1536295312598477357
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1145,7 +1147,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: 4955323990394098500
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1365,7 +1367,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: 5424365619513939622
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1585,7 +1587,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    6a44f7d4a2ce0bd408d3ffa9256698c5: 5671836700160735846
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:

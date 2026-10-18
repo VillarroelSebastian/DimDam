@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 90c8a806a4ff0a349963a75263f49639, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ed216fc5d49ee14889c9c27a2020117, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 90c8a806a4ff0a349963a75263f49639, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ed216fc5d49ee14889c9c27a2020117, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,9 +224,9 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.25883967, y: 0.32812503, z: 0.25883967, w: 0.32812503}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.40625, y: 2.1875}
+    oldSize: {x: 1.7255976, y: 2.1875}
     newSize: {x: 1.4, y: 2.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 394a48136052bf84190c66b958a81525, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumHeavy
   pusher: {fileID: 0}
   minX: 16

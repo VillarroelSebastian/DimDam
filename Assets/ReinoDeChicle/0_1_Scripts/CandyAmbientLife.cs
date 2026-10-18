@@ -10,8 +10,8 @@ public class CandyAmbientLife:MonoBehaviour {
   foreach(var r in FindObjectsByType<SpriteRenderer>())if(r.name=="Lollipop"){sweets.Add(r.transform);sweetBases.Add(r.transform.position);}
  }
  Material GetMaterial(){var game=GameManager.Instance;return game&&game.players.Length>0?game.players[0].GetComponent<PlayerController2D>().sprite.sharedMaterial:null;}
- void Update(){clock+=Time.deltaTime;for(int i=0;i<motes.Count;i++){if(!motes[i])continue;var p=positions[i]+(Vector3)(velocities[i]*clock);p.x=Mathf.Repeat(p.x+12,24)-12;p.y=Mathf.Repeat(p.y+4.5f,11)-4.5f;p.x+=Mathf.Sin(clock*.8f+i)*.12f;p.x=Mathf.Round(p.x*32)/32;p.y=Mathf.Round(p.y*32)/32;motes[i].transform.position=p;var c=motes[i].color;c.a=.13f+Mathf.Sin(clock*1.6f+i)*.07f;motes[i].color=c;}
-  for(int i=0;i<sweets.Count;i++)if(sweets[i]){var p=sweetBases[i];p.x+=Mathf.Round(Mathf.Sin(clock*1.7f+i)*2)/32;sweets[i].position=p;}
+ void Update(){clock+=Time.deltaTime;for(int i=0;i<motes.Count;i++){if(!motes[i])continue;var p=positions[i]+(Vector3)(velocities[i]*clock);p.x=Mathf.Repeat(p.x+12,24)-12;p.y=Mathf.Repeat(p.y+4.5f,11)-4.5f;p.x+=Mathf.Sin(clock*.8f+i)*.12f;motes[i].transform.position=p;var c=motes[i].color;c.a=.13f+Mathf.Sin(clock*1.6f+i)*.07f;motes[i].color=c;}
+  for(int i=0;i<sweets.Count;i++)if(sweets[i]){var p=sweetBases[i];p.x+=Mathf.Sin(clock*1.7f+i)*.06f;sweets[i].position=p;}
   foreach(var gear in gearArt)if(gear)gear.sprite=gears[(int)(clock*7)%gears.Length];
  }
 }}

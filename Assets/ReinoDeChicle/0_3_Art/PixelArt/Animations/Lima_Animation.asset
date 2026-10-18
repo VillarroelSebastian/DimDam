@@ -21,7 +21,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -8444036466524962263
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -241,7 +241,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -8368734062187301338
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -461,7 +461,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -8312633568444225942
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -681,7 +681,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -6827869865846498320
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -901,7 +901,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -5273706411911189144
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1121,7 +1121,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -4580759832939008301
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1341,7 +1341,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -4097510188353439183
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1561,7 +1561,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -2687426064910479689
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -1781,7 +1781,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -1911051394875770957
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -2001,7 +2001,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -1267213431601489028
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -2221,7 +2221,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -970115176824733217
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -2441,7 +2441,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: -322500022499781225
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -2653,29 +2653,35 @@ MonoBehaviour:
   m_Name: Lima_Animation
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelAnimationSet
   frames:
-  - {fileID: -5273706411911189144}
-  - {fileID: 7261013531018660660}
-  - {fileID: -8368734062187301338}
-  - {fileID: -6827869865846498320}
-  - {fileID: -322500022499781225}
-  - {fileID: 6714716474441254919}
-  - {fileID: 1033699473166461151}
-  - {fileID: -8444036466524962263}
-  - {fileID: -1267213431601489028}
-  - {fileID: -970115176824733217}
-  - {fileID: -4580759832939008301}
-  - {fileID: 3288413692487875013}
-  - {fileID: -4097510188353439183}
-  - {fileID: 3320977834762716777}
-  - {fileID: -1911051394875770957}
-  - {fileID: 7624160381977457699}
-  - {fileID: -8312633568444225942}
-  - {fileID: 2539409007350634995}
-  - {fileID: -2687426064910479689}
-  - {fileID: 5259543378689355549}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 757134678a73a054f80ef4fc5a27e56c, type: 2}
+  - {fileID: 21300000, guid: 2d14301722bfe274f9ba805ad2b3670b, type: 2}
+  - {fileID: 21300000, guid: 9417368f038aad148972dfcb2ba2490c, type: 2}
+  - {fileID: 21300000, guid: 7b1a1030ea4e7664785a87734b32db62, type: 2}
+  - {fileID: 21300000, guid: 2d14301722bfe274f9ba805ad2b3670b, type: 2}
+  - {fileID: 21300000, guid: 2d14301722bfe274f9ba805ad2b3670b, type: 2}
+  - {fileID: 21300000, guid: 7b1a1030ea4e7664785a87734b32db62, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 9417368f038aad148972dfcb2ba2490c, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: e6e1b38eadbb45f4797feca87fdbd2d8, type: 2}
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: 7ff69e0ecc1faed45a7a07b431e41e94, type: 2}
   hero: 1
-  idleFPS: 3
-  runFPS: 12
+  jellyStyle: 1
+  directions:
+  - {fileID: 21300000, guid: 514d23ac20403ad418dd21e197581087, type: 2}
+  - {fileID: 21300000, guid: a07379ddabc1eaa44a962010977e3897, type: 2}
+  - {fileID: 21300000, guid: e6e1b38eadbb45f4797feca87fdbd2d8, type: 2}
+  - {fileID: 21300000, guid: 7ff69e0ecc1faed45a7a07b431e41e94, type: 2}
+  idleFPS: 4
+  runFPS: 10
 --- !u!213 &1033699473166461151
 Sprite:
   serializedVersion: 2
@@ -2697,7 +2703,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 1033699473166461151
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -2917,7 +2923,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 2539409007350634995
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -3137,7 +3143,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 3288413692487875013
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -3357,7 +3363,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 3320977834762716777
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -3577,7 +3583,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 5259543378689355549
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -3797,7 +3803,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 6714716474441254919
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -4017,7 +4023,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 7261013531018660660
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -4237,7 +4243,7 @@ Sprite:
   m_Extrude: 0
   m_PackingTag: 
   m_RenderDataKey:
-    00000000000000000000000000000000: 0
+    07aed858475bed9498ea8987ae6739ab: 7624160381977457699
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:

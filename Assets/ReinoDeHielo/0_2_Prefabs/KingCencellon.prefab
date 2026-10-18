@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 6
   maxHealth: 1500
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d37027ae2b9f9d44298bc2d7f6115463, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IceKingBoss
   core: {fileID: 7805482396859866174}
   coreArt: {fileID: 2156557438665094160}
@@ -172,7 +172,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5990991, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5956168990016306729}
@@ -226,7 +226,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0226184cdf337a9438d9a0c8c8235b67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffd1db2febe95de4e96019d3072f9edb, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 9044060399271520463}
   - component: {fileID: 5566040100279806023}
   - component: {fileID: 5476679850817904081}
+  - component: {fileID: 8350229060853946002}
   m_Layer: 0
   m_Name: Crystal monarch
   m_TagString: Untagged
@@ -319,7 +320,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4198841332939031981, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 0aef84070b5d98147ba7daabf3bd19f8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -340,26 +341,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aa1d2c0ba4d58d4aa4b99abb5aa87c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IceSpriteAnimator
   frames:
-  - {fileID: -4198841332939031981, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 351168681831150024, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -4606286257066754432, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -6774347954049019343, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 2693699298646568891, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -7113442660360137574, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 2470585295567944888, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 1529033238100951176, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 8383714658755814396, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -2557500988473533008, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -3064566698618079846, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: 3782958664642414058, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -1058701871164592802, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -7931509663652576239, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -4291049997261195960, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
-  - {fileID: -5642578559948340702, guid: b52f36f628c0d2d4a9ecef8be29c4f0d, type: 2}
+  - {fileID: 21300000, guid: 0aef84070b5d98147ba7daabf3bd19f8, type: 2}
+  - {fileID: 21300000, guid: 086807c2bb6bb0241bba217ba08c8ed9, type: 2}
+  - {fileID: 21300000, guid: d4c193bd90462714b9115aaad262833d, type: 2}
+  - {fileID: 21300000, guid: c9d7e8148c04f5e4eac393fb34bb7f29, type: 2}
+  - {fileID: 21300000, guid: 4f260b219c397cb4090691181e81d25f, type: 2}
+  - {fileID: 21300000, guid: 0a05cbc37c5772a45b42a7f87a17aebd, type: 2}
+  - {fileID: 21300000, guid: a40278d642adcc340b6b804f9ab6e759, type: 2}
+  - {fileID: 21300000, guid: e98107ce5147d9f478d4d266c5f1f931, type: 2}
+  - {fileID: 21300000, guid: 733226051729df046a08ca8a6ac55790, type: 2}
+  - {fileID: 21300000, guid: 82959eca109f59b4db7a680e06c191b6, type: 2}
+  - {fileID: 21300000, guid: e1a8f54dbd450a24bb0ca24138cc18aa, type: 2}
+  - {fileID: 21300000, guid: 0d839e41ba9ed124cb50fa10597bc24c, type: 2}
+  - {fileID: 21300000, guid: 307d7371b1b29674e9bcc953aebe770b, type: 2}
+  - {fileID: 21300000, guid: be33ef33d4e58914fb08e78ab790bc92, type: 2}
+  - {fileID: 21300000, guid: 7e1956717a2bb9d48b0709f0cfe10b12, type: 2}
+  - {fileID: 21300000, guid: 3824c855151a72b458f2d5afb8097ea8, type: 2}
   boss: 1
+--- !u!114 &8350229060853946002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8590458631515002597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0
 --- !u!1 &8742181116598299605
 GameObject:
   m_ObjectHideFlags: 0

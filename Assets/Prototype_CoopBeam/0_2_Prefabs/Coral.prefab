@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3945133915349592508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.11822965, z: 0}
+  m_LocalPosition: {x: 0, y: 0.13999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1292239499383209914, guid: 91f29a92b5efb4c4e909eaf84ac08b43, type: 2}
+  m_Sprite: {fileID: 21300000, guid: e744e09241a4b2b4299b791bfb4b0ad5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
 --- !u!114 &2654913811270795658
 MonoBehaviour:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b570d99c1a33df7478da29d78cd1c918, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelSpriteAnimator
   animationSet: {fileID: 11400000, guid: 91f29a92b5efb4c4e909eaf84ac08b43, type: 2}
 --- !u!1 &6526587122361741706
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9abd4522752fc5d458076b2d72adbf9e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PlayerHealth
   maxHearts: 3
   spawn: {x: -4, y: -3.65}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98ade3593b85a14f9ddb0dc8602c9a7, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PlayerController2D
   playerIndex: 0
   speed: 7
@@ -257,6 +257,7 @@ MonoBehaviour:
   visual: {fileID: 4881627081773419609}
   sprite: {fileID: 5660213369615696310}
   health: {fileID: 53049628549580250}
+  interactionOnlyDown: 0
 --- !u!114 &1935091276039941785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,5 +268,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D

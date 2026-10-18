@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a091b1c3856f0f742bf059de9d30b2f0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 3
   maxHealth: 110
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 685b004fa796e854a83e864dee4dedcc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IceEnemyBrain
   role: 1
   interval: 4.5
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee45f84d72d991429b4140daa5968c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.ActorPhysics2D
 --- !u!1 &3812767563449121406
 GameObject:
@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 4454768043846932960}
   - component: {fileID: 830786320040395228}
   - component: {fileID: 803658929698553364}
+  - component: {fileID: 4877676854318087877}
   m_Layer: 0
   m_Name: Pixel art
   m_TagString: Untagged
@@ -230,7 +231,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4277376902689410280, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 35232894e726c684aa8f25adb9bf4ea6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -251,17 +252,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aa1d2c0ba4d58d4aa4b99abb5aa87c1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IceSpriteAnimator
   frames:
-  - {fileID: 4277376902689410280, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -8220190791854784925, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -4316528174932531115, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -3557723660083760724, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -5484721608376793162, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -4926383959902096029, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: -7580549991531199586, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
-  - {fileID: 8076512492941185756, guid: c505c835a0a3a9c47890cd155f956152, type: 2}
+  - {fileID: 21300000, guid: 35232894e726c684aa8f25adb9bf4ea6, type: 2}
+  - {fileID: 21300000, guid: df83706459566a74c938166e38707798, type: 2}
+  - {fileID: 21300000, guid: b84f5f9a3ae4d3a4b81e8291458cfd34, type: 2}
+  - {fileID: 21300000, guid: ab25aeed43ec7b54fac88f9596c587b1, type: 2}
+  - {fileID: 21300000, guid: a65ef5fe93a36704db969cac0b5d2649, type: 2}
+  - {fileID: 21300000, guid: 7d0bb4ff3b673604eb70896dd941c01b, type: 2}
+  - {fileID: 21300000, guid: e43102e19594f30479be463374af6d93, type: 2}
+  - {fileID: 21300000, guid: 0201e88ea20ee334081b79a8045beb5f, type: 2}
   boss: 0
 --- !u!114 &803658929698553364
 MonoBehaviour:
@@ -273,5 +274,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a647211ae8c783f449277a48b3d16ad5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelActorVisual
+--- !u!114 &4877676854318087877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812767563449121406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e098b0ab94f74a98e9b2e9f7bcabb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedMotion
+  surface: 0
