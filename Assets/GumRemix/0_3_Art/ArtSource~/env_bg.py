@@ -56,7 +56,7 @@ def full(cv, y):
     out = Canvas(SW, SH); out.im.alpha_composite(cv.im, (0, y)); return out
 
 # ============================================================== theme palettes / layers
-def theme0():
+def theme0_old():
     """Prado Piruleta - bright candy meadow, morning."""
     rng = random.Random(10)
     sky = banded_sky([(60, hexc('#79c8ff')), (120, hexc('#a4dcff')), (170, hexc('#c8ecff')), (215, hexc('#ffe0f0')), (360, hexc('#ffc4e0'))])
@@ -108,9 +108,9 @@ def theme1():
 def theme2():
     """Nubes de Malvavisco - dusk sky of marshmallow clouds."""
     rng = random.Random(12)
-    sky = banded_sky([(55, hexc('#3a2a78')), (105, hexc('#5a3a98')), (150, hexc('#8a4ab0')), (195, hexc('#d060b0')), (240, hexc('#ff8aa0')), (360, hexc('#ffc890'))], zone=12)
-    far = hills(SW, 220, 150, [(14, 3, .5), (9, 6, 2.0), (5, 12, 1.0)], hexc('#b070c8'), hexc('#d8a0e0'), hexc('#8a50b0'), 70)
-    mid = hills(SW, 260, 120, [(18, 4, 1.4), (10, 9, .2), (6, 15, 2.5)], hexc('#ffb4d0'), hexc('#fff0f6'), hexc('#e890b8'), 110)
+    sky = banded_sky([(55, hexc('#140c3a')), (105, hexc('#2a1458')), (150, hexc('#5a1e78')), (195, hexc('#a02a82')), (240, hexc('#e0508a')), (360, hexc('#ff9a98'))], zone=12)
+    far = hills(SW, 220, 150, [(14, 3, .5), (9, 6, 2.0), (5, 12, 1.0)], hexc('#4a2480'), hexc('#8a58c0'), hexc('#321860'), 70)
+    mid = hills(SW, 260, 120, [(18, 4, 1.4), (10, 9, .2), (6, 15, 2.5)], hexc('#7a2a6a'), hexc('#e060a8'), hexc('#561a50'), 110)
     return sky, full(far, 90), full(mid, 135)
 
 def theme3():
@@ -139,7 +139,7 @@ def theme3():
         for x in range(8, SW, 24): mid.put({(x, yy + 6), (x + 1, yy + 6), (x, yy + 7), (x + 1, yy + 7)}, hexc('#c8a080'))
     return sky, full(far, 140), full(mid, 100)
 
-def theme4():
+def theme4_old():
     """Circo del Chicloso - big-top boss arena."""
     sky = Canvas(SW, SH)
     cols = (hexc('#a82c4c'), hexc('#e6c4aa'))
@@ -164,6 +164,14 @@ def theme4():
             if dither(x, y, (y - 230) / 130 * .5): sky.px[x, y] = hexc('#ffb080') if sky.px[x, y] == cols[1] else hexc('#e0506a')
     return sky, Canvas(SW, SH), Canvas(SW, SH)
 
+def theme0():
+    import env_gothic
+    return env_gothic.theme0()
+
+def theme4():
+    import env_gothic
+    return env_gothic.theme4()
+
 THEMES = [theme0, theme1, theme2, theme3, theme4]
 
 # ============================================================== tiles
@@ -171,6 +179,9 @@ PW, PH = 40, 24         # platform tile (1 x 0.6 units)
 
 def plat_tile(theme, kind):
     """kind: 'L','M0','M1','M2','R'. Drawn so that the walkable surface is the top edge."""
+    if theme in (0, 4):
+        import env_gothic
+        return env_gothic.plat_tile_night(kind) if theme == 0 else env_gothic.plat_tile_hall(kind)
     cv = Canvas(PW, PH)
     rng = random.Random(100 + _hs(kind) % 997)
     if theme == 0:      # wafer biscuit with pink frosting + gum drips
@@ -199,7 +210,7 @@ def plat_tile(theme, kind):
         m |= ell(8, PH - 7, 8, 5) | ell(32, PH - 7, 8, 5) | ell(20, PH - 6, 10, 5)
         m = {(x, y) for (x, y) in m if 0 <= x < PW and 0 <= y < PH}
         if kind == 'L': m = {p for p in m if p[0] > 1 or abs(p[1] - 12) < 7}
-        part(cv, m, dict(base=hexc('#fff4fa'), hi=hexc('#ffffff'), shade=hexc('#f0c8e0'), deep=hexc('#d09ac0'), out=hexc('#7a3a78'), out_l=hexc('#e0a8d0')))
+        part(cv, m, dict(base=hexc('#d8c8f0'), hi=hexc('#f4ecff'), shade=hexc('#a890c8'), deep=hexc('#6a50a0'), out=hexc('#2a1450'), out_l=hexc('#b8a0e0')))
         cv.put({(6 + k, 5) for k in range(3)}, hexc('#ffffff'))
     elif theme == 3:    # chocolate bar + foil edge
         cv.put(rect(0, 4, PW, PH - 1), hexc('#6a3a28'))
@@ -230,10 +241,13 @@ def ground_tiles(theme):
     pals = [
         (hexc('#8a5030'), hexc('#a86840'), hexc('#6a3a28'), hexc('#ff8cc4'), hexc('#ffd0ea'), hexc('#d8408e')),
         (hexc('#6a3438'), hexc('#8a4a44'), hexc('#4a2430'), hexc('#ffb040'), hexc('#ffe090'), hexc('#d07820')),
-        (hexc('#e8b8d8'), hexc('#f8d8ec'), hexc('#c890b8'), hexc('#ffffff'), hexc('#ffffff'), hexc('#e0b0d0')),
+        (hexc('#5a3a80'), hexc('#7a58a0'), hexc('#3e2660'), hexc('#d8c8f0'), hexc('#f4ecff'), hexc('#a890c8')),
         (hexc('#4a2c28'), hexc('#6a4038'), hexc('#34201c'), hexc('#d8d8e8'), hexc('#ffffff'), hexc('#8a8ab0')),
         (hexc('#7a2038'), hexc('#a02848'), hexc('#581430'), hexc('#e8c050'), hexc('#ffe9b8'), hexc('#b08030')),
     ][theme]
+    if theme in (0, 4):
+        import env_gothic
+        pals = env_gothic.GROUND_PALS[theme]
     body, body_l, body_d, cap, cap_l, cap_d = pals
     for cv in (top, fill):
         cv.put(rect(0, 0, GW_, GH_), body)
@@ -245,7 +259,7 @@ def ground_tiles(theme):
             cv.put([(x, y), (x + 1, y)], body_l); cv.put([(x, y + 1), (x + 1, y + 1)], body_d)
         for _ in range(5):
             x, y = rr.randrange(2, GW_ - 3), rr.randrange(2, GH_ - 3)
-            cv.put(ell(x, y, 2, 1.6), [hexc('#fff0f6'), hexc('#ffe36a'), hexc('#8ff0ff')][rr.randrange(3)] if theme in (0, 4) else body_d)
+            cv.put(ell(x, y, 2, 1.6), [hexc('#fff0f6'), hexc('#ffe36a'), hexc('#8ff0ff')][rr.randrange(3)] if False else body_d)
     topcap = rect(0, 0, GW_, 8) | {(x, y) for x in range(GW_) for y in range(8, 8 + [3, 5, 2, 6, 3, 4, 2, 5][x // 5])}
     top.put(topcap, cap); top.put(rect(0, 0, GW_, 2), cap_l); top.put({(x, y) for (x, y) in topcap if (x, y + 1) not in topcap}, cap_d)
     top.put({(x, 7) for x in range(GW_)}, cap_d) if theme == 2 else None
@@ -255,8 +269,11 @@ def ground_tiles(theme):
 def wall_tile(theme):
     cv = Canvas(20, 40)
     pal = [(hexc('#ff9ad0'), hexc('#ffd0ea'), hexc('#d8408e')), (hexc('#a8603a'), hexc('#c88050'), hexc('#6a3828')),
-           (hexc('#fff4fa'), hexc('#ffffff'), hexc('#d09ac0')), (hexc('#7a4430'), hexc('#9a5c40'), hexc('#5a3020')),
+           (hexc('#6a4a98'), hexc('#9a7ac8'), hexc('#3e2660')), (hexc('#7a4430'), hexc('#9a5c40'), hexc('#5a3020')),
            (hexc('#e8c050'), hexc('#ffe9b8'), hexc('#b08030'))][theme]
+    if theme in (0, 4):
+        import env_gothic
+        pal = env_gothic.WALL_PALS[theme]
     cv.put(rect(0, 0, 20, 40), pal[0]); cv.put(rect(0, 0, 3, 40), pal[1]); cv.put(rect(15, 0, 20, 40), pal[2]); cv.put(rect(17, 0, 20, 40), pal[2])
     for y in range(0, 40, 10): cv.put(rect(0, y, 20, y + 1), pal[2]); cv.put({(5, y + 4), (6, y + 4), (5, y + 5), (6, y + 5)}, pal[1])
     cv.put({(x, y) for x in range(20) for y in range(40) if x in (0,)}, hexc('#2a1030')); cv.put({(19, y) for y in range(40)}, hexc('#2a1030'))

@@ -180,7 +180,7 @@ namespace GumRemix
             bossBarBack = Pix.Make("bossbar", hudRoot, white, new Vector3(-4.1f, 4.0f, 0), 200); bossBarBack.transform.localScale = new Vector3(332, 10, 1); bossBarBack.color = new Color(.16f, .04f, .2f);
             bossBarFill = Pix.Make("bossfill", hudRoot, white, new Vector3(-4.0f, 4.0f, 0), 201); bossBarFill.color = new Color(1f, .45f, .7f);
             for (int i = 0; i < 2; i++) { bossTicks[i] = Pix.Make("tick", hudRoot, white, Vector3.zero, 202); bossTicks[i].transform.localScale = new Vector3(2, 8, 1); bossTicks[i].color = new Color(.16f, .04f, .2f); }
-            bossName = PText.Create(hudRoot, new Vector3(0, 3.55f, 0), "EL GRAN CHICLON", 2, new Color(1f, .85f, .95f), true, 200);
+            bossName = PText.Create(hudRoot, new Vector3(0, 3.55f, 0), "LA PRINCESA CHICLE", 2, new Color(1f, .85f, .95f), true, 200);
             SetHudVisible(false);
         }
 

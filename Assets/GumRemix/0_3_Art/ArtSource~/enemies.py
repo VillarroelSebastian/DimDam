@@ -7,12 +7,12 @@ WHITE = hexc('#ffffff')
 def pal_of(base, hi, shade, deep, out, out_l=None):
     return dict(base=hexc(base), hi=hexc(hi), shade=hexc(shade), deep=hexc(deep), out=hexc(out), out_l=hexc(out_l or shade))
 
-BEAR_RED = pal_of('#ee4650', '#ffa090', '#c02a4a', '#862050', '#3a0e34', '#9a2048')
-BEAR_GREEN = pal_of('#3fd070', '#b8ffc0', '#1f9a68', '#186a6a', '#0c2a40', '#188a60')
-BEAR_ORANGE = pal_of('#ffa030', '#ffe090', '#e06a28', '#a03c30', '#401428', '#c05a28')
-BEAN_YELLOW = pal_of('#ffd23a', '#fff4a0', '#e89a2a', '#b05a30', '#4a1a28', '#c07a28')
-BEAN_PURPLE = pal_of('#b070f0', '#e0c0ff', '#7a48d0', '#4a2a98', '#1e1050', '#6a40c0')
-LOLLI_PINK = pal_of('#ff7ab8', '#ffc8e4', '#e0488e', '#a02c70', '#401040', '#c04080')
+BEAR_RED = pal_of('#cf2c48', '#ff7a88', '#98203e', '#601438', '#2a0a24', '#7a1a40')
+BEAR_GREEN = pal_of('#2fb070', '#9ef0b4', '#1a7a5a', '#124a54', '#08202c', '#146a58')
+BEAR_ORANGE = pal_of('#e0802a', '#ffd080', '#b45222', '#783024', '#341020', '#964a24')
+BEAN_YELLOW = pal_of('#e8b02c', '#ffe890', '#b87822', '#7a4228', '#34121c', '#98601c')
+BEAN_PURPLE = pal_of('#9058d8', '#d0b0ff', '#5c36b0', '#38207a', '#160c3c', '#5030a0')
+LOLLI_PINK = pal_of('#f0509c', '#ffb0d8', '#bc2c72', '#7c1c58', '#32082e', '#a02c68')
 
 EYE = hexc('#2a0e2e'); GOUT = hexc('#3a0e34')
 

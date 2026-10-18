@@ -4141,13 +4141,13 @@
   {
    "name": "boss",
    "file": "GumRemix/Bosses/boss",
-   "cw": 128,
-   "ch": 128,
+   "cw": 168,
+   "ch": 174,
    "cols": 10,
    "count": 90,
    "ppu": 40,
    "px": 0.5,
-   "py": 0.015625,
+   "py": 0.13793103448275862,
    "anims": [
     {
      "name": "p1_idle",
@@ -4259,13 +4259,13 @@
   {
    "name": "boss_w",
    "file": "GumRemix/Bosses/boss_w",
-   "cw": 128,
-   "ch": 128,
+   "cw": 168,
+   "ch": 174,
    "cols": 10,
    "count": 90,
    "ppu": 40,
    "px": 0.5,
-   "py": 0.015625,
+   "py": 0.13793103448275862,
    "anims": [
     {
      "name": "p1_idle",
@@ -5929,8 +5929,8 @@
    "anims": []
   },
   {
-   "name": "lollitree_0",
-   "file": "GumRemix/World/Candy/lollitree_0",
+   "name": "licorice_0",
+   "file": "GumRemix/World/Candy/licorice_0",
    "cw": 64,
    "ch": 120,
    "cols": 8,
@@ -5949,8 +5949,8 @@
    ]
   },
   {
-   "name": "lollitree_1",
-   "file": "GumRemix/World/Candy/lollitree_1",
+   "name": "licorice_1",
+   "file": "GumRemix/World/Candy/licorice_1",
    "cw": 64,
    "ch": 120,
    "cols": 8,
@@ -5969,8 +5969,8 @@
    ]
   },
   {
-   "name": "lollitree_2",
-   "file": "GumRemix/World/Candy/lollitree_2",
+   "name": "licorice_2",
+   "file": "GumRemix/World/Candy/licorice_2",
    "cw": 64,
    "ch": 120,
    "cols": 8,
@@ -5989,8 +5989,8 @@
    ]
   },
   {
-   "name": "windmill",
-   "file": "GumRemix/World/Candy/windmill",
+   "name": "spire",
+   "file": "GumRemix/World/Candy/spire",
    "cw": 96,
    "ch": 120,
    "cols": 8,
@@ -6009,8 +6009,8 @@
    ]
   },
   {
-   "name": "flower_0",
-   "file": "GumRemix/World/Candy/flower_0",
+   "name": "mushroom_0",
+   "file": "GumRemix/World/Candy/mushroom_0",
    "cw": 32,
    "ch": 40,
    "cols": 6,
@@ -6029,8 +6029,8 @@
    ]
   },
   {
-   "name": "flower_1",
-   "file": "GumRemix/World/Candy/flower_1",
+   "name": "mushroom_1",
+   "file": "GumRemix/World/Candy/mushroom_1",
    "cw": 32,
    "ch": 40,
    "cols": 6,
@@ -6049,8 +6049,8 @@
    ]
   },
   {
-   "name": "flower_2",
-   "file": "GumRemix/World/Candy/flower_2",
+   "name": "mushroom_2",
+   "file": "GumRemix/World/Candy/mushroom_2",
    "cw": 32,
    "ch": 40,
    "cols": 6,
@@ -6173,8 +6173,8 @@
    ]
   },
   {
-   "name": "balloon_0",
-   "file": "GumRemix/World/Candy/balloon_0",
+   "name": "lantern_0",
+   "file": "GumRemix/World/Candy/lantern_0",
    "cw": 32,
    "ch": 56,
    "cols": 6,
@@ -6193,8 +6193,8 @@
    ]
   },
   {
-   "name": "balloon_1",
-   "file": "GumRemix/World/Candy/balloon_1",
+   "name": "lantern_1",
+   "file": "GumRemix/World/Candy/lantern_1",
    "cw": 32,
    "ch": 56,
    "cols": 6,
@@ -6213,8 +6213,8 @@
    ]
   },
   {
-   "name": "balloon_2",
-   "file": "GumRemix/World/Candy/balloon_2",
+   "name": "lantern_2",
+   "file": "GumRemix/World/Candy/lantern_2",
    "cw": 32,
    "ch": 56,
    "cols": 6,
@@ -6233,8 +6233,8 @@
    ]
   },
   {
-   "name": "balloon_3",
-   "file": "GumRemix/World/Candy/balloon_3",
+   "name": "lantern_3",
+   "file": "GumRemix/World/Candy/lantern_3",
    "cw": 32,
    "ch": 56,
    "cols": 6,
@@ -6373,10 +6373,10 @@
    ]
   },
   {
-   "name": "bunting",
-   "file": "GumRemix/World/Candy/bunting",
-   "cw": 160,
-   "ch": 40,
+   "name": "hall_chandelier",
+   "file": "GumRemix/World/Candy/hall_chandelier",
+   "cw": 112,
+   "ch": 96,
    "cols": 8,
    "count": 8,
    "ppu": 40,
@@ -6393,12 +6393,12 @@
    ]
   },
   {
-   "name": "audience",
-   "file": "GumRemix/World/Candy/audience",
-   "cw": 192,
+   "name": "hall_candelabra",
+   "file": "GumRemix/World/Candy/hall_candelabra",
+   "cw": 48,
    "ch": 64,
-   "cols": 8,
-   "count": 8,
+   "cols": 6,
+   "count": 6,
    "ppu": 40,
    "px": 0.5,
    "py": 0.0,
@@ -6406,8 +6406,28 @@
     {
      "name": "loop",
      "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "hall_curtain",
+   "file": "GumRemix/World/Candy/hall_curtain",
+   "cw": 64,
+   "ch": 200,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
      "count": 8,
-     "fps": 7.0,
+     "fps": 5.0,
      "loop": true
     }
    ]

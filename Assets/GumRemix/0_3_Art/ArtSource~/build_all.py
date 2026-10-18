@@ -6,6 +6,7 @@ from px import *
 import heroes, enemies, fx, boss, env_bg, env_props
 import ice_enemies as ie, ice_fx, ice_boss, ice_env, ice_props
 import armor
+import env_gothic
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.normpath(os.path.join(HERE, '..', 'Resources', 'GumRemix'))
@@ -138,7 +139,7 @@ register('snowhead', ie.snow_head_frames(8), 28, 28, 8, (0.5, 0.5), [('spin', 0,
 # =============================================================================================== BOSSES
 folder('Bosses')
 bfr, border = boss.build_boss()
-register('boss', bfr, boss.BW, boss.BH, 10, (0.5, 2 / boss.BH), anims_from(border, boss.BOSS_ANIMS), white=True)
+register('boss', bfr, boss.BW, boss.BH, 10, (0.5, boss.PIVOT_Y), anims_from(border, boss.BOSS_ANIMS), white=True)
 register('boss_hat', boss.hat_frames(8), 48, 48, 8, (0.5, 0.5), [('spin', 0, 8, 14, True)])
 ifr, iorder, ianch = ice_boss.build_boss()
 anch = []
@@ -195,24 +196,25 @@ for t, fn in enumerate(env_bg.THEMES):
     register(f'wall_{t}', [env_bg.wall_tile(t)], 20, 40, 1, (0.5, 0.5))
 
 P = env_props
-for s in range(3): reg_loop(f'lollitree_{s}', P.lolli_tree(8, s), 8)
-reg_loop('windmill', P.windmill(8), 8)
-for s in range(3): reg_loop(f'flower_{s}', P.gumdrop_flower(6, s), 6)
+for s in range(3): reg_loop(f'licorice_{s}', env_gothic.licorice_tree(8, s), 8)
+reg_loop('spire', env_gothic.spire(8), 8)
+for s in range(3): reg_loop(f'mushroom_{s}', env_gothic.glow_mushroom(6, s), 6)
 pk = lambda *c: P.pal(*c)
-register('clouds_0', [P.cloud(96, 40, 1, pk('#fff4fa', '#ffffff', '#ffd0e8', '#f0a8d0', '#e890c0', '#ffd0e8')), P.cloud(120, 44, 2, pk('#fff4fa', '#ffffff', '#ffd0e8', '#f0a8d0', '#e890c0', '#ffd0e8')), P.cloud(80, 34, 3, pk('#ffeaf4', '#ffffff', '#ffc8e0', '#f0a0c8', '#e888b8', '#ffc8e0'))], 120, 44, 3, (0.5, 0.5))
-register('clouds_2', [P.cloud(128, 56, 4, pk('#fff0fa', '#ffffff', '#f0c0e8', '#c890d0', '#9a60b8', '#e8b0e0')), P.cloud(144, 60, 5, pk('#ffd8ee', '#fff0fa', '#f0a8d0', '#c878b8', '#8a50a8', '#e898c8')), P.cloud(100, 44, 6, pk('#ffe4f2', '#ffffff', '#f4b8dc', '#d088c0', '#9058b0', '#ecA8d4'))], 144, 60, 3, (0.5, 0.5))
+register('clouds_0', [P.cloud(96, 40, 1, pk('#3a2068', '#7a4ab0', '#26104e', '#180a38', '#0e0624', '#5a3a98')), P.cloud(120, 44, 2, pk('#3a2068', '#7a4ab0', '#26104e', '#180a38', '#0e0624', '#5a3a98')), P.cloud(80, 34, 3, pk('#4a2a7a', '#8a5ac0', '#2e1658', '#1c0c40', '#0e0624', '#6a46a8'))], 120, 44, 3, (0.5, 0.5))
+register('clouds_2', [P.cloud(128, 56, 4, pk('#5a3a88', '#e890c8', '#3e2868', '#2a1a4e', '#140a2e', '#c070b0')), P.cloud(144, 60, 5, pk('#4a3078', '#d880c0', '#321e5a', '#221444', '#120a28', '#b868a8')), P.cloud(100, 44, 6, pk('#68468e', '#f0a0d0', '#46306e', '#30205a', '#160c30', '#d078b8'))], 144, 60, 3, (0.5, 0.5))
 for s in range(2): reg_loop(f'crystal_{s}', P.crystal(6, s), 6)
 reg_loop('waterfall', P.waterfall(8), 10)
 reg_loop('pot', P.caramel_pot(8), 10)
-for s in range(4): reg_loop(f'balloon_{s}', P.balloon(6, s), 6)
+for s in range(4): reg_loop(f'lantern_{s}', env_gothic.lantern(6, s), 6)
 reg_loop('star', P.star_twinkle(4), 5, (0.5, 0.5))
 reg_loop('gear_l', P.gear(64, 10, 8, 0), 6, (0.5, 0.5))
 reg_loop('gear_s', P.gear(40, 8, 8, 1), 9, (0.5, 0.5))
 reg_loop('steam', P.steam_vent(8), 8)
 reg_loop('vat', P.choc_vat(8), 8)
 reg_loop('lamp', P.lamp(8), 6, (0.5, 1.0))
-reg_loop('bunting', P.bunting(8), 7, (0.5, 1.0))
-reg_loop('audience', P.audience(8), 7)
+reg_loop('hall_chandelier', env_gothic.chandelier(8), 7, (0.5, 1.0))
+reg_loop('hall_candelabra', env_gothic.candelabra(6), 8)
+reg_loop('hall_curtain', env_gothic.curtain(8), 5, (0.5, 1.0))
 register('beam', P.beam(), 64, 240, 1, (0.5, 1.0))
 sp = P.sprinkle_sheet()
 register('sprinkles', sp, 8, 8, 4, (0.5, 0.5))

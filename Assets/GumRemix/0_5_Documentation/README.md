@@ -29,7 +29,7 @@ Mando: stick/cruceta, A salta, X dispara, B/RB dash, Y/LB super. P2 puede entrar
 - **Atrapar y patear (Snow Bros):** los disparos pegan chicle; al agotar la vida del enemigo queda atrapado en una bola (de chicle en Chicle, de nieve en Hielo). Tócala para patearla: rueda, rebota, revienta a los enemigos que encuentra, rompe cristales y golpea al jefe. Si no la pateas, el enemigo se libera a los 7 s.
 - **Parry:** lo **rosa** hace daño, pero saltando sobre ello en el aire lo "parreas": rebotas y ganas una carta. 5 cartas = **Super**, un rayo de chicle que atrapa a todo lo que tiene delante.
 - **Subir de nivel:** al eliminar a todos los enemigos una burbuja lleva a los jugadores al piso de arriba; los niveles están apilados y la cámara asciende (los caídos reviven y se cura un corazón).
-- **10 niveles y 2 jefes:** cada mundo son 4 niveles que se escalan y un jefe en el quinto. Al vencer a Gran Chiclón se pasa al Reino de Hielo.
+- **10 niveles y 2 jefes:** cada mundo son 4 niveles que se escalan y un jefe en el quinto. Al vencer a la Princesa Chicle se pasa al Reino de Hielo.
 
 ## Estructura de carpetas (misma convención que ReinoDeChicle / ReinoDeHielo)
 | Carpeta | Contenido |
@@ -49,7 +49,7 @@ Mando: stick/cruceta, A salta, X dispara, B/RB dash, Y/LB super. P2 puede entrar
 son ciclos parametrizados (senos con retraso para el movimiento secundario: cuernos, cola, bufanda, tentáculos) y se mide
 que ningún bucle tenga saltos (diferencia de píxeles entre fotogramas, incluido el cierre del bucle) ni se corte por el borde de la celda.
 - Héroes: 41 fotogramas (idle, run, salto, caída, aterrizaje, dash, daño, celebración) + brazos de disparo en 3 ángulos con retroceso; versión de invierno con bufanda, orejeras y manoplas.
-- Chicle: oso de gominola (3 colores), jelly bean, piruleta voladora con espiral que gira, cañón de azúcar, bolas de chicle y el Gran Chiclón (90 fotogramas, 3 formas).
+- Chicle: oso de gominola (3 colores), jelly bean, piruleta voladora con espiral que gira, cañón de azúcar, bolas de chicle y el la Princesa Chicle (90 fotogramas, 3 formas).
 - Hielo: Pingüino Escudero, Muñeco Remendado, Lechuza de Escarcha, Medusa Boreal, Cangrejo Iglú, Semilla de Nieve, sus bolas de nieve y el Monarca del Deshielo (100 fotogramas, 3 formas, con el sol como punto débil calculado por fotograma).
 - Entorno animado en los 10 niveles: molino, árboles que se mecen, cascadas, auroras, humo de iglú, farolillos, candelabros, estandartes, cristales que cantan, partículas y capas con deriva/parallax.
 - Texto con fuente de píxeles propia (5x7), audio y música sintetizados en código (un tema por nivel; campanas en Hielo).
@@ -83,7 +83,7 @@ Pensado para la temática de la jam: el juego se disfruta más con otra persona,
 
 Toda la música se compone y sintetiza dentro del juego (sin archivos de audio), en `GumMusic.cs`: `SongBook` (partituras como texto), `MusicRenderer` (32 kHz estéreo, bucles sin clic) y `MusicHost` (render en segundo plano, fundido cruzado).
 
-Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (Gran Chiclón, 3 formas), Lago, Aldea, Cristales, Jardines, PalacioBoss1-3 (Monarca, 3 formas), Title, Victory, GameOver, WorldDone.
+Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (la Princesa Chicle, 3 formas), Lago, Aldea, Cristales, Jardines, PalacioBoss1-3 (Monarca, 3 formas), Title, Victory, GameOver, WorldDone.
 
 ## Lazo, acorazados y guardia de jefes
 - **El lazo siempre une a los heroes** (horizontal, diagonal o vertical, largo maximo 9.5 u; mas alla los jala). Daña lo que cruza.
@@ -91,3 +91,9 @@ Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (Gran Chiclón, 3 f
 - **Guardia de jefe**: una vez por forma, al perder ~40 % de la vida de esa forma, el jefe brilla y el disparo rebota; solo el lazo lo daña (hasta quitarle ~22 % de la forma o 20 s).
 - Dificultad: hasta 4-5 enemigos a la vez, jefes con mas vida (Chiclon 170/150/125, Monarca 100/100/90) y menos pausa entre ataques.
 - Musica: fundidos de potencia constante (1.8 s entre niveles, 3.2 s entre formas de jefe).
+
+## Rediseño "dulce gótico" del Reino de Chicle
+Se bajó el tono infantil del mundo de Chicle (arte 100 % generado por código en `0_3_Art/ArtSource~`):
+- **Jefe: La Princesa Chicle** (`boss.py`). Forma 1: princesa elegante (vestido de gominola con burbujas atrapadas, corona de oro, cetro-piruleta). Forma 2: se deforma (la corona se rompe en astillas, la cara se estira, un ojo ácido y un tercer ojo en la frente, el vestido se derrite en goteos, brazos con garras). Forma 3: masa monstruosa de chicle con varios ojos de pupila rasgada, fauces con colmillos, venas y tentáculos. Mismas animaciones y tiempos que antes (`boss_clown.py` conserva los parámetros de animación). Hitboxes ajustadas en `GumBoss.cs`.
+- **Mundo** (`env_gothic.py`): Jardín nocturno (luna de chicle, castillo lejano, árboles de regaliz con bulbos que laten, hongos luminosos, torre), nivel de nubes como atardecer ciruela con farolillos, y **Salón del Trono** para el jefe (vitrales, columnas, arañas de luz, cortinas, candelabros con llamas animadas). Plataformas y suelos oscuros con glaseado magenta u oro.
+- Enemigos de Chicle con paletas más profundas (oso, jelly bean, piruleta). Los fundidos de partículas ambientales ahora son esporas/brasas en vez de confeti.

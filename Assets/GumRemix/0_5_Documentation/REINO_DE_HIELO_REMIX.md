@@ -2,7 +2,7 @@
 
 Reinterpretación, en el estilo run & gun / Snow Bros de Chicle Rumble, del Reino de Hielo original del proyecto
 (`Assets/ReinoDeHielo`): las mismas cinco arenas, las mismas criaturas y el mismo jefe, con mecánicas adaptadas.
-Se juega desde el menú (**MUNDO: HIELO**) o continuando tras vencer al Gran Chiclón. Los héroes llevan ropa de invierno
+Se juega desde el menú (**MUNDO: HIELO**) o continuando tras vencer al la Princesa Chicle. Los héroes llevan ropa de invierno
 (bufanda que ondea, orejeras, manoplas).
 
 ## Las cinco arenas

@@ -141,7 +141,7 @@ namespace GumRemix
             S(l[3], "bean", 3f, 5.2f, "purple"); S(l[3], "bear", -6f, 3.1f, "steel"); S(l[3], "bear", 5f, 5.2f, "steel"); S(l[3], "lolli", 0f, 6.9f, "pink");
             l[3].parTime = 95;
 
-            l[4] = L("EL GRAN CHICLON", "JEFE FINAL", 4, 0,
+            l[4] = L("LA PRINCESA CHICLE", "JEFE FINAL", 4, 0,
                 P(-7.2f, -4f, 3.2f), P(-2f, 1.2f, 3.2f), P(-6f, -2.5f, 5.4f), P(-0.8f, 2.2f, 5.4f), P(-4f, -1f, 7.5f));
             l[4].boss = true; l[4].playerX = new[] { -5.5f, -3.5f }; l[4].parTime = 150;
 

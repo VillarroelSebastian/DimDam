@@ -94,8 +94,8 @@ namespace GumRemix
             float x = Random.Range(-8f, 8f);
             switch (theme)
             {
-                case 0:   // sprinkles float up in the breeze, bubbles rise
-                    if (Random.value < .6f) { var c = Random.Range(0, 6); New(sprinkles[c * 4 + Random.Range(0, 4)], new Vector2(x, y0 + Random.Range(1.2f, 8f)), new Vector2(Random.Range(0.3f, 0.9f), Random.Range(-0.1f, 0.35f)), 7f, -60); }
+                case 0:   // night garden: glinting spores drift up, now and then a bubble rises
+                    if (Random.value < .7f) New(sparkIce[0], new Vector2(x, y0 + Random.Range(1.2f, 7f)), new Vector2(Random.Range(-0.15f, 0.25f), Random.Range(0.15f, 0.5f)), 3.6f, -58, sparkIce.clips["spark"].frames, 4f);
                     else New(bubble[0], new Vector2(x, y0 + 1.1f), new Vector2(0f, Random.Range(0.5f, 1f)), 6f, -58);
                     break;
                 case 1:   // embers & drips
@@ -109,8 +109,9 @@ namespace GumRemix
                 case 3:   // sparks from the factory
                     New(ember[0], new Vector2(Random.Range(-7f, 7f), y0 + 1.2f), new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0.8f, 1.8f)), 3.2f, -60, ember.clips["pulse"].frames, 10f);
                     break;
-                case 4:   // confetti falling from the big top
-                    { var c = Random.Range(0, 6); New(sprinkles[c * 4], new Vector2(x, y0 + Levels.Height + 0.2f), new Vector2(Random.Range(-0.4f, 0.4f), Random.Range(-1.4f, -0.7f)), 8f, -60, new[] { sprinkles[c * 4], sprinkles[c * 4 + 1], sprinkles[c * 4 + 2], sprinkles[c * 4 + 3] }, 6f); }
+                case 4:   // ballroom: embers from the candles rise slowly, a bubble of gum now and then
+                    if (Random.value < .75f) New(ember[0], new Vector2(Random.Range(-7.5f, 7.5f), y0 + Random.Range(1.2f, 3f)), new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(0.25f, 0.7f)), 5f, -60, ember.clips["pulse"].frames, 8f);
+                    else New(bubble[0], new Vector2(x, y0 + 1.1f), new Vector2(0f, Random.Range(0.4f, 0.8f)), 6f, -58);
                     break;
                 case 5: Flake(-0.4f, 0.4f, -1.5f, -0.7f, -58); break;                         // calm snowfall
                 case 6: Flake(0.2f, 0.7f, -1.3f, -0.6f, -58); break;                          // gentle flurry
@@ -250,10 +251,10 @@ namespace GumRemix
             {
                 case 0:
                     Clouds(r, "clouds_0", 4, 6.2f, 8.4f, 0.12f, -95);
-                    Prop(r, new PropDef("windmill", -5.6f, 1.0f, -70, 1.0f));
-                    Prop(r, new PropDef("lollitree_0", 5.8f, 1.0f, -72, 1f));
-                    Prop(r, new PropDef("lollitree_1", 2.2f, 1.0f, -73, 0.8f)); Prop(r, new PropDef("lollitree_2", -2.4f, 1.0f, -73, 0.9f));
-                    for (int i = 0; i < 9; i++) Prop(r, new PropDef("flower_" + (i % 3), -7f + i * 1.75f + Random.Range(-0.3f, 0.3f), 1.0f, -19, 1f + Random.Range(-.2f, .2f), i % 2 == 0));
+                    Prop(r, new PropDef("spire", -5.6f, 1.0f, -70, 1.0f));
+                    Prop(r, new PropDef("licorice_0", 5.8f, 1.0f, -72, 1f));
+                    Prop(r, new PropDef("licorice_1", 2.2f, 1.0f, -73, 0.8f)); Prop(r, new PropDef("licorice_2", -2.4f, 1.0f, -73, 0.9f));
+                    for (int i = 0; i < 8; i++) Prop(r, new PropDef("mushroom_" + (i % 3), -7f + i * 2.0f + Random.Range(-0.3f, 0.3f), 1.0f, -19, 1f + Random.Range(-.2f, .2f), i % 2 == 0));
                     break;
                 case 1:
                     Prop(r, new PropDef("waterfall", -6.2f, 8.5f, -75, 1f)); Prop(r, new PropDef("waterfall", 6.0f, 8.6f, -75, 1.1f, true));
@@ -262,7 +263,7 @@ namespace GumRemix
                     break;
                 case 2:
                     Clouds(r, "clouds_2", 6, 1.6f, 7.5f, 0.2f, -88);
-                    for (int i = 0; i < 4; i++) Prop(r, new PropDef("balloon_" + i, -6f + i * 4.1f, 4.2f + (i % 2) * 2.2f, -60, 1f), true);
+                    for (int i = 0; i < 4; i++) Prop(r, new PropDef("lantern_" + i, -6f + i * 4.1f, 4.2f + (i % 2) * 2.2f, -60, 1f), true);
                     break;
                 case 3:
                     Prop(r, new PropDef("gear_l", -5.5f, 6.4f, -70, 1f)); Prop(r, new PropDef("gear_s", -3.9f, 5.2f, -71, 1f, true));
@@ -272,16 +273,16 @@ namespace GumRemix
                     Prop(r, new PropDef("lamp", -4.5f, 9.0f, -60, 1f)); Prop(r, new PropDef("lamp", 0f, 9.0f, -60, 1f)); Prop(r, new PropDef("lamp", 4.5f, 9.0f, -60, 1f));
                     break;
                 case 4:
-                    Prop(r, new PropDef("audience", -4.0f, 1.0f, -69, 1f)); Prop(r, new PropDef("audience", 4.8f, 1.0f, -69, 1f));
-                    Prop(r, new PropDef("audience", 0.4f, 1.0f, -69, 1f));
-                    Prop(r, new PropDef("bunting", 0f, 9.0f, -60, 1f)); Prop(r, new PropDef("bunting", -4f, 8.0f, -61, 1.2f)); Prop(r, new PropDef("bunting", 4f, 8.0f, -61, 0.9f, true));
-                    for (int i = 0; i < 4; i++) Prop(r, new PropDef("balloon_" + i, -7f + i * 0.35f + (i % 2) * 14f, 1.2f, -59, 1f), true);
+                    Prop(r, new PropDef("hall_candelabra", -7.0f, 1.0f, -69, 1.1f)); Prop(r, new PropDef("hall_candelabra", 7.0f, 1.0f, -69, 1.1f, true));
+                    Prop(r, new PropDef("hall_candelabra", -3.9f, 1.0f, -69, 0.8f, true)); Prop(r, new PropDef("hall_candelabra", 3.9f, 1.0f, -69, 0.8f));
+                    Prop(r, new PropDef("hall_chandelier", 0f, 9.0f, -60, 1.1f)); Prop(r, new PropDef("hall_chandelier", -4.8f, 9.0f, -61, 0.9f, true)); Prop(r, new PropDef("hall_chandelier", 4.8f, 9.0f, -61, 0.9f));
+                    Prop(r, new PropDef("hall_curtain", -7.5f, 9.0f, -58, 1f)); Prop(r, new PropDef("hall_curtain", 7.5f, 9.0f, -58, 1f, true));
                     for (int i = 0; i < 2; i++)
                     {
                         var sh = Art.Get("beam");
                         var sr = Pix.Make("beam", r, sh[0], new Vector3(i == 0 ? -4f : 4f, 9.2f, 0), -65);
                         sr.transform.localScale = new Vector3(1.6f, 1.2f, 1f);
-                        var sw = sr.gameObject.AddComponent<Sweeper>(); sw.baseAngle = i == 0 ? -12f : 12f; sw.amp = 22f; sw.speed = i == 0 ? 0.55f : 0.4f;
+                        var sw = sr.gameObject.AddComponent<Sweeper>(); sw.baseAngle = i == 0 ? -10f : 10f; sw.amp = 5f; sw.speed = i == 0 ? 0.3f : 0.22f;
                     }
                     break;
 

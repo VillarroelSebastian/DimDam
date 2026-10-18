@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace GumRemix
 {
-    /// <summary>El Gran Chiclon: a three-form gum ringmaster. Attacks are written as small coroutines.</summary>
+    /// <summary>La Princesa Chicle: a three-form gum princess (elegant, then melting, then a many-eyed horror). Attacks are written as small coroutines.</summary>
     public class Boss : BossBase
     {
         public const int Phase1Hp = 170, Phase2Hp = 150, Phase3Hp = 125;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
-        public override string DisplayName { get { return "EL GRAN CHICLON"; } }
+        public override string DisplayName { get { return "LA PRINCESA CHICLE"; } }
         public override int[] PhaseFloors { get { return new[] { Phase2Hp + Phase3Hp, Phase3Hp }; } }
 
         GameObject go; SpriteRenderer sr; Anim anim; Sheet sheet;
@@ -31,8 +31,8 @@ namespace GumRemix
 
         public override Rect[] Hurtboxes()
         {
-            if (phase == 3) hb[0] = new Rect(x - 1.9f, y + 1.6f, 3.8f, 3.7f);
-            else hb[0] = new Rect(x - 1.55f, y + 0.4f, 3.1f, phase == 1 ? 3.7f : 4.3f);
+            if (phase == 3) hb[0] = new Rect(x - 1.9f, y + 1.5f, 3.8f, 3.8f);
+            else hb[0] = new Rect(x - (phase == 1 ? 1.5f : 1.6f), y + 0.3f, phase == 1 ? 3.0f : 3.2f, phase == 1 ? 5.2f : 5.3f);
             return hb;
         }
 
@@ -56,7 +56,7 @@ namespace GumRemix
             hp -= dmg; if (flashCd <= 0f) { flashT = 0.045f; flashCd = 0.28f; }
             if (by != null && addMeter) by.AddMeter(0.012f * dmg);
             Sfx.Play("hit", .35f, .7f + Random.value * .2f);
-            if (dmg >= 6) { G.SpawnFx("spark", "spark", new Vector2(x, y + 2.6f), 2f, false, 30); G.Shake(.1f, .2f); }
+            if (dmg >= 6) { G.SpawnFx("spark", "spark", new Vector2(x, y + 3.2f), 2f, false, 30); G.Shake(.1f, .2f); }
             if (phase == 1 && hp <= Phase2Hp + Phase3Hp) { hp = Phase2Hp + Phase3Hp; routine = Transition(2); wait = 0; trans = true; }
             else if (phase == 2 && hp <= Phase3Hp) { hp = Phase3Hp; routine = Transition(3); wait = 0; trans = true; }
             else if (phase == 3 && hp <= 0) { hp = 0; dying = true; routine = null; DieStart(); }
@@ -111,7 +111,7 @@ namespace GumRemix
         static IEnumerator<float> W(float s) { yield return s; }
 
         Player Target() { return G.RandomAlivePlayer(); }
-        Vector2 Mouth() { return new Vector2(x - 0.4f, y + (phase == 3 ? 3.2f : 2.0f)); }
+        Vector2 Mouth() { return new Vector2(x - 0.4f, y + (phase == 3 ? 2.7f : 4.1f)); }
 
         void Spit(Vector2 vel, float grav, bool pink, float scale = 1.2f)
         {
@@ -301,7 +301,7 @@ namespace GumRemix
             G.ClearHazards();
             Sfx.Play("wallop", 1f); G.Shake(.3f, .9f); G.HitStop(.1f);
             anim.Play(to == 2 ? "to_p2" : "to_p3", true);
-            if (to == 2) G.ThrowHat(new Vector2(x, y + 4.0f));
+            if (to == 2) G.ThrowHat(new Vector2(x, y + 5.4f));
             float start = to == 2 ? y : y;
             float t0 = 0; float dur = 0.95f;
             while (t0 < dur)
@@ -331,7 +331,7 @@ namespace GumRemix
             if (explodeT <= 0f)
             {
                 explodeT = 0.13f;
-                var p = new Vector2(x + Random.Range(-1.8f, 1.8f), y + Random.Range(0.8f, 4.5f));
+                var p = new Vector2(x + Random.Range(-1.8f, 1.8f), y + Random.Range(0.8f, 5.2f));
                 string fxn = Random.value < .5f ? "spark" : "parry"; G.SpawnFx(fxn, fxn, p, 1.6f, false, 31);
                 G.Burst(p, 6, 5f); Sfx.Play("pop", .5f, .7f + Random.value * .4f);
             }
