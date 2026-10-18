@@ -11,7 +11,8 @@ namespace GumRemix
         Prado = 0, Cueva = 1, Nubes = 2, Fabrica = 3, CircoBoss1 = 4,
         Lago = 5, Aldea = 6, Cristales = 7, Jardines = 8, PalacioBoss1 = 9,
         Title = 10, Victory = 11, GameOver = 12, WorldDone = 13,
-        CircoBoss2 = 14, CircoBoss3 = 15, PalacioBoss2 = 16, PalacioBoss3 = 17
+        CircoBoss2 = 14, CircoBoss3 = 15, PalacioBoss2 = 16, PalacioBoss3 = 17,
+        Forja = 18, Rios = 19, Engranajes = 20, Fundicion = 21, ReyesBoss1 = 22, ReyesBoss2 = 23, ReyesBoss3 = 24
     }
 
     // ================================================================================================================
@@ -59,6 +60,13 @@ namespace GumRemix
                 case Track.PalacioBoss1: return Palacio();
                 case Track.PalacioBoss2: { var s = Palacio(); s.name = "Palacio II"; s.transpose = 2; s.bpm = 124f; s.drums = "march"; s.harmony = true; s.echo = 0.25f; return s; }
                 case Track.PalacioBoss3: { var s = Palacio(); s.name = "Palacio III"; s.transpose = 3; s.bpm = 144f; s.drums = "gallop"; s.harmony = true; s.echo = 0.32f; return s; }
+                case Track.Forja: return Forja();
+                case Track.Rios: return Rios();
+                case Track.Engranajes: return Engranajes();
+                case Track.Fundicion: return Fundicion();
+                case Track.ReyesBoss1: return Reyes();
+                case Track.ReyesBoss2: { var s = Reyes(); s.name = "Reyes II"; s.transpose = 2; s.bpm = 168f; s.harmony = true; s.echo = 0.1f; return s; }
+                case Track.ReyesBoss3: { var s = Reyes(); s.name = "Reyes III"; s.transpose = 4; s.bpm = 184f; s.harmony = true; s.echo = 0.18f; s.pad = true; return s; }
                 case Track.Victory: return Victory();
                 case Track.WorldDone: return WorldDone();
                 default: return GameOver();
@@ -198,6 +206,71 @@ namespace GumRemix
             s.Add("B", "Ab | Eb | Bb | Cm | Ab | Fm | G | G",
                 "Ab5:4 C6:4 Eb6:4 Ab6:4 | G5:4 Bb5:4 Eb6:4 G6:4 | F6:4 D6:4 Bb5:4 D6:4 | Eb6:4 C6:4 G5:4 C6:4 | " +
                 "Eb6:4 Ab6:4 C7:4 Ab6:4 | C7:4 Ab6:4 F6:4 C6:4 | D6:4 G6:4 B6:4 D7:4 | G6:12 r:4");
+            return s;
+        }
+
+        // --------------------------------------------------------------------------------------------- fire world: sorrowful, heavy, phrygian
+        static Song Forja()
+        {
+            var s = S("Forja Abandonada", 88f, 0f, "bell", "half", "sub", "arp8", true, 0.3f);
+            s.compInst = "pluck"; s.targetRms = 0.12f;
+            s.Add("A", "Em | F | Em | Bm | Em | F | G | Em",
+                "E5:4 G5:4 B5:4 G5:4 | F5:4 A5:4 C6:4 A5:4 | E5:4 G5:2 B5:2 E6:8 | D6:4 B5:4 F#5:8 | " +
+                "G5:4 B5:4 E6:4 B5:4 | A5:4 C6:4 F6:4 C6:4 | B5:4 D6:4 G6:8 | E6:12 r:4");
+            s.Add("B", "C | D | Em | F | C | D | F | Em",
+                "E6:4 G6:4 E6:4 C6:4 | F#6:4 A6:4 F#6:4 D6:4 | G6:4 B6:4 G6:4 E6:4 | F6:4 A6:4 C7:4 A6:4 | " +
+                "G6:4 E6:4 C6:4 G5:4 | A5:4 D6:4 F#6:4 A6:4 | C7:4 A6:4 F6:4 C6:4 | B5:8 E6:8");
+            return s;
+        }
+
+        static Song Rios()
+        {
+            var s = S("Rios de Magma", 76f, 0f, "pulse", "half", "pulse", "arp8", true, 0.35f, "A B A");
+            s.compInst = "pluck"; s.targetRms = 0.12f;
+            s.Add("A", "Am | Bb | Am | Gm | Am | Bb | Dm | E7",
+                "A5:4 C6:4 E6:4 C6:4 | Bb5:4 D6:4 F6:4 D6:4 | E6:6 C6:2 A5:8 | D6:4 Bb5:4 G5:8 | " +
+                "C6:4 E6:4 A6:4 E6:4 | D6:4 F6:4 Bb6:4 F6:4 | A5:4 D6:4 F6:4 A6:4 | G#6:8 E6:4 B5:4");
+            s.Add("B", "F | Gm | Am | E7 | F | Gm | Bb E7 | Am",
+                "A5:4 C6:4 F6:8 | Bb5:4 D6:4 G6:8 | C6:4 E6:4 A6:8 | B5:4 D6:4 G#6:8 | " +
+                "F6:4 C6:4 A5:4 F5:4 | G5:4 Bb5:4 D6:4 G6:4 | Bb6:4 F6:4 G#6:4 E6:4 | A6:12 r:4");
+            return s;
+        }
+
+        static Song Engranajes()
+        {
+            var s = S("Camara de Engranajes", 112f, 0f, "pulse", "factory", "pulse", "offbeat", false, 0f);
+            s.Add("A", "Gm | Gm | Eb | F | Gm | Cm | D7 | Gm",
+                "G5:2 r:2 G5:2 Bb5:2 D6:2 r:2 Bb5:2 G5:2 | G5:2 r:2 G5:2 Bb5:2 D6:2 F6:2 D6:2 Bb5:2 | Eb5:2 r:2 Eb5:2 G5:2 Bb5:2 r:2 G5:2 Eb5:2 | F5:2 r:2 F5:2 A5:2 C6:2 r:2 A5:2 F5:2 | " +
+                "G5:2 r:2 G5:2 Bb5:2 D6:2 r:2 Bb5:2 G5:2 | C6:2 r:2 C6:2 Eb6:2 G6:2 r:2 Eb6:2 C6:2 | D6:2 F#6:2 A6:2 C7:2 A6:2 F#6:2 D6:4 | G6:8 D6:4 Bb5:4");
+            s.Add("B", "Bb | F | Gm | D7 | Eb | Bb | D7 | Gm",
+                "F6:4 D6:2 F6:2 Bb6:4 F6:4 | A6:4 F6:2 A6:2 C7:4 A6:4 | G6:4 Bb6:4 D7:4 Bb6:4 | A6:4 F#6:4 D6:4 F#6:4 | " +
+                "G6:4 Bb6:4 Eb7:4 Bb6:4 | D7:4 Bb6:4 F6:4 D6:4 | F#6:2 A6:2 C7:4 A6:2 F#6:2 D6:4 | G6:8 r:8");
+            return s;
+        }
+
+        static Song Fundicion()
+        {
+            var s = S("Fundicion del Rey", 100f, 0f, "trumpet", "march", "pulse", "offbeat", true, 0.1f);
+            s.targetRms = 0.125f;
+            s.Add("A", "Bm | Bm | G | A | Bm | Em | F# | Bm",
+                "B5:4 D6:2 F#6:2 B6:4 F#6:4 | A6:4 F#6:4 D6:8 | G5:4 B5:2 D6:2 G6:4 D6:4 | E6:4 C#6:4 A5:8 | " +
+                "D6:4 F#6:2 B6:2 D7:4 B6:4 | G6:4 E6:4 B5:8 | A#5:4 C#6:2 F#6:2 A#6:8 | B6:12 r:4");
+            s.Add("B", "G | D | Em | F# | G | A | F# | Bm",
+                "B6:4 G6:4 D6:4 B5:4 | A6:4 F#6:4 D6:4 A5:4 | G6:4 B6:4 E7:4 B6:4 | C#7:4 A#6:4 F#6:4 C#6:4 | " +
+                "D7:4 B6:4 G6:4 D6:4 | E7:4 C#7:4 A6:4 E6:4 | F#6:4 A#6:4 C#7:8 | D7:8 B6:8");
+            return s;
+        }
+
+        static Song Reyes()
+        {
+            var s = S("Los Reyes Mantis", 152f, 0f, "pulse", "gallop", "walk", "offbeat", false, 0.05f);
+            s.compInst = "stab"; s.harmony = true; s.targetRms = 0.13f;
+            s.Add("A", "Am | E7 | Am | Dm | Am | E7 | F | E7",
+                "A5:2 C6:2 E6:2 A6:2 G6:2 E6:2 C6:2 E6:2 | B5:2 E6:2 G#6:2 B6:2 A6:2 G#6:2 E6:2 B5:2 | A5:2 C6:2 E6:2 A6:2 C7:4 A6:4 | D6:2 F6:2 A6:2 D7:2 C7:2 A6:2 F6:2 D6:2 | " +
+                "E6:2 A6:2 C7:2 E7:2 D7:2 C7:2 A6:2 E6:2 | G#6:2 B6:2 D7:2 B6:2 G#6:2 E6:2 D6:4 | F6:2 A6:2 C7:2 F7:2 E7:2 C7:2 A6:2 F6:2 | E7:8 G#6:4 B6:4");
+            s.Add("B", "Dm | Am | E7 | Am | Dm | F | E7 | Am",
+                "F6:2 A6:2 D7:2 A6:2 F6:2 D6:2 F6:2 A6:2 | E6:2 A6:2 C7:2 A6:2 E6:2 C6:2 E6:2 A6:2 | G#6:2 B6:2 E7:2 B6:2 G#6:2 E6:2 G#6:2 B6:2 | A6:4 C7:4 E7:4 C7:4 | " +
+                "D7:2 C7:2 A6:2 F6:2 D6:2 F6:2 A6:2 D7:2 | C7:2 A6:2 F6:2 C6:2 F6:2 A6:2 C7:2 F7:2 | G#6:2 B6:2 D7:2 B6:2 G#6:2 B6:2 D7:2 B6:2 | A6:8 E6:8");
             return s;
         }
 

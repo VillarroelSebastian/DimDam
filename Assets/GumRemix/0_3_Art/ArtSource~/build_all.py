@@ -6,6 +6,7 @@ from px import *
 import heroes, enemies, fx, boss, env_bg, env_props
 import ice_enemies as ie, ice_fx, ice_boss, ice_env, ice_props
 import armor
+import fire_env, fire_tiles, fire_enemies, fire_fx, fire_boss, fire_boss_anim
 import env_gothic
 import ice_king
 from grade import grade
@@ -277,6 +278,82 @@ reg_loop('royalbanner', IP.royal_banner(8), 7, (0.5, 1.0))
 reg_loop('throne', IP.throne(4), 3)
 register('snowflakes', IP.snow_sheet(), 8, 8, 8, (0.5, 0.5))
 register('spark_ice', IP.spark_ice(4), 12, 12, 4, (0.5, 0.5), [('spark', 0, 4, 12, False)])
+
+
+# =============================================================================================== FIRE KINGDOM (world 3)
+GRADE = None
+folder('Enemies/Fire')
+import enemies as _E
+import ice_enemies as _IE
+BRASS_RAMP = [(0x2a, 0x16, 0x08), (0x5a, 0x3a, 0x14), (0x94, 0x64, 0x20), (0xd0, 0x98, 0x38), (0xf8, 0xd8, 0x80)]
+
+def reg_fire(name, fam, anims, cw, ch, cols, pivot, inner, armored=None):
+    fr, an = seq_anims(fam, anims)
+    ims = [f.im if isinstance(f, Canvas) else f for f in fr]
+    register(name + '_fire', ims, cw, ch, cols, pivot, an, white=True)
+    if inner is not None:
+        bf, ban = seq_anims(fire_enemies.ashball_frames(inner), ice_balls_anims)
+        register('ball_' + name + '_fire', bf, fire_enemies.GW, fire_enemies.GH, 9, (0.5, 7 / fire_enemies.GH), ban, white=True)
+    if armored:                                                      # plated in brass: gum bounces off, only the rope catches them
+        pl = [armor.armorize(im_, helm=armored[0], chest=armored[1], chest_inset=0.08, seams=True, gamma=1.0, ramp=BRASS_RAMP, rivet=(255, 120, 40), seam_col=(14, 6, 2)) for im_ in ims]
+        register(name + '_brass', pl, cw, ch, cols, pivot, an, white=True)
+
+ice_balls_anims = _IE.BALL_ANIMS
+bear_fr = fire_enemies.fundidor_frames()
+reg_fire('bear', bear_fr, _E.BEAR_ANIMS, _E.BW, _E.BH, 10, (0.5, 1 / _E.BH), fire_enemies.BALL_INNER['bear'], armored=(0.40, (0.46, 0.90)))
+reg_fire('bean', fire_enemies.magma_frames(), _E.BEAN_ANIMS, _E.JW, _E.JH, 10, (0.5, 1.5 / _E.JH), fire_enemies.BALL_INNER['bean'])
+sfr = fire_enemies.chispa_frames()
+reg_fire('seed', sfr, _IE.SEED_ANIMS, _IE.SDW, _IE.SDH, 10, (0.5, feet_pivot(sfr['idle'][0])), fire_enemies.BALL_INNER['seed'])
+ofr = fire_enemies.cenizo_frames()
+reg_fire('owl', ofr, _IE.OWL_ANIMS, ofr['fly'][0].w, ofr['fly'][0].h, 10, (0.5, 0.5), fire_enemies.BALL_INNER['owl'], armored=(0.46, (0.55, 0.92)))
+jfr = fire_enemies.llama_frames()
+reg_fire('jelly', jfr, _IE.JELLY_ANIMS, jfr['float'][0].w, jfr['float'][0].h, 10, (0.5, 1 - 24 / 72.0), fire_enemies.BALL_INNER['jelly'])
+reg_fire('cannon', fire_enemies.brasero_frames(), _E.CANNON_ANIMS, _E.CW, _E.CH, 7, (0.5, 1 / _E.CH), fire_enemies.BALL_INNER['cannon'])
+cfr = fire_enemies.escarabajo_frames()
+reg_fire('crab', cfr, _IE.CRAB_ANIMS, cfr['idle'][0].w, cfr['idle'][0].h, 10, (0.5, feet_pivot(cfr['idle'][0])), fire_enemies.BALL_INNER['crab'])
+
+folder('World/Fire')
+FT = fire_tiles
+for k, fn in enumerate(fire_env.THEMES):
+    t = 10 + k
+    sky, far, mid = fn()
+    register(f'sky_{t}', [sky], fire_env.SW, fire_env.SH, 1, (0.5, 0.5))
+    register(f'far_{t}', [far], far.w, far.h, 1, (0.5, 0.0))
+    register(f'mid_{t}', [mid], mid.w, mid.h, 1, (0.5, 0.0))
+    register(f'plat_{t}', [FT.plat_tile(t, kd) for kd in ('L', 'M0', 'M1', 'M2', 'R')], FT.PW, FT.PH, 5, (0.5, 1.0))
+    sp_frames = [FT.special_tile(t, 'brittle', s) for s in range(3)] + [FT.special_tile(t, 'elastic', s) for s in range(3)] + [FT.special_tile(t, 'raft'), FT.special_tile(t, 'bridge')]
+    register(f'special_{t}', sp_frames, FT.PW, FT.PH, 8, (0.5, 1.0))
+    register(f'ground_{t}', [FT.ground_tile(t, 'top'), FT.ground_tile(t, 'alt')], 40, 40, 2, (0.5, 1.0))
+    register(f'wall_{t}', [FT.wall_tile(t)], 20, 40, 1, (0.5, 0.5))
+reg_loop('furnace', FT.furnace(8), 8)
+reg_loop('anvil', FT.anvil(6), 8)
+reg_loop('chain_hang', FT.chain_hang(8), 5, (0.5, 1.0))
+reg_loop('lavafall', FT.lavafall(8), 9, (0.5, 1.0))
+reg_loop('basalt_spike', FT.basalt_spike(6), 6)
+reg_loop('fgear_l', FT.fgear(64, 12, 8), 6, (0.5, 0.5))
+reg_loop('fgear_s', FT.fgear(40, 9, 8), 9, (0.5, 0.5))
+reg_loop('piston', FT.piston(8), 7)
+reg_loop('steam_pipe', FT.steam_pipe(8), 8)
+reg_loop('crucible', FT.crucible(8), 5, (0.5, 1.0))
+reg_loop('brazier', FT.brazier(8), 9)
+reg_loop('mantis_banner', FT.mantis_banner(8), 5, (0.5, 1.0))
+reg_loop('mantis_statue', FT.mantis_statue(4), 4)
+
+folder('Fx')
+register('fire_shot', [fire_fx.fire_shot(i) for i in range(6)], 24, 24, 6, (0.5, 0.5), [('spin', 0, 6, 18, True)])
+register('fire_crack', [fire_fx.fire_crack(i) for i in range(3)], 40, 8, 3, (0.5, 0.0), [('loop', 0, 3, 10, True)])
+register('geyser_seg', [fire_fx.geyser_seg(pt, fl) for fl in (0, 1) for pt in ('base', 'mid', 'tip')], 32, 22, 6, (0.5, 0.0))
+register('cinder', [fire_fx.cinder(i) for i in range(3)], 20, 44, 3, (0.5, 0.5), [('shake', 0, 3, 24, True)])
+register('cinder_burst', [fire_fx.cinder_burst(i) for i in range(5)], 40, 32, 5, (0.5, 0.0), [('shatter', 0, 5, 20, False)])
+register('mantis_scythe', fire_boss_anim.scythe_frames(8), 32, 32, 8, (0.5, 0.5), [('spin', 0, 8, 20, True)])
+register('mantis_slash', [fire_boss_anim.slash_arc(i) for i in range(5)], 64, 64, 5, (0.0, 0.0), [('slash', 0, 5, 24, False)])
+register('shock_fire', [fire_boss_anim.shock_fire(i) for i in range(6)], 64, 20, 6, (0.5, 0.0), [('shock', 0, 6, 16, False)])
+
+folder('Bosses')
+for nm in ('brasa', 'ceniza'):
+    kfr, kord = fire_boss_anim.build(nm)
+    kan = [(n_, st, c_, fire_boss_anim.ANIMS[n_][0], fire_boss_anim.ANIMS[n_][1]) for (n_, st, c_) in kord]
+    register('mantis_' + nm, kfr, fire_boss.CW, fire_boss.CH, 10, (0.5, (fire_boss.CH - fire_boss.GROUND) / float(fire_boss.CH)), kan, white=True)
 
 folder('')
 GRADE = None

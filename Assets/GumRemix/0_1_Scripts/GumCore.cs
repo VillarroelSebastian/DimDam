@@ -151,7 +151,8 @@ namespace GumRemix
         // ---- music lives in GumMusic.cs (composed songs rendered by MusicRenderer, played by MusicHost)
         static MusicHost host;
         public static MusicHost Host { get { return host; } }
-        public static void PlayMusic(int theme) { PlayTrack((Track)Mathf.Clamp(theme, 0, 9)); }
+        public static Track ThemeTrack(int theme) { return theme >= 10 ? (Track)(8 + theme) : (Track)Mathf.Clamp(theme, 0, 9); }
+        public static void PlayMusic(int theme) { PlayTrack(ThemeTrack(theme)); }
         public static void PlayTrack(Track t, float fade = 1.8f) { if (host != null) host.Play(t, fade); }
         public static void Prefetch(Track t) { if (host != null) host.Prefetch(t); }
         public static void StopMusic(float fade = 0.8f) { if (host != null) host.Stop(fade); }

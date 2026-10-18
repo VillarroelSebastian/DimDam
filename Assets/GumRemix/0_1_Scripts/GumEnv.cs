@@ -56,7 +56,7 @@ namespace GumRemix
 
         float Rate()
         {
-            switch (theme) { case 3: return 0.5f; case 4: return 0.28f; case 5: return 0.11f; case 6: return 0.13f; case 7: return 0.22f; case 8: return 0.055f; case 9: return 0.2f; default: return 0.35f; }
+            switch (theme) { case 10: return 0.2f; case 11: return 0.12f; case 12: return 0.3f; case 13: return 0.16f; case 14: return 0.22f; case 3: return 0.5f; case 4: return 0.28f; case 5: return 0.11f; case 6: return 0.13f; case 7: return 0.22f; case 8: return 0.055f; case 9: return 0.2f; default: return 0.35f; }
         }
 
         void Update()
@@ -119,6 +119,9 @@ namespace GumRemix
                     New(sparkIce[0], new Vector2(x, y0 + Random.Range(1.4f, 8.4f)), Vector2.zero, 1.6f, -55, sparkIce.clips["spark"].frames, 5f);
                     break;
                 case 8: Flake(1.2f, 3.2f, -1.9f, -0.9f, -50); break;                         // wind-blown blizzard
+                case 10: case 11: case 12: case 13: case 14:   // foundry: embers rise from the furnaces and the lava
+                    New(ember[0], new Vector2(Random.Range(-7.5f, 7.5f), y0 + Random.Range(0.8f, 3.2f)), new Vector2(Random.Range(-0.3f, 0.3f), Random.Range(0.45f, 1.2f)), 4.2f, -58, ember.clips["pulse"].frames, 8f);
+                    break;
                 default:  // palace: glittering dust drifting down
                     if (Random.value < .6f) New(sparkIce[0], new Vector2(x, y0 + Random.Range(1.4f, 8.4f)), new Vector2(0, -0.2f), 1.8f, -55, sparkIce.clips["spark"].frames, 5f);
                     else Flake(-0.2f, 0.2f, -0.9f, -0.4f, -58);
@@ -162,7 +165,7 @@ namespace GumRemix
             var root = new GameObject("env_" + w.def.title);
             if (GameCtl.I != null) root.transform.SetParent(GameCtl.I.transform, false);
             root.transform.localPosition = new Vector3(0, w.y0, 0);
-            int th = w.def.theme; float c = 4.5f; bool ice = w.def.ice;
+            int th = w.def.theme; float c = 4.5f; bool ice = w.def.ice; bool fire = w.def.fire;
 
             // ---- sky (static) + layers that never stop moving
             Pix.Make("sky", root.transform, Art.Get("sky_" + th)[0], new Vector3(0, c, 0), -100);
@@ -183,7 +186,7 @@ namespace GumRemix
 
             // ---- ledges, assembled from 1-unit tiles. Dynamic ones get a PlatformView that follows their runtime state.
             var ps = Art.Get("plat_" + th);
-            Sheet sp = ice ? Art.Get("special_" + th) : null;
+            Sheet sp = (ice || fire) ? Art.Get("special_" + th) : null;
             foreach (var p in w.plats)
             {
                 if (p.solid) continue;
@@ -206,7 +209,7 @@ namespace GumRemix
                 if (p.kind == PlatKind.Normal || p.kind == PlatKind.Brittle)
                 {
                     var gl = new GameObject("glints"); gl.transform.SetParent(holder.transform, false);
-                    var gc = gl.AddComponent<GlintSpawner>(); gc.x0 = p.baseX0 + 0.3f; gc.x1 = p.x1 - 0.3f; gc.y = p.baseTop - w.y0 - 0.05f; gc.ice = ice;
+                    var gc = gl.AddComponent<GlintSpawner>(); gc.x0 = p.baseX0 + 0.3f; gc.x1 = p.x1 - 0.3f; gc.y = p.baseTop - w.y0 - 0.05f; gc.ice = ice; gc.fire = fire;
                 }
             }
 
@@ -307,6 +310,30 @@ namespace GumRemix
                     Prop(r, new PropDef("gardenlamp", -3.7f, 1.0f, -70, 1f)); Prop(r, new PropDef("gardenlamp", 3.7f, 1.0f, -70, 1.3f));
                     Prop(r, new PropDef("dead_tree", -1.6f, 1.0f, -74, 0.7f)); Prop(r, new PropDef("dead_tree_b", 1.7f, 1.0f, -74, 0.7f, true)); Prop(r, new PropDef("ice_lamp", 5.2f, 1.0f, -72, 1f));
                     break;
+                case 10:   // Forja Abandonada
+                    Prop(r, new PropDef("furnace", -5.8f, 1.0f, -72, 1f)); Prop(r, new PropDef("furnace", 5.6f, 1.0f, -72, 0.9f, true)); Prop(r, new PropDef("anvil", 0.4f, 1.0f, -71, 1f));
+                    Prop(r, new PropDef("chain_hang", -3.0f, 9.0f, -64, 1f)); Prop(r, new PropDef("chain_hang", 3.4f, 9.0f, -64, 1f, true)); Prop(r, new PropDef("chain_hang", 0.2f, 9.0f, -65, 0.8f));
+                    break;
+                case 11:   // Rios de Magma
+                    Prop(r, new PropDef("lavafall", -6.2f, 9.0f, -76, 1f)); Prop(r, new PropDef("lavafall", 6.0f, 9.0f, -76, 1.1f, true));
+                    Prop(r, new PropDef("basalt_spike", -3.4f, 1.0f, -71, 1f)); Prop(r, new PropDef("basalt_spike", 3.2f, 1.0f, -71, 1.1f, true)); Prop(r, new PropDef("basalt_spike", 0.2f, 1.0f, -73, 0.8f));
+                    break;
+                case 12:   // Camara de Engranajes
+                    Prop(r, new PropDef("fgear_l", -5.5f, 6.4f, -70, 1f)); Prop(r, new PropDef("fgear_s", -3.9f, 5.2f, -71, 1f, true));
+                    Prop(r, new PropDef("fgear_l", 5.2f, 5.6f, -70, 0.8f, true)); Prop(r, new PropDef("fgear_s", 3.7f, 6.9f, -71, 1.2f));
+                    Prop(r, new PropDef("piston", -7.0f, 1.0f, -69, 1f)); Prop(r, new PropDef("piston", 7.0f, 1.0f, -69, 1f, true));
+                    Prop(r, new PropDef("steam_pipe", -2.4f, 1.0f, -69, 1f)); Prop(r, new PropDef("steam_pipe", 2.6f, 1.0f, -69, 1f, true));
+                    break;
+                case 13:   // Fundicion del Rey
+                    Prop(r, new PropDef("crucible", -4.2f, 9.0f, -63, 1f)); Prop(r, new PropDef("crucible", 4.4f, 9.0f, -63, 1f, true)); Prop(r, new PropDef("chain_hang", 0f, 9.0f, -64, 0.9f));
+                    Prop(r, new PropDef("furnace", -6.4f, 1.0f, -72, 1f)); Prop(r, new PropDef("furnace", 6.4f, 1.0f, -72, 0.9f, true)); Prop(r, new PropDef("anvil", 0.2f, 1.0f, -71, 1f));
+                    break;
+                case 14:   // Salon de las Hoces (boss arena)
+                    Prop(r, new PropDef("mantis_statue", -2.7f, 1.0f, -73, 1.15f)); Prop(r, new PropDef("mantis_statue", 2.7f, 1.0f, -73, 1.15f, true));
+                    Prop(r, new PropDef("brazier", -7.0f, 1.0f, -69, 1f)); Prop(r, new PropDef("brazier", 7.0f, 1.0f, -69, 1f, true)); Prop(r, new PropDef("brazier", -4.3f, 1.0f, -69, 0.8f)); Prop(r, new PropDef("brazier", 4.3f, 1.0f, -69, 0.8f, true));
+                    Prop(r, new PropDef("mantis_banner", -5.4f, 9.0f, -61, 1f)); Prop(r, new PropDef("mantis_banner", 5.4f, 9.0f, -61, 1f, true));
+                    Prop(r, new PropDef("hall_chandelier", 0f, 9.0f, -60, 1.1f));
+                    break;
                 default:  // Palacio de la Ultima Nevada
                     Prop(r, new PropDef("royalbanner", -6.9f, 9.0f, -68, 1f)); Prop(r, new PropDef("royalbanner", 0f, 9.0f, -68, 0.9f)); Prop(r, new PropDef("royalbanner", 6.9f, 9.0f, -68, 1.1f, true));
                     Prop(r, new PropDef("chandelier", -4.2f, 9.0f, -66, 1f)); Prop(r, new PropDef("chandelier", 4.2f, 9.0f, -66, 0.9f));
@@ -324,8 +351,8 @@ namespace GumRemix
 
     public class GlintSpawner : MonoBehaviour
     {
-        public float x0, x1, y; public bool ice; float t; Sheet gl; string clipName;
-        void Start() { gl = Art.Get(ice ? "spark_ice" : "glint"); clipName = ice ? "spark" : "glint"; t = Random.Range(0f, 2f); }
+        public float x0, x1, y; public bool ice, fire; float t; Sheet gl; string clipName;
+        void Start() { gl = Art.Get(ice ? "spark_ice" : (fire ? "spark" : "glint")); clipName = (ice || fire) ? "spark" : "glint"; t = Random.Range(0f, 2f); }
         void Update()
         {
             t -= Time.deltaTime;

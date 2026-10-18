@@ -105,3 +105,6 @@ Menú: vals de caja de música en La menor. Jardín Nocturno (nivel 1): melancó
 - Se quitaron el **súper** (5 cartas) y el **parry**; el HUD solo muestra corazones. Los resultados cuentan los **lazos** (enemigos acorazados atrapados).
 - **Enemigos de Chicle rediseñados** (menos infantiles): oso remendado con un ojo de botón y costuras, frijol con ojos huecos y cremallera por boca, piruleta de un solo ojo con alas rotas y cañón con cara de calavera.
 - **Más acorazados en el mundo de hielo** (solo el lazo los atrapa): muñeco de hierro, **pingüino de hierro** y **búho de hierro** (acero oscuro con remaches naranjas). El disparo rebota con un CLANG.
+
+## Tercer mundo: Reino de Fuego
+Forja abandonada con magma, geiseres, cenizas y un jefe doble (Los Reyes Mantis). Ver `REINO_DE_FUEGO.md`. El menú tiene ahora 3 mundos y la ayuda 5 páginas. Tracks nuevos: Forja, Rios, Engranajes, Fundicion, ReyesBoss1-3.

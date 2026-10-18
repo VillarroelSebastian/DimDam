@@ -7531,6 +7531,2510 @@
      "loop": false
     }
    ]
+  },
+  {
+   "name": "bear_fire",
+   "file": "GumRemix/Enemies/Fire/bear_fire",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_fire_w",
+   "file": "GumRemix/Enemies/Fire/bear_fire_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_fire",
+   "file": "GumRemix/Enemies/Fire/ball_bear_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_bear_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_brass",
+   "file": "GumRemix/Enemies/Fire/bear_brass",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_brass_w",
+   "file": "GumRemix/Enemies/Fire/bear_brass_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_fire",
+   "file": "GumRemix/Enemies/Fire/bean_fire",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bean_fire_w",
+   "file": "GumRemix/Enemies/Fire/bean_fire_w",
+   "cw": 40,
+   "ch": 40,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0375,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "crouch",
+     "start": 6,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "air",
+     "start": 8,
+     "count": 3,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 11,
+     "count": 2,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_fire",
+   "file": "GumRemix/Enemies/Fire/ball_bean_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bean_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_bean_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "seed_fire",
+   "file": "GumRemix/Enemies/Fire/seed_fire",
+   "cw": 32,
+   "ch": 32,
+   "cols": 10,
+   "count": 11,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 4,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 10,
+     "count": 1,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "seed_fire_w",
+   "file": "GumRemix/Enemies/Fire/seed_fire_w",
+   "cw": 32,
+   "ch": 32,
+   "cols": 10,
+   "count": 11,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 4,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 10,
+     "count": 1,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_seed_fire",
+   "file": "GumRemix/Enemies/Fire/ball_seed_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_seed_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_seed_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_fire",
+   "file": "GumRemix/Enemies/Fire/owl_fire",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_fire_w",
+   "file": "GumRemix/Enemies/Fire/owl_fire_w",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_owl_fire",
+   "file": "GumRemix/Enemies/Fire/ball_owl_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_owl_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_owl_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_brass",
+   "file": "GumRemix/Enemies/Fire/owl_brass",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_brass_w",
+   "file": "GumRemix/Enemies/Fire/owl_brass_w",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "jelly_fire",
+   "file": "GumRemix/Enemies/Fire/jelly_fire",
+   "cw": 52,
+   "ch": 72,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6666666666666667,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "flare",
+     "start": 8,
+     "count": 5,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "jelly_fire_w",
+   "file": "GumRemix/Enemies/Fire/jelly_fire_w",
+   "cw": 52,
+   "ch": 72,
+   "cols": 10,
+   "count": 15,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.6666666666666667,
+   "anims": [
+    {
+     "name": "float",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "flare",
+     "start": 8,
+     "count": 5,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 13,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_jelly_fire",
+   "file": "GumRemix/Enemies/Fire/ball_jelly_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_jelly_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_jelly_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "cannon_fire",
+   "file": "GumRemix/Enemies/Fire/cannon_fire",
+   "cw": 56,
+   "ch": 48,
+   "cols": 7,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 6.0,
+     "loop": true
+    },
+    {
+     "name": "fire",
+     "start": 4,
+     "count": 7,
+     "fps": 16.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "cannon_fire_w",
+   "file": "GumRemix/Enemies/Fire/cannon_fire_w",
+   "cw": 56,
+   "ch": 48,
+   "cols": 7,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 6.0,
+     "loop": true
+    },
+    {
+     "name": "fire",
+     "start": 4,
+     "count": 7,
+     "fps": 16.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_cannon_fire",
+   "file": "GumRemix/Enemies/Fire/ball_cannon_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_cannon_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_cannon_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "crab_fire",
+   "file": "GumRemix/Enemies/Fire/crab_fire",
+   "cw": 84,
+   "ch": 54,
+   "cols": 10,
+   "count": 19,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.1111111111111111,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "scuttle",
+     "start": 4,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "charge",
+     "start": 12,
+     "count": 5,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 17,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "crab_fire_w",
+   "file": "GumRemix/Enemies/Fire/crab_fire_w",
+   "cw": 84,
+   "ch": 54,
+   "cols": 10,
+   "count": 19,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.1111111111111111,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "scuttle",
+     "start": 4,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "charge",
+     "start": 12,
+     "count": 5,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 17,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_crab_fire",
+   "file": "GumRemix/Enemies/Fire/ball_crab_fire",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_crab_fire_w",
+   "file": "GumRemix/Enemies/Fire/ball_crab_fire_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "sky_10",
+   "file": "GumRemix/World/Fire/sky_10",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_10",
+   "file": "GumRemix/World/Fire/far_10",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_10",
+   "file": "GumRemix/World/Fire/mid_10",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_10",
+   "file": "GumRemix/World/Fire/plat_10",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_10",
+   "file": "GumRemix/World/Fire/special_10",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_10",
+   "file": "GumRemix/World/Fire/ground_10",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_10",
+   "file": "GumRemix/World/Fire/wall_10",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_11",
+   "file": "GumRemix/World/Fire/sky_11",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_11",
+   "file": "GumRemix/World/Fire/far_11",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_11",
+   "file": "GumRemix/World/Fire/mid_11",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_11",
+   "file": "GumRemix/World/Fire/plat_11",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_11",
+   "file": "GumRemix/World/Fire/special_11",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_11",
+   "file": "GumRemix/World/Fire/ground_11",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_11",
+   "file": "GumRemix/World/Fire/wall_11",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_12",
+   "file": "GumRemix/World/Fire/sky_12",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_12",
+   "file": "GumRemix/World/Fire/far_12",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_12",
+   "file": "GumRemix/World/Fire/mid_12",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_12",
+   "file": "GumRemix/World/Fire/plat_12",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_12",
+   "file": "GumRemix/World/Fire/special_12",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_12",
+   "file": "GumRemix/World/Fire/ground_12",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_12",
+   "file": "GumRemix/World/Fire/wall_12",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_13",
+   "file": "GumRemix/World/Fire/sky_13",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_13",
+   "file": "GumRemix/World/Fire/far_13",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_13",
+   "file": "GumRemix/World/Fire/mid_13",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_13",
+   "file": "GumRemix/World/Fire/plat_13",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_13",
+   "file": "GumRemix/World/Fire/special_13",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_13",
+   "file": "GumRemix/World/Fire/ground_13",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_13",
+   "file": "GumRemix/World/Fire/wall_13",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "sky_14",
+   "file": "GumRemix/World/Fire/sky_14",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "far_14",
+   "file": "GumRemix/World/Fire/far_14",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "mid_14",
+   "file": "GumRemix/World/Fire/mid_14",
+   "cw": 640,
+   "ch": 360,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "plat_14",
+   "file": "GumRemix/World/Fire/plat_14",
+   "cw": 40,
+   "ch": 24,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "special_14",
+   "file": "GumRemix/World/Fire/special_14",
+   "cw": 40,
+   "ch": 24,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "ground_14",
+   "file": "GumRemix/World/Fire/ground_14",
+   "cw": 40,
+   "ch": 40,
+   "cols": 2,
+   "count": 2,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": []
+  },
+  {
+   "name": "wall_14",
+   "file": "GumRemix/World/Fire/wall_14",
+   "cw": 20,
+   "ch": 40,
+   "cols": 1,
+   "count": 1,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": []
+  },
+  {
+   "name": "furnace",
+   "file": "GumRemix/World/Fire/furnace",
+   "cw": 72,
+   "ch": 72,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "anvil",
+   "file": "GumRemix/World/Fire/anvil",
+   "cw": 48,
+   "ch": 40,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "chain_hang",
+   "file": "GumRemix/World/Fire/chain_hang",
+   "cw": 40,
+   "ch": 130,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 5.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "lavafall",
+   "file": "GumRemix/World/Fire/lavafall",
+   "cw": 64,
+   "ch": 200,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 9.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "basalt_spike",
+   "file": "GumRemix/World/Fire/basalt_spike",
+   "cw": 48,
+   "ch": 64,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 6,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "fgear_l",
+   "file": "GumRemix/World/Fire/fgear_l",
+   "cw": 64,
+   "ch": 64,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 6.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "fgear_s",
+   "file": "GumRemix/World/Fire/fgear_s",
+   "cw": 40,
+   "ch": 40,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 9.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "piston",
+   "file": "GumRemix/World/Fire/piston",
+   "cw": 40,
+   "ch": 140,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 7.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "steam_pipe",
+   "file": "GumRemix/World/Fire/steam_pipe",
+   "cw": 40,
+   "ch": 80,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 8.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "crucible",
+   "file": "GumRemix/World/Fire/crucible",
+   "cw": 64,
+   "ch": 150,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 5.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "brazier",
+   "file": "GumRemix/World/Fire/brazier",
+   "cw": 48,
+   "ch": 80,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 9.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "mantis_banner",
+   "file": "GumRemix/World/Fire/mantis_banner",
+   "cw": 56,
+   "ch": 170,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 1.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 8,
+     "fps": 5.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "mantis_statue",
+   "file": "GumRemix/World/Fire/mantis_statue",
+   "cw": 80,
+   "ch": 140,
+   "cols": 4,
+   "count": 4,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 4,
+     "fps": 4.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "fire_shot",
+   "file": "GumRemix/Fx/fire_shot",
+   "cw": 24,
+   "ch": 24,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 6,
+     "fps": 18.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "fire_crack",
+   "file": "GumRemix/Fx/fire_crack",
+   "cw": 40,
+   "ch": 8,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "loop",
+     "start": 0,
+     "count": 3,
+     "fps": 10.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "geyser_seg",
+   "file": "GumRemix/Fx/geyser_seg",
+   "cw": 32,
+   "ch": 22,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": []
+  },
+  {
+   "name": "cinder",
+   "file": "GumRemix/Fx/cinder",
+   "cw": 20,
+   "ch": 44,
+   "cols": 3,
+   "count": 3,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "shake",
+     "start": 0,
+     "count": 3,
+     "fps": 24.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "cinder_burst",
+   "file": "GumRemix/Fx/cinder_burst",
+   "cw": 40,
+   "ch": 32,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "shatter",
+     "start": 0,
+     "count": 5,
+     "fps": 20.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "mantis_scythe",
+   "file": "GumRemix/Fx/mantis_scythe",
+   "cw": 32,
+   "ch": 32,
+   "cols": 8,
+   "count": 8,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "spin",
+     "start": 0,
+     "count": 8,
+     "fps": 20.0,
+     "loop": true
+    }
+   ]
+  },
+  {
+   "name": "mantis_slash",
+   "file": "GumRemix/Fx/mantis_slash",
+   "cw": 64,
+   "ch": 64,
+   "cols": 5,
+   "count": 5,
+   "ppu": 40,
+   "px": 0.0,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "slash",
+     "start": 0,
+     "count": 5,
+     "fps": 24.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "shock_fire",
+   "file": "GumRemix/Fx/shock_fire",
+   "cw": 64,
+   "ch": 20,
+   "cols": 6,
+   "count": 6,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0,
+   "anims": [
+    {
+     "name": "shock",
+     "start": 0,
+     "count": 6,
+     "fps": 16.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "mantis_brasa",
+   "file": "GumRemix/Bosses/mantis_brasa",
+   "cw": 96,
+   "ch": 96,
+   "cols": 10,
+   "count": 67,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "dance",
+     "start": 8,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "step",
+     "start": 16,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "windup",
+     "start": 22,
+     "count": 3,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 25,
+     "count": 3,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "slash",
+     "start": 28,
+     "count": 6,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "leap",
+     "start": 34,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 38,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "dive",
+     "start": 40,
+     "count": 3,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 43,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 49,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "rage",
+     "start": 51,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 57,
+     "count": 10,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "mantis_brasa_w",
+   "file": "GumRemix/Bosses/mantis_brasa_w",
+   "cw": 96,
+   "ch": 96,
+   "cols": 10,
+   "count": 67,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "dance",
+     "start": 8,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "step",
+     "start": 16,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "windup",
+     "start": 22,
+     "count": 3,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 25,
+     "count": 3,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "slash",
+     "start": 28,
+     "count": 6,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "leap",
+     "start": 34,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 38,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "dive",
+     "start": 40,
+     "count": 3,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 43,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 49,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "rage",
+     "start": 51,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 57,
+     "count": 10,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "mantis_ceniza",
+   "file": "GumRemix/Bosses/mantis_ceniza",
+   "cw": 96,
+   "ch": 96,
+   "cols": 10,
+   "count": 67,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "dance",
+     "start": 8,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "step",
+     "start": 16,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "windup",
+     "start": 22,
+     "count": 3,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 25,
+     "count": 3,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "slash",
+     "start": 28,
+     "count": 6,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "leap",
+     "start": 34,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 38,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "dive",
+     "start": 40,
+     "count": 3,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 43,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 49,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "rage",
+     "start": 51,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 57,
+     "count": 10,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "mantis_ceniza_w",
+   "file": "GumRemix/Bosses/mantis_ceniza_w",
+   "cw": 96,
+   "ch": 96,
+   "cols": 10,
+   "count": 67,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0625,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "dance",
+     "start": 8,
+     "count": 8,
+     "fps": 10.0,
+     "loop": true
+    },
+    {
+     "name": "step",
+     "start": 16,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "windup",
+     "start": 22,
+     "count": 3,
+     "fps": 8.0,
+     "loop": false
+    },
+    {
+     "name": "dash",
+     "start": 25,
+     "count": 3,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "slash",
+     "start": 28,
+     "count": 6,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "leap",
+     "start": 34,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "land",
+     "start": 38,
+     "count": 2,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "dive",
+     "start": 40,
+     "count": 3,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 43,
+     "count": 6,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 49,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "rage",
+     "start": 51,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "death",
+     "start": 57,
+     "count": 10,
+     "fps": 9.0,
+     "loop": false
+    }
+   ]
   }
  ]
 }

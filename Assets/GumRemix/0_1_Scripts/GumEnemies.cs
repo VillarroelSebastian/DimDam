@@ -11,18 +11,20 @@ namespace GumRemix
     {
         public Vector2 pos, vel; public float grav, radius = 0.28f, life = 7f; public bool dead, persistent, bounce, freezes; public int bounces;
         public Action<Vector2> onLand;
-        GameObject go; SpriteRenderer sr; Anim anim; string kind, sheetName; float scale; bool ice;
+        GameObject go; SpriteRenderer sr; Anim anim; string kind, sheetName; float scale; bool ice, fire;
 
         public EnemyShot(Vector2 p, Vector2 v, float g, bool pink, float sc = 1f, bool bouncy = false, string sheet = null, string clip = null, float rad = 0.28f)
         {
             pink = false;      // parry is gone: there are no pink shots any more
             pos = p; vel = v; grav = g; scale = sc; radius = rad * sc; bounce = bouncy;
             ice = GameCtl.I.world != null && GameCtl.I.world.def.ice;
-            if (sheet == null) sheet = ice ? (pink ? "ice_flake" : "ice_shard") : "bubbles";
-            if (clip == null) clip = ice ? "spin" : (pink ? "pink" : "dark");
+            fire = GameCtl.I.world != null && GameCtl.I.world.def.fire;
+            if (sheet == null) sheet = fire ? "fire_shot" : (ice ? (pink ? "ice_flake" : "ice_shard") : "bubbles");
+            if (clip == null) clip = (ice || fire) ? "spin" : (pink ? "pink" : "dark");
             kind = pink ? "pink" : "dark"; sheetName = sheet;
             freezes = ice && !pink && sheet == "ice_shard";
             if (ice && sheet != "bubbles") radius = (sheet == "snowhead" ? 0.4f : 0.26f) * sc;
+            if (fire) radius = 0.3f * sc;
             var sh = Art.Get(sheet);
             sr = Pix.Make("eshot", GameCtl.I.entRoot, sh[0], p, 18, sc);
             go = sr.gameObject; anim = new Anim(sr, sh, clip);
@@ -55,7 +57,8 @@ namespace GumRemix
         {
             if (dead) return;
             dead = true; UnityEngine.Object.Destroy(go);
-            if (ice) GameCtl.I.SpawnFx("spark_ice", "spark", pos, 1.6f, false, 26);
+            if (fire) GameCtl.I.SpawnFx("spark", "spark", pos, 1.5f, false, 26);
+            else if (ice) GameCtl.I.SpawnFx("spark_ice", "spark", pos, 1.6f, false, 26);
             else GameCtl.I.SpawnFx("bubble_pops", kind, pos, scale, false, 26);
             Sfx.Play("pop", .35f, ice ? 1.8f : 1.3f);
         }
@@ -103,7 +106,7 @@ namespace GumRemix
         }
         public bool Hittable { get { return state == EState.Normal && spawnT <= 0f; } }
         /// <summary>Plated enemies shrug off gum: only the string between the heroes can wrap them into a ball.</summary>
-        public bool Armored { get { return color == "steel" || color == "iron"; } }
+        public bool Armored { get { return color == "steel" || color == "iron" || color == "brass"; } }
         float wrapT; bool wrapTouched;
 
         float deflectT;
@@ -120,21 +123,29 @@ namespace GumRemix
             if (wrapT >= 0.65f) { wrapT = 0f; Stick(by); G.statWraps++; }
         }
 
+        string Skin(string b) { var n = b + "_" + color; return (color != "" && Art.Exists(n)) ? n : b; }
+        string BallSkin(string b)
+        {
+            var n = "ball_" + b + "_" + color; if (color != "" && Art.Exists(n)) return n;
+            if (color == "brass" && Art.Exists("ball_" + b + "_fire")) return "ball_" + b + "_fire";
+            return "ball_" + b;
+        }
+
         public Enemy(string k, string c, Vector2 pos)
         {
             kind = k; color = c;
             switch (k)
             {
-                case "bear": sMain = Art.Get("bear_" + c); sBall = Art.Get("ball_bear_" + c); hw = 0.4f; hh = 1.0f; hp = 3; break;
+                case "bear": sMain = Art.Get("bear_" + c); sBall = Art.Get(c == "brass" ? "ball_bear_fire" : "ball_bear_" + c); hw = 0.4f; hh = 1.0f; hp = 3; break;
                 case "bean": sMain = Art.Get("bean_" + c); sBall = Art.Get("ball_bean_" + c); hw = 0.36f; hh = 0.8f; hp = 2; break;
                 case "lolli": sMain = Art.Get("lolli"); sBall = Art.Get("ball_lolli"); hw = 0.4f; hh = 0.9f; hp = 2; spriteOffset = new Vector2(0, 0.45f); break;
-                case "cannon": sMain = Art.Get("cannon"); sBall = Art.Get("ball_cannon"); hw = 0.45f; hh = 0.9f; hp = 4; break;
+                case "cannon": sMain = Art.Get(Skin("cannon")); sBall = Art.Get(BallSkin("cannon")); hw = 0.45f; hh = 0.9f; hp = 4; break;
                 case "penguin": sMain = Art.Get(c == "iron" ? "penguin_iron" : "penguin"); sBall = Art.Get("ball_penguin"); hw = 0.42f; hh = 1.05f; hp = 3; break;
                 case "snowman": sMain = Art.Get(c == "iron" ? "snowman_iron" : "snowman"); sBall = Art.Get(c == "iron" ? "ball_snowman_iron" : "ball_snowman"); hw = 0.4f; hh = 1.35f; hp = 3; break;
-                case "owl": sMain = Art.Get(c == "iron" ? "owl_iron" : "owl"); sBall = Art.Get("ball_owl"); hw = 0.45f; hh = 0.95f; hp = 2; spriteOffset = new Vector2(0, 0.42f); break;
-                case "jelly": sMain = Art.Get("jelly"); sBall = Art.Get("ball_jelly"); hw = 0.55f; hh = 1.25f; hp = 3; spriteOffset = new Vector2(0, 0.62f); break;
-                case "crab": sMain = Art.Get("crab"); sBall = Art.Get("ball_crab"); hw = 0.7f; hh = 0.85f; hp = 6; break;
-                default: sMain = Art.Get("seed"); sBall = Art.Get("ball_seed"); hw = 0.24f; hh = 0.55f; hp = 1; break;   // seed
+                case "owl": sMain = Art.Get(Skin("owl")); sBall = Art.Get(BallSkin("owl")); hw = 0.45f; hh = 0.95f; hp = 2; spriteOffset = new Vector2(0, 0.42f); break;
+                case "jelly": sMain = Art.Get(Skin("jelly")); sBall = Art.Get(BallSkin("jelly")); hw = 0.55f; hh = 1.25f; hp = 3; spriteOffset = new Vector2(0, 0.62f); break;
+                case "crab": sMain = Art.Get(Skin("crab")); sBall = Art.Get(BallSkin("crab")); hw = 0.7f; hh = 0.85f; hp = 6; break;
+                default: sMain = Art.Get(Skin("seed")); sBall = Art.Get(BallSkin("seed")); hw = 0.24f; hh = 0.55f; hp = 1; break;   // seed
             }
             hhFull = hh; maxHp = hp; body.w = hw * 2f; body.h = hh;
             facing = UnityEngine.Random.value < .5f ? 1 : -1;

@@ -107,6 +107,7 @@ namespace GumRemix.Tests
             PressEnter(); yield return Seconds(0.4f); Shot("m03_help_howto");
             PressEnter(); yield return Seconds(0.4f); Shot("m04_help_together");
             PressEnter(); yield return Seconds(0.4f); Shot("m05_help_ice");
+            PressEnter(); yield return Seconds(0.4f); Shot("m06_help_fire");
             PressEnter(); yield return Seconds(0.3f);
             Assert.AreEqual(Mode.Banner, G.mode, "closing the help should start the game");
             Log("menu and help ok");
@@ -181,7 +182,7 @@ namespace GumRemix.Tests
             G.DebugDamageBoss(IceBoss.Phase3Hp + 5);
             yield return Seconds(1.0f); Shot("i5_boss_dying");
             yield return UntilBossDown(8f); yield return Seconds(0.4f); Shot("i5_boss_ko");
-            yield return UntilMode(Mode.Results, 8f); yield return Seconds(0.6f); Shot("z_results");
+            yield return UntilMode(Mode.WorldDone, 8f); yield return Seconds(0.6f); Shot("w2_world_complete");
             Log("ice world finished, results reached");
 
             // ---- game over & retry
@@ -471,6 +472,57 @@ namespace GumRemix.Tests
             }
             Assert.IsFalse(boss.shotProof, "the string must break the guard"); Assert.Less(boss.hp, before);
             Log("armour + guard ok: wraps=" + G.statWraps + " hp " + before + " -> " + boss.hp);
+            yield return Teardown();
+        }
+
+        // ------------------------------------------------------------------------------------------ the Fire Kingdom (world 3)
+        [UnityTest, Timeout(900000)]
+        public IEnumerator FireKingdom()
+        {
+            yield return Boot();
+            GumInput.Override = i => new Pad();
+            G.holdClear = true; G.god = true;
+            // 1) the four ordinary levels build, spawn their creatures and run their hazards without errors
+            for (int lv = 10; lv <= 13; lv++)
+            {
+                G.DebugStartAt(lv, 1); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+                Assert.IsTrue(G.world.def.fire, "level " + lv + " belongs to the fire world");
+                yield return Seconds(3.5f);
+                Assert.Greater(G.enemies.Count, 0, "level " + lv + " should have enemies");
+                Shot("f" + (lv - 9) + "_play");
+                Log("fire level " + lv + " ok: enemies=" + G.enemies.Count + " geysers=" + G.geysers.Count + " cinders=" + G.cinders.Count);
+            }
+            // 2) every creature of the fire world loads its sheets (including the captured-ball form)
+            G.DebugStartAt(12, 1); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+            G.DebugClearEnemies(); yield return Frames(2);
+            float gy = G.world.GroundTop + 0.02f; int ix = 0;
+            foreach (var kc in new[] { "bear:fire", "bear:brass", "bean:fire", "seed:fire", "owl:fire", "owl:brass", "jelly:fire", "cannon:fire", "crab:fire" })
+            {
+                var parts = kc.Split(':'); G.players[0].Place(new Vector2(-7f, gy)); G.players[1].Place(new Vector2(7f, gy));
+                var e = G.SpawnEnemy(parts[0], parts[1], new Vector2(-4f + ix++ * 1.0f, gy + (parts[0] == "owl" || parts[0] == "jelly" ? 3f : 0f)));
+                yield return Seconds(0.7f);
+                e.Stick(G.players[0]); yield return Seconds(0.4f);
+                Assert.IsTrue(e.state == EState.Stuck || e.state == EState.Rolling, kc + " should turn into an ash ball (state " + e.state + ")");
+                G.DebugClearEnemies(); yield return Frames(2);
+            }
+            // 3) a geyser burns whoever stands over its crack
+            G.god = false; var p0 = G.players[0]; p0.Place(new Vector2(0f, gy)); p0.invuln = 0f;
+            G.geysers.Add(new Geyser(0f, G.world.GroundTop)); int hp0 = p0.hp;
+            yield return Seconds(2.6f);
+            Assert.Less(p0.hp, hp0, "the geyser must hurt a hero standing in it");
+            // 4) the Mantis Kings: two bodies, shared life, three forms, then victory
+            G.god = true; G.DebugStartAt(14, 2); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+            var boss = G.boss as FireBoss; Assert.NotNull(boss, "the fire boss should be the Mantis Kings");
+            Assert.AreEqual(2, boss.Hurtboxes().Length, "two kings, two weak points");
+            yield return Seconds(7f); Shot("f5_kings_p1");
+            G.DebugDamageBoss(boss.hp - (FireBoss.Phase2Hp + FireBoss.Phase3Hp) + 1); yield return Seconds(3.2f);
+            Assert.AreEqual(2, boss.phase, "second form"); yield return Seconds(7f); Shot("f5_kings_p2");
+            G.DebugDamageBoss(boss.hp - FireBoss.Phase3Hp + 1); yield return Seconds(3.2f);
+            Assert.AreEqual(3, boss.phase, "third form"); yield return Seconds(7f); Shot("f5_kings_p3");
+            G.DebugDamageBoss(boss.hp + 5);
+            yield return UntilBossDown(8f);
+            yield return UntilMode(Mode.Results, 12f); yield return Seconds(0.6f); Shot("z_results");
+            Log("fire world ok: both kings fell, mode=" + G.mode);
             yield return Teardown();
         }
 

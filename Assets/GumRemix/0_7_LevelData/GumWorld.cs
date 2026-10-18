@@ -71,9 +71,10 @@ namespace GumRemix
         public List<CrystalDef> crystals = new List<CrystalDef>();
         public float[] playerX = { -2f, 2f };
         public float parTime = 60f;
-        public bool wind, icicles;                       // blizzard gusts / falling icicles
+        public bool wind, icicles, geysers, cinders;       // blizzard gusts / falling icicles / fire geysers / falling cinders
         public int maxAlive = 4;                         // enemies on screen at once; the rest arrive in waves
         public bool ice { get { return world == 1; } }
+        public bool fire { get { return world == 2; } }
     }
 
     /// <summary>The ten stages: five candy (world 0) and five ice (world 1). Local coordinates: y=0 is the bottom of the screen, ground top at y=1.</summary>
@@ -87,7 +88,7 @@ namespace GumRemix
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStatics() { all = null; }          // platforms carry state (broken ice, lifts): rebuild them every run
         public static LevelDef[] All { get { if (all == null) all = Build(); return all; } }
-        public static readonly string[] WorldNames = { "REINO DE CHICLE", "REINO DE HIELO" };
+        public static readonly string[] WorldNames = { "REINO DE CHICLE", "REINO DE HIELO", "REINO DE FUEGO" };
 
         static Plat P(float a, float b, float t) { return new Plat(a, b, t); }
         static Plat Brittle(float a, float b, float t) { return new Plat(a, b, t) { kind = PlatKind.Brittle }; }
@@ -111,11 +112,18 @@ namespace GumRemix
             return d;
         }
 
+        static LevelDef LF(string title, string sub, int theme, Plat[] ground, params Plat[] p)
+        {
+            var d = new LevelDef { title = title, subtitle = sub, theme = theme, world = 2 };
+            d.plats.AddRange(ground); d.plats.AddRange(p);
+            return d;
+        }
+
         static void S(LevelDef d, string kind, float x, float y, string color = "") { d.spawns.Add(new EnemySpawn(kind, color, x, y)); }
 
         static LevelDef[] Build()
         {
-            var l = new LevelDef[10];
+            var l = new LevelDef[15];
 
             // ============================================================ WORLD 1: CHICLE
             l[0] = L("PRADO PIRULETA", "ATRAPA A LOS OSITOS", 0, 0,
@@ -190,6 +198,40 @@ namespace GumRemix
                 P(-7.2f, -4.2f, 3.2f), P(-2f, 1.2f, 3.2f), P(-6f, -3f, 5.4f),
                 Moving(-3.5f, -0.5f, 5.4f, 1.8f, 0f, 0.8f), Brittle(-4.5f, -1.5f, 7.5f));
             l[9].boss = true; l[9].playerX = new[] { -5.8f, -3.8f }; l[9].parTime = 170; l[9].wind = true;
+            // ============================================================ WORLD 3: FUEGO (an abandoned foundry kingdom guarded by the Mantis Kings)
+            // 1) Forja Abandonada: a plain intro with forged golems
+            l[10] = LF("FORJA ABANDONADA", "LOS FUNDIDORES CARGAN", 10,
+                new[] { Ground(-8f, 8f, false) },
+                P(-7.5f, -3f, 3.1f), P(3f, 7.5f, 3.1f), P(-4.5f, 4.5f, 5.2f), P(-7.5f, -2.5f, 7.3f), P(2.5f, 7.5f, 7.3f));
+            S(l[10], "bear", -5f, 3.1f, "fire"); S(l[10], "bear", 5f, 3.1f, "fire"); S(l[10], "bean", -5f, 7.3f, "fire"); S(l[10], "bean", 0f, 5.2f, "fire"); S(l[10], "seed", 5.5f, 7.3f, "fire");
+            l[10].parTime = 70; l[10].hint = "LOS FUNDIDORES CARGAN CONTRA TI: ESQUIVA Y ATRAPALOS";
+
+            // 2) Rios de Magma: cooling crust that breaks, geysers of fire
+            l[11] = LF("RIOS DE MAGMA", "LA COSTRA SE ROMPE", 11,
+                new[] { Ground(-8f, 8f, false) },
+                P(-7.5f, -4f, 3.2f), Brittle(-2.5f, 2.5f, 3.2f), P(4f, 7.5f, 3.2f), P(-5.5f, -1.5f, 5.4f), Moving(1f, 4.5f, 5.4f, 2f, 0f, 0.9f), P(-7.5f, -3.5f, 7.5f), P(2f, 6f, 7.5f));
+            S(l[11], "bean", -6f, 3.2f, "fire"); S(l[11], "bean", 6f, 3.2f, "fire"); S(l[11], "owl", 0f, 6.8f, "fire"); S(l[11], "bear", -3.5f, 5.4f, "brass"); S(l[11], "jelly", 3f, 6.5f, "fire"); S(l[11], "seed", -5f, 7.5f, "fire");
+            l[11].parTime = 85; l[11].geysers = true; l[11].hint = "GEISERES: SALTA CUANDO LA GRIETA BRILLE. LAS COSTRAS SE ROMPEN";
+
+            // 3) Camara de Engranajes: steam-vent springs launch you to the high galleries
+            l[12] = LF("CAMARA DE ENGRANAJES", "LOS RESORTES DE VAPOR TE LANZAN", 12,
+                new[] { Ground(-8f, 8f, false) },
+                Elastic(-7f, -6f, 2.4f), Elastic(6f, 7f, 2.4f), P(-4.5f, -1.5f, 4.6f), P(1.5f, 4.5f, 4.6f), Moving(-1f, 1f, 6.0f, 0f, 1.4f, 1.1f), P(-7.5f, -5.5f, 6.9f), P(5.5f, 7.5f, 6.9f));
+            S(l[12], "cannon", -6.5f, 6.9f, "fire"); S(l[12], "cannon", 6.5f, 6.9f, "fire"); S(l[12], "crab", 3f, 1f, "fire"); S(l[12], "crab", -3f, 1f, "fire"); S(l[12], "bear", -3f, 4.6f, "brass"); S(l[12], "owl", 3f, 6.8f, "brass"); S(l[12], "seed", 3f, 4.6f, "fire");
+            l[12].parTime = 95; l[12].hint = "LOS RESORTES DE VAPOR TE LANZAN ARRIBA. LOS ESCARABAJOS SE METEN EN SU CAPARAZON";
+
+            // 4) Fundicion del Rey: geysers and falling cinders over brittle crust
+            l[13] = LF("FUNDICION DEL REY", "CUIDADO CON LA CENIZA ARDIENTE", 13,
+                new[] { Ground(-8f, 8f, false) },
+                Brittle(-7f, -4f, 3.2f), P(4f, 7.5f, 3.2f), P(-2.5f, 2.5f, 3.5f), Brittle(-7.5f, -4.5f, 5.6f), P(4.5f, 7.5f, 5.6f), Moving(-1.5f, 1.5f, 7.4f, 3.2f, 0f, 0.9f));
+            S(l[13], "jelly", -4f, 6.4f, "fire"); S(l[13], "jelly", 4f, 6.4f, "fire"); S(l[13], "owl", 0f, 7.0f, "brass"); S(l[13], "bear", 5.5f, 3.2f, "brass"); S(l[13], "bear", -6f, 1f, "fire"); S(l[13], "bean", 0f, 3.5f, "fire"); S(l[13], "cannon", 6f, 5.6f, "fire"); S(l[13], "seed", -5f, 5.6f, "fire");
+            l[13].parTime = 105; l[13].geysers = true; l[13].cinders = true; l[13].maxAlive = 5; l[13].hint = "CENIZAS Y GEISERES: MUEVETE SIN PARAR";
+
+            // 5) Salon de las Hoces: the arena of the Mantis Kings
+            l[14] = LF("SALON DE LAS HOCES", "LOS REYES MANTIS", 14,
+                new[] { Ground(-8f, 8f, false) },
+                P(-7.2f, -4.2f, 3.4f), P(4.2f, 7.2f, 3.4f), P(-2.2f, 2.2f, 5.6f));
+            l[14].boss = true; l[14].playerX = new[] { -5.8f, -3.8f }; l[14].parTime = 190;
             l[3].maxAlive = 5; l[8].maxAlive = 5;
             return l;
         }

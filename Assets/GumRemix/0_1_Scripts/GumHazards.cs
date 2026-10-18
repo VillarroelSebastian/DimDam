@@ -174,6 +174,114 @@ namespace GumRemix
         public void Dispose() { if (root) Object.Destroy(root); if (crack) Object.Destroy(crack.gameObject); }
     }
 
+    /// <summary>A fire geyser: a glowing crack warns where the ground will split, then a column of flame erupts and burns whoever stands in it.</summary>
+    public class Geyser
+    {
+        public bool dead; float x, y, t, hold; GameObject root; readonly List<SpriteRenderer> segs = new List<SpriteRenderer>(); SpriteRenderer crack; Anim crackAnim; Sheet ps; const int n = 7;
+        const float Warn = 1.15f, Rise = 0.18f;
+
+        public Geyser(float px, float groundY, float holdTime = 0.9f)
+        {
+            x = px; y = groundY; hold = holdTime;
+            var g = GameCtl.I; var cs = Art.Get("fire_crack");
+            crack = Pix.Make("crack", g.entRoot, cs[0], new Vector3(x, y + 0.02f, 0), 4); crackAnim = new Anim(crack, cs, "loop");
+            root = new GameObject("geyser"); root.transform.SetParent(g.entRoot, false); root.transform.position = new Vector3(x, y, 0);
+            ps = Art.Get("geyser_seg");
+            for (int i = 0; i < n; i++) { var s = Pix.Make("seg" + i, root.transform, ps[Idx(i, false)], new Vector3(0, i * 0.5f, 0), 16); s.enabled = false; segs.Add(s); }
+            Sfx.Play("warn", .5f, .7f);
+        }
+
+        int Idx(int i, bool alt) { return (i == 0 ? 0 : (i == n - 1 ? 2 : 1)) + (alt ? 3 : 0); }
+        float Height(float prog) { return (n * 0.5f + 0.1f) * prog; }
+
+        public Rect Danger
+        {
+            get
+            {
+                if (t < Warn) return new Rect(0, 0, 0, 0);
+                float prog = Mathf.Clamp01((t - Warn) / Rise);
+                return new Rect(x - 0.45f, y, 0.9f, Height(prog) * 0.95f);
+            }
+        }
+
+        public void Tick(float dt)
+        {
+            var g = GameCtl.I; t += dt;
+            if (t < Warn)
+            {
+                crackAnim.Tick(dt); crack.color = new Color(1, 1, 1, .6f + .4f * Mathf.Abs(Mathf.Sin(t * 12f)));
+                crack.transform.position = new Vector3(x + Mathf.Sin(t * 70f) * .02f, y + 0.02f, 0);
+                return;
+            }
+            crack.enabled = false;
+            if (!segs[0].enabled) { Sfx.Play("boom", .7f, 1.2f); g.Shake(.1f, .25f); g.SpawnFx("cinder_burst", "shatter", new Vector2(x, y), 1.6f, false, 27); }
+            float prog = Mathf.Clamp01((t - Warn) / Rise); float h = Height(prog);
+            bool alt = ((int)(t * 14f)) % 2 == 0;
+            for (int i = 0; i < n; i++) { segs[i].enabled = i * 0.5f < h - 0.01f || i == 0; segs[i].sprite = ps[Idx(i, alt)]; }
+            if (t > Warn + Rise + hold)
+            {
+                float sink = (t - Warn - Rise - hold) / 0.3f;
+                if (sink >= 1f) { dead = true; Dispose(); return; }
+                root.transform.localScale = new Vector3(1f, 1f - sink * 0.9f, 1f);
+            }
+            var r = Danger; if (t > Warn + Rise + hold) r.height *= 0.3f;
+            foreach (var p in g.players) if (p != null && p.Alive && p.invuln <= 0 && r.width > 0 && r.Overlaps(p.body.Rect)) p.Hit(1, x);
+        }
+
+        public void Dispose() { if (root) Object.Destroy(root); if (crack) Object.Destroy(crack.gameObject); }
+    }
+
+    /// <summary>A lump of burning rock that glows where it will fall (with a ground marker), then drops and bursts.</summary>
+    public class Cinder
+    {
+        public bool dead; float x, y, vy, warn = 0.8f; bool falling; GameObject go, shadow; SpriteRenderer sr, shr; Anim anim; float landY;
+
+        public Cinder(float px)
+        {
+            var g = GameCtl.I; x = px; y = g.world.y0 + Levels.Height + 0.4f;
+            var sh = Art.Get("cinder");
+            sr = Pix.Make("cinder", g.entRoot, sh[0], new Vector3(x, y, 0), 19); go = sr.gameObject; anim = new Anim(sr, sh, "shake");
+            landY = LandingY();
+            shr = Pix.Make("marker", g.entRoot, g.white, new Vector3(x - 0.45f, landY + 0.04f, 0), 3);
+            shadow = shr.gameObject; shadow.transform.localScale = new Vector3(18, 3, 1); shr.color = new Color(1f, .45f, .1f, .55f);
+            Sfx.Play("warn", .35f, 1.2f);
+        }
+
+        float LandingY()
+        {
+            var g = GameCtl.I; float best = g.world.GroundTop;
+            foreach (var p in g.world.plats) if (p.active && !p.solid && x >= p.x0 && x <= p.x1 && p.top > best && p.top < y - 1f) best = p.top;
+            return best;
+        }
+
+        public void Tick(float dt)
+        {
+            var g = GameCtl.I; anim.Tick(dt);
+            if (!falling)
+            {
+                warn -= dt; shr.color = new Color(1f, .45f, .1f, .35f + .3f * Mathf.Abs(Mathf.Sin(warn * 14f)));
+                y = Mathf.Lerp(y, g.world.y0 + Levels.Height - 0.8f, 0.2f);
+                go.transform.position = new Vector3(x + Mathf.Sin(warn * 80f) * 0.04f, y, 0);
+                if (warn <= 0f) { falling = true; landY = LandingY(); }
+                return;
+            }
+            vy -= 36f * dt; y += vy * dt;
+            go.transform.position = new Vector3(x, y, 0);
+            var r = new Rect(x - 0.22f, y - 0.5f, 0.44f, 1.0f);
+            foreach (var p in g.players) if (p != null && p.Alive && p.invuln <= 0 && r.Overlaps(p.body.Rect)) { p.Hit(1, x); Burst(); return; }
+            if (y - 0.5f <= landY) Burst();
+        }
+
+        void Burst()
+        {
+            dead = true; Object.Destroy(go); Object.Destroy(shadow);
+            GameCtl.I.SpawnFx("cinder_burst", "shatter", new Vector2(x, landY), 1f, false, 26);
+            Sfx.Play("pop", .5f, 1.1f); GameCtl.I.Shake(.04f, .1f);
+        }
+
+        public void Dispose() { dead = true; if (go) Object.Destroy(go); if (shadow) Object.Destroy(shadow); }
+    }
+
     /// <summary>Blizzard gusts: warned, then push everybody who is not under a roof.</summary>
     public class WindCtl
     {
