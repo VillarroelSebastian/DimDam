@@ -23,7 +23,7 @@ namespace GumRemix
         /// <summary>Where a rolling snowball counts as a hit.</summary>
         public virtual Rect[] BallBoxes() { return Hurtboxes(); }
         public abstract List<Rect> Dangerboxes();
-        public abstract void Damage(int dmg, Player by, bool addMeter = true);
+        public abstract void Damage(int dmg, Player by);
         public abstract void Tick(float dt);
         public abstract void Activate();
         public abstract void Dispose();

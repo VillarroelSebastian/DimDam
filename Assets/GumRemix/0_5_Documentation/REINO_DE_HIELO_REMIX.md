@@ -25,7 +25,7 @@ Se juega desde el menú (**MUNDO: HIELO**) o continuando tras vencer al la Princ
 - **Pingüino Escudero:** su escudo detiene el chicle que llega de frente; dispárale por detrás o desde arriba. Se lanza de barriga (más lejos sobre hielo).
 - **Muñeco Remendado:** salta; lanza su cabeza (que al caer deja una Semilla de Nieve) y corre sin cabeza antes de rehacerla.
 - **Lechuza de Escarcha:** patrulla en el aire, tiembla para fijar objetivo y se lanza en picado.
-- **Medusa Boreal:** flota y lanza un abanico de escarcha; a veces uno de los proyectiles es un copo rosa (parry).
+- **Medusa Boreal:** flota y lanza un abanico de escarcha.
 - **Cangrejo Iglú:** su caparazón absorbe cada segundo impacto; se mete en la cúpula y rueda, y tras la embestida queda expuesto.
 - **Semilla de Nieve:** pequeña y frágil, siempre salta hacia ti.
 

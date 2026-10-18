@@ -127,7 +127,7 @@ namespace GumRemix
                 P(-6f, -1.5f, 3.1f), P(1.5f, 6f, 3.1f), P(-7.5f, -4f, 5.2f), P(-1.5f, 1.5f, 5.2f), P(4f, 7.5f, 5.2f), P(-5f, -1f, 7.3f), P(1f, 5f, 7.3f));
             S(l[1], "bear", 0f, 3.1f, "steel"); S(l[1], "bear", -4f, 3.1f, "green"); S(l[1], "bear", 4f, 3.1f, "green"); S(l[1], "bean", 0f, 5.2f, "purple"); 
             S(l[1], "lolli", 0f, 6.2f, "pink");
-            l[1].parTime = 70; l[1].hint = "SALTA SOBRE LAS BURBUJAS ROSAS: ES UN PARRY Y CARGA TU SUPER";
+            l[1].parTime = 70; l[1].hint = "PONTE A CADA LADO DE UN ENEMIGO: EL LAZO ENTRE LOS DOS LO DAÑA";
 
             l[2] = L("NUBES DE MALVAVISCO", "LLUVIA DE CARAMELOS", 2, 0,
                 P(-7.5f, -4.5f, 3.1f), P(-2f, 2f, 3.1f), P(4.5f, 7.5f, 3.1f), P(-5.5f, -1.5f, 5.2f), P(1.5f, 5.5f, 5.2f), P(-3f, 3f, 7.3f));
@@ -163,7 +163,7 @@ namespace GumRemix
                 Brittle(-7.5f, -4.5f, 5.3f), Brittle(4.5f, 7.5f, 5.3f), Moving(-1f, 1f, 5.0f, 0f, 1.7f, 1.1f),
                 P(-5f, -1.8f, 7.5f), P(1.8f, 5f, 7.5f));
             S(l[6], "snowman", -5.5f, 3.1f); S(l[6], "penguin", 0f, 3.1f); S(l[6], "crab", 0f, 1f);
-            S(l[6], "owl", -3f, 6.8f); S(l[6], "snowman", 5.5f, 3.1f, "iron"); S(l[6], "seed", 3f, 7.5f);
+            S(l[6], "owl", -3f, 6.8f); S(l[6], "penguin", -4f, 3.1f, "iron"); S(l[6], "snowman", 5.5f, 3.1f, "iron"); S(l[6], "seed", 3f, 7.5f);
             l[6].parTime = 85; l[6].hint = "EL ASCENSOR SUBE Y BAJA. LAS TEJAS QUEBRADIZAS TIEMBLAN: NO TE QUEDES";
 
             // 3) Cristales Cantores: elastic crystal pads, two towers, a high bridge charged by the crystals
@@ -173,7 +173,7 @@ namespace GumRemix
                 P(-4.5f, -1.5f, 4.6f), P(1.5f, 4.5f, 4.6f),
                 Bridge(-3f, 3f, 7.4f), P(-7.5f, -5.5f, 6.9f), P(5.5f, 7.5f, 6.9f));
             l[7].crystals.Add(new CrystalDef(-0.8f, 1f, 0)); l[7].crystals.Add(new CrystalDef(0.8f, 1f, 0));
-            S(l[7], "jelly", -3f, 6.0f); S(l[7], "snowman", 0f, 3.1f, "iron"); S(l[7], "owl", 0f, 8.0f); S(l[7], "penguin", -3f, 4.6f); S(l[7], "seed", 3f, 4.6f); S(l[7], "crab", 5f, 1f);
+            S(l[7], "jelly", -3f, 6.0f); S(l[7], "owl", 3f, 6.6f, "iron"); S(l[7], "snowman", 0f, 3.1f, "iron"); S(l[7], "owl", 0f, 8.0f); S(l[7], "penguin", -3f, 4.6f); S(l[7], "seed", 3f, 4.6f); S(l[7], "crab", 5f, 1f);
             l[7].parTime = 90; l[7].icicles = true; l[7].hint = "DISPARA A LOS CRISTALES PARA CONSTRUIR EL PUENTE. LAS ESCARCHAS TE CONGELAN: MARTILLEA BOTONES";
 
             // 4) Jardines Congelados: brittle routes, a central shelter, a ferry; blizzard gusts
@@ -181,7 +181,7 @@ namespace GumRemix
                 new[] { Ground(-8f, -2f, false), Ground(-2f, 2f, true), Ground(2f, 8f, false) },
                 Brittle(-7f, -4f, 3.2f), P(4f, 7.5f, 3.2f), P(-2.5f, 2.5f, 3.5f),
                 Brittle(-7.5f, -4.5f, 5.6f), P(4.5f, 7.5f, 5.6f), Moving(-1.5f, 1.5f, 7.4f, 3.2f, 0f, 0.9f));
-            S(l[8], "penguin", -5f, 1f); S(l[8], "snowman", -5.5f, 3.2f, "iron"); S(l[8], "snowman", 3f, 3.2f, "iron"); S(l[8], "snowman", 5.5f, 3.2f); S(l[8], "owl", 0f, 6.8f); S(l[8], "jelly", -4f, 6.4f); S(l[8], "crab", 5f, 5.6f); S(l[8], "seed", 0f, 3.5f);
+            S(l[8], "penguin", -5f, 1f); S(l[8], "penguin", 5.2f, 5.6f, "iron"); S(l[8], "owl", -2f, 7.0f, "iron"); S(l[8], "snowman", -5.5f, 3.2f, "iron"); S(l[8], "snowman", 3f, 3.2f, "iron"); S(l[8], "snowman", 5.5f, 3.2f); S(l[8], "owl", 0f, 6.8f); S(l[8], "jelly", -4f, 6.4f); S(l[8], "crab", 5f, 5.6f); S(l[8], "seed", 0f, 3.5f);
             l[8].parTime = 100; l[8].wind = true; l[8].icicles = true; l[8].hint = "VIENE UNA VENTISCA: PROTEGETE BAJO UN TECHO";
 
             // 5) Palacio de la Ultima Nevada: boss arena (stairs, galleries, a ferry, a high bridge that breaks)

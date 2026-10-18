@@ -50,11 +50,10 @@ namespace GumRemix
         string Pfx { get { return "p" + phase + "_"; } }
 
         // ------------------------------------------------------------------------------------------ damage
-        public override void Damage(int dmg, Player by, bool addMeter = true)
+        public override void Damage(int dmg, Player by)
         {
             if (!Hittable) return;
             hp -= dmg; if (flashCd <= 0f) { flashT = 0.045f; flashCd = 0.28f; }
-            if (by != null && addMeter) by.AddMeter(0.012f * dmg);
             Sfx.Play("hit", .35f, .7f + Random.value * .2f);
             if (dmg >= 6) { G.SpawnFx("spark", "spark", new Vector2(x, y + 3.2f), 2f, false, 30); G.Shake(.1f, .2f); }
             if (phase == 1 && hp <= Phase2Hp + Phase3Hp) { hp = Phase2Hp + Phase3Hp; routine = Transition(2); wait = 0; trans = true; }

@@ -16,18 +16,17 @@ Se puede volver a verlas en el menú principal (**COMO JUGAR**), cada nivel mues
 |---|---|---|
 | Mover | A / D | Flechas izq / der |
 | Apuntar arriba (con mover = diagonal) | W | Flecha arriba |
-| Saltar (en el aire sobre algo rosa = PARRY) | Espacio | Shift derecho |
+| Saltar | Espacio | Shift derecho |
 | Bajar de una plataforma | S + salto | Flecha abajo + salto |
 | Disparar chicle | F | Ctrl derecho |
 | Dash (invulnerable) | G | . |
-| Super (5 cartas) | H | / |
 
-Mando: stick/cruceta, A salta, X dispara, B/RB dash, Y/LB super. P2 puede entrar en cualquier momento con una de sus teclas.
+Mando: stick/cruceta, A salta, X dispara, B/RB dash. P2 puede entrar en cualquier momento con una de sus teclas.
 
 ## Mecánicas comunes
 - **3 corazones** por jugador. Al caer te conviertes en fantasma en burbuja: tu compañero te revive tocándote. Si caen los dos, se reintenta el nivel.
 - **Atrapar y patear (Snow Bros):** los disparos pegan chicle; al agotar la vida del enemigo queda atrapado en una bola (de chicle en Chicle, de nieve en Hielo). Tócala para patearla: rueda, rebota, revienta a los enemigos que encuentra, rompe cristales y golpea al jefe. Si no la pateas, el enemigo se libera a los 7 s.
-- **Parry:** lo **rosa** hace daño, pero saltando sobre ello en el aire lo "parreas": rebotas y ganas una carta. 5 cartas = **Super**, un rayo de chicle que atrapa a todo lo que tiene delante.
+- **Sin súper ni parry:** el juego se apoya en el lazo y en jugar juntos (ver abajo). Los proyectiles se esquivan o se revientan con el lazo.
 - **Subir de nivel:** al eliminar a todos los enemigos una burbuja lleva a los jugadores al piso de arriba; los niveles están apilados y la cámara asciende (los caídos reviven y se cura un corazón).
 - **10 niveles y 2 jefes:** cada mundo son 4 niveles que se escalan y un jefe en el quinto. Al vencer a la Princesa Chicle se pasa al Reino de Hielo.
 
@@ -71,7 +70,7 @@ Pensado para la temática de la jam: el juego se disfruta más con otra persona,
 - **Vínculo de chicle**: mientras los héroes están cerca, una cuerda de chicle los une. Lo que la cruce recibe daño (enemigos, cristales, punto débil del jefe) y revienta los disparos enemigos. Cada uno se coloca a un lado de la amenaza.
 - **Rebote**: caer sobre la cabeza del compañero te impulsa alto (mantén salto para más).
 - **Abrazo**: quedarse juntos y cerca un momento cura 1 corazón (enfriamiento 14 s).
-- **Súper compartido**: lo que carga uno (parry, vínculo) carga la mitad en el otro.
+- **Sin súper:** ya no hay barra de cartas; la cooperación (lazo, rebote, abrazo) es la mecánica central.
 - **Revivir** tocando al compañero caído (ahora con 2 corazones).
 
 ### Ajustes de jugabilidad
@@ -100,3 +99,9 @@ Se bajó el tono infantil del mundo de Chicle (arte 100 % generado por código e
 
 ### Música del mundo de Chicle (tono gótico)
 Menú: vals de caja de música en La menor. Jardín Nocturno (nivel 1): melancólico en La menor con arpegios de pluck. Nubes de Tormenta (nivel 3): Mi menor con campanas. Salón del Trono (jefe): vals en Re menor (3/4) que sube de tono y tempo en cada forma (132 → 150 → 168 bpm). Cueva y Fábrica no cambian.
+
+
+## Cambios recientes
+- Se quitaron el **súper** (5 cartas) y el **parry**; el HUD solo muestra corazones. Los resultados cuentan los **lazos** (enemigos acorazados atrapados).
+- **Enemigos de Chicle rediseñados** (menos infantiles): oso remendado con un ojo de botón y costuras, frijol con ojos huecos y cremallera por boca, piruleta de un solo ojo con alas rotas y cañón con cara de calavera.
+- **Más acorazados en el mundo de hielo** (solo el lazo los atrapa): muñeco de hierro, **pingüino de hierro** y **búho de hierro** (acero oscuro con remaches naranjas). El disparo rebota con un CLANG.

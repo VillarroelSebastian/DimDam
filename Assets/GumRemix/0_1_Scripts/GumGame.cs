@@ -17,7 +17,7 @@ namespace GumRemix
         public World world; public Player[] players = new Player[2];
         public List<Enemy> enemies = new List<Enemy>(); public List<PlayerShot> shots = new List<PlayerShot>();
         public List<EnemyShot> eshots = new List<EnemyShot>(); public List<Shockwave> waves = new List<Shockwave>();
-        public List<SuperBeam> beams = new List<SuperBeam>(); public List<Fx> fxs = new List<Fx>(); public List<Particle> parts = new List<Particle>();
+        public List<Fx> fxs = new List<Fx>(); public List<Particle> parts = new List<Particle>();
         public List<Crystal> crystals = new List<Crystal>(); public List<Icicle> icicles = new List<Icicle>(); public List<IcePillar> pillars = new List<IcePillar>();
         public WindCtl wind = new WindCtl();
         public BossBase boss;
@@ -36,10 +36,10 @@ namespace GumRemix
         GameObject helpRoot; int helpPage; int pendingStart;
         PText hintText; SpriteRenderer hintPanel; GameObject pauseRoot;
         // hud
-        SpriteRenderer[][] hearts = new SpriteRenderer[2][]; SpriteRenderer[][] cardsBase = new SpriteRenderer[2][]; SpriteRenderer[][] cardsFill = new SpriteRenderer[2][];
+        SpriteRenderer[][] hearts = new SpriteRenderer[2][];
         PText[] pLabels = new PText[2]; SpriteRenderer bossBarBack, bossBarFill; PText bossName; SpriteRenderer[] bossTicks = new SpriteRenderer[2];
         GameObject resultsRoot; float gameOverT; bool bossDownFlag;
-        public bool inputLocked, god, holdClear; public int statStuck, statKicks, statBallKills, statParries;
+        public bool inputLocked, god, holdClear; public int statStuck, statKicks, statBallKills;
         public bool solo = true, autoFire = true; public int statCoopBounces, statHugs, statWraps; bool armorHinted; BossBase lazoBoss; bool[] lazoDone = new bool[4]; float hugT, hugCd, spawnCd; Bond bond;
         public static void ResetSession() { seenHelp = false; }
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -164,18 +164,13 @@ namespace GumRemix
         // ------------------------------------------------------------------------------------------ HUD
         void BuildHud()
         {
-            var hs = Art.Get("hearts"); var cs = Art.Get("cards");
+            var hs = Art.Get("hearts");
             for (int p = 0; p < 2; p++)
             {
                 float bx = p == 0 ? -7.3f : 2.9f; float by = -4.05f;
                 pLabels[p] = PText.Create(hudRoot, new Vector3(bx, by + 0.52f, 0), p == 0 ? "P1 CELESTE" : "P2 CORAL", 1, p == 0 ? new Color(.7f, .9f, 1f) : new Color(1f, .75f, .72f), false, 200);
-                hearts[p] = new SpriteRenderer[4]; cardsBase[p] = new SpriteRenderer[5]; cardsFill[p] = new SpriteRenderer[5];
+                hearts[p] = new SpriteRenderer[4];
                 for (int i = 0; i < 4; i++) hearts[p][i] = Pix.Make("heart", hudRoot, hs[0], new Vector3(bx + 0.3f + i * 0.52f, by + 0.05f, 0), 200);
-                for (int i = 0; i < 5; i++)
-                {
-                    cardsBase[p][i] = Pix.Make("cardb", hudRoot, cs[0], new Vector3(bx + 2.65f + i * 0.44f, by + 0.05f, 0), 200);
-                    cardsFill[p][i] = Pix.Make("cardf", hudRoot, cs[1], new Vector3(bx + 2.65f + i * 0.44f, by + 0.05f, 0), 201);
-                }
             }
             bossBarBack = Pix.Make("bossbar", hudRoot, white, new Vector3(-4.1f, 4.0f, 0), 200); bossBarBack.transform.localScale = new Vector3(332, 10, 1); bossBarBack.color = new Color(.16f, .04f, .2f);
             bossBarFill = Pix.Make("bossfill", hudRoot, white, new Vector3(-4.0f, 4.0f, 0), 201); bossBarFill.color = new Color(1f, .45f, .7f);
@@ -191,8 +186,6 @@ namespace GumRemix
                 bool on = v && (p == 0 || players[p].joined);
                 pLabels[p].gameObject.SetActive(on);
                 foreach (var h in hearts[p]) h.gameObject.SetActive(on);
-                foreach (var c in cardsBase[p]) c.gameObject.SetActive(on);
-                foreach (var c in cardsFill[p]) c.gameObject.SetActive(on);
             }
             bool b = v && bossBar;
             bossBarBack.gameObject.SetActive(b); bossBarFill.gameObject.SetActive(b); bossName.gameObject.SetActive(b);
@@ -206,19 +199,11 @@ namespace GumRemix
 
         void UpdateHud()
         {
-            var hs = Art.Get("hearts"); var cs = Art.Get("cards");
+            var hs = Art.Get("hearts");
             for (int p = 0; p < 2; p++)
             {
                 var pl = players[p]; if (!pl.joined) continue;
                 for (int i = 0; i < 4; i++) hearts[p][i].sprite = i < pl.hp ? hs[((int)(time * 3f) % 2 == 0 || pl.hp > 1) ? 0 : 1] : hs[2];
-                for (int i = 0; i < 5; i++)
-                {
-                    float fill = Mathf.Clamp01(pl.meter - i);
-                    bool full = pl.meter >= 5f;
-                    cardsFill[p][i].sprite = full ? cs[((int)(time * 6f)) % 2 == 0 ? 2 : 1] : cs[1];
-                    cardsFill[p][i].color = new Color(1, 1, 1, full ? 1f : (fill >= 1f ? 1f : fill * 0.7f));
-                    cardsFill[p][i].enabled = fill > 0.02f;
-                }
                 // a frozen player gets a visible cue on their label
                 pLabels[p].color = pl.frozenT > 0f ? new Color(.6f, .9f, 1f) : (p == 0 ? new Color(.7f, .9f, 1f) : new Color(1f, .75f, .72f));
             }
@@ -396,20 +381,20 @@ namespace GumRemix
             {
                 PText.Create(t, new Vector3(-7.4f, 2.5f, 0), "P1 CELESTE", 2, new Color(.7f, .9f, 1f), false, 265);
                 PText.Create(t, new Vector3(0.4f, 2.5f, 0), "P2 CORAL", 2, new Color(1f, .75f, .72f), false, 265);
-                string[] a = { "MOVER      A D", "SALTAR     ESPACIO", "DISPARAR   F", "DASH       G", "SUPER      H", "APUNTAR    W", "BAJAR      S+SALTO" };
-                string[] b = { "MOVER      FLECHAS", "SALTAR     SHIFT DER", "DISPARAR   CTRL DER", "DASH       .", "SUPER      /", "APUNTAR    FLECHA ARR", "BAJAR      ABAJO+SALTO" };
+                string[] a = { "MOVER      A D", "SALTAR     ESPACIO", "DISPARAR   F", "DASH       G", "APUNTAR    W", "BAJAR      S+SALTO" };
+                string[] b = { "MOVER      FLECHAS", "SALTAR     SHIFT DER", "DISPARAR   CTRL DER", "DASH       .", "APUNTAR    FLECHA ARR", "BAJAR      ABAJO+SALTO" };
                 for (int i = 0; i < a.Length; i++)
                 {
                     PText.Create(t, new Vector3(-7.4f, 1.8f - i * 0.52f, 0), a[i], 2, Color.white, false, 265);
                     PText.Create(t, new Vector3(0.4f, 1.8f - i * 0.52f, 0), b[i], 2, Color.white, false, 265);
                 }
-                PText.Create(t, new Vector3(0, -2.2f, 0), "MANDO: STICK MUEVE  A SALTA  X DISPARA  B DASH  Y SUPER", 1, new Color(.85f, .95f, 1f), true, 265);
+                PText.Create(t, new Vector3(0, -2.2f, 0), "MANDO: STICK MUEVE  A SALTA  X DISPARA  B DASH", 1, new Color(.85f, .95f, 1f), true, 265);
                 PText.Create(t, new Vector3(0, -2.6f, 0), "SOLO? EL DISPARO ES AUTOMATICO, TU APUNTAS: W ARRIBA, W+LADO DIAGONAL", 1, new Color(1f, .85f, .5f), true, 265);
             }
             else if (helpPage == 2)
             {
                 float y = 2.3f, d = 0.72f;
-                Line(t, y, "VINCULO: EL CHICLE ENTRE LOS DOS DAñO", "cards", 1); y -= d;
+                Line(t, y, "VINCULO: EL CHICLE ENTRE LOS DOS DAñO", "spark", 1); y -= d;
                 Line(t, y, "PONTE A CADA LADO DE UN ENEMIGO O DEL JEFE", "ball_bear_red", -1, "shake"); y -= d;
                 Line(t, y, "CAE SOBRE TU COMPANERO Y REBOTAS ALTO", "hero_celeste", 18); y -= d;
                 Line(t, y, "JUNTOS CERCA UN RATO: ABRAZO, +1 CORAZON", "hearts", 0); y -= d;
@@ -422,8 +407,8 @@ namespace GumRemix
                 float y = 2.3f, d = 0.72f;
                 Line(t, y, "DISPARA: EL ENEMIGO QUEDA EN UNA BOLA", "ball_bear_red", -1, "wobble"); y -= d;
                 Line(t, y, "TOCA LA BOLA PARA PATEARLA Y ELIMINAR", "ball_bear_red", -1, "roll"); y -= d;
-                Line(t, y, "SALTA SOBRE LO ROSA: PARRY Y CARTA", "bubbles", -1, "pink"); y -= d;
-                Line(t, y, "5 CARTAS = SUPER, UN RAYO ENORME", "cards", 2); y -= d;
+                Line(t, y, "ESQUIVA LOS PROYECTILES OSCUROS", "bubbles", -1, "dark"); y -= d;
+                Line(t, y, "LOS ACORAZADOS SOLO CAEN CON EL LAZO", "bear_steel", -1, "idle", 0.5f); y -= d;
                 Line(t, y, "LIMPIA EL PISO Y UNA BURBUJA TE SUBE", "bubble_lift", -1, "lift", 0.5f); y -= d;
                 Line(t, y, "SI CAES, TU AMIGO TE REVIVE AL TOCARTE", "ghost_celeste", -1, "float"); y -= d;
                 PText.Create(t, new Vector3(0, -2.9f, 0), "JEFE: SOLO RECIBE DANO EN SU PUNTO DEBIL O CON BOLAS", 1, new Color(1f, .85f, .5f), true, 265);
@@ -466,7 +451,7 @@ namespace GumRemix
             pauseRoot = new GameObject("pause"); pauseRoot.transform.SetParent(hudRoot, false);
             var bg = Pix.Make("dim", pauseRoot.transform, white, new Vector3(-8f, 0f, 0), 270); bg.transform.localScale = new Vector3(640, 360, 1); bg.color = new Color(.09f, .04f, .22f, .78f);
             PText.Create(pauseRoot.transform, new Vector3(0, 1.8f, 0), "PAUSA", 6, new Color(1f, .93f, .4f), true, 280);
-            string[] l = { "P1  A D MOVER  ESPACIO SALTAR  F DISPARAR  G DASH  H SUPER", "P2  FLECHAS  SHIFT SALTAR  CTRL DISPARAR  . DASH  / SUPER", "SALTA SOBRE LO ROSA (PARRY)  PATEA LAS BOLAS", "ESC SEGUIR   BACKSPACE MENU PRINCIPAL" };
+            string[] l = { "P1  A D MOVER  ESPACIO SALTAR  F DISPARAR  G DASH", "P2  FLECHAS  SHIFT SALTAR  CTRL DISPARAR  . DASH", "EL LAZO UNE A LOS DOS: USENLO CONTRA LOS ACORAZADOS", "ESC SEGUIR   BACKSPACE MENU PRINCIPAL" };
             for (int i = 0; i < l.Length; i++) PText.Create(pauseRoot.transform, new Vector3(0, 0.5f - i * 0.55f, 0), l[i], 1, Color.white, true, 280);
         }
 
@@ -477,7 +462,6 @@ namespace GumRemix
             foreach (var e in enemies) e.Dispose(); enemies.Clear();
             foreach (var s in eshots) s.Pop(); eshots.Clear();
             foreach (var w in waves) w.dead = true; waves.Clear();
-            foreach (var b in beams) b.dead = true; beams.Clear();
             foreach (var f in fxs) f.Kill(); fxs.Clear();
             foreach (var p in parts) { p.dead = true; if (p.go) Destroy(p.go); } parts.Clear();
             foreach (var s in shots) s.dead = true; shots.Clear();
@@ -498,8 +482,8 @@ namespace GumRemix
 
         void StartGame(int count)
         {
-            armorHinted = false; solo = count == 1; playerCount = 2; int startLevel = menuWorld * Levels.PerWorld; ClearAll(); totalTime = 0; kills = 0;
-            foreach (var p in players) { p.parries = 0; p.hitsTaken = 0; p.meter = 0; }
+            armorHinted = false; solo = count == 1; playerCount = 2; int startLevel = menuWorld * Levels.PerWorld; ClearAll(); totalTime = 0; kills = 0; statWraps = 0;
+            foreach (var p in players) { p.hitsTaken = 0; }
             StartLevel(startLevel);
         }
 
@@ -509,7 +493,6 @@ namespace GumRemix
             foreach (var e in enemies) e.Dispose(); enemies.Clear();
             foreach (var s in eshots) s.Pop(); eshots.Clear();
             foreach (var w in waves) w.dead = true; waves.Clear();
-            foreach (var b in beams) b.dead = true; beams.Clear();
             foreach (var c in crystals) c.Dispose(); crystals.Clear();
             foreach (var i in icicles) i.Dispose(); icicles.Clear();
             foreach (var p in pillars) p.Dispose(); pillars.Clear();
@@ -543,7 +526,6 @@ namespace GumRemix
                 bool want = i < playerCount || p.joined;
                 if (!want) { p.joined = false; p.SetVisible(false); continue; }
                 p.Join(new Vector2(def.playerX[i], world.GroundTop + 0.02f));
-                p.meter = Mathf.Min(p.meter, 5f);
             }
             pending.Clear();
             float t = 0.3f;
@@ -555,7 +537,6 @@ namespace GumRemix
         void RestartLevel()
         {
             HideBanner();
-            foreach (var p in players) { if (p.joined) p.meter = 0; }
             StartLevel(levelIndex);
         }
 
@@ -701,7 +682,7 @@ namespace GumRemix
             levelTime += dt; totalTime += dt;
             TickWorld(true);
             TickHug();
-            if (!world.def.boss && !holdClear && AliveEnemies() == 0 && !PlayersAllDown()) { mode = Mode.Clear; modeT = 0; ShowBannerRaw("CLEAR!", "", 99f, 8, new Color(1f, .93f, .4f)); Sfx.Play("clear"); foreach (var p in players) if (p.joined) p.AddMeter(0.5f); }
+            if (!world.def.boss && !holdClear && AliveEnemies() == 0 && !PlayersAllDown()) { mode = Mode.Clear; modeT = 0; ShowBannerRaw("CLEAR!", "", 99f, 8, new Color(1f, .93f, .4f)); Sfx.Play("clear"); }
             if (gameOverT > 0f) { gameOverT -= dt; if (gameOverT <= 0f && PlayersAllDown()) { mode = Mode.GameOver; modeT = 0; ShowBannerRaw("GAME OVER", "ENTER PARA REINTENTAR", 99f, 6, new Color(1f, .5f, .6f)); Sfx.Play("hurt"); Sfx.PlayTrack(Track.GameOver, 0.2f); } }
         }
 
@@ -716,7 +697,6 @@ namespace GumRemix
             foreach (var s in shots) s.Tick(dt);
             foreach (var s in eshots) s.Tick(dt);
             foreach (var w in waves) w.Tick(dt);
-            foreach (var b in beams) b.Tick(dt);
             foreach (var c in crystals) c.Tick(dt);
             foreach (var p in pillars) p.Tick(dt);
             foreach (var i in icicles) i.Tick(dt);
@@ -734,7 +714,7 @@ namespace GumRemix
             }
             TickFxAndParts();
             enemies.RemoveAll(e => e.remove); shots.RemoveAll(s => s.dead); eshots.RemoveAll(s => s.dead);
-            waves.RemoveAll(w => w.dead); beams.RemoveAll(b => b.dead); icicles.RemoveAll(i => i.dead); pillars.RemoveAll(p => p.dead);
+            waves.RemoveAll(w => w.dead); icicles.RemoveAll(i => i.dead); pillars.RemoveAll(p => p.dead);
         }
 
         void SpawnPending(float d)
@@ -864,11 +844,11 @@ namespace GumRemix
         {
             HideBanner();
             mode = Mode.Results; modeT = 0f; SetHudVisible(false); Sfx.PlayTrack(Track.Victory, 0.1f);
-            int hits = 0, parries = 0; foreach (var p in players) if (p.joined) { hits += p.hitsTaken; parries += p.parries; }
+            int hits = 0; foreach (var p in players) if (p.joined) hits += p.hitsTaken;
             float par = 0; foreach (var l in Levels.All) par += l.parTime;
             bool both = levelIndex >= Levels.PerWorld;
             if (!both) { par = 0; for (int i = 0; i < Levels.PerWorld; i++) par += Levels.All[i].parTime; }
-            float score = 100f - hits * 9f - Mathf.Max(0f, totalTime - par) * 0.15f + Mathf.Min(20f, parries * 4f);
+            float score = 100f - hits * 9f - Mathf.Max(0f, totalTime - par) * 0.15f + Mathf.Min(20f, statWraps * 4f);
             string grade = score >= 96 ? "S" : score >= 82 ? "A" : score >= 66 ? "B" : score >= 50 ? "C" : "D";
             resultsRoot = new GameObject("results"); resultsRoot.transform.SetParent(hudRoot, false);
             var bg = Pix.Make("dim", resultsRoot.transform, white, new Vector3(-8f, 0f, 0), 280); bg.transform.localScale = new Vector3(640, 360, 1); bg.color = new Color(.16f, .04f, .22f, .8f);
@@ -876,7 +856,7 @@ namespace GumRemix
             int mm = (int)(totalTime / 60f), ss = (int)(totalTime % 60f);
             PText.Create(resultsRoot.transform, new Vector3(0, 1.3f, 0), "TIEMPO " + mm + ":" + ss.ToString("00"), 3, Color.white, true, 290);
             PText.Create(resultsRoot.transform, new Vector3(0, 0.6f, 0), "GOLPES RECIBIDOS " + hits, 3, Color.white, true, 290);
-            PText.Create(resultsRoot.transform, new Vector3(0, -0.1f, 0), "PARRYS " + parries, 3, Color.white, true, 290);
+            PText.Create(resultsRoot.transform, new Vector3(0, -0.1f, 0), "LAZOS " + statWraps, 3, Color.white, true, 290);
             PText.Create(resultsRoot.transform, new Vector3(0, -1.75f, 0), "NOTA " + grade, 5, new Color(1f, .62f, .85f), true, 290);
             PText.Create(resultsRoot.transform, new Vector3(0, -3.1f, 0), "PRESIONA ENTER", 2, new Color(.9f, .9f, 1f), true, 290);
         }
@@ -900,11 +880,11 @@ namespace GumRemix
         public void DebugMenuWorld(int w) { SwitchWorldMenu(w); }
         public void DebugClearEnemies() { foreach (var e in enemies) e.Dispose(); enemies.Clear(); pending.Clear(); }
         public void DebugKillAll() { foreach (var e in enemies) if (e.state != EState.Dead) e.PopKill(); pending.Clear(); }
-        public void DebugDamageBoss(int n) { if (boss != null) boss.Damage(n, null, false); }
+        public void DebugDamageBoss(int n) { if (boss != null) boss.Damage(n, null); }
         public void DebugStart(int n) { menuWorld = 0; StartGame(n); }
         public void DebugStartAt(int level, int n) { playerCount = 2; solo = n == 1; menuWorld = level >= Levels.PerWorld ? 1 : 0; ClearAll(); totalTime = 0; StartLevel(level); }
         public void DebugGoto(int idx) { StartGame(Mathf.Max(1, playerCount)); if (idx > 0) { StartLevel(idx); } }
-        public void DebugKillPlayers() { foreach (var p in players) if (p.joined && p.Alive) { p.invuln = 0; p.superT = 0; p.Hit(99, p.body.pos.x - 1f); } }
+        public void DebugKillPlayers() { foreach (var p in players) if (p.joined && p.Alive) { p.invuln = 0; p.Hit(99, p.body.pos.x - 1f); } }
         public void DebugSkipBanner() { if (mode == Mode.Banner) modeT = bannerLife + 0.01f; }
         public int WorldOf(int level) { return Levels.All[level].world; }
 

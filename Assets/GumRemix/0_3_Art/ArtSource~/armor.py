@@ -14,7 +14,11 @@ def _lum(p):
     return 0.30 * p[0] + 0.59 * p[1] + 0.11 * p[2]
 
 
-def armorize(im, helm=0.30, chest=(0.56, 0.74), chest_inset=0.12, seams=True, gamma=1.0):
+DARK_RAMP = [(0x0c, 0x10, 0x20), (0x1c, 0x24, 0x40), (0x34, 0x40, 0x68), (0x60, 0x72, 0x9c), (0xa0, 0xb4, 0xd8)]
+
+
+def armorize(im, helm=0.30, chest=(0.56, 0.74), chest_inset=0.12, seams=True, gamma=1.0, ramp=None, rivet=None, seam_col=None):
+    ramp = ramp or RAMP; rivet = rivet or RIVET; seam_col = seam_col or SEAM
     a = np.array(im.convert('RGBA'))
     alpha = a[:, :, 3] > 0
     ys = np.where(alpha.any(axis=1))[0]
@@ -45,8 +49,8 @@ def armorize(im, helm=0.30, chest=(0.56, 0.74), chest_inset=0.12, seams=True, ga
                 l = _lum(p)
                 if max(p[0], p[1], p[2]) < 64:       # eyes, mouth and the outline stay
                     continue
-                k = min(len(RAMP) - 1, max(0, int(((l - lo) / span) ** gamma * (len(RAMP) - 0.01))))
-                out[y, x, :3] = RAMP[k]
+                k = min(len(ramp) - 1, max(0, int(((l - lo) / span) ** gamma * (len(ramp) - 0.01))))
+                out[y, x, :3] = ramp[k]
 
     def seam(y, xinset):
         xs = np.where(alpha[y])[0]
@@ -56,7 +60,7 @@ def armorize(im, helm=0.30, chest=(0.56, 0.74), chest_inset=0.12, seams=True, ga
         inset = int((x1 - x0 + 1) * xinset)
         for x in range(x0 + inset, x1 - inset + 1):
             if alpha[y, x]:
-                out[y, x, :3] = SEAM
+                out[y, x, :3] = seam_col
 
     h_end = top + max(3, int(H * helm))
     plate(top, h_end, 0.0)
@@ -73,5 +77,5 @@ def armorize(im, helm=0.30, chest=(0.56, 0.74), chest_inset=0.12, seams=True, ga
             continue
         x = int(xs[0] + (xs[-1] - xs[0]) * fx)
         if alpha[y, x] and max(a[y, x][:3]) >= 64:
-            out[y, x, :3] = RIVET
+            out[y, x, :3] = rivet
     return Image.fromarray(out, 'RGBA')

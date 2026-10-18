@@ -120,7 +120,7 @@ register('ball_cannon', bf, enemies.GW, enemies.GH, 9, (0.5, 7 / enemies.GH), ba
 
 # =============================================================================================== ICE ENEMIES
 folder('Enemies/Ice')
-GRADE = dict(dark=.72, curve=.30, sat=.62, tint=(-3, 2, 10)); GRADE_SKIP = ('ball_', 'snowhead')
+GRADE = dict(dark=.72, curve=.30, sat=.62, tint=(-3, 2, 10)); GRADE_SKIP = ('ball_', 'snowhead', 'snowman_iron', 'penguin_iron', 'owl_iron')   # armoured ones keep bright steel so they read at a glance
 def reg_creature(name, fam, anims, pivot=None, cols=10, inner=None):
     fr, an = seq_anims(fam, anims)
     cw, ch = fr[0].w, fr[0].h
@@ -133,8 +133,16 @@ reg_creature('snowman', ie.snowman_frames(), ie.SNOWMAN_ANIMS, inner=ie.BALL_INN
 # iron snowman: only the rope can capture it
 fr, an = seq_anims(ie.snowman_frames(), ie.SNOWMAN_ANIMS)
 fp0 = feet_pivot(fr[0])
-fr = [armor.armorize(f.im if isinstance(f, Canvas) else f, helm=0.34, chest=(0.50, 0.97), chest_inset=0.04, seams=False, gamma=1.9) for f in fr]
+fr = [armor.armorize(f.im if isinstance(f, Canvas) else f, helm=0.34, chest=(0.42, 0.97), chest_inset=0.03, seams=True, gamma=1.1, ramp=armor.DARK_RAMP, rivet=(255, 140, 70), seam_col=(6, 8, 18)) for f in fr]
 register('snowman_iron', fr, fr[0].width, fr[0].height, 10, (0.5, fp0), an, white=True)
+# iron penguin and iron owl: more creatures that only the rope can catch (gum bounces off their plating)
+fr, an = seq_anims(ie.penguin_frames(), ie.PENGUIN_ANIMS)
+fp0 = feet_pivot(fr[0])
+fr = [armor.armorize(f.im if isinstance(f, Canvas) else f, helm=0.42, chest=(0.46, 0.93), chest_inset=0.06, seams=True, gamma=1.1, ramp=armor.DARK_RAMP, rivet=(255, 140, 70), seam_col=(6, 8, 18)) for f in fr]
+register('penguin_iron', fr, fr[0].width, fr[0].height, 10, (0.5, fp0), an, white=True)
+fr, an = seq_anims(ie.owl_frames(), ie.OWL_ANIMS)
+fr = [armor.armorize(f.im if isinstance(f, Canvas) else f, helm=0.46, chest=(0.50, 0.93), chest_inset=0.08, seams=True, gamma=1.1, ramp=armor.DARK_RAMP, rivet=(255, 140, 70), seam_col=(6, 8, 18)) for f in fr]
+register('owl_iron', fr, fr[0].width, fr[0].height, 10, (0.5, 0.5), an, white=True)
 bf, ban = seq_anims(ie.snowball_frames(ie.BALL_INNER['snowman']), ie.BALL_ANIMS)
 register('ball_snowman_iron', bf, ie.GW, ie.GH, 9, (0.5, 7 / ie.GH), ban, white=True)
 reg_creature('owl', ie.owl_frames(), ie.OWL_ANIMS, pivot=(0.5, 0.5), inner=ie.BALL_INNER['owl'])
@@ -169,7 +177,6 @@ register('parry', [fx.draw_parry(i) for i in range(6)], 48, 48, 6, (0.5, 0.5), [
 register('flash', [fx.draw_flash(i) for i in range(3)], 16, 16, 3, (0.5, 0.5), [('flash', 0, 3, 30, False)])
 register('bubble_lift', [fx.draw_bubble_lift(i) for i in range(4)], 64, 72, 4, (0.5, 0.5), [('lift', 0, 4, 8, True)])
 register('shock', [fx.draw_shock(i) for i in range(6)], 64, 20, 6, (0.5, 0.0), [('shock', 0, 6, 16, False)])
-register('super', [fx.draw_super(i) for i in range(6)], 96, 40, 6, (0.0, 0.5), [('super', 0, 6, 18, True)])
 register('trail', [fx.draw_trail(i) for i in range(4)], 16, 16, 4, (0.5, 0.5), [('trail', 0, 4, 16, False)])
 # ice
 register('ice_shard', [ice_fx.draw_shard(i) for i in range(6)], 24, 24, 6, (0.5, 0.5), [('spin', 0, 6, 18, True)])
@@ -186,7 +193,6 @@ register('gust', [ice_fx.draw_gust(i) for i in range(3)], 40, 6, 3, (0.5, 0.5), 
 
 folder('Ui')
 register('hearts', [fx.draw_heart(True, 0), fx.draw_heart(True, 1), fx.draw_heart(False)], 24, 24, 3, (0.5, 0.5))
-register('cards', [fx.draw_card(0), fx.draw_card(1), fx.draw_card(2)], 16, 24, 3, (0.5, 0.5))
 fcv, fcw, fch, fcols = fx.draw_font()
 register('font', [fcv], fcv.w, fcv.h, 1, (0.0, 0.0), None, dict(chars=''.join(fx.FONT_ORDER), glyphW=fcw, glyphH=fch, glyphCols=fcols))
 

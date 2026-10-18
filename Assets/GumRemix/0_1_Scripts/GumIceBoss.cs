@@ -91,11 +91,10 @@ namespace GumRemix
         public override void Activate() { active = true; idleTimer = 2.4f; openT = 4.5f; G.ShowHint("SU ARMADURA SE ABRE: DISPARA AL SOL!", 3f); }
 
         // ------------------------------------------------------------------------------------------ damage
-        public override void Damage(int dmg, Player by, bool addMeter = true)
+        public override void Damage(int dmg, Player by)
         {
             if (!Hittable) return;
             hp -= dmg; if (flashCd <= 0f) { flashT = 0.05f; flashCd = 0.26f; }
-            if (by != null && addMeter) by.AddMeter(0.02f * dmg);
             Sfx.Play("hit", .4f, 1.4f + Random.value * .3f);
             G.SpawnFx("spark", "spark", SunPos(), dmg >= 6 ? 2.4f : 1.2f, false, 32);
             if (dmg >= 6) G.Shake(.1f, .2f);

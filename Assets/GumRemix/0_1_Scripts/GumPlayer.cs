@@ -53,66 +53,13 @@ namespace GumRemix
         }
     }
 
-    /// <summary>The "EX" move: a wide gum beam that sticks every enemy in front of the player.</summary>
-    public class SuperBeam
-    {
-        public bool dead; Player owner; float t; float tick; GameObject root; SpriteRenderer[] parts = new SpriteRenderer[3]; Anim[] anims = new Anim[3];
-        public const float Len = 7.2f, Life = 0.85f;
-
-        public SuperBeam(Player o)
-        {
-            owner = o;
-            root = new GameObject("superbeam"); root.transform.SetParent(GameCtl.I.entRoot, false);
-            var sh = Art.Get("super");
-            for (int i = 0; i < 3; i++)
-            {
-                parts[i] = Pix.Make("seg" + i, root.transform, sh[0], Vector3.zero, 24);
-                anims[i] = new Anim(parts[i], sh, "super"); anims[i].t = i * 1.7f;
-            }
-        }
-
-        public Rect Area()
-        {
-            var m = owner.Muzzle(); float x0 = owner.facing > 0 ? m.x : m.x - Len;
-            return new Rect(x0, m.y - 0.55f, Len, 1.1f);
-        }
-
-        public void Tick(float dt)
-        {
-            var g = GameCtl.I;
-            t += dt; tick -= dt;
-            var m = owner.Muzzle();
-            float grow = Mathf.Clamp01(t / 0.12f), shrink = Mathf.Clamp01((Life - t) / 0.15f);
-            for (int i = 0; i < 3; i++)
-            {
-                anims[i].Tick(dt);
-                float off = i * 2.4f * owner.facing;
-                parts[i].transform.position = new Vector3(m.x + off, m.y, 0);
-                parts[i].flipX = owner.facing < 0;
-                parts[i].transform.localScale = new Vector3(1f, Mathf.Min(grow, shrink), 1f);
-                parts[i].enabled = (i * 2.4f) < Len * grow + 0.1f;
-            }
-            if (tick <= 0f)
-            {
-                tick = 0.1f;
-                var a = Area();
-                foreach (var e in g.enemies) if (e.state == EState.Normal && e.Hurtbox.Overlaps(a)) e.Stick(owner);
-                if (g.boss != null && g.boss.Hittable)
-                    foreach (var hb in g.boss.Hurtboxes()) if (hb.Overlaps(a)) { g.boss.Damage(2, owner, false); break; }
-                foreach (var s in g.eshots) if (!s.dead && a.Contains(s.pos)) s.Pop();
-                foreach (var c in g.crystals) if (c.Hurtbox.Overlaps(a)) c.Hit(2f);
-            }
-            if (t >= Life) { dead = true; Object.Destroy(root); }
-        }
-    }
-
     public class Player
     {
         public int index; public string hero; public bool joined, ghost;
-        public int hp = 4, maxHp = 4; public float meter;           // meter 0..5 cards
+        public int hp = 4, maxHp = 4;
         public int facing = 1; public Body body = new Body { w = 0.56f, h = 1.1f };
-        public float invuln, superT;
-        public int parries, hitsTaken;
+        public float invuln;
+        public int hitsTaken;
 
         GameObject go; SpriteRenderer sr; Anim anim; Sheet sArm, sNoArm;
         SpriteRenderer armSr; Sheet armSheet;
@@ -152,8 +99,8 @@ namespace GumRemix
 
         public void Join(Vector2 at)
         {
-            joined = true; ghost = false; hp = maxHp; meter = Mathf.Min(meter, 5f);
-            body.pos = at; body.vel = Vector2.zero; invuln = 1.2f; hurtT = 0; dashT = 0; superT = 0;
+            joined = true; ghost = false; hp = maxHp;
+            body.pos = at; body.vel = Vector2.zero; invuln = 1.2f; hurtT = 0; dashT = 0;
             frozenT = 0; freezeImmune = 0; SetWorld(G.world != null && G.world.def.ice);
             go.SetActive(true); armSr.gameObject.SetActive(true); ghostGo.SetActive(false);
             facing = index == 0 ? 1 : -1;
@@ -164,12 +111,6 @@ namespace GumRemix
         public void SetVisible(bool v) { if (!joined) return; go.SetActive(v && !ghost); armSr.gameObject.SetActive(v && !ghost); ghostGo.SetActive(v && ghost); if (!v) freezeSr.gameObject.SetActive(false); }
 
         public void Heal(int n) { if (Alive) hp = Mathf.Min(maxHp, hp + n); }
-        public void AddMeter(float v, bool share = true)
-        {
-            meter = Mathf.Min(5f, meter + v);
-            if (share) foreach (var o in G.players) if (o != this && o.Alive) o.AddMeter(v * 0.5f, false);      // together: your partner charges too
-        }
-
         public void Revive(int hpAmount)
         {
             ghost = false; hp = hpAmount; invuln = 2f; reviveGrace = 0.5f;
@@ -183,7 +124,7 @@ namespace GumRemix
         public void Carry(Vector2 pos, float dt)
         {
             body.pos = pos; body.vel = new Vector2(0, 0.01f); body.grounded = false;
-            shootT = 0; hurtT = 0; dashT = 0; superT = 0; recoilT = 0; invuln = 0.1f; frozenT = 0; freezeSr.gameObject.SetActive(false);
+            shootT = 0; hurtT = 0; dashT = 0; recoilT = 0; invuln = 0.1f; frozenT = 0; freezeSr.gameObject.SetActive(false);
             if (ghost) { ghostGo.transform.position = pos + new Vector2(0, 0.6f); ghostAnim.Tick(dt); return; }
             Visuals(dt);
         }
@@ -202,13 +143,13 @@ namespace GumRemix
             if (ghost) { GhostTick(dt); return; }
 
             float time = G.time;
-            invuln = Mathf.Max(0, invuln - dt); superT = Mathf.Max(0, superT - dt); hurtT = Mathf.Max(0, hurtT - dt);
+            invuln = Mathf.Max(0, invuln - dt); hurtT = Mathf.Max(0, hurtT - dt);
             shootCd -= dt; shootT = Mathf.Max(0, shootT - dt); recoilT = Mathf.Max(0, recoilT - dt);
             dashT = Mathf.Max(0, dashT - dt); dashCd -= dt; landT = Mathf.Max(0, landT - dt); coyote -= dt; jumpBuf -= dt; reviveGrace -= dt;
 
             freezeImmune = Mathf.Max(0f, freezeImmune - dt);
             bool frozen = frozenT > 0f; if (frozen) FreezeTick(dt);
-            bool control = hurtT <= 0 && superT <= 0 && !frozen;
+            bool control = hurtT <= 0 && !frozen;
             float ix = control ? pad.x : 0f;
             if (control && Mathf.Abs(ix) > 0.1f) facing = ix > 0 ? 1 : -1;
 
@@ -216,7 +157,6 @@ namespace GumRemix
             if (frozen) body.vel.x = 0f;
             else if (dashT > 0) { body.vel.x = facing * 13f; body.vel.y = 0; }
             else if (hurtT > 0) body.vel.x = Pix.Approach(body.vel.x, 0, 14f * dt);
-            else if (superT > 0) body.vel.x = 0;
             else
             {
                 float target = ix * 6.4f;
@@ -226,9 +166,9 @@ namespace GumRemix
                 body.vel.x = Pix.Approach(body.vel.x, target, accel * dt);
             }
             float windDrift = 0f;
-            if (!frozen && superT <= 0f) { float push = G.wind != null ? G.wind.PushFor(this) : 0f; if (push != 0f) windDrift = Mathf.Sign(push) * (body.grounded ? 3.6f : 4.6f); }
+            if (!frozen) { float push = G.wind != null ? G.wind.PushFor(this) : 0f; if (push != 0f) windDrift = Mathf.Sign(push) * (body.grounded ? 3.6f : 4.6f); }
 
-            // ---- jumping / parry / drop-through
+            // ---- jumping / drop-through
             if (control && pad.jumpDown)
             {
                 if (pad.down && body.grounded && G.world.OneWayUnder(body.pos.x, body.groundTop))
@@ -236,7 +176,7 @@ namespace GumRemix
                     body.dropUntil = time + 0.24f; body.pos.y -= 0.06f; body.grounded = false; body.vel.y = -2f; Sfx.Play("land", .5f, 1.4f);
                 }
                 else if (body.grounded || coyote > 0) jumpBuf = 0.12f;
-                else if (!TryParry()) jumpBuf = 0.12f;
+                else jumpBuf = 0.12f;
             }
             if (control && jumpBuf > 0 && (body.grounded || coyote > 0))
             {
@@ -251,14 +191,6 @@ namespace GumRemix
             {
                 dashT = 0.2f; dashCd = 0.7f; invuln = Mathf.Max(invuln, 0.24f);
                 Sfx.Play("dash", .8f); G.SpawnFx("dust", "dust", new Vector2(body.pos.x, body.pos.y), 1f, false, 8);
-            }
-
-            // ---- super
-            if (control && pad.superDown && meter >= 5f && dashT <= 0)
-            {
-                meter = 0; superT = SuperBeam.Life; invuln = Mathf.Max(invuln, SuperBeam.Life + .1f); shootT = SuperBeam.Life; recoilT = .1f;
-                G.beams.Add(new SuperBeam(this)); G.Shake(.12f, .5f); G.HitStop(.08f); Sfx.Play("super");
-                body.vel = Vector2.zero;
             }
 
             // ---- gravity
@@ -308,28 +240,10 @@ namespace GumRemix
                 if (prevY >= top - 0.05f && body.pos.y <= top + 0.1f)
                 {
                     body.pos.y = top; body.vel.y = pad.jumpHeld ? 19f : 15.5f; jumpCut = false; jumpBuf = 0f; coyote = 0f; G.statCoopBounces++;
-                    Sfx.Play("jump", .7f, 1.5f); G.SpawnFx("spark", "spark", new Vector2(body.pos.x, top), 1.3f, false, 30); AddMeter(0.05f);
+                    Sfx.Play("jump", .7f, 1.5f); G.SpawnFx("spark", "spark", new Vector2(body.pos.x, top), 1.3f, false, 30);
                     return;
                 }
             }
-        }
-
-        bool TryParry()
-        {
-            foreach (var s in G.eshots)
-            {
-                if (s.dead || !s.parryable) continue;
-                if ((s.pos - Center).sqrMagnitude < 1.0f)
-                {
-                    s.Parried(); parries++; G.statParries++;
-                    body.vel.y = 13f; jumpCut = false; invuln = Mathf.Max(invuln, .35f);
-                    AddMeter(1f); Sfx.Play("parry"); G.HitStop(.07f);
-                    G.SpawnFx("parry", "parry", s.pos, 1f, false, 30);
-                    G.Burst(s.pos, 8, 4f);
-                    return true;
-                }
-            }
-            return false;
         }
 
         /// <summary>Close to the partner: the gum is charged (double damage).</summary>
@@ -378,7 +292,7 @@ namespace GumRemix
 
         public void Hit(int dmg, float srcX, bool freeze = false)
         {
-            if (invuln > 0 || ghost || !joined || superT > 0 || G.god) return;
+            if (invuln > 0 || ghost || !joined || G.god) return;
             hp -= dmg; hitsTaken++; invuln = 1.7f; hurtT = 0.36f; dashT = 0;
             float dir = body.pos.x >= srcX ? 1f : -1f;
             body.vel = new Vector2(dir * 6f, 9f); body.grounded = false;
@@ -398,7 +312,7 @@ namespace GumRemix
 
         void FreezeTick(float dt)
         {
-            bool press = pad.jumpDown || pad.dashDown || pad.superDown || (pad.shoot && !prevShoot) || (Mathf.Abs(pad.x) > 0.1f && Mathf.Sign(pad.x) != Mathf.Sign(prevAxis));
+            bool press = pad.jumpDown || pad.dashDown || (pad.shoot && !prevShoot) || (Mathf.Abs(pad.x) > 0.1f && Mathf.Sign(pad.x) != Mathf.Sign(prevAxis));
             if (press) { frozenT -= 0.28f; Sfx.Play("hit", .35f, 2.2f); G.SpawnFx("spark_ice", "spark", Center + new Vector2(Random.Range(-.4f, .4f), Random.Range(0f, 1f)), 1f, false, 33); }
             prevShoot = pad.shoot; if (Mathf.Abs(pad.x) > 0.1f) prevAxis = pad.x;
             foreach (var o in G.players) if (o != this && o.Alive && (o.Center - Center).sqrMagnitude < 2.6f) frozenT -= dt * 1.4f;
@@ -415,7 +329,7 @@ namespace GumRemix
 
         void Die()
         {
-            hp = 0; ghost = true; meter = 0; frozenT = 0; freezeSr.gameObject.SetActive(false);
+            hp = 0; ghost = true; frozenT = 0; freezeSr.gameObject.SetActive(false);
             go.SetActive(false); armSr.gameObject.SetActive(false);
             ghostGo.SetActive(true); ghostGo.transform.position = Center;
             G.Burst(Center, 12, 5f);
@@ -464,7 +378,7 @@ namespace GumRemix
             go.transform.position = new Vector3(body.pos.x, body.pos.y, 0);
             // blink when invulnerable (not while dashing: that is a deliberate i-frame)
             float alpha = 1f;
-            if (invuln > 0 && dashT <= 0 && superT <= 0) { blink += dt; alpha = ((int)(blink * 18f)) % 2 == 0 ? 1f : 0.35f; }
+            if (invuln > 0 && dashT <= 0) { blink += dt; alpha = ((int)(blink * 18f)) % 2 == 0 ? 1f : 0.35f; }
             sr.color = frozenT > 0f ? new Color(.72f, .88f, 1f, 1f) : new Color(1, 1, 1, alpha); armSr.color = sr.color;
             if (frozenT > 0f)
             {

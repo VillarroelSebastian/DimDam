@@ -67,7 +67,7 @@ namespace GumRemix
             // the gum catches enemy shots
             if (popT <= 0f)
                 foreach (var s in g.eshots)
-                    if (!s.dead && !s.persistent && Near(s.pos, 0.35f + s.radius)) { s.Pop(); popT = 0.08f; hits++; g.Burst(s.pos, 3, 3f); p0.AddMeter(0.1f); }
+                    if (!s.dead && !s.persistent && Near(s.pos, 0.35f + s.radius)) { s.Pop(); popT = 0.08f; hits++; g.Burst(s.pos, 3, 3f); }
 
             // armoured enemies cannot be shot: the string wraps them into a gum ball when it stays across them
             foreach (var e in g.enemies)
@@ -88,7 +88,7 @@ namespace GumRemix
                     }
             if (did)
             {
-                dmgT = 0.4f; g.Shake(.03f, .08f); p0.AddMeter(0.08f);
+                dmgT = 0.4f; g.Shake(.03f, .08f);
                 if (sfxT <= 0f) { Sfx.Play("stick", .4f, 1.6f); sfxT = 0.3f; }
             }
         }

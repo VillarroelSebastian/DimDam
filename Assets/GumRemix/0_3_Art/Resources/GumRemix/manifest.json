@@ -3423,6 +3423,170 @@
    ]
   },
   {
+   "name": "penguin_iron",
+   "file": "GumRemix/Enemies/Ice/penguin_iron",
+   "cw": 84,
+   "ch": 62,
+   "cols": 10,
+   "count": 22,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0967741935483871,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "waddle",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "slide",
+     "start": 14,
+     "count": 4,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "block",
+     "start": 20,
+     "count": 2,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "penguin_iron_w",
+   "file": "GumRemix/Enemies/Ice/penguin_iron_w",
+   "cw": 84,
+   "ch": 62,
+   "cols": 10,
+   "count": 22,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.0967741935483871,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "waddle",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "slide",
+     "start": 14,
+     "count": 4,
+     "fps": 14.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "block",
+     "start": 20,
+     "count": 2,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_iron",
+   "file": "GumRemix/Enemies/Ice/owl_iron",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "owl_iron_w",
+   "file": "GumRemix/Enemies/Ice/owl_iron_w",
+   "cw": 68,
+   "ch": 64,
+   "cols": 10,
+   "count": 13,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.5,
+   "anims": [
+    {
+     "name": "fly",
+     "start": 0,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "dive",
+     "start": 8,
+     "count": 3,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 11,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
    "name": "ball_snowman_iron",
    "file": "GumRemix/Enemies/Ice/ball_snowman_iron",
    "cw": 48,
@@ -5277,26 +5441,6 @@
    ]
   },
   {
-   "name": "super",
-   "file": "GumRemix/Fx/super",
-   "cw": 96,
-   "ch": 40,
-   "cols": 6,
-   "count": 6,
-   "ppu": 40,
-   "px": 0.0,
-   "py": 0.5,
-   "anims": [
-    {
-     "name": "super",
-     "start": 0,
-     "count": 6,
-     "fps": 18.0,
-     "loop": true
-    }
-   ]
-  },
-  {
    "name": "trail",
    "file": "GumRemix/Fx/trail",
    "cw": 16,
@@ -5532,18 +5676,6 @@
    "name": "hearts",
    "file": "GumRemix/Ui/hearts",
    "cw": 24,
-   "ch": 24,
-   "cols": 3,
-   "count": 3,
-   "ppu": 40,
-   "px": 0.5,
-   "py": 0.5,
-   "anims": []
-  },
-  {
-   "name": "cards",
-   "file": "GumRemix/Ui/cards",
-   "cw": 16,
    "ch": 24,
    "cols": 3,
    "count": 3,

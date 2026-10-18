@@ -6,16 +6,17 @@ namespace GumRemix
 {
     public enum EState { Normal, Stuck, Rolling, Dead }
 
-    /// <summary>Enemy projectile. In the candy world: dark/pink bubbles. In the ice world: frost shards (harmful, freeze) and pink-cored snowflakes (parryable).</summary>
+    /// <summary>Enemy projectile. In the candy world: dark bubbles. In the ice world: frost shards (harmful, they freeze).</summary>
     public class EnemyShot
     {
-        public Vector2 pos, vel; public float grav, radius = 0.28f, life = 7f; public bool parryable, dead, persistent, bounce, freezes; public int bounces;
+        public Vector2 pos, vel; public float grav, radius = 0.28f, life = 7f; public bool dead, persistent, bounce, freezes; public int bounces;
         public Action<Vector2> onLand;
         GameObject go; SpriteRenderer sr; Anim anim; string kind, sheetName; float scale; bool ice;
 
         public EnemyShot(Vector2 p, Vector2 v, float g, bool pink, float sc = 1f, bool bouncy = false, string sheet = null, string clip = null, float rad = 0.28f)
         {
-            pos = p; vel = v; grav = g; parryable = pink; scale = sc; radius = rad * sc; bounce = bouncy;
+            pink = false;      // parry is gone: there are no pink shots any more
+            pos = p; vel = v; grav = g; scale = sc; radius = rad * sc; bounce = bouncy;
             ice = GameCtl.I.world != null && GameCtl.I.world.def.ice;
             if (sheet == null) sheet = ice ? (pink ? "ice_flake" : "ice_shard") : "bubbles";
             if (clip == null) clip = ice ? "spin" : (pink ? "pink" : "dark");
@@ -59,7 +60,6 @@ namespace GumRemix
             Sfx.Play("pop", .35f, ice ? 1.8f : 1.3f);
         }
 
-        public void Parried() { dead = true; onLand = null; UnityEngine.Object.Destroy(go); }
     }
 
     /// <summary>Ground shock wave (boss slam). Jump over it.</summary>
@@ -129,9 +129,9 @@ namespace GumRemix
                 case "bean": sMain = Art.Get("bean_" + c); sBall = Art.Get("ball_bean_" + c); hw = 0.36f; hh = 0.8f; hp = 2; break;
                 case "lolli": sMain = Art.Get("lolli"); sBall = Art.Get("ball_lolli"); hw = 0.4f; hh = 0.9f; hp = 2; spriteOffset = new Vector2(0, 0.45f); break;
                 case "cannon": sMain = Art.Get("cannon"); sBall = Art.Get("ball_cannon"); hw = 0.45f; hh = 0.9f; hp = 4; break;
-                case "penguin": sMain = Art.Get("penguin"); sBall = Art.Get("ball_penguin"); hw = 0.42f; hh = 1.05f; hp = 3; break;
+                case "penguin": sMain = Art.Get(c == "iron" ? "penguin_iron" : "penguin"); sBall = Art.Get("ball_penguin"); hw = 0.42f; hh = 1.05f; hp = 3; break;
                 case "snowman": sMain = Art.Get(c == "iron" ? "snowman_iron" : "snowman"); sBall = Art.Get(c == "iron" ? "ball_snowman_iron" : "ball_snowman"); hw = 0.4f; hh = 1.35f; hp = 3; break;
-                case "owl": sMain = Art.Get("owl"); sBall = Art.Get("ball_owl"); hw = 0.45f; hh = 0.95f; hp = 2; spriteOffset = new Vector2(0, 0.42f); break;
+                case "owl": sMain = Art.Get(c == "iron" ? "owl_iron" : "owl"); sBall = Art.Get("ball_owl"); hw = 0.45f; hh = 0.95f; hp = 2; spriteOffset = new Vector2(0, 0.42f); break;
                 case "jelly": sMain = Art.Get("jelly"); sBall = Art.Get("ball_jelly"); hw = 0.55f; hh = 1.25f; hp = 3; spriteOffset = new Vector2(0, 0.62f); break;
                 case "crab": sMain = Art.Get("crab"); sBall = Art.Get("ball_crab"); hw = 0.7f; hh = 0.85f; hp = 6; break;
                 default: sMain = Art.Get("seed"); sBall = Art.Get("ball_seed"); hw = 0.24f; hh = 0.55f; hp = 1; break;   // seed
@@ -544,7 +544,6 @@ namespace GumRemix
                 if (shellHits % 2 == 1) { Sfx.Play("hit", .5f, 1.9f); G.SpawnFx("spark_ice", "spark", body.Center + new Vector2(0, 0.3f), 1.3f, false, 31); flashT = 0.04f; return; }   // the shell takes every other hit
             }
             hp -= dmg; flashT = 0.07f; hurtT = (kind == "crab" || kind == "penguin") ? 0.12f : 0.2f;
-            if (by != null) by.AddMeter(0.035f * dmg);
             Sfx.Play("hit", .5f, 1f + UnityEngine.Random.value * .2f);
             G.SpawnFx("spark", "spark", body.Center, 0.8f, false, 30);
             if (hp <= 0) Stick(by);
@@ -606,7 +605,7 @@ namespace GumRemix
             foreach (var c in G.crystals) if (c.Hurtbox.Overlaps(Hurtbox)) c.Hit(4f);
             if (G.boss != null && G.boss.Hittable)
                 foreach (var hb in G.boss.BallBoxes())
-                    if (hb.Overlaps(Hurtbox)) { G.boss.Damage(14, stuckBy, true); G.Shake(.15f, .3f); Pop(); return; }
+                    if (hb.Overlaps(Hurtbox)) { G.boss.Damage(14, stuckBy); G.Shake(.15f, .3f); Pop(); return; }
             if (rollT > 5.5f || bounces >= 3 || body.pos.y < G.world.y0 - 1f) Pop();
         }
 

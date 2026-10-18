@@ -9,7 +9,7 @@ namespace GumRemix
     public struct Pad
     {
         public float x;
-        public bool up, down, jumpDown, jumpHeld, shoot, dashDown, superDown;
+        public bool up, down, jumpDown, jumpHeld, shoot, dashDown;
     }
 
     public static class GumInput
@@ -30,14 +30,14 @@ namespace GumRemix
                     p.x = (kb.dKey.isPressed ? 1 : 0) - (kb.aKey.isPressed ? 1 : 0);
                     p.up = kb.wKey.isPressed; p.down = kb.sKey.isPressed;
                     p.jumpDown = kb.spaceKey.wasPressedThisFrame; p.jumpHeld = kb.spaceKey.isPressed;
-                    p.shoot = kb.fKey.isPressed; p.dashDown = kb.gKey.wasPressedThisFrame; p.superDown = kb.hKey.wasPressedThisFrame;
+                    p.shoot = kb.fKey.isPressed; p.dashDown = kb.gKey.wasPressedThisFrame;
                 }
                 else
                 {
                     p.x = (kb.rightArrowKey.isPressed ? 1 : 0) - (kb.leftArrowKey.isPressed ? 1 : 0);
                     p.up = kb.upArrowKey.isPressed; p.down = kb.downArrowKey.isPressed;
                     p.jumpDown = kb.rightShiftKey.wasPressedThisFrame; p.jumpHeld = kb.rightShiftKey.isPressed;
-                    p.shoot = kb.rightCtrlKey.isPressed; p.dashDown = kb.periodKey.wasPressedThisFrame; p.superDown = kb.slashKey.wasPressedThisFrame;
+                    p.shoot = kb.rightCtrlKey.isPressed; p.dashDown = kb.periodKey.wasPressedThisFrame;
                 }
             }
             var pads = Gamepad.all;
@@ -53,7 +53,6 @@ namespace GumRemix
                 p.jumpDown |= g.buttonSouth.wasPressedThisFrame; p.jumpHeld |= g.buttonSouth.isPressed;
                 p.shoot |= g.buttonWest.isPressed || g.rightTrigger.isPressed;
                 p.dashDown |= g.buttonEast.wasPressedThisFrame || g.rightShoulder.wasPressedThisFrame;
-                p.superDown |= g.buttonNorth.wasPressedThisFrame || g.leftShoulder.wasPressedThisFrame;
             }
             return p;
         }
@@ -100,7 +99,6 @@ namespace GumRemix
             Def("pop", new Seg(.05f, 900, 1600, 1, .5f), new Seg(.12f, 1200, 200, 3, .6f));
             Def("hurt", new Seg(.28f, 520, 90, 2, .8f));
             Def("parry", new Seg(.07f, 1320, 1320, 1, .5f), new Seg(.12f, 1760, 1760, 1, .5f), new Seg(.16f, 2640, 2640, 0, .5f));
-            Def("super", new Seg(.5f, 200, 1400, 2, .6f), new Seg(.4f, 1400, 700, 1, .5f));
             Def("revive", new Seg(.08f, 520, 520, 0, .7f), new Seg(.08f, 660, 660, 0, .7f), new Seg(.16f, 880, 880, 0, .7f));
             Def("select", new Seg(.06f, 880, 880, 1, .4f), new Seg(.08f, 1320, 1320, 1, .4f));
             Def("clear", new Seg(.1f, 523, 523, 1, .5f), new Seg(.1f, 659, 659, 1, .5f), new Seg(.1f, 784, 784, 1, .5f), new Seg(.28f, 1046, 1046, 1, .5f));

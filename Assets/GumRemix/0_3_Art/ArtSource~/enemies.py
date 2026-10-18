@@ -15,6 +15,7 @@ BEAN_PURPLE = pal_of('#9058d8', '#d0b0ff', '#5c36b0', '#38207a', '#160c3c', '#50
 LOLLI_PINK = pal_of('#f0509c', '#ffb0d8', '#bc2c72', '#7c1c58', '#32082e', '#a02c68')
 
 EYE = hexc('#2a0e2e'); GOUT = hexc('#3a0e34')
+THREAD = hexc('#1c0818'); BUTTON = hexc('#d8c8c0'); SLIT = hexc('#ffe890'); BONE = hexc('#e8dccc')
 
 # ======================================================================= GUMMY BEAR
 BW, BH = 44, 48
@@ -47,20 +48,29 @@ def draw_bear(pal, dy=0, sq=0, legs=((-5, 0), (5, 0)), arms=((-9, 4), (9, 4)), e
     cv.put({(hx + 5, hy + 2), (hx + 6, hy + 2)}, hexc('#4a1a2e'))
     # eyes + angry brows
     ey = hy - 3
-    for ex, ew in ((hx - 5, 3), (hx + 2, 3)):
-        if eyes == 'open':
-            cv.put(rect(ex, ey, ex + ew, ey + 3), EYE); cv.put({(ex, ey)}, WHITE)
+    for k_, (ex, ew) in enumerate(((hx - 5, 3), (hx + 2, 3))):
+        if eyes == 'open' and k_ == 0:               # a sewn-on button for an eye
+            cv.put(ell(ex + 1.5, ey + 1.5, 2.6, 2.6), BUTTON); cv.put(outline_of(ell(ex + 1.5, ey + 1.5, 2.6, 2.6)), THREAD)
+            cv.put({(ex + 1, ey + 1), (ex + 2, ey + 2)}, THREAD)
+        elif eyes == 'open':                         # the other one burns like a slit
+            cv.put(rect(ex, ey, ex + ew, ey + 3), THREAD); cv.put(rect(ex + 1, ey, ex + 2, ey + 3), SLIT)
         elif eyes == 'hurt':
             cv.put({(ex, ey), (ex + 1, ey + 1), (ex + 2, ey + 2), (ex + 2, ey), (ex, ey + 2)}, EYE)
         else:
             cv.put(rect(ex, ey + 1, ex + ew, ey + 2), EYE)
     cv.put({(hx - 6, hy - 6), (hx - 5, hy - 5), (hx - 4, hy - 5), (hx - 3, hy - 4), (hx + 4, hy - 6), (hx + 3, hy - 5), (hx + 2, hy - 5), (hx + 1, hy - 4)} if eyes == 'open' else set(), GOUT)
-    if mouth == 1: cv.put({(hx + 3, hy + 5), (hx + 4, hy + 5), (hx + 5, hy + 5)}, hexc('#b02848'))
+    if mouth == 1: cv.put({(hx + 2, hy + 5), (hx + 3, hy + 6), (hx + 4, hy + 5), (hx + 5, hy + 6), (hx + 6, hy + 5)}, THREAD)          # a stitched, jagged grin
     if mouth == 2:
-        cv.put(rect(hx + 1, hy + 4, hx + 7, hy + 7), hexc('#4a0e2e')); cv.put({(hx + 2, hy + 4), (hx + 4, hy + 4), (hx + 6, hy + 4)}, WHITE)
+        cv.put(rect(hx + 1, hy + 4, hx + 7, hy + 7), hexc('#2a0818')); cv.put({(hx + 1, hy + 4), (hx + 3, hy + 4), (hx + 5, hy + 4), (hx + 2, hy + 5), (hx + 4, hy + 5), (hx + 6, hy + 5)}, WHITE)
     # near arm
     ax, ay = bx + 8, by - 3
     part(cv, ell(ax + arms[1][0] * .35, ay + arms[1][1] * .6, 3.4, 3.4), pal, hi=False)
+    # stitched seam across the belly with cross-stitches, and a mended patch on the arm
+    for k in range(7):
+        sx_, sy_ = int(bx - 5 + k * 1.6), int(by - 4 + k * 1.3)
+        cv.put({(sx_, sy_), (sx_ + 1, sy_)}, THREAD); cv.put({(sx_ + 1, sy_ - 1), (sx_, sy_ + 1)} if k % 2 == 0 else set(), THREAD)
+    pcx, pcy = ax + arms[1][0] * .35, ay + arms[1][1] * .6
+    cv.put(rect(int(pcx) - 1, int(pcy) - 1, int(pcx) + 2, int(pcy) + 2), hexc('#5a3a48')); cv.put({(int(pcx) - 1, int(pcy) - 1), (int(pcx) + 1, int(pcy) + 1)}, THREAD)
     return cv
 
 def bear_frames(pal):
@@ -99,18 +109,21 @@ def draw_bean(pal, sx=1.0, sy=1.0, dy=0, tilt=0, eyes='open', mouth='smile', spe
     cv.put({(cx - 5 + i, cy - 7 + (i // 2)) for i in range(3)}, pal['hi'])
     cv.put({(cx - 6, cy - 5), (cx - 6, cy - 4)}, WHITE)
     # sprinkles speckle
-    for (sx_, sy_, c) in ((-3, 5, '#ffffff'), (4, 4, '#ff7ab8'), (-5, 1, '#ff7ab8'), (5, -4, '#ffffff'), (1, 8, '#3a0e5a')):
+    for (sx_, sy_, c) in ((-3, 5, '#c8b8d0'), (4, 4, '#8a3a5a'), (-5, 1, '#8a3a5a'), (5, -4, '#c8b8d0'), (1, 8, '#2a0a3a')):
         if (sx_ + sy_ + speck) % 3 != 0: cv.put({(int(cx + sx_ * sx), int(cy + sy_ * sy)), (int(cx + sx_ * sx) + 1, int(cy + sy_ * sy))}, hexc(c))
     ey = int(cy - 2 * sy)
     for ex in (int(cx - 4), int(cx + 2)):
         if eyes == 'open':
-            cv.put(rect(ex, ey, ex + 3, ey + 4), EYE); cv.put({(ex, ey), (ex, ey + 1)}, WHITE)
+            cv.put(rect(ex, ey, ex + 3, ey + 4), THREAD); cv.put({(ex + 1, ey + 2)}, SLIT)               # hollow sockets with a pinprick of light
         elif eyes == 'closed': cv.put(rect(ex, ey + 2, ex + 3, ey + 3), EYE)
         elif eyes == 'hurt': cv.put({(ex, ey), (ex + 2, ey), (ex + 1, ey + 1), (ex, ey + 2), (ex + 2, ey + 2)}, EYE)
     my = ey + 6
-    if mouth == 'smile': cv.put({(cx - 1, my), (cx, my + 1), (cx + 1, my + 1), (cx + 2, my)}, EYE)
-    elif mouth == 'open': cv.put(rect(cx - 1, my, cx + 3, my + 3), EYE); cv.put({(cx, my + 2), (cx + 1, my + 2)}, hexc('#ff6a8a'))
-    elif mouth == 'o': cv.put(rect(cx, my, cx + 2, my + 2), EYE)
+    if mouth == 'smile':                                             # a zipper mouth
+        cv.put({(cx - 4 + k, my) for k in range(9)}, THREAD); cv.put({(cx - 4 + k, my - 1) for k in range(0, 9, 2)} | {(cx - 3 + k, my + 1) for k in range(0, 8, 2)}, BONE)
+    elif mouth == 'open': cv.put(rect(cx - 3, my - 1, cx + 5, my + 3), THREAD); cv.put({(cx - 3 + k, my - 1) for k in range(0, 8, 2)}, BONE)
+    elif mouth == 'o': cv.put(rect(cx, my, cx + 3, my + 3), THREAD)
+    # a hairline crack running down from the top of the shell
+    for k in range(6): cv.put({(int(cx + 2 + (k % 2) - k * .3), int(cy - 9 * sy + 1 + k))}, THREAD)
     return cv
 
 def bean_frames(pal):
@@ -150,10 +163,11 @@ def draw_lolli(pal, i, n=8, hurt=False, mood='angry'):
         wy = cy - 4 - flap * 6
         tip = (cx + side * (24 + abs(flap) * 1), wy - 6 + flap * 3)
         w = poly([(cx + side * 9, cy - 2), tip, (cx + side * 20, cy + 6 - flap * 3), (cx + side * 8, cy + 6)])
-        cv.put(outline_of(w), hexc('#4a3a98'))
+        cv.put(outline_of(w), hexc('#14082e'))
         for p in w:
-            cv.px[p[0], p[1]] = hexc('#d8f0ff') if (p[0] + p[1]) % 5 else hexc('#ffffff')
-        cv.put({p for p in w if (p[0] - side, p[1] + 1) not in w}, hexc('#98c8f0'))
+            cv.px[p[0], p[1]] = hexc('#4a3a78') if (p[0] + p[1]) % 5 else hexc('#5a4a88')
+        cv.put({p for p in w if (p[0] - side, p[1] + 1) not in w}, hexc('#8a70c0'))
+        cv.put({(cx + side * (12 + k * 3), int(wy) + 1 + k) for k in range(3)}, hexc('#14082e'))      # wing ribs
     # stick + bow with wobble
     sway = round(2 * S(t - .8))
     stick = line(cx, cy + r - 2, cx + sway, cy + r + 18, 1.6)
@@ -168,16 +182,15 @@ def draw_lolli(pal, i, n=8, hurt=False, mood='angry'):
     cv.put({p for p in m if (p[0] + 1, p[1] + 1) not in m and p[0] > cx and p[1] > cy}, hexc('#802060'))
     cv.put({(cx - 8 + k, cy - 9 + (k // 2)) for k in range(4)}, WHITE)
     # face sticker (does not spin)
-    face = ell(cx + 1, cy + 1, 7.4, 6.2)
-    cv.put(outline_of(face), hexc('#401040')); cv.put(face, hexc('#fff0d6'))
-    cv.put({p for p in face if (p[0], p[1] + 1) not in face}, hexc('#f4cfa6'))
-    for ex in (cx - 4, cx + 2):
-        if hurt:
-            cv.put({(ex, cy - 3), (ex + 2, cy - 3), (ex + 1, cy - 2), (ex, cy - 1), (ex + 2, cy - 1)}, EYE)
-        else:
-            cv.put(rect(ex, cy - 3, ex + 3, cy + 1), EYE); cv.put({(ex, cy - 3)}, WHITE)
-    if not hurt: cv.put({(cx - 5, cy - 5), (cx - 4, cy - 5), (cx - 3, cy - 4), (cx + 4, cy - 5), (cx + 3, cy - 5), (cx + 2, cy - 4)}, hexc('#401040'))
-    cv.put(rect(cx - 2, cy + 3, cx + 4, cy + 5), hexc('#b02848')); cv.put({(cx - 1, cy + 3), (cx + 1, cy + 3), (cx + 3, cy + 3)}, WHITE)
+    eye = ell(cx + 1, cy + 1, 8.2, 6.6)                                   # one huge bloodshot eye in the middle of the swirl
+    cv.put(outline_of(eye), hexc('#2a0818')); cv.put(eye, hexc('#f0e4d0'))
+    cv.put({p for p in eye if (p[0], p[1] + 1) not in eye}, hexc('#c8a898'))
+    if hurt:
+        cv.put({(cx - 3 + k, cy - 1 + k) for k in range(5)} | {(cx + 5 - k, cy - 1 + k) for k in range(5)}, THREAD)
+    else:
+        for (vx, vy) in ((-7, -1), (-6, 2), (8, -2), (7, 2)): cv.put({(cx + vx, cy + vy), (cx + vx + (1 if vx < 0 else -1), cy + vy)}, hexc('#c8404a'))
+        cv.put(ell(cx + 1, cy + 1, 3.8, 3.8), hexc('#b02848')); cv.put(ell(cx + 1, cy + 1, 1.0, 3.2), THREAD); cv.put({(cx, cy - 1)}, WHITE)
+        cv.put(line(cx - 8, cy - 5, cx + 9, cy - 3, .9), hexc('#2a0818'))                                      # a heavy brow-lid
     return cv
 
 def lolli_frames(pal):
@@ -186,8 +199,8 @@ LOLLI_ANIMS = dict(fly=(14, True), hurt=(10, False))
 
 # ======================================================================= SUGAR CANNON
 CW, CH = 56, 48
-SUGAR = pal_of('#fff6ea', '#ffffff', '#e8d0c0', '#c0a0a8', '#4a2038', '#c8b0b8')
-BARREL = pal_of('#ff7ab0', '#ffc0dc', '#d84a8a', '#982870', '#401040', '#b8407a')
+SUGAR = pal_of('#d0c4d8', '#f4ecff', '#9a8cb4', '#6a5c8c', '#241438', '#a898c0')
+BARREL = pal_of('#8a1c48', '#d0508a', '#5a1030', '#3a0a20', '#14040e', '#7a1c48')
 
 def draw_cannon(recoil=0, bob=0, flash=0, hurt=False, wheel=0):
     cv = Canvas(CW, CH)
@@ -207,7 +220,7 @@ def draw_cannon(recoil=0, bob=0, flash=0, hurt=False, wheel=0):
     cv.put(outline_of(tube), BARREL['out'])
     for (x, y) in tube:
         d = ((x - bx0) * math.cos(ang) + (y - by0) * math.sin(ang))
-        cv.put([(x, y)], BARREL['base'] if int((d + 40) // 4) % 2 == 0 else hexc('#fff0f6'))
+        cv.put([(x, y)], BARREL['base'] if int((d + 40) // 4) % 2 == 0 else hexc('#2a1438'))
     cv.put({p for p in tube if (p[0] + 2, p[1] + 2) not in tube}, BARREL['shade'])
     rim = ell(ex, ey, 6.6, 6.6)
     cv.put(outline_of(rim), BARREL['out']); cv.put(rim, BARREL['deep'])
@@ -217,12 +230,14 @@ def draw_cannon(recoil=0, bob=0, flash=0, hurt=False, wheel=0):
     # sugar-cube base with a grumpy face
     base = rect(8, 24 + bob, 42, 40) | rect(10, 22 + bob, 40, 24 + bob)
     part(cv, base, SUGAR)
-    cv.put({(x, 28 + bob + (x % 3 == 0)) for x in range(13, 37, 3)}, hexc('#ffffff'))
-    for ex_ in (17, 28):
-        if hurt: cv.put({(ex_, 29 + bob), (ex_ + 2, 29 + bob), (ex_ + 1, 30 + bob), (ex_, 31 + bob), (ex_ + 2, 31 + bob)}, EYE)
-        else: cv.put(rect(ex_, 29 + bob, ex_ + 3, 33 + bob), EYE); cv.put({(ex_, 29 + bob)}, WHITE)
-    cv.put({(15, 27 + bob), (16, 27 + bob), (17, 28 + bob), (29, 28 + bob), (30, 27 + bob), (31, 27 + bob)}, hexc('#4a2038'))
-    cv.put(rect(21, 36 + bob, 27, 38 + bob), hexc('#b02848')); cv.put({(22, 36 + bob), (24, 36 + bob), (26, 36 + bob)}, WHITE)
+    for ex_ in (15, 27):                                                   # a skull face: hollow sockets with embers
+        if hurt: cv.put({(ex_ + 1, 28 + bob), (ex_ + 5, 28 + bob), (ex_ + 3, 30 + bob), (ex_ + 1, 32 + bob), (ex_ + 5, 32 + bob)}, hexc('#241438'))
+        else:
+            cv.put(rect(ex_, 27 + bob, ex_ + 7, 33 + bob), hexc('#14081e')); cv.put(rect(ex_ + 2, 29 + bob, ex_ + 5, 31 + bob), hexc('#ff5a3a')); cv.put({(ex_ + 3, 30 + bob)}, hexc('#ffe890'))
+    cv.put({(23, 33 + bob), (24, 33 + bob), (24, 34 + bob)}, hexc('#241438'))                          # nose hole
+    cv.put(rect(15, 36 + bob, 36, 38 + bob), hexc('#14081e'))
+    cv.put({(x, 36 + bob) for x in range(16, 36, 3)} | {(x, 37 + bob) for x in range(16, 36, 3)}, hexc('#f4ecff'))        # teeth
+    cv.put({(10, 26 + bob), (11, 27 + bob), (12, 28 + bob), (13, 29 + bob)}, hexc('#241438'))           # crack in the bone
     return cv
 
 def cannon_frames():
