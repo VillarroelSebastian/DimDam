@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.EnemyBase
   kind: 6
-  maxHealth: 1500
+  maxHealth: 480
   speed: 1.8
   sprite: {fileID: 5566040100279806023}
   visual: {fileID: 9044060399271520463}
