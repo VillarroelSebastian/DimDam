@@ -12,9 +12,10 @@ public class PixelSpriteAnimator:MonoBehaviour {
   if(grounded&&!wasGrounded)landUntil=Time.time+.12f;wasGrounded=grounded;
   if(dead&&diedAt<0)diedAt=Time.time;if(!dead)diedAt=-1;
   State=player&&GameManager.Instance&&GameManager.Instance.Victory?"Victory":dead?"Death":Time.time<hurtUntil?"Hurt":player&&player.Dashing?"Dash":player&&!grounded&&GameManager.Instance&&GameManager.Instance.Running?(body.linearVelocity.y>0?"Jump":"Fall"):Time.time<landUntil&&player?"Land":enemy&&enemy.Telegraphing||special&&special.Telegraphing||boss&&boss.WindingUp?"Anticipate":enemy&&enemy.Attacking||boss&&Time.time-boss.LastAttackTime<.25f||special&&Time.time-special.LastShotTime<.2f?"Attack":Mathf.Abs(body.linearVelocity.x)>.2f?"Run":"Idle";
+  if(player&&CoopInteractionDirector.Active&&CoopInteractionDirector.Active.Dancing&&CoopInteractionDirector.Locked(health))State="Dance";
   if(State!=previousState){stateTime=Time.time;previousState=State;}float elapsed=Time.time-stateTime;int frame;
-  if(animationSet.hero){frame=State=="Victory"?16+(int)(elapsed*6)%4:State=="Death"?(Time.time-diedAt<.2f?14:15):State=="Hurt"?13:State=="Dash"?12:State=="Jump"?(elapsed<.1f?8:9):State=="Fall"?10:State=="Land"?11:State=="Run"?4+(int)(elapsed*animationSet.runFPS)%4:(int)(elapsed*animationSet.idleFPS)%4;if(dead||State=="Victory")transform.localScale=Vector3.one;if(State=="Victory")art.color=Color.white;}
-  else frame=State=="Victory"?16+(int)(elapsed*6)%4:State=="Death"?7:State=="Hurt"?6:State=="Anticipate"?4:State=="Attack"?5:(int)(elapsed*(State=="Run"?animationSet.runFPS:animationSet.idleFPS))%4;
+  if(animationSet.hero){frame=State=="Dance"?16+(int)(elapsed*8)%4:State=="Victory"?16+(int)(elapsed*6)%4:State=="Death"?(Time.time-diedAt<.2f?14:15):State=="Hurt"?13:State=="Dash"?12:State=="Jump"?(elapsed<.1f?8:9):State=="Fall"?10:State=="Land"?11:State=="Run"?4+(int)(elapsed*animationSet.runFPS)%4:(int)(elapsed*animationSet.idleFPS)%4;if(dead||State=="Victory")transform.localScale=Vector3.one;if(State=="Victory")art.color=Color.white;}
+  else frame=State=="Dance"?16+(int)(elapsed*8)%4:State=="Victory"?16+(int)(elapsed*6)%4:State=="Death"?7:State=="Hurt"?6:State=="Anticipate"?4:State=="Attack"?5:(int)(elapsed*(State=="Run"?animationSet.runFPS:animationSet.idleFPS))%4;
   CurrentFrame=Mathf.Clamp(frame,0,animationSet.frames.Length-1);if(animationSet.frames[CurrentFrame])art.sprite=animationSet.frames[CurrentFrame];
   if(enemy&&dead){var c=art.color;c.a=1-Mathf.Clamp01((Time.time-diedAt-.18f)/.24f);art.color=c;}
  }

@@ -1,0 +1,25 @@
+PASS Contextual lesson pauses the game
+PASS Two different players activate the two seals
+PASS Key can be collected
+PASS Key acquisition triggers two-enemy defense
+PASS Key carrier can travel before channeling
+PASS Cannot open away from center
+PASS Carrier channels at center
+PASS Releasing preserves opening progress
+PASS Opening releases campaign waves
+PASS Pickup waits for sharing
+PASS Proximity shares without starting timer
+PASS Separating activates shared bonus
+PASS One death keeps match alive
+PASS No automatic revival after old delay
+PASS Partner proximity completes rescue
+PASS One player cannot activate ultimate alone
+PASS Both confirmations activate dance
+PASS Multiple keys fail the pulse
+PASS Early input fails the pulse
+PASS Correct timed single key increases shared power
+PASS Repeated key cannot score twice
+PASS Dance locks normal movement
+PASS Dance completes after scored and missed pulses
+PASS Dance restores normal controls
+PASS Both deaths end the match

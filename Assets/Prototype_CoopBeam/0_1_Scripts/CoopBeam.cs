@@ -9,7 +9,7 @@ public class CoopBeam:MonoBehaviour {
  var powers=GameManager.Instance?GameManager.Instance.GetComponent<LinkPowers>():null;int casts=powers&&powers.Empowered?3:1;Vector2 normal=Vector2.Perpendicular((b-a).normalized);
  for(int cast=0;cast<casts;cast++){Vector2 offset=normal*(cast==0?0:cast==1?.16f:-.16f);int n=Physics2D.Linecast(a+offset,b+offset,filter,hits);for(int i=0;i<n;i++){var e=hits[i].collider.GetComponentInParent<EnemyBase>();if(e&&visited.Add(e)){float before=e.Health;e.Damage(damagePerSecond*dt*(powers?powers.DamageMultiplier:1));if(powers){float accepted=Mathf.Min(before,Mathf.Max(0,before-e.Health));powers.AddCharge(accepted);powers.OnBeamHit(e,accepted);}}}}
  return visited.Count;}
- void FixedUpdate(){IsDamaging=false;if(!red||!blue||red.Dead||blue.Dead||!GameManager.Instance||!GameManager.Instance.Running)return;IsDamaging=DamageSegment(red.transform.position,blue.transform.position,Time.fixedDeltaTime)>0;}
+ void FixedUpdate(){IsDamaging=false;if(CoopInteractionDirector.Active&&CoopInteractionDirector.Active.Dancing)return;if(!red||!blue||red.Dead||blue.Dead||!GameManager.Instance||!GameManager.Instance.Running)return;IsDamaging=DamageSegment(red.transform.position,blue.transform.position,Time.fixedDeltaTime)>0;}
  void LateUpdate(){if(!core||!halo)return;bool on=red&&blue&&!red.Dead&&!blue.Dead&&GameManager.Instance&&(GameManager.Instance.Running||GameManager.Instance.Victory);core.enabled=halo.enabled=on;if(outline)outline.enabled=on;if(!on)return;
  Vector3 a=red.transform.position,b=blue.transform.position;a.z=b.z=-.2f;core.SetPosition(0,a);core.SetPosition(1,b);halo.SetPosition(0,a);halo.SetPosition(1,b);
  if(outline){outline.SetPosition(0,a);outline.SetPosition(1,b);}

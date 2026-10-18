@@ -1,0 +1,33 @@
+PASS Five environment lights plus two player lights exist
+PASS Pixel emission shader is supported by actual renderer
+PASS Emission material is referenced through Resources for builds
+PASS Emission renders above background art
+PASS Rest selection skips a spring and chooses stable platform below
+PASS Rest selection excludes Moving
+PASS Rest selection excludes Conveyor
+PASS Rest selection excludes Crumbly
+PASS Airborne dead player falls and settles below unstable platforms
+PASS Dead body remains still instead of bouncing
+PASS Downed body cannot be carried or bounced by environment physics
+PASS Proximity rescue restores living body physics
+PASS Two eligible kills do not drop a power
+PASS Third eligible kill drops one power
+PASS Thirty further kills cannot accumulate pickups
+PASS Factory rejects a second simultaneous pickup
+PASS An active prism rejects overlapping chain bonus
+PASS No loot spawns while a bonus is active
+PASS Expired bonus is followed by a quiet period
+PASS Loot can return after bonus and quiet period end
+PASS Two players confirm selected ultimate
+PASS Danza locks both players and enters aura sequence
+PASS Danza enables visible energy aura
+PASS Danza completes without requiring every cue
+PASS Tirachinas can be selected
+PASS Mora builds sling tension while movement is locked
+PASS One sling release input cannot fire alone
+PASS Partner confirmation fires actual ricochet wave
+PASS Sling restores movement after release
+PASS Constellation allows normal player movement
+PASS One star alone does not complete a pair
+PASS Three jointly occupied star pairs trigger finisher
+PASS Ultimate damage cap prevents one-shotting a full-health boss
