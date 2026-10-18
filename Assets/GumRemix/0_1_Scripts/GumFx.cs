@@ -57,4 +57,17 @@ namespace GumRemix
             sr.color = new Color(1, 1, 1, left < 0.3f ? left / 0.3f : 1f);
         }
     }
+
+    /// <summary>A word that rises and fades (the "CLANG" when gum bounces off armour).</summary>
+    public class FloatText : MonoBehaviour
+    {
+        float age; public float life = 0.55f; PText txt; Color c0;
+        void Start() { txt = GetComponent<PText>(); c0 = txt.color; }
+        void Update()
+        {
+            age += Time.deltaTime; transform.position += new Vector3(0f, 1.6f * Time.deltaTime, 0f);
+            if (txt != null) txt.color = new Color(c0.r, c0.g, c0.b, Mathf.Clamp01((life - age) / 0.25f));
+            if (age >= life) Destroy(gameObject);
+        }
+    }
 }

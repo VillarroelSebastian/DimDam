@@ -106,9 +106,10 @@ namespace GumRemix
         public bool Armored { get { return color == "steel" || color == "iron"; } }
         float wrapT; bool wrapTouched;
 
-        public void Deflect(Vector2 at)
+        float deflectT;
+        public void Deflect(Vector2 at, Vector2 shotDir)
         {
-            Sfx.Play("hit", .4f, 2.1f); G.SpawnFx("spark_ice", "spark", at, 1.1f, false, 31); flashT = 0.03f;
+            G.Ricochet(at, shotDir); flashT = 0.08f; deflectT = 0.14f;       // white flash + a little rattle
         }
 
         public void Wrap(float dt, Player by)
@@ -162,7 +163,8 @@ namespace GumRemix
                 case EState.Dead: anim.Tick(dt); if (anim.done) { remove = true; UnityEngine.Object.Destroy(go); return; } break;
             }
             if (remove) return;
-            go.transform.position = (Vector3)(body.pos + (state == EState.Normal ? spriteOffset : Vector2.zero));
+            deflectT -= dt;
+            go.transform.position = (Vector3)(body.pos + (state == EState.Normal ? spriteOffset : Vector2.zero) + (deflectT > 0f ? new Vector2(Mathf.Sin(t * 90f) * 0.06f, 0f) : Vector2.zero));
             sr.flipX = state == EState.Rolling ? rollDir < 0 : facing < 0;
             float a = 1f;
             if (spawnT > 0) { blinkT += dt; a = ((int)(blinkT * 20)) % 2 == 0 ? 1f : 0.3f; }

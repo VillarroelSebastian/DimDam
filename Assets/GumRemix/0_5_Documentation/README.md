@@ -67,7 +67,7 @@ Con la variable de entorno `GUMREMIX_SHOTS` guarda capturas de cada paso. No cer
 
 Pensado para la temática de la jam: el juego se disfruta más con otra persona, pero también se puede jugar **solo con ambas manos**.
 
-- **Solo (1 JUGADOR)**: una persona controla a los dos héroes (P1 con WASD, P2 con flechas). El disparo es **automático** y apunta solo; se puede cambiar a MANUAL en el menú ("DISPARO"). Si un héroe cae, su fantasma vuela solo hacia el compañero para revivir.
+- **Solo (1 JUGADOR)**: una persona controla a los dos héroes (P1 con WASD, P2 con flechas). El disparo es **automático** (solo aprieta el gatillo por ti: tú apuntas con W / W+lado); se puede cambiar a MANUAL en el menú ("DISPARO"). Si un héroe cae, su fantasma vuela solo hacia el compañero para revivir.
 - **Vínculo de chicle**: mientras los héroes están cerca, una cuerda de chicle los une. Lo que la cruce recibe daño (enemigos, cristales, punto débil del jefe) y revienta los disparos enemigos. Cada uno se coloca a un lado de la amenaza.
 - **Rebote**: caer sobre la cabeza del compañero te impulsa alto (mantén salto para más).
 - **Abrazo**: quedarse juntos y cerca un momento cura 1 corazón (enfriamiento 14 s).

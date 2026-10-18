@@ -404,7 +404,7 @@ namespace GumRemix
                     PText.Create(t, new Vector3(0.4f, 1.8f - i * 0.52f, 0), b[i], 2, Color.white, false, 265);
                 }
                 PText.Create(t, new Vector3(0, -2.2f, 0), "MANDO: STICK MUEVE  A SALTA  X DISPARA  B DASH  Y SUPER", 1, new Color(.85f, .95f, 1f), true, 265);
-                PText.Create(t, new Vector3(0, -2.6f, 0), "SOLO? UNA MANO CADA HEROE: EL DISPARO ES AUTOMATICO Y APUNTA SOLO", 1, new Color(1f, .85f, .5f), true, 265);
+                PText.Create(t, new Vector3(0, -2.6f, 0), "SOLO? EL DISPARO ES AUTOMATICO, TU APUNTAS: W ARRIBA, W+LADO DIAGONAL", 1, new Color(1f, .85f, .5f), true, 265);
             }
             else if (helpPage == 2)
             {
@@ -613,6 +613,18 @@ namespace GumRemix
             hudRoot.position = new Vector3(0f, Mathf.Round(camY * 40f) / 40f, 0f);
         }
 
+        float clangT;
+        /// <summary>Gum hit something it cannot hurt: sparks, a metallic ping, flying bits and a CLANG so it is obvious.</summary>
+        public void Ricochet(Vector2 at, Vector2 shotDir)
+        {
+            SpawnFx("spark_ice", "spark", at, 1.7f, false, 33);
+            for (int i = 0; i < 3; i++)
+                parts.Add(Particle.Make(entRoot, at, new Vector2(-Mathf.Sign(shotDir.x == 0f ? 1f : shotDir.x) * Random.Range(1.5f, 4f), Random.Range(1.5f, 4.5f)), 12f, Random.Range(0.3f, 0.5f), 4));
+            if (clangT > 0f) return;
+            clangT = 0.3f; Sfx.Play("bell", .3f, 2.3f);
+            var t = PText.Create(entRoot, new Vector3(at.x, at.y + 0.5f, 0f), "CLANG", 1, new Color(.85f, .93f, 1f), true, 120); t.gameObject.AddComponent<FloatText>();
+        }
+
         public bool IsBondActive { get { return bond != null && bond.Active; } }
         public void HintArmor()
         {
@@ -695,7 +707,7 @@ namespace GumRemix
 
         void TickWorld(bool input)
         {
-            world.Tick(dt, time);
+            world.Tick(dt, time); clangT -= dt;
             SpawnPending(dt);
             wind.Tick(dt);
             foreach (var p in players) p.Tick(dt, input);

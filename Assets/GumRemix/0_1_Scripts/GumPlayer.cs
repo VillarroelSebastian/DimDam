@@ -27,7 +27,7 @@ namespace GumRemix
             foreach (var e in g.enemies)
                 if (e.Hittable && e.Hurtbox.Overlaps(r))
                 {
-                    if (e.Armored) { e.Deflect(pos); Splat(); return; }
+                    if (e.Armored) { e.Deflect(pos, vel); Splat(); return; }
                     if (e.Blocks(pos, vel)) { e.OnBlocked(pos); Splat(); return; }       // the penguin's shield
                     e.Damage(dmg, owner); Splat(); return;
                 }
@@ -36,7 +36,7 @@ namespace GumRemix
             {
                 foreach (var hb in g.boss.Hurtboxes()) if (hb.Overlaps(r))
                 {
-                    if (g.boss.shotProof) { Sfx.Play("hit", .3f, 2f); g.SpawnFx("spark_ice", "spark", pos, 1.2f, false, 31); Splat(); return; }      // guarded
+                    if (g.boss.shotProof) { g.Ricochet(pos, vel); Splat(); return; }      // guarded
                     g.boss.Damage(dmg, owner); Splat(); return;
                 }
                 foreach (var bb in g.boss.BlockBoxes())
@@ -278,12 +278,9 @@ namespace GumRemix
             }
 
             // ---- shooting
-            Vector2 tp; bool haveTarget = G.autoFire && control && FindTarget(out tp);
-            tp = Vector2.zero; if (haveTarget) FindTarget(out tp);
-            bool streaming = G.autoFire && control;                          // auto mode: the gum never stops flowing
-            if (pad.up) aimDir = Mathf.Abs(pad.x) > 0.1f ? 1 : 2;
-            else if (haveTarget) aimDir = AimFor(tp);
-            else aimDir = 0;
+            // auto mode only pulls the trigger for you: you still aim (W = up, W + a side = diagonal, otherwise straight ahead)
+            bool streaming = G.autoFire && control;
+            aimDir = pad.up ? (Mathf.Abs(pad.x) > 0.1f ? 1 : 2) : 0;
             bool fire = pad.shoot || streaming;
             if (control && fire && shootCd <= 0 && dashT <= 0)
             {
@@ -297,37 +294,6 @@ namespace GumRemix
             if (dashT > 0) { trailT -= dt; if (trailT <= 0) { trailT = 0.045f; var f = G.SpawnFx("trail", "trail", Center, 1.6f, false, 9); f.sr.color = new Color(1f, .8f, .93f, .8f); } }
 
             Visuals(dt);
-        }
-
-        // ---- auto-fire assist: pick the closest thing worth shooting that is in front of or above the hero
-        void Consider(Vector2 c, ref float best, ref Vector2 tp, ref bool has)
-        {
-            float dx = c.x - Center.x; if (Mathf.Abs(dx) > 0.9f && Mathf.Sign(dx) != facing) return;
-            float d = (c - Center).sqrMagnitude; if (d < best) { best = d; tp = c; has = true; }
-        }
-
-        bool FindTarget(out Vector2 tp)
-        {
-            tp = Vector2.zero; float best = 11f * 11f; bool has = false;
-            foreach (var e in G.enemies) if (e.Hittable && !e.Armored) Consider(e.body.Center, ref best, ref tp, ref has);
-            foreach (var cr in G.crystals) if (!cr.active) Consider(cr.pos + new Vector2(0f, 0.7f), ref best, ref tp, ref has);
-            if (G.boss != null && G.boss.Hittable && !G.boss.shotProof) foreach (var hb in G.boss.Hurtboxes()) Consider(hb.center, ref best, ref tp, ref has);
-            return has;
-        }
-
-        int AimFor(Vector2 tp)
-        {
-            float dx = Mathf.Abs(tp.x - Center.x), dy = tp.y - Center.y;
-            float ang = Mathf.Atan2(dy, Mathf.Max(0.001f, dx)) * Mathf.Rad2Deg;
-            return ang > 62f ? 2 : (ang > 24f ? 1 : 0);
-        }
-
-        bool AimOk(Vector2 tp, int dir)
-        {
-            float dx = Mathf.Abs(tp.x - Center.x), dy = tp.y - Center.y;
-            float ang = Mathf.Atan2(dy, Mathf.Max(0.001f, dx)) * Mathf.Rad2Deg;
-            float want = dir == 0 ? 0f : (dir == 1 ? 45f : 90f);
-            return Mathf.Abs(ang - want) < 27f;
         }
 
         // ---- together: land on your partner's head and you spring up (reach ledges alone you could not)
