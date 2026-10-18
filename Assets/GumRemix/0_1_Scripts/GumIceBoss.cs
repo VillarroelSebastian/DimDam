@@ -10,7 +10,7 @@ namespace GumRemix
     /// </summary>
     public class IceBoss : BossBase
     {
-        public const int Phase1Hp = 80, Phase2Hp = 80, Phase3Hp = 70;
+        public const int Phase1Hp = 100, Phase2Hp = 100, Phase3Hp = 90;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
         public override string DisplayName { get { return "MONARCA DEL DESHIELO"; } }
@@ -116,7 +116,7 @@ namespace GumRemix
                 wait -= dt;
                 while (wait <= 0f)
                 {
-                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); openT = phase == 3 ? 4.2f : 4.8f; break; }
+                    if (!routine.MoveNext()) { routine = null; chargeLow = false; idleTimer = phase == 1 ? 1.5f : (phase == 2 ? 1.15f : 1.0f); openT = phase == 3 ? 4.2f : 4.8f; break; }
                     wait = routine.Current;
                 }
             }
@@ -142,7 +142,7 @@ namespace GumRemix
         void Render(float dt)
         {
             go.transform.position = new Vector3(x, y, 0);
-            sr.color = (openT > 0f && !forceClosed && !dying) ? Color.Lerp(Color.white, new Color(1f, .88f, .45f), 0.45f + 0.45f * Mathf.Sin(t * 9f)) : Color.white;      // the cracked shell glows
+            sr.color = glow ? Color.Lerp(Color.white, new Color(.6f, 1f, 1f), 0.4f + 0.4f * Mathf.Sin(t * 10f)) : (openT > 0f && !forceClosed && !dying) ? Color.Lerp(Color.white, new Color(1f, .88f, .45f), 0.45f + 0.45f * Mathf.Sin(t * 9f)) : Color.white;      // the cracked shell glows
             anim.Tick(dt);
         }
 

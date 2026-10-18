@@ -27,13 +27,18 @@ namespace GumRemix
             foreach (var e in g.enemies)
                 if (e.Hittable && e.Hurtbox.Overlaps(r))
                 {
+                    if (e.Armored) { e.Deflect(pos); Splat(); return; }
                     if (e.Blocks(pos, vel)) { e.OnBlocked(pos); Splat(); return; }       // the penguin's shield
                     e.Damage(dmg, owner); Splat(); return;
                 }
             foreach (var c in g.crystals) if (c.Hurtbox.Overlaps(r)) { c.Hit(1f); Splat(); return; }
             if (g.boss != null && g.boss.Hittable)
             {
-                foreach (var hb in g.boss.Hurtboxes()) if (hb.Overlaps(r)) { g.boss.Damage(dmg, owner); Splat(); return; }
+                foreach (var hb in g.boss.Hurtboxes()) if (hb.Overlaps(r))
+                {
+                    if (g.boss.shotProof) { Sfx.Play("hit", .3f, 2f); g.SpawnFx("spark_ice", "spark", pos, 1.2f, false, 31); Splat(); return; }      // guarded
+                    g.boss.Damage(dmg, owner); Splat(); return;
+                }
                 foreach (var bb in g.boss.BlockBoxes())
                     if (bb.Overlaps(r)) { Sfx.Play("hit", .3f, 1.9f); g.SpawnFx("spark_ice", "spark", pos, 1.2f, false, 31); Splat(); return; }
             }
@@ -304,9 +309,9 @@ namespace GumRemix
         bool FindTarget(out Vector2 tp)
         {
             tp = Vector2.zero; float best = 11f * 11f; bool has = false;
-            foreach (var e in G.enemies) if (e.Hittable) Consider(e.body.Center, ref best, ref tp, ref has);
+            foreach (var e in G.enemies) if (e.Hittable && !e.Armored) Consider(e.body.Center, ref best, ref tp, ref has);
             foreach (var cr in G.crystals) if (!cr.active) Consider(cr.pos + new Vector2(0f, 0.7f), ref best, ref tp, ref has);
-            if (G.boss != null && G.boss.Hittable) foreach (var hb in G.boss.Hurtboxes()) Consider(hb.center, ref best, ref tp, ref has);
+            if (G.boss != null && G.boss.Hittable && !G.boss.shotProof) foreach (var hb in G.boss.Hurtboxes()) Consider(hb.center, ref best, ref tp, ref has);
             return has;
         }
 

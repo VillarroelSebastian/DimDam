@@ -4,13 +4,14 @@ using UnityEngine;
 namespace GumRemix
 {
     /// <summary>
-    /// "Better Together": a string of gum stretches between the two heroes while they are close enough.
-    /// Anything that crosses it is hurt (enemies, the boss's weak point, crystals) and enemy shots that touch it burst,
-    /// so the two heroes make a trap just by standing on opposite sides of a threat.
+    /// "Better Together": a string of gum always ties the two heroes together, in any direction (flat, diagonal, vertical).
+    /// Whatever it crosses is hurt, enemy shots that touch it burst, armoured enemies that cannot be shot are wrapped into gum
+    /// balls by it, and while a boss is "guarded" it is the only thing that can hurt them. Past its length it pulls the heroes
+    /// back toward each other, so the two have to plan their platforming around the target.
     /// </summary>
     public class Bond
     {
-        public bool Active; public const float Reach = 7.2f, Release = 8.0f;
+        public bool Active; public const float MaxLen = 9.5f;
         readonly List<SpriteRenderer> beads = new List<SpriteRenderer>(); readonly Transform root; float dmgT, popT, sfxT; int hits;
         public int Hits { get { return hits; } }
         public Vector2 A, B;
@@ -38,12 +39,18 @@ namespace GumRemix
             var g = GameCtl.I; var p0 = g.players[0]; var p1 = g.players[1];
             if (p0 == null || p1 == null || !p0.Alive || !p1.Alive) { Hide(); return; }
             A = p0.Center + new Vector2(0, 0.1f); B = p1.Center + new Vector2(0, 0.1f);
-            float d = Vector2.Distance(A, B);
-            if (!Active && d < Reach) Active = true; else if (Active && d > Release) Active = false;
-            if (!Active) { Hide(); return; }
+            float d = Vector2.Distance(A, B); Active = true;
 
-            // draw: gum beads along a sagging curve (quantised to pixels so it stays crisp); it tightens as the heroes move apart
-            float sag = Mathf.Clamp((Release - d) * 0.14f, 0f, 1.1f);
+            // the string has a length: beyond it, it tugs both heroes toward each other
+            if (d > MaxLen && d > 0.01f)
+            {
+                var dir = (B - A) / d; float excess = d - MaxLen; float push = Mathf.Min(excess * 3.2f, 6f) * dt;
+                if (p0.frozenT <= 0f) { p0.body.pos.x += dir.x * push; p0.body.vel.y += Mathf.Max(0f, dir.y) * Mathf.Min(excess * 14f, 40f) * dt; }
+                if (p1.frozenT <= 0f) { p1.body.pos.x -= dir.x * push; p1.body.vel.y += Mathf.Max(0f, -dir.y) * Mathf.Min(excess * 14f, 40f) * dt; }
+            }
+
+            // draw: gum beads along a sagging curve (quantised to pixels so it stays crisp); it goes taut as the heroes move apart
+            float sag = Mathf.Clamp((MaxLen - d) * 0.16f, 0f, 1.1f);
             int n = Mathf.Max(2, Mathf.CeilToInt(d / 0.16f));
             float wob = Mathf.Sin(g.time * 7f) * 0.03f;
             for (int i = 0; i < n; i++)
@@ -61,13 +68,24 @@ namespace GumRemix
             if (popT <= 0f)
                 foreach (var s in g.eshots)
                     if (!s.dead && !s.persistent && Near(s.pos, 0.35f + s.radius)) { s.Pop(); popT = 0.08f; hits++; g.Burst(s.pos, 3, 3f); p0.AddMeter(0.1f); }
+
+            // armoured enemies cannot be shot: the string wraps them into a gum ball when it stays across them
+            foreach (var e in g.enemies)
+                if (e.Armored && e.Hittable && Crosses(e.Hurtbox)) { e.Wrap(dt, p0); hits++; }
+
             if (dmgT > 0f) return;
             bool did = false;
             foreach (var e in g.enemies)
-                if (e.Hittable && Crosses(e.Hurtbox)) { e.Damage(1, p0); did = true; hits++; }
+                if (!e.Armored && e.Hittable && Crosses(e.Hurtbox)) { e.Damage(1, p0); did = true; hits++; }
             foreach (var c in g.crystals) if (Crosses(c.Hurtbox)) { c.Hit(1f); did = true; }
             if (g.boss != null && g.boss.Hittable)
-                foreach (var hb in g.boss.Hurtboxes()) if (Crosses(hb)) { g.boss.Damage(3, p0); did = true; hits++; }
+                foreach (var hb in g.boss.Hurtboxes())
+                    if (Crosses(hb))
+                    {
+                        int before = g.boss.hp; g.boss.Damage(g.boss.shotProof ? 4 : 3, p0);
+                        if (g.boss.shotProof) g.boss.lazoTaken += Mathf.Max(0, before - g.boss.hp);
+                        did = true; hits++;
+                    }
             if (did)
             {
                 dmgT = 0.4f; g.Shake(.03f, .08f); p0.AddMeter(0.08f);

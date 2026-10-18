@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from px import *
 import heroes, enemies, fx, boss, env_bg, env_props
 import ice_enemies as ie, ice_fx, ice_boss, ice_env, ice_props
+import armor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.normpath(os.path.join(HERE, '..', 'Resources', 'GumRemix'))
@@ -94,6 +95,13 @@ for nm, pal in (('yellow', enemies.BEAN_YELLOW), ('purple', enemies.BEAN_PURPLE)
     register('bean_' + nm, fr, enemies.JW, enemies.JH, 10, (0.5, 1.5 / enemies.JH), an, white=True)
     bf, ban = seq_anims(enemies.ball_frames(pal), enemies.BALL_ANIMS)
     register('ball_bean_' + nm, bf, enemies.GW, enemies.GH, 9, (0.5, 7 / enemies.GH), ban, white=True)
+# steel bear: only the rope can capture it (gum bounces off)
+STEEL = enemies.pal_of('#7e8cae', '#dce6f6', '#56628a', '#343e5a', '#161c2c', '#46527a')
+fr, an = seq_anims(enemies.bear_frames(enemies.BEAR_RED), enemies.BEAR_ANIMS)
+fr = [armor.armorize(f.im if isinstance(f, Canvas) else f) for f in fr]
+register('bear_steel', fr, enemies.BW, enemies.BH, 10, (0.5, 1 / enemies.BH), an, white=True)
+bf, ban = seq_anims(enemies.ball_frames(STEEL), enemies.BALL_ANIMS)
+register('ball_bear_steel', bf, enemies.GW, enemies.GH, 9, (0.5, 7 / enemies.GH), ban, white=True)
 fr, an = seq_anims(enemies.lolli_frames(enemies.LOLLI_PINK), enemies.LOLLI_ANIMS)
 register('lolli', fr, enemies.LW, enemies.LH, 10, (0.5, 1 - 24 / enemies.LH), an, white=True)
 bf, ban = seq_anims(enemies.ball_frames(enemies.LOLLI_PINK), enemies.BALL_ANIMS)
@@ -114,6 +122,13 @@ def reg_creature(name, fam, anims, pivot=None, cols=10, inner=None):
     register('ball_' + name, bf, ie.GW, ie.GH, 9, (0.5, 7 / ie.GH), ban, white=True)
 reg_creature('penguin', ie.penguin_frames(), ie.PENGUIN_ANIMS, inner=ie.BALL_INNER['penguin'])
 reg_creature('snowman', ie.snowman_frames(), ie.SNOWMAN_ANIMS, inner=ie.BALL_INNER['snowman'])
+# iron snowman: only the rope can capture it
+fr, an = seq_anims(ie.snowman_frames(), ie.SNOWMAN_ANIMS)
+fp0 = feet_pivot(fr[0])
+fr = [armor.armorize(f.im if isinstance(f, Canvas) else f, helm=0.34, chest=(0.50, 0.97), chest_inset=0.04, seams=False, gamma=1.9) for f in fr]
+register('snowman_iron', fr, fr[0].width, fr[0].height, 10, (0.5, fp0), an, white=True)
+bf, ban = seq_anims(ie.snowball_frames(ie.BALL_INNER['snowman']), ie.BALL_ANIMS)
+register('ball_snowman_iron', bf, ie.GW, ie.GH, 9, (0.5, 7 / ie.GH), ban, white=True)
 reg_creature('owl', ie.owl_frames(), ie.OWL_ANIMS, pivot=(0.5, 0.5), inner=ie.BALL_INNER['owl'])
 reg_creature('jelly', ie.jelly_frames(), ie.JELLY_ANIMS, pivot=(0.5, 1 - 24 / 72.0), inner=ie.BALL_INNER['jelly'])
 reg_creature('crab', ie.crab_frames(), ie.CRAB_ANIMS, inner=ie.BALL_INNER['crab'])

@@ -2465,6 +2465,170 @@
    ]
   },
   {
+   "name": "bear_steel",
+   "file": "GumRemix/Enemies/Candy/bear_steel",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "bear_steel_w",
+   "file": "GumRemix/Enemies/Candy/bear_steel_w",
+   "cw": 44,
+   "ch": 48,
+   "cols": 10,
+   "count": 20,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.020833333333333332,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "walk",
+     "start": 6,
+     "count": 8,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "lunge",
+     "start": 14,
+     "count": 4,
+     "fps": 12.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 18,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_steel",
+   "file": "GumRemix/Enemies/Candy/ball_bear_steel",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_bear_steel_w",
+   "file": "GumRemix/Enemies/Candy/ball_bear_steel_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
    "name": "lolli",
    "file": "GumRemix/Enemies/Candy/lolli",
    "cw": 64,
@@ -3096,6 +3260,212 @@
   {
    "name": "ball_snowman_w",
    "file": "GumRemix/Enemies/Ice/ball_snowman_w",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "snowman_iron",
+   "file": "GumRemix/Enemies/Ice/snowman_iron",
+   "cw": 60,
+   "ch": 80,
+   "cols": 10,
+   "count": 38,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.075,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 6,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "idle_nohead",
+     "start": 20,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "run_nohead",
+     "start": 24,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "regrow",
+     "start": 32,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 36,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "snowman_iron_w",
+   "file": "GumRemix/Enemies/Ice/snowman_iron_w",
+   "cw": 60,
+   "ch": 80,
+   "cols": 10,
+   "count": 38,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.075,
+   "anims": [
+    {
+     "name": "idle",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "hop",
+     "start": 6,
+     "count": 8,
+     "fps": 12.0,
+     "loop": true
+    },
+    {
+     "name": "throw",
+     "start": 14,
+     "count": 6,
+     "fps": 11.0,
+     "loop": false
+    },
+    {
+     "name": "idle_nohead",
+     "start": 20,
+     "count": 4,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "run_nohead",
+     "start": 24,
+     "count": 8,
+     "fps": 16.0,
+     "loop": true
+    },
+    {
+     "name": "regrow",
+     "start": 32,
+     "count": 4,
+     "fps": 10.0,
+     "loop": false
+    },
+    {
+     "name": "hurt",
+     "start": 36,
+     "count": 2,
+     "fps": 10.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_snowman_iron",
+   "file": "GumRemix/Enemies/Ice/ball_snowman_iron",
+   "cw": 48,
+   "ch": 48,
+   "cols": 9,
+   "count": 27,
+   "ppu": 40,
+   "px": 0.5,
+   "py": 0.14583333333333334,
+   "anims": [
+    {
+     "name": "wobble",
+     "start": 0,
+     "count": 6,
+     "fps": 8.0,
+     "loop": true
+    },
+    {
+     "name": "shake",
+     "start": 6,
+     "count": 6,
+     "fps": 14.0,
+     "loop": true
+    },
+    {
+     "name": "roll",
+     "start": 12,
+     "count": 8,
+     "fps": 18.0,
+     "loop": true
+    },
+    {
+     "name": "pop",
+     "start": 20,
+     "count": 7,
+     "fps": 18.0,
+     "loop": false
+    }
+   ]
+  },
+  {
+   "name": "ball_snowman_iron_w",
+   "file": "GumRemix/Enemies/Ice/ball_snowman_iron_w",
    "cw": 48,
    "ch": 48,
    "cols": 9,

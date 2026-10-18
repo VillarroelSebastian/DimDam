@@ -613,7 +613,7 @@ namespace GumRemix
     public class MusicHost : MonoBehaviour
     {
         class Job { public Track track; public Task<float[]> task; public int loopSamples; }
-        AudioSource[] src = new AudioSource[2]; int cur; Track? current, wanted; bool wantedLoop = true; float fade = 0.5f, fadeT = 1f; float volume = 0.5f;
+        AudioSource[] src = new AudioSource[2]; float[] startVol = new float[2]; int cur; Track? current, wanted; bool wantedLoop = true; float fade = 0.5f, fadeT = 1f; float volume = 0.5f;
         readonly Dictionary<Track, AudioClip> clips = new Dictionary<Track, AudioClip>(); readonly Dictionary<Track, Job> jobs = new Dictionary<Track, Job>();
         readonly List<Track> order = new List<Track>();
 
@@ -631,14 +631,14 @@ namespace GumRemix
             jobs[t] = job;
         }
 
-        public void Play(Track t, float fadeSeconds = 0.6f)
+        public void Play(Track t, float fadeSeconds = 1.8f)
         {
             if (wanted.HasValue && wanted.Value == t) return;
             wanted = t; fade = fadeSeconds; wantedLoop = SongBook.Get(t).loop;
             if (!clips.ContainsKey(t) && !jobs.ContainsKey(t)) StartJob(t);
         }
 
-        public void Stop(float fadeSeconds = 0.8f) { wanted = null; fade = fadeSeconds; fadeT = 0f; }
+        public void Stop(float fadeSeconds = 0.8f) { wanted = null; fade = fadeSeconds; fadeT = 0f; for (int i = 0; i < 2; i++) startVol[i] = src[i].volume; }
 
         public bool Ready(Track t) { return clips.ContainsKey(t); }
         public Track? Current { get { return current; } }
@@ -667,18 +667,19 @@ namespace GumRemix
             // start the wanted track once it is ready
             if (wanted.HasValue && (!current.HasValue || current.Value != wanted.Value) && clips.ContainsKey(wanted.Value))
             {
+                for (int i = 0; i < 2; i++) startVol[i] = src[i].volume;
                 int next = 1 - cur; var s = src[next]; s.clip = clips[wanted.Value]; s.loop = wantedLoop; s.timeSamples = 0; s.volume = 0f; s.Play();
                 current = wanted; cur = next; fadeT = 0f;
             }
             // cross-fade
+            // equal-power cross-fade: the new track rises on a quarter sine while the old one falls on a quarter cosine, so the mix never dips or jumps
             fadeT += Time.unscaledDeltaTime / Mathf.Max(0.05f, fade);
             float k = Mathf.Clamp01(fadeT);
             for (int i = 0; i < 2; i++)
             {
                 bool active = (i == cur) && wanted.HasValue;
-                float target = active ? volume : 0f;
-                src[i].volume = Mathf.MoveTowards(src[i].volume, target, Time.unscaledDeltaTime / Mathf.Max(0.05f, fade) * volume);
-                if (!active && src[i].volume <= 0.001f && src[i].isPlaying) src[i].Stop();
+                src[i].volume = active ? volume * Mathf.Sin(k * Mathf.PI * 0.5f) : startVol[i] * Mathf.Cos(k * Mathf.PI * 0.5f);
+                if (!active && k >= 1f && src[i].isPlaying) src[i].Stop();
             }
         }
 

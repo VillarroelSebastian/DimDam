@@ -102,6 +102,22 @@ namespace GumRemix
             }
         }
         public bool Hittable { get { return state == EState.Normal && spawnT <= 0f; } }
+        /// <summary>Plated enemies shrug off gum: only the string between the heroes can wrap them into a ball.</summary>
+        public bool Armored { get { return color == "steel" || color == "iron"; } }
+        float wrapT; bool wrapTouched;
+
+        public void Deflect(Vector2 at)
+        {
+            Sfx.Play("hit", .4f, 2.1f); G.SpawnFx("spark_ice", "spark", at, 1.1f, false, 31); flashT = 0.03f;
+        }
+
+        public void Wrap(float dt, Player by)
+        {
+            if (!Hittable) return;
+            wrapT += dt; wrapTouched = true; flashT = Mathf.Max(flashT, 0.02f);
+            if (((int)(wrapT * 12f)) != ((int)((wrapT - dt) * 12f))) G.Burst(body.Center, 1, 2.5f);
+            if (wrapT >= 0.65f) { wrapT = 0f; Stick(by); G.statWraps++; }
+        }
 
         public Enemy(string k, string c, Vector2 pos)
         {
@@ -113,7 +129,7 @@ namespace GumRemix
                 case "lolli": sMain = Art.Get("lolli"); sBall = Art.Get("ball_lolli"); hw = 0.4f; hh = 0.9f; hp = 2; spriteOffset = new Vector2(0, 0.45f); break;
                 case "cannon": sMain = Art.Get("cannon"); sBall = Art.Get("ball_cannon"); hw = 0.45f; hh = 0.9f; hp = 4; break;
                 case "penguin": sMain = Art.Get("penguin"); sBall = Art.Get("ball_penguin"); hw = 0.42f; hh = 1.05f; hp = 3; break;
-                case "snowman": sMain = Art.Get("snowman"); sBall = Art.Get("ball_snowman"); hw = 0.4f; hh = 1.35f; hp = 3; break;
+                case "snowman": sMain = Art.Get(c == "iron" ? "snowman_iron" : "snowman"); sBall = Art.Get(c == "iron" ? "ball_snowman_iron" : "ball_snowman"); hw = 0.4f; hh = 1.35f; hp = 3; break;
                 case "owl": sMain = Art.Get("owl"); sBall = Art.Get("ball_owl"); hw = 0.45f; hh = 0.95f; hp = 2; spriteOffset = new Vector2(0, 0.42f); break;
                 case "jelly": sMain = Art.Get("jelly"); sBall = Art.Get("ball_jelly"); hw = 0.55f; hh = 1.25f; hp = 3; spriteOffset = new Vector2(0, 0.62f); break;
                 case "crab": sMain = Art.Get("crab"); sBall = Art.Get("ball_crab"); hw = 0.7f; hh = 0.85f; hp = 6; break;
@@ -128,11 +144,15 @@ namespace GumRemix
             anim = new Anim(sr, sMain, first);
             thinkT = UnityEngine.Random.Range(0.4f, 1.4f); shootT = UnityEngine.Random.Range(1.4f, 2.8f); lungeCd = UnityEngine.Random.Range(0.8f, 1.8f); t = UnityEngine.Random.value * 5f;
             G.SpawnFx("spark", "spark", body.Center, 1.2f, false, 30);
+            if (Armored) G.HintArmor();
         }
 
         public void Tick(float dt)
         {
             t += dt; kickCd -= dt; flashT -= dt; hurtT -= dt; spawnT -= dt; blockT -= dt; vulnT -= dt;
+            if (!wrapTouched) wrapT = Mathf.Max(0f, wrapT - dt * 1.2f);
+            wrapTouched = false;
+            sr.color = wrapT > 0f ? Color.Lerp(Color.white, new Color(1f, .62f, .86f), Mathf.Clamp01(wrapT / 0.65f) * 0.8f) : Color.white;
             anim.flash = flashT > 0f;
             switch (state)
             {

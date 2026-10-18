@@ -6,6 +6,7 @@ namespace GumRemix
     /// <summary>What the game needs from any boss, so Gran Chiclon and the Monarca del Deshielo plug into the same flow.</summary>
     public abstract class BossBase
     {
+        public bool shotProof, glow; public float lazoT, lazoTaken; public int lazoTarget;      // guard phase: only the string hurts
         public int hp; public int phase = 1; public float x, y; public bool active, trans, dying, dead;
         static readonly Rect[] None = new Rect[0];
 

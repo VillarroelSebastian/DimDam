@@ -425,6 +425,55 @@ namespace GumRemix.Tests
             yield return Teardown();
         }
 
+        // ------------------------------------------------------------------------------------------ armour + guard phase: only the string works
+        [UnityTest, Timeout(300000)]
+        public IEnumerator ArmorAndGuardNeedTheString()
+        {
+            yield return Boot();
+            GumInput.Override = i => new Pad();
+            G.holdClear = true; G.god = true; G.autoFire = false;
+            G.DebugStartAt(1, 1); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+            G.DebugClearEnemies(); yield return Frames(2);
+            var p0 = G.players[0]; var p1 = G.players[1]; float gy = G.world.GroundTop + 0.02f;
+            p0.Place(new Vector2(-6.5f, gy)); p1.Place(new Vector2(6.5f, gy));
+            // 1) a steel bear ignores gum
+            var bear = G.SpawnEnemy("bear", "steel", new Vector2(0f, gy)); Assert.IsTrue(bear.Armored);
+            yield return Seconds(0.7f);
+            int hp0 = bear.hp;
+            G.shots.Add(new PlayerShot(p0, bear.body.Center + new Vector2(-0.3f, 0f), new Vector2(0.01f, 0f), "fwd"));
+            yield return Frames(4);
+            Assert.AreEqual(hp0, bear.hp, "gum must bounce off armour"); Assert.AreEqual(EState.Normal, bear.state, "armour must not be stuck by gum");
+            // 2) the string wraps it into a ball when it crosses it for a moment
+            float t = 0; while (bear.state == EState.Normal && t < 3f)
+            {
+                t += Time.unscaledDeltaTime; frame++;
+                p0.Place(new Vector2(bear.body.pos.x - 3f, gy)); p1.Place(new Vector2(bear.body.pos.x + 3f, gy)); yield return null;
+            }
+            Assert.AreEqual(EState.Stuck, bear.state, "the string between the heroes must wrap the armoured enemy"); Assert.Greater(G.statWraps, 0);
+            // 3) the string is always there and works diagonally / vertically
+            p0.Place(new Vector2(0f, gy)); p1.Place(new Vector2(0f, gy + 4f)); yield return Frames(3);
+            Assert.IsTrue(G.IsBondActive, "the string follows the heroes in any direction");
+            G.DebugClearEnemies(); yield return Frames(2);
+
+            // 4) boss guard phase
+            G.DebugStartAt(4, 1); yield return Frames(2); G.DebugSkipBanner(); yield return UntilMode(Mode.Play, 4f);
+            gy = G.world.GroundTop + 0.02f;
+            var boss = G.boss; Assert.NotNull(boss);
+            G.DebugDamageBoss(boss.hp - (boss.PhaseFloors[0] + (boss.TotalHp - boss.PhaseFloors[0]) / 2)); yield return Seconds(2.5f);
+            Assert.IsTrue(boss.phase == 1 && boss.shotProof, "the boss should have raised its guard (phase " + boss.phase + ")");
+            int before = boss.hp; var hb = boss.Hurtboxes()[0];
+            G.shots.Add(new PlayerShot(p0, hb.center, new Vector2(0.01f, 0f), "fwd")); yield return Frames(4);
+            Assert.AreEqual(before, boss.hp, "gum must not hurt a guarded boss");
+            t = 0; while (boss.shotProof && t < 14f)
+            {
+                t += Time.unscaledDeltaTime; frame++; hb = boss.Hurtboxes()[0];
+                p0.Place(new Vector2(hb.xMin - 2.5f, gy)); p1.Place(new Vector2(hb.xMax + 2.5f, gy)); yield return null;
+            }
+            Assert.IsFalse(boss.shotProof, "the string must break the guard"); Assert.Less(boss.hp, before);
+            Log("armour + guard ok: wraps=" + G.statWraps + " hp " + before + " -> " + boss.hp);
+            yield return Teardown();
+        }
+
         // ------------------------------------------------------------------------------------------ the scene asset itself
         [UnityTest, Timeout(120000)]
         public IEnumerator SceneAssetBoots()

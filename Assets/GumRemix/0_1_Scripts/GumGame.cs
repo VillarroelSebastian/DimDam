@@ -40,7 +40,7 @@ namespace GumRemix
         PText[] pLabels = new PText[2]; SpriteRenderer bossBarBack, bossBarFill; PText bossName; SpriteRenderer[] bossTicks = new SpriteRenderer[2];
         GameObject resultsRoot; float gameOverT; bool bossDownFlag;
         public bool inputLocked, god, holdClear; public int statStuck, statKicks, statBallKills, statParries;
-        public bool solo = true, autoFire = true; public int statCoopBounces, statHugs; float hugT, hugCd, spawnCd; Bond bond;
+        public bool solo = true, autoFire = true; public int statCoopBounces, statHugs, statWraps; bool armorHinted; BossBase lazoBoss; bool[] lazoDone = new bool[4]; float hugT, hugCd, spawnCd; Bond bond;
         public static void ResetSession() { seenHelp = false; }
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStatics() { I = null; seenHelp = false; }
@@ -413,9 +413,9 @@ namespace GumRemix
                 Line(t, y, "PONTE A CADA LADO DE UN ENEMIGO O DEL JEFE", "ball_bear_red", -1, "shake"); y -= d;
                 Line(t, y, "CAE SOBRE TU COMPANERO Y REBOTAS ALTO", "hero_celeste", 18); y -= d;
                 Line(t, y, "JUNTOS CERCA UN RATO: ABRAZO, +1 CORAZON", "hearts", 0); y -= d;
-                Line(t, y, "CADA PARRY CARGA EL SUPER DE LOS DOS", "bubbles", -1, "pink"); y -= d;
+                Line(t, y, "ACORAZADOS: EL DISPARO REBOTA, USA EL LAZO", "bear_steel", -1, "idle", 0.5f); y -= d;
                 Line(t, y, "SI UNO CAE, EL OTRO LO REVIVE TOCANDOLO", "ghost_coral", -1, "float"); y -= d;
-                PText.Create(t, new Vector3(0, -2.9f, 0), "HABLEN, COORDINENSE Y CUENTEN LA HISTORIA DESPUES", 1, new Color(1f, .85f, .5f), true, 265);
+                PText.Create(t, new Vector3(0, -2.9f, 0), "JEFES: EN SU GUARDIA SOLO EL LAZO LOS DANA. RODEENLOS", 1, new Color(1f, .85f, .5f), true, 265);
             }
             else if (helpPage == 1)
             {
@@ -498,7 +498,7 @@ namespace GumRemix
 
         void StartGame(int count)
         {
-            solo = count == 1; playerCount = 2; int startLevel = menuWorld * Levels.PerWorld; ClearAll(); totalTime = 0; kills = 0;
+            armorHinted = false; solo = count == 1; playerCount = 2; int startLevel = menuWorld * Levels.PerWorld; ClearAll(); totalTime = 0; kills = 0;
             foreach (var p in players) { p.parries = 0; p.hitsTaken = 0; p.meter = 0; }
             StartLevel(startLevel);
         }
@@ -601,7 +601,7 @@ namespace GumRemix
             if (boss == null || (mode != Mode.Play && mode != Mode.Banner)) return;
             if (boss.phase != lastBossPhase)
             {
-                lastBossPhase = boss.phase; Sfx.PlayTrack(BossTrack(world.def.world, boss.phase), 0.35f);
+                lastBossPhase = boss.phase; Sfx.PlayTrack(BossTrack(world.def.world, boss.phase), 3.2f);
                 // a breather between forms: everybody gets a heart back and fallen heroes return
                 foreach (var p in players) if (p.joined) { if (p.ghost) p.Revive(2); else p.Heal(1); }
                 ShowHint("NUEVA FORMA! +1 CORAZON PARA LOS DOS", 2.5f);
@@ -611,6 +611,45 @@ namespace GumRemix
         void LateUpdate()
         {
             hudRoot.position = new Vector3(0f, Mathf.Round(camY * 40f) / 40f, 0f);
+        }
+
+        public bool IsBondActive { get { return bond != null && bond.Active; } }
+        public void HintArmor()
+        {
+            if (armorHinted) return; armorHinted = true;
+            ShowHint("ACORAZADO: EL DISPARO REBOTA. ATRAPALO CON EL LAZO!", 4f);
+        }
+
+        /// <summary>Guard phase: once per form, when the boss has lost ~40% of that form's life, gum bounces off until the string has done its share.</summary>
+        void TickLazo()
+        {
+            if (boss == null) { lazoBoss = null; return; }
+            if (lazoBoss != boss) { lazoBoss = boss; lazoDone = new bool[4]; boss.shotProof = false; boss.glow = false; }
+            if (boss.shotProof)
+            {
+                boss.lazoT -= dt;
+                bool broke = boss.lazoTaken >= boss.lazoTarget;
+                if (broke || boss.lazoT <= 0f || boss.trans || boss.dying || boss.dead)
+                {
+                    boss.shotProof = false; boss.glow = false;
+                    if (broke && !boss.dead) { Sfx.Play("parry"); Burst(boss.Hurtboxes()[0].center, 18, 6f); ShowHint("GUARDIA ROTA!", 2f); }
+                }
+                else if (((int)(time * 6f)) != ((int)((time - dt) * 6f)))
+                {
+                    var c = boss.Hurtboxes()[0]; Burst(new Vector2(Random.Range(c.xMin, c.xMax), Random.Range(c.yMin, c.yMax)), 1, 2f);
+                }
+            }
+            else if (boss.Hittable && boss.phase >= 1 && boss.phase <= 3 && !lazoDone[boss.phase])
+            {
+                int p = boss.phase; var fl = boss.PhaseFloors;
+                int top = p == 1 ? boss.TotalHp : fl[p - 2], bot = p == 3 ? 0 : fl[p - 1];
+                if (boss.hp <= bot + (int)(0.6f * (top - bot)))
+                {
+                    lazoDone[p] = true; boss.shotProof = true; boss.glow = true; boss.lazoT = 20f; boss.lazoTaken = 0;
+                    boss.lazoTarget = Mathf.Max(8, (int)(0.22f * (top - bot)));
+                    ShowHint("GUARDIA! SOLO EL LAZO LO DANA: RODEALO", 4.5f); Sfx.Play("warn", .7f);
+                }
+            }
         }
 
         void TickHug()
@@ -670,6 +709,7 @@ namespace GumRemix
             foreach (var p in pillars) p.Tick(dt);
             foreach (var i in icicles) i.Tick(dt);
             if (boss != null) boss.Tick(dt);
+            TickLazo();
             if (world.def.icicles && mode == Mode.Play)
             {
                 icicleT -= dt;

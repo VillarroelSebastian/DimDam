@@ -84,3 +84,10 @@ Pensado para la temática de la jam: el juego se disfruta más con otra persona,
 Toda la música se compone y sintetiza dentro del juego (sin archivos de audio), en `GumMusic.cs`: `SongBook` (partituras como texto), `MusicRenderer` (32 kHz estéreo, bucles sin clic) y `MusicHost` (render en segundo plano, fundido cruzado).
 
 Pistas (`Track`): Prado, Cueva, Nubes, Fabrica, CircoBoss1-3 (Gran Chiclón, 3 formas), Lago, Aldea, Cristales, Jardines, PalacioBoss1-3 (Monarca, 3 formas), Title, Victory, GameOver, WorldDone.
+
+## Lazo, acorazados y guardia de jefes
+- **El lazo siempre une a los heroes** (horizontal, diagonal o vertical, largo maximo 9.5 u; mas alla los jala). Daña lo que cruza.
+- **Acorazados** (oso de acero en Chicle, muneco de hierro en Hielo; arte generado con `0_3_Art/ArtSource~/armor.py`): el disparo rebota. Hay que dejar el lazo cruzandolos ~0.65 s para encapsularlos en bolita; hay que rodearlos y usar el plataformeo para quedar a cada lado.
+- **Guardia de jefe**: una vez por forma, al perder ~40 % de la vida de esa forma, el jefe brilla y el disparo rebota; solo el lazo lo daña (hasta quitarle ~22 % de la forma o 20 s).
+- Dificultad: hasta 4-5 enemigos a la vez, jefes con mas vida (Chiclon 170/150/125, Monarca 100/100/90) y menos pausa entre ataques.
+- Musica: fundidos de potencia constante (1.8 s entre niveles, 3.2 s entre formas de jefe).

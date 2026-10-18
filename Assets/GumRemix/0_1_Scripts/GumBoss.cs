@@ -7,7 +7,7 @@ namespace GumRemix
     /// <summary>El Gran Chiclon: a three-form gum ringmaster. Attacks are written as small coroutines.</summary>
     public class Boss : BossBase
     {
-        public const int Phase1Hp = 140, Phase2Hp = 120, Phase3Hp = 100;
+        public const int Phase1Hp = 170, Phase2Hp = 150, Phase3Hp = 125;
         public const int MaxHp = Phase1Hp + Phase2Hp + Phase3Hp;
         public override int TotalHp { get { return MaxHp; } }
         public override string DisplayName { get { return "EL GRAN CHICLON"; } }
@@ -74,7 +74,7 @@ namespace GumRemix
                 wait -= dt;
                 while (wait <= 0f)
                 {
-                    if (!routine.MoveNext()) { routine = null; manual = false; sweepActive = false; diveActive = false; idleTimer = phase == 1 ? 1.9f : (phase == 2 ? 1.4f : 1.2f); break; }
+                    if (!routine.MoveNext()) { routine = null; manual = false; sweepActive = false; diveActive = false; idleTimer = phase == 1 ? 1.5f : (phase == 2 ? 1.15f : 1.0f); break; }
                     wait = routine.Current;
                 }
             }
@@ -103,6 +103,7 @@ namespace GumRemix
         void Render(float dt)
         {
             go.transform.position = new Vector3(x, y, 0);
+            sr.color = glow ? Color.Lerp(Color.white, new Color(.6f, 1f, 1f), 0.4f + 0.4f * Mathf.Sin(Time.time * 10f)) : Color.white;      // guarded: the string is the only thing that hurts
             if (!manual) anim.Tick(dt);
         }
 
