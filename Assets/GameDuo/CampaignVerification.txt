@@ -1,6 +1,16 @@
-Campaign Play Mode verification: 0 failures / 2026-10-18T18:56:26
+Campaign Play Mode verification: 0 failures / 2026-10-18T20:08:31
+PASS Build opens the main menu
+PASS Menu music plays and loops
+PASS Menu has exactly one active audio listener
+PASS Controls opens the real tutorial pages
+PASS Menu music fades out before the intro
 PASS Nine imported movie references included in Resources
+PASS Movie prepares behind opaque black: 1
 PASS Movie decodes real frames: 1
+PASS Movie produces non-silent audio samples: 1
+PASS Movie audio track routed at full volume: 1
+PASS Exactly one active audio listener during movie: 1
+PASS New scene activates behind opaque black: 01_Tutorial_Chicle
 PASS Intro movie finishes and releases overlay
 PASS Both-player tutorial confirmations finish
 PASS Hero 0 moves with real keyboard input
@@ -27,17 +37,62 @@ PASS Live wave enemy visible: chapter 1 kind Walker
 PASS Real beam collision damages chapter 1 enemy Walker
 PASS Live wave enemy visible: chapter 1 kind Walker
 PASS Real beam collision damages chapter 1 enemy Walker
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Jumper
+PASS Real beam collision damages chapter 1 enemy Jumper
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Walker
+PASS Real beam collision damages chapter 1 enemy Walker
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Jumper
+PASS Real beam collision damages chapter 1 enemy Jumper
 PASS Live wave enemy visible: chapter 1 kind Jumper
 PASS Real beam collision damages chapter 1 enemy Jumper
 PASS Live wave enemy visible: chapter 1 kind Walker
 PASS Real beam collision damages chapter 1 enemy Walker
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Walker
+PASS Real beam collision damages chapter 1 enemy Walker
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Jumper
+PASS Real beam collision damages chapter 1 enemy Jumper
 PASS Live wave enemy visible: chapter 1 kind Jumper
 PASS Real beam collision damages chapter 1 enemy Jumper
 PASS Live wave enemy visible: chapter 1 kind Walker
 PASS Real beam collision damages chapter 1 enemy Walker
+PASS Live wave enemy visible: chapter 1 kind Chaser
+PASS Real beam collision damages chapter 1 enemy Chaser
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
+PASS Live wave enemy visible: chapter 1 kind Flyer
+PASS Real beam collision damages chapter 1 enemy Flyer
 PASS All three combat waves finish in chapter 1
+PASS Movie prepares behind opaque black: 2
 PASS Movie decodes real frames: 2
+PASS Movie produces non-silent audio samples: 2
+PASS Movie audio track routed at full volume: 2
+PASS Exactly one active audio listener during movie: 2
+PASS Movie prepares behind opaque black: 3
 PASS Movie decodes real frames: 3
+PASS Movie produces non-silent audio samples: 3
+PASS Movie audio track routed at full volume: 3
+PASS Exactly one active audio listener during movie: 3
+PASS New scene activates behind opaque black: 02_ReinoNeon
 PASS Tutorial -> movies 2,3 -> Neon
 PASS Vertical portal installed
 PASS Reciprocal neon control 0
@@ -55,7 +110,12 @@ PASS Both plates restore reactor
 PASS Both heroes collect heart fragment
 PASS Portal rejects one player alone
 PASS Both heroes enter portal
+PASS Movie prepares behind opaque black: 4
 PASS Movie decodes real frames: 4
+PASS Movie produces non-silent audio samples: 4
+PASS Movie audio track routed at full volume: 4
+PASS Exactly one active audio listener during movie: 4
+PASS New scene activates behind opaque black: 03_ReyHielo
 PASS Portal -> movie 4 -> Ice King
 PASS Two playable heroes in combat chapter 3
 PASS Both-player tutorial confirmations finish
@@ -93,15 +153,45 @@ PASS Real beam collision damages chapter 3 enemy Flyer
 PASS Live wave enemy visible: chapter 3 kind Cannon
 PASS Real beam collision damages chapter 3 enemy Cannon
 PASS Closed ice core rejects damage
+PASS Live wave enemy visible: chapter 3 kind Walker
+PASS Real beam collision damages chapter 3 enemy Walker
+PASS Live wave enemy visible: chapter 3 kind Walker
+PASS Real beam collision damages chapter 3 enemy Walker
+PASS Live wave enemy visible: chapter 3 kind Cannon
+PASS Real beam collision damages chapter 3 enemy Cannon
+PASS Live wave enemy visible: chapter 3 kind Walker
+PASS Real beam collision damages chapter 3 enemy Walker
+PASS Live wave enemy visible: chapter 3 kind Flyer
+PASS Real beam collision damages chapter 3 enemy Flyer
+PASS Live wave enemy visible: chapter 3 kind Jumper
+PASS Real beam collision damages chapter 3 enemy Jumper
+PASS Live wave enemy visible: chapter 3 kind Armored
+PASS Real beam collision damages chapter 3 enemy Armored
+PASS Live wave enemy visible: chapter 3 kind Walker
+PASS Real beam collision damages chapter 3 enemy Walker
 PASS All three combat waves finish in chapter 3
 PASS Ice King executes four patterns and three phases
 PASS Ice boss defeat cleans hazards
+PASS Movie prepares behind opaque black: 5
 PASS Movie decodes real frames: 5
+PASS Movie produces non-silent audio samples: 5
+PASS Movie audio track routed at full volume: 5
+PASS Exactly one active audio listener during movie: 5
+PASS New scene activates behind opaque black: 04_RescatePinguinos
 PASS Ice King -> movie 5 -> Penguins
 PASS Penguins start and countdown
 PASS All sixteen penguins enter refuge through real update logic
+PASS Movie prepares behind opaque black: 6
 PASS Movie decodes real frames: 6
+PASS Movie produces non-silent audio samples: 6
+PASS Movie audio track routed at full volume: 6
+PASS Exactly one active audio listener during movie: 6
+PASS Movie prepares behind opaque black: 7
 PASS Movie decodes real frames: 7
+PASS Movie produces non-silent audio samples: 7
+PASS Movie audio track routed at full volume: 7
+PASS Exactly one active audio listener during movie: 7
+PASS New scene activates behind opaque black: 05_JefeChicle
 PASS Penguins -> movies 6,7 -> Candy King
 PASS Two playable heroes in combat chapter 5
 PASS Both-player tutorial confirmations finish
@@ -131,13 +221,30 @@ PASS Live wave enemy visible: chapter 5 kind Chaser
 PASS Real beam collision damages chapter 5 enemy Chaser
 PASS Live wave enemy visible: chapter 5 kind Cannon
 PASS Real beam collision damages chapter 5 enemy Cannon
+PASS Live wave enemy visible: chapter 5 kind Walker
+PASS Real beam collision damages chapter 5 enemy Walker
 PASS Summoned guard remains visible
-PASS Live wave enemy visible: chapter 5 kind Cannon
-PASS Real beam collision damages chapter 5 enemy Cannon
+PASS Live wave enemy visible: chapter 5 kind Walker
+PASS Real beam collision damages chapter 5 enemy Walker
+PASS Live wave enemy visible: chapter 5 kind Jumper
+PASS Real beam collision damages chapter 5 enemy Jumper
+PASS Live wave enemy visible: chapter 5 kind Flyer
+PASS Real beam collision damages chapter 5 enemy Flyer
+PASS Summoned guard remains visible
+PASS Live wave enemy visible: chapter 5 kind Jumper
+PASS Real beam collision damages chapter 5 enemy Jumper
 PASS All three combat waves finish in chapter 5
 PASS Candy King summons reinforcements before defeat
+PASS Movie prepares behind opaque black: 8
 PASS Movie decodes real frames: 8
+PASS Movie produces non-silent audio samples: 8
+PASS Movie audio track routed at full volume: 8
+PASS Exactly one active audio listener during movie: 8
+PASS Movie prepares behind opaque black: the final
 PASS Movie decodes real frames: the final
+PASS Movie produces non-silent audio samples: the final
+PASS Movie audio track routed at full volume: the final
+PASS Exactly one active audio listener during movie: the final
 PASS Candy King -> movie 8 -> the final -> completed
 PASS Exact complete movie order: 1,2,3,4,5,6,7,8,the final
 PASS Final transition restores simulation and audio

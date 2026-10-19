@@ -23,6 +23,10 @@ public sealed class GameDuoFinalPlayQA : MonoBehaviour {
   yield return null;yield return null;
   var boss=enemy.GetComponent<CandyBoss>();var motion=enemy.GetComponent<GameDuoCandyKing>();
   Check(boss&&motion,"Original combat and pink animation installed");Check(enemy.sprite.sprite.name.StartsWith("PinkKing_"),"Pink boss pose displayed");
+  var vertical=GameDuoBat.Spawn(motion,-6,6,1,5,enemy.sprite.sharedMaterial);vertical.SetVertical();
+  yield return new WaitForSeconds(.2f);Check(vertical&&vertical.transform.position.y<5.5f&&Mathf.Abs(vertical.transform.position.x+6)<.2f,"Vertical bats descend in their announced column");if(vertical)Destroy(vertical.gameObject);
+  var small=Instantiate(game.enemyPrefabs[0],new Vector2(9,4),Quaternion.identity);small.maxHealth=10000;game.enemies.Add(small);yield return null;
+  CoopUltimateModes.ApplyUltimateDamage(small,1);Check(small.Dead&&small.Health==0&&!game.enemies.Contains(small),"Ultimate kills high-health small enemies and removes them from wave tracking");
   bool wind=false,bats=false,sugar=false,captured=false;float until=Time.time+12;
   while(Time.time<until){wind|=motion.Summoning&&!motion.Releasing;bats|=FindAnyObjectByType<GameDuoBat>();if(bats&&!captured){captureRequested=true;captured=true;}sugar|=boss.LastAttackTime>0;yield return null;}
   Check(wind&&bats,"Hands telegraph precedes animated bat flock");Check(sugar,"Original sugar rain still fires");

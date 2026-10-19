@@ -47,9 +47,13 @@ public sealed class GameDuoCampaign : MonoBehaviour {
     game.level.waves=new[]{
      new CandyWave{enemyTypes=new[]{0,4,5},spawnPositions=new[]{new Vector2(-7,-3.5f),new Vector2(3,.5f),new Vector2(8,-3.5f)}},
      new CandyWave{enemyTypes=new[]{1,2,5},spawnPositions=new[]{new Vector2(-4,1),new Vector2(5,-3.5f),new Vector2(-8,-3.5f)}},
-     new CandyWave{enemyTypes=new[]{6},spawnPositions=new[]{new Vector2(0,-2.9f)}}};
+     new CandyWave{enemyTypes=new[]{6,0,1,4},spawnPositions=new[]{new Vector2(0,-2.9f),new Vector2(-8,-3.4f),new Vector2(6,2),new Vector2(-4,3)}}};
    }
-   if(Stage==0){game.level.lesson="MIMO Y PIPRO / DEFIENDAN EL SALON\nEl rey tiembla de miedo junto a su trono.\nEl lazo entre ambos hace dano.\nPractiquen y protejan al rey de las tres oleadas.";hostFactory();}
+   if(Stage==2){var wave=game.level.waves[2];wave.enemyTypes=new[]{6,0,2,4};wave.spawnPositions=new[]{new Vector2(0,-2.65f),new Vector2(-7,-3.5f),new Vector2(7,-3.5f),new Vector2(-5,2.5f)};}
+   if(Stage==0){game.level.waves=new[]{
+    new CandyWave{enemyTypes=new[]{0,0,2,1,4,4},spawnPositions=new[]{new Vector2(-8,-3.5f),new Vector2(8,-3.5f),new Vector2(-5,-3.5f),new Vector2(5,-3.5f),new Vector2(-6,2.4f),new Vector2(6,2.4f)}},
+    new CandyWave{enemyTypes=new[]{0,2,2,1,1,0,4,4},spawnPositions=new[]{new Vector2(-8,-3.5f),new Vector2(8,-3.5f),new Vector2(-5,-3.5f),new Vector2(5,-3.5f),new Vector2(-2,-3.5f),new Vector2(2,-3.5f),new Vector2(-6,2.8f),new Vector2(6,2.8f)}},
+    new CandyWave{enemyTypes=new[]{0,2,2,1,1,0,2,4,4,4},spawnPositions=new[]{new Vector2(-9,-3.5f),new Vector2(9,-3.5f),new Vector2(-6,-3.5f),new Vector2(6,-3.5f),new Vector2(-3,-3.5f),new Vector2(3,-3.5f),new Vector2(0,-3.5f),new Vector2(-7,2.8f),new Vector2(0,3.4f),new Vector2(7,2.8f)}}};game.level.lesson="MIMO Y PIPRO / DEFIENDAN EL SALON\nEl rey tiembla de miedo junto a su trono.\nEl lazo entre ambos hace dano.\nPractiquen y protejan al rey de las tres oleadas.";hostFactory();}
   }
  }
  void Start(){if(Stage==1)GameDuoNeonPortal.Install(neon);if(Stage==0&&game&&!game.Started)game.Begin();if(Stage==0&&!GameDuoCinema.IntroPlayed)GameDuoCinema.Play(new[]{0},null);}

@@ -2,7 +2,8 @@ using UnityEngine;
 namespace CoopBeam {
 public sealed class GameDuoBat : MonoBehaviour {
  public GameDuoCandyKing Owner {get;private set;}
- static Sprite[] frames;SpriteRenderer art;Rigidbody2D body;float speed,lane,age;int direction;
+ static Sprite[] frames;SpriteRenderer art;Rigidbody2D body;float speed,lane,age;int direction;bool vertical;
+ public void SetVertical(){vertical=true;lane=body.position.x;}
  public static GameDuoBat Spawn(GameDuoCandyKing owner,float x,float y,int direction,float speed,Material material){
   if(frames==null||!System.Array.TrueForAll(frames,frame=>frame))frames=GameDuoCandyKing.LoadFrames("Bats",1.3f,false);
   if(frames==null)return null;
@@ -15,9 +16,9 @@ public sealed class GameDuoBat : MonoBehaviour {
  void FixedUpdate(){
   if(!Owner||!Owner.enabled||Owner.GetComponent<EnemyBase>().Dead||!GameManager.Instance||!GameManager.Instance.Running){Destroy(gameObject);return;}
   age+=Time.fixedDeltaTime;
-  body.MovePosition(new Vector2(body.position.x+direction*speed*Time.fixedDeltaTime,lane+Mathf.Sin(age*6)*.12f));
+  body.MovePosition(vertical?new Vector2(lane+Mathf.Sin(age*6)*.12f,body.position.y-speed*Time.fixedDeltaTime):new Vector2(body.position.x+direction*speed*Time.fixedDeltaTime,lane+Mathf.Sin(age*6)*.12f));
   art.sprite=frames[(int)(age*12)%8];
-  if(age>7||Mathf.Abs(body.position.x)>14)Destroy(gameObject);
+  if(age>7||Mathf.Abs(body.position.x)>14||body.position.y < -7)Destroy(gameObject);
  }
  void OnTriggerEnter2D(Collider2D other){Hit(other);}
  void OnTriggerStay2D(Collider2D other){Hit(other);}

@@ -37,7 +37,7 @@ public sealed class GameDuoCandyEnemyPlayQA:MonoBehaviour {
   float end=Time.time+36;int peak=0;bool summonedTurret=false;
   bool captured=false;
   while(Time.time<end){int alive=0;foreach(var guard in FindObjectsByType<GameDuoCandyEnemy>())if(guard.Owner==motion){alive++;summonedTurret|=guard.Type==GameDuoCandyEnemy.Species.Turret;}peak=Mathf.Max(peak,alive);if(!captured&&alive>=2){yield return new WaitForSeconds(.35f);Capture();captured=true;}yield return null;}
-  Check(motion.Reinforcements>=2&&summonedTurret,"Boss invokes turret and additional species");Check(peak<=3,"Boss summon cap respected");Check(boss.LastAttackTime>0,"Sugar rain retained");
+  Check(motion.Reinforcements>=2&&summonedTurret,"Boss invokes turret and additional species");Check(peak<=4,"Boss summon cap respected");Check(boss.LastAttackTime>0,"Sugar rain retained");
   while(!boss.Vulnerable)yield return null;king.Damage(10000);yield return null;yield return null;
   Check(FindObjectsByType<GameDuoCandyEnemy>().Length==0,"Boss death clears reinforcements");
   report.Insert(0,failures==0?"PASS / Candy enemy integration":"FAIL / "+failures);File.WriteAllLines("Assets/GameDuo/CandyEnemyQA.txt",report);

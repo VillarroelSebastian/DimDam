@@ -19,6 +19,12 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
  readonly List<string> report=new List<string>();
  readonly List<string> movies=new List<string>();
  readonly HashSet<VideoClip> sought=new HashSet<VideoClip>();
+ readonly float[] audioSamples=new float[512];readonly HashSet<VideoClip> audible=new HashSet<VideoClip>();VideoClip lastClip;
+ void SceneChanged(Scene scene,LoadSceneMode mode){
+  if(!GameDuoCinema.Busy)return;
+  var cinema=FindAnyObjectByType<GameDuoCinema>();
+  Check(cinema&&(float)typeof(GameDuoCinema).GetField("opacity",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(cinema)>.999f,"New scene activates behind opaque black: "+scene.name);
+ }
  Keyboard keyboard,original; KeyboardState desired; int failures; bool done; float deadline;
  bool oldRun,oldPause; float oldScale; int savedUnlock,savedFragment;
  InputSettings.BackgroundBehavior oldBackground;
@@ -32,10 +38,18 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
   if(deadline>0&&Time.realtimeSinceStartup>deadline){Check(false,"Suite timeout");Finish();return;}
   if(GameDuoCinema.Busy){
    var player=FindAnyObjectByType<GameDuoCinema>().GetComponent<VideoPlayer>();
+   if(player&&player.clip){
+    if(player.clip!=lastClip){lastClip=player.clip;var cinema=player.GetComponent<GameDuoCinema>();Check((float)typeof(GameDuoCinema).GetField("opacity",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(cinema)>.999f,"Movie prepares behind opaque black: "+player.clip.name);}
+    if(player.isPlaying&&player.audioTrackCount>0){var output=player.GetTargetAudioSource(0);if(output){output.GetOutputData(audioSamples,0);if(audioSamples.Any(v=>Mathf.Abs(v)>.00001f))audible.Add(player.clip);}}
+   }
    if(player&&player.isPlaying&&player.time>.2&&player.time<.6)desired=new KeyboardState(Key.R,Key.M,Key.F,Key.Enter);
-   if(player&&player.isPlaying&&player.time>.75&&player.clip&&!sought.Contains(player.clip)){
+   if(player&&player.isPlaying&&player.time>2.5&&player.clip&&!sought.Contains(player.clip)){
     desired=new KeyboardState();sought.Add(player.clip);movies.Add(player.clip.name);
     Check(player.isPrepared&&player.texture&&player.texture.width>16,"Movie decodes real frames: "+player.clip.name);
+    var source=player.GetTargetAudioSource(0);
+    Check(audible.Contains(player.clip),"Movie produces non-silent audio samples: "+player.clip.name);
+    Check(player.clip.audioTrackCount>0&&player.IsAudioTrackEnabled(0)&&source&&source.enabled&&!source.mute&&source.volume>.9f&&source.ignoreListenerPause,"Movie audio track routed at full volume: "+player.clip.name);
+    Check(FindObjectsByType<AudioListener>(FindObjectsSortMode.None).Count(l=>l.isActiveAndEnabled)==1,"Exactly one active audio listener during movie: "+player.clip.name);
     if(player.length>2)player.time=player.length-.25;
    }
   }
@@ -47,7 +61,7 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
   Application.runInBackground=true;InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
   InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
   original=Keyboard.current;keyboard=InputSystem.AddDevice<Keyboard>("Campaign verification");
-  InputSystem.onBeforeUpdate+=Before;InputSystem.onAfterUpdate+=After;Application.logMessageReceived+=Error;
+  InputSystem.onBeforeUpdate+=Before;InputSystem.onAfterUpdate+=After;Application.logMessageReceived+=Error;SceneManager.sceneLoaded+=SceneChanged;
   deadline=Time.realtimeSinceStartup+600;
   var stack=new Stack<IEnumerator>();stack.Push(Run());
   while(stack.Count>0&&!done){
@@ -64,6 +78,20 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
  IEnumerator Settle(float seconds){float end=Time.realtimeSinceStartup+seconds;while(Time.realtimeSinceStartup<end)yield return null;}
  IEnumerator Guide(){float end=Time.realtimeSinceStartup+12;int frame=0;while(FindAnyObjectByType<GameDuoTutorial>()&&Time.realtimeSinceStartup<end){desired=frame++%3==0?new KeyboardState(Key.F,Key.Enter):new KeyboardState();yield return null;}desired=new KeyboardState();Check(!FindAnyObjectByType<GameDuoTutorial>(),"Both-player tutorial confirmations finish");}
  IEnumerator Run(){
+  var menu=FindAnyObjectByType<GameDuoMainMenu>();
+  Check(menu,"Build opens the main menu");
+  yield return Settle(1);
+  if(menu){
+   var music=menu.GetComponent<AudioSource>();
+   Check(music&&music.isPlaying&&music.loop&&music.volume>.3f&&music.clip.length>20,"Menu music plays and loops");
+   Check(FindObjectsByType<AudioListener>(FindObjectsSortMode.None).Count(l=>l.isActiveAndEnabled)==1,"Menu has exactly one active audio listener");
+   var controls=menu.GetComponent<GameDuoTutorial>();controls.OpenControls();
+   Check(controls.Reviewing,"Controls opens the real tutorial pages");
+   Check(CoopPromptUI.HeroSprite(0)&&CoopPromptUI.HeroSprite(1),"Both menu control heroes resolve without gameplay players");
+   menu.StartGame();
+   yield return Settle(.6f);
+   Check(music.volume==0,"Menu music fades out before the intro");
+  }
   var library=Resources.Load<GameDuoMovieLibrary>("GameDuoMovies");Check(library&&library.clips.Length==9&&library.clips.All(c=>c&&c.length>0),"Nine imported movie references included in Resources");
   yield return Wait(()=>!GameDuoCinema.Busy,65,"Intro movie finishes and releases overlay");
   yield return Guide();
@@ -86,7 +114,7 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
    Check(GameDuoCampaign.Active&&GameDuoCampaign.Instance.Stage==stage,"Re-entry chapter "+(stage+1));
    if(stage==0)yield return Guide();
    if(stage!=3)yield return Samples(stage);
-   else {var round=FindAnyObjectByType<IcePenguinRound>();desired=new KeyboardState(Key.Enter);yield return null;yield return null;desired=new KeyboardState();typeof(IcePenguinRound).GetProperty("Remaining").SetValue(round,.05f);yield return Settle(3.3f);Check(round.Finished&&round.Rescued==0,"Penguin timeout ends round without claiming a rescue");}
+   else {var round=FindAnyObjectByType<IcePenguinRound>();desired=new KeyboardState(Key.F,Key.Enter);yield return null;yield return null;desired=new KeyboardState();typeof(IcePenguinRound).GetProperty("Remaining").SetValue(round,.05f);yield return Settle(3.3f);Check(round.Finished&&round.Rescued==0,"Penguin timeout ends round without claiming a rescue");}
   }
   yield return RescueDefeatRestart();
   var cache=GameDuoIcePoseFrames.Load("EnemyExtraFrames",6,1.5f);Destroy(cache[0]);yield return null;
@@ -168,7 +196,7 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
  void Place(NeonLevel level,int player,Transform target){level.game.players[player].ReviveAt(target.position);Physics2D.SyncTransforms();}
  IEnumerator Neon(){
   var level=FindAnyObjectByType<NeonLevel>();Check(level&&level.exit.GetComponent<GameDuoNeonPortal>(),"Vertical portal installed");
-  desired=new KeyboardState(Key.Enter);yield return null;yield return null;desired=new KeyboardState();
+  desired=new KeyboardState(Key.F,Key.Enter);yield return null;yield return null;desired=new KeyboardState();
   yield return Settle(.2f);
   for(int i=0;i<level.crossed.Length;i++){
    var device=level.crossed[i];Place(level,device.player,device.transform);yield return Settle(.25f);
@@ -187,7 +215,7 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
   Capture("neon-portal");Place(level,0,level.exit);Place(level,1,level.exit);yield return Settle(.2f);Check(level.Completed,"Both heroes enter portal");
  }
  IEnumerator Penguins(){
-  var round=FindAnyObjectByType<IcePenguinRound>();desired=new KeyboardState(Key.Enter);yield return null;yield return null;desired=new KeyboardState();
+  var round=FindAnyObjectByType<IcePenguinRound>();desired=new KeyboardState(Key.F,Key.Enter);yield return null;yield return null;desired=new KeyboardState();
   yield return Settle(3.3f);Check(round.Started&&!round.Finished,"Penguins start and countdown");
   // Controlled setup at the refuge exercises the actual rescue/counter/finish logic.
   var birds=(Array)typeof(IcePenguinRound).GetField("birds",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(round);
@@ -204,7 +232,7 @@ public sealed class GameDuoCampaignVerification : MonoBehaviour {
   report.Add("Scope: real scenes, rendering, video decoding/end events, beam damage, boss phases, controlled neon mechanisms and refuge positioning. Movie playback seeks near end after decoding; this is not a manual full-duration playthrough.");
   File.WriteAllLines("Assets/GameDuo/CampaignVerification.txt",report);Debug.Log(report[0]);EditorApplication.ExitPlaymode();
  }
- void Cleanup(){Application.logMessageReceived-=Error;InputSystem.onBeforeUpdate-=Before;InputSystem.onAfterUpdate-=After;if(keyboard!=null&&keyboard.added)InputSystem.RemoveDevice(keyboard);if(original!=null&&original.added)original.MakeCurrent();InputSystem.settings.backgroundBehavior=oldBackground;InputSystem.settings.editorInputBehaviorInPlayMode=oldInput;Application.runInBackground=oldRun;AudioListener.pause=oldPause;Time.timeScale=1;PlayerPrefs.SetInt("GameDuo.Unlocked",savedUnlock);PlayerPrefs.SetInt("ReinoNeon.FriendshipFragment",savedFragment);PlayerPrefs.Save();}
+ void Cleanup(){Application.logMessageReceived-=Error;SceneManager.sceneLoaded-=SceneChanged;InputSystem.onBeforeUpdate-=Before;InputSystem.onAfterUpdate-=After;if(keyboard!=null&&keyboard.added)InputSystem.RemoveDevice(keyboard);if(original!=null&&original.added)original.MakeCurrent();InputSystem.settings.backgroundBehavior=oldBackground;InputSystem.settings.editorInputBehaviorInPlayMode=oldInput;Application.runInBackground=oldRun;AudioListener.pause=oldPause;Time.timeScale=1;PlayerPrefs.SetInt("GameDuo.Unlocked",savedUnlock);PlayerPrefs.SetInt("ReinoNeon.FriendshipFragment",savedFragment);PlayerPrefs.Save();}
  void OnDestroy(){if(!done)Cleanup();}
 }
 #endif

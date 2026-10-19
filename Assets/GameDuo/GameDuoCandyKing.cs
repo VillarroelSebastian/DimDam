@@ -7,9 +7,10 @@ public sealed class GameDuoCandyKing : MonoBehaviour {
  public bool Releasing => summonAge>=1.4f;
  public int Summons {get;private set;}
  CandyBoss boss; EnemyBase enemy; SpriteRenderer art; Sprite[] frames;
- float cooldown=5,summonAge=-1,nextBat,health,hurtUntil; int emitted; bool fromLeft;
+ float cooldown=5,summonAge=-1,nextBat,health,hurtUntil; int emitted;
  public int Reinforcements {get;private set;}
- Vector2 summonPoint;
+ float reinforcementTimer=3;
+ float VerticalLane(int lane)=>(Summons%4==2?-6:6)+(lane==0?-2:2);
  public static Sprite[] LoadFrames(string name,float height,bool feet){
   var texture=Resources.Load<Texture2D>("GameDuo/Final/"+name);if(!texture)return null;
   var result=new Sprite[8];var pixels=texture.GetPixels32();
@@ -34,17 +35,23 @@ public sealed class GameDuoCandyKing : MonoBehaviour {
  void Update(){
   if(!enemy||enemy.Dead){ClearBats();return;}
   if(!GameManager.Instance||!GameManager.Instance.Running)return;
-  if(summonAge<0){cooldown-=Time.deltaTime;if(cooldown<=0&&LivingSummons()<3){summonAge=0;emitted=0;nextBat=1.4f;fromLeft=Summons%2==0;Summons++;summonPoint=new Vector2(fromLeft?-8:8,-3.4f);EncounterHazard.Spawn(summonPoint,new Vector2(1.6f,.12f),1.4f,.01f,Vector2.zero,new Color(1,.7f,.8f),this);GameManager.Instance.Tone(170,.2f);}}
-  else {
+  reinforcementTimer-=Time.deltaTime;
+  if(reinforcementTimer<=0){reinforcementTimer=7; if(LivingSummons()<4&&GameManager.Instance.PendingSpawns==0){int[] kinds={0,1,2,4,5};SpawnGuard(kinds[Reinforcements%kinds.Length],new Vector2(Random.Range(-8f,8f),3.5f));}}
+  if(summonAge<0){cooldown-=Time.deltaTime;if(cooldown<=0){summonAge=0;emitted=0;nextBat=1.4f;Summons++;GameManager.Instance.Tone(170,.2f);
+   bool vertical=Summons%2==0;
+   for(int lane=0;lane<2;lane++)EncounterHazard.Spawn(vertical?new Vector2(VerticalLane(lane),1):new Vector2(0,lane==0?-2.8f:1.7f),vertical?new Vector2(.18f,11):new Vector2(20,.18f),1.4f,0,Vector2.zero,new Color(1,.7f,.8f),this);
+  }}else{
    summonAge+=Time.deltaTime;
-   int count=boss.Phase==3?2:1;
+   int count=3+boss.Phase;
    if(summonAge>=nextBat&&emitted<count){
-    int[] rotation={5,4,0,1,2};int kind=rotation[(Summons-1+emitted)%rotation.Length];
-    if(LivingSummons()<3)SpawnGuard(kind,emitted==0?summonPoint:new Vector2(-summonPoint.x,-3.4f));
-    if(emitted==0&&count>1)EncounterHazard.Spawn(new Vector2(-summonPoint.x,-3.4f),new Vector2(1.6f,.12f),1.1f,.01f,Vector2.zero,new Color(1,.7f,.8f),this);
-    nextBat+=1.1f;emitted++;
+    bool vertical=Summons%2==0;
+    for(int lane=0;lane<2;lane++){
+     var bat=GameDuoBat.Spawn(this,vertical?VerticalLane(lane):(Summons%4==1?-11:11),vertical?7:(lane==0?-2.8f:1.7f),Summons%4==1?1:-1,4.5f+boss.Phase*.4f,art.sharedMaterial);
+     if(bat&&vertical)bat.SetVertical();
+    }
+    nextBat+=.5f;emitted++;
    }
-   if(emitted>=count&&summonAge>nextBat+.4f){summonAge=-1;cooldown=boss.Phase==1?9:boss.Phase==2?8:7;}
+   if(emitted>=count&&summonAge>nextBat+.5f){summonAge=-1;cooldown=6-boss.Phase*.5f;}
   }
  }
  void LateUpdate(){
@@ -63,15 +70,12 @@ public sealed class GameDuoCandyKing : MonoBehaviour {
  }
  int LivingSummons(){int count=0;foreach(var guard in FindObjectsByType<GameDuoCandyEnemy>())if(guard.Owner==this&&!guard.GetComponent<EnemyBase>().Dead)count++;return count;}
  void SpawnGuard(int kind,Vector2 point){
-  var game=GameManager.Instance;if(kind==1||kind==4)point.y=.6f;
-  else {var floor=Physics2D.Raycast(point+Vector2.up,Vector2.down,4,(1<<8)|(1<<9));if(floor)point.y=floor.point.y+.65f;}
-  var guard=Instantiate(game.enemyPrefabs[kind],point,Quaternion.identity);guard.maxHealth=kind==5?20:kind==0?28:18;
-  guard.kind=kind==0?EnemyKind.Walker:guard.kind;
-  var control=guard.gameObject.AddComponent<GameDuoCandyEnemy>();control.Owner=this;
-  game.enemies.Add(guard);
-  foreach(var other in FindObjectsByType<EnemyBase>())if(other!=guard)Physics2D.IgnoreCollision(guard.GetComponent<Collider2D>(),other.GetComponent<Collider2D>(),true);
-  // Reward beam kills normally; ClearBats retires survivors when the king dies.
-  Reinforcements++;BeamFX.Burst(point,new Color(1,.6f,.8f),10);
+  var game=GameManager.Instance;
+  game.StartCoroutine(game.SpawnAnnounced(kind,point,this,guard=>{
+   guard.maxHealth=kind==5?20:kind==0?28:18;
+   var control=guard.GetComponent<GameDuoCandyEnemy>();if(!control)control=guard.gameObject.AddComponent<GameDuoCandyEnemy>();control.Owner=this;
+   Reinforcements++;
+  }));
  }
  void ClearBats(){foreach(var bat in FindObjectsByType<GameDuoBat>())if(bat.Owner==this)Destroy(bat.gameObject);foreach(var guard in FindObjectsByType<GameDuoCandyEnemy>())if(guard.Owner==this)guard.Retire();EncounterHazard.ClearOwned(this);}
  void OnDisable(){summonAge=-1;ClearBats();}

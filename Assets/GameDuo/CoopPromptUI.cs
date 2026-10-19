@@ -2,6 +2,13 @@ using UnityEngine;
 namespace CoopBeam {
 // Native GUI shapes stay crisp at any resolution; arrows do not depend on font glyphs.
 public static class CoopPromptUI {
+ public sealed class StartGate {
+  readonly bool[] ready=new bool[2];
+  public bool Confirmed(int player)=>player>=0&&player<2&&ready[player];
+  public void Reset(){ready[0]=ready[1]=false;}
+  public bool Poll(){if(GameDuoCinema.Busy)return false;var k=UnityEngine.InputSystem.Keyboard.current;if(k!=null){if(k.fKey.wasPressedThisFrame)ready[0]=true;if(k.enterKey.wasPressedThisFrame||k.numpadEnterKey.wasPressedThisFrame)ready[1]=true;}return ready[0]&&ready[1];}
+  public void Draw(float y=175,bool showHeroes=true){for(int i=0;i<2;i++){float x=100+i*230;var c=CoopPresentation.PlayerColor(i);if(showHeroes)Hero(new Rect(x+70,y-62,40,55),i);Panel(new Rect(x,y,210,46),ready[i]?Mint:c);if(GUI.Button(new Rect(x+3,y+3,204,40),(i==0?"MIMO / F":"PIPRO / ENTER")+" / EMPEZAR"))ready[i]=true;}}
+ }
  public static readonly Color Ink=new Color(.055f,.045f,.12f,.97f), Mint=new Color(.45f,1,.77f), Amber=new Color(1,.77f,.28f);
  public static void Fill(Rect rect,Color color){var old=GUI.color;GUI.color=color;GUI.DrawTexture(rect,Texture2D.whiteTexture);GUI.color=old;}
  public static void Text(Rect rect,string value,int size=12,Color? color=null){var style=new GUIStyle(GUI.skin.label){alignment=TextAnchor.MiddleCenter,fontSize=size,fontStyle=FontStyle.Bold,wordWrap=true};style.normal.textColor=color??Color.white;GUI.Label(rect,value,style);}
@@ -25,9 +32,19 @@ public static class CoopPromptUI {
   Color c=CoopPresentation.PlayerColor(player);
   for(int i=0;i<4;i++){Vector2 p=center+offsets[i]*(size+4);Key(new Rect(p.x-size*.5f,p.y-size*.5f,size,size),letters[i],c,active&&i==selected,player==1?i:-1);}
  }
+ static PixelAnimationSet controlHeroes;
+ public static Sprite HeroSprite(int player){
+  if(player<0||player>1)return null;
+  var game=GameManager.Instance;
+  var health=game&&game.players!=null&&game.players.Length>player?game.players[player]:null;
+  var controller=health?health.GetComponent<PlayerController2D>():null;
+  if(controller&&controller.sprite&&controller.sprite.sprite)return controller.sprite.sprite;
+  // Menus have no live players; use the same original character art directly.
+  if(!controlHeroes)controlHeroes=Resources.Load<PixelAnimationSet>("GameDuoControlHeroes");
+  return controlHeroes&&controlHeroes.frames!=null&&controlHeroes.frames.Length>player?controlHeroes.frames[player]:null;
+ }
  public static void Hero(Rect r,int player){
-  var game=GameManager.Instance;var art=game&&game.players.Length>player?game.players[player].GetComponent<PlayerController2D>().sprite:null;
-  if(!art||!art.sprite)return;var s=art.sprite;var uv=s.textureRect;
+  var s=HeroSprite(player);if(!s)return;var uv=s.textureRect;
   float fit=Mathf.Min(r.width/uv.width,r.height/uv.height);
   GUI.DrawTextureWithTexCoords(new Rect(r.center.x-uv.width*fit*.5f,r.yMax-uv.height*fit,uv.width*fit,uv.height*fit),s.texture,new Rect(uv.x/s.texture.width,uv.y/s.texture.height,uv.width/s.texture.width,uv.height/s.texture.height));
  }
