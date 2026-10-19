@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 394a48136052bf84190c66b958a81525, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumHeavy
   pusher: {fileID: 2069566828}
   minX: 16
@@ -2429,7 +2429,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: 03 / NUCLEO SINCRONIZADO
 --- !u!1 &243858583
@@ -2842,7 +2842,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: B
 --- !u!1 &266964020
@@ -3692,7 +3692,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -4034,7 +4034,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: A
 --- !u!1 &379498581
@@ -4512,7 +4512,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -4764,7 +4764,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -5015,7 +5015,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 1
   target: {fileID: 1129352127}
@@ -5742,7 +5742,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e64526d27fa4df946b61901848d0e90e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumFloat
 --- !u!212 &508821756
 SpriteRenderer:
@@ -6122,7 +6122,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: 02 / RELEVO DE ENERGIA
 --- !u!1 &548820641
@@ -6168,7 +6168,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 1
   target: {fileID: 598336064}
@@ -7110,7 +7110,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -7625,7 +7625,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
@@ -8759,7 +8759,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9cec0b87c509224ca5f1374736772a9, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.IllustratedBackdrop
 --- !u!1 &787561703
 GameObject:
@@ -9081,7 +9081,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -9239,7 +9239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: MIMO INICIA
 --- !u!1 &811046840
@@ -9897,7 +9897,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -10260,7 +10260,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 0
   target: {fileID: 400651582}
@@ -11176,7 +11176,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: MIMO CONFIRMA
 --- !u!1 &974322462
@@ -12329,7 +12329,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dc8966d12413e242bf60502e7f4a6e4, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonLift
   level: {fileID: 1755892495}
   travel: 2.4
@@ -13817,7 +13817,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -14807,7 +14807,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -15979,7 +15979,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -19458,7 +19458,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9abd4522752fc5d458076b2d72adbf9e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PlayerHealth
 --- !u!1 &1571997878
 GameObject:
@@ -20698,7 +20698,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: 01 / MI ACCION ABRE TU CAMINO
 --- !u!1 &1717970639
@@ -20835,7 +20835,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: PIPO / RUTA SUPERIOR
 --- !u!1 &1731454280
@@ -21235,7 +21235,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ceb25398a939d64c90dedf8dadc416e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonFeedback
   level: {fileID: 1755892495}
   relayCable: {fileID: 862831901}
@@ -21260,7 +21260,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84d1458383bbf21448e3031c342da618, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonLevel
   game: {fileID: 1755892496}
   crossed:
@@ -21302,7 +21302,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95eedef7a509a584390ea5d0bb7b2158, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.GameManager
   players:
   - {fileID: 2069566829}
@@ -21462,7 +21462,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: PIPO INVIERTE
 --- !u!1 &1767611718
@@ -22060,7 +22060,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 0
   target: {fileID: 792994795}
@@ -22195,7 +22195,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: -1
   target: {fileID: 0}
@@ -23107,6 +23107,7 @@ GameObject:
   - component: {fileID: 1855975860}
   - component: {fileID: 1855975859}
   - component: {fileID: 1855975858}
+  - component: {fileID: 1855975863}
   m_Layer: 0
   m_Name: 04 / Shared horizontal pixel camera
   m_TagString: MainCamera
@@ -23124,7 +23125,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f44501c49b68894cbee7e388a60ea16, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PixelViewport
   width: 800
   height: 450
@@ -23140,7 +23141,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6c084475a8460e4ea4ed1468fe7b179, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonCamera
   large: {fileID: 2069566827}
   small: {fileID: 1569880837}
@@ -23221,6 +23222,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855975863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855975857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &1860216305
 GameObject:
   m_ObjectHideFlags: 0
@@ -23540,7 +23585,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 1
   target: {fileID: 1173393291}
@@ -24262,7 +24307,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: 04 / JUNTOS BRILLAMOS
 --- !u!1 &1929408522
@@ -24952,7 +24997,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb99c916aac12a4b9b1e4919456877d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.NeonDevice
   player: 0
   target: {fileID: 1260758967}
@@ -26659,7 +26704,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98ade3593b85a14f9ddb0dc8602c9a7, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PlayerController2D
 --- !u!114 &2069566829 stripped
 MonoBehaviour:
@@ -26670,7 +26715,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9abd4522752fc5d458076b2d72adbf9e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.PlayerHealth
 --- !u!1 &2090893089
 GameObject:
@@ -26990,7 +27035,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: A > ELEVADOR > PIPO > B
 --- !u!1 &2100628993
@@ -27127,7 +27172,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35132f4c5855d8444886ca86273512e2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoopBeam.BubblegumWorldLabel
   text: MIMO / RUTA INFERIOR
 --- !u!1 &2123727105

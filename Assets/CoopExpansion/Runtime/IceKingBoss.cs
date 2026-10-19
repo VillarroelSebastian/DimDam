@@ -4,6 +4,7 @@ namespace CoopBeam {
 public class IceKingBoss:MonoBehaviour {
  public Collider2D core;public SpriteRenderer coreArt;public int Phase{get;private set;}=1;public bool Vulnerable{get;private set;}public bool Telegraphing{get;private set;}public bool Attacking{get;private set;}public bool Defeated{get;private set;}public float DefeatAge=>Defeated?Time.time-defeatedAt:0;public string Hint{get;private set;}="EL REY DESPIERTA";public int PatternsCompleted{get;private set;}public int Transformations{get;private set;}
  public int PatternIndex{get;private set;} public Vector2 AimPoint{get;private set;} public float TelegraphProgress=>Telegraphing?Mathf.Clamp01((Time.time-telegraphAt)/1.3f):0;float telegraphAt;
+ float reinforcementTimer=4;int reinforcementIndex;
  EnemyBase enemy;Rigidbody2D body;int sequence,target;float defeatedAt;bool transforming;const float First=.68f,Second=.34f;
  void Awake(){enemy=GetComponent<EnemyBase>();body=GetComponent<Rigidbody2D>();enemy.externalControl=true;if(!GetComponent<GameDuoIceBossAura>())gameObject.AddComponent<GameDuoIceBossAura>();}
  IEnumerator Start(){yield return new WaitUntil(()=>GameManager.Instance&&GameManager.Instance.Running);while(!Defeated){int desired=enemy.Health<=enemy.maxHealth*Second+.01f?3:enemy.Health<=enemy.maxHealth*First+.01f?2:1;if(desired>Phase){yield return Transform(desired);continue;}yield return Pattern();}}
@@ -18,7 +19,15 @@ public class IceKingBoss:MonoBehaviour {
   if(pattern==2)for(int s=-1;s<=1;s+=2){EncounterHazard.Spawn(new Vector2(0,-3.9f),new Vector2(.65f,.65f),.15f,2,new Vector2(s*5.5f,0),Color.cyan,this,true);if(Phase>=2)EncounterHazard.Spawn(new Vector2(0,.85f),new Vector2(.65f,.5f),.8f,2,new Vector2(s*4,0),new Color(.8f,.5f,1),this,true);}
   yield return new WaitForSeconds(Phase==3?2.4f:2.8f);if(!game.Running||Defeated)yield break;Attacking=false;enemy.combatAttack=false;EncounterHazard.ClearOwned(this);Vulnerable=true;core.enabled=true;core.transform.localPosition=new Vector3(0,Phase==2?1.2f:.3f,0);coreArt.transform.localPosition=core.transform.localPosition;Hint=Phase==2?"NUCLEO ALTO / UNO ARRIBA, OTRO ABAJO":"NUCLEO ABIERTO / RODEEN AL REY";yield return new WaitForSeconds(Phase==3?3.4f:3);Vulnerable=false;core.enabled=false;PatternsCompleted++;
  }
- void Update(){if(coreArt){coreArt.color=Vulnerable?new Color(.5f,1,.85f):new Color(.3f,.65f,.9f,.3f);coreArt.transform.localScale=Vector3.one*(Vulnerable?1+Mathf.Sin(Time.time*7)*.08f:.75f);}if(GameManager.Instance&&!GameManager.Instance.Running&&!Defeated){StopAllCoroutines();Vulnerable=Attacking=Telegraphing=false;enemy.combatAttack=enemy.combatTelegraph=false;if(core)core.enabled=false;EncounterHazard.ClearOwned(this);}}
+ void Reinforce(){
+  var game=GameManager.Instance;if(!GameDuoCampaign.InCampaignScene||!game||!game.Running||Defeated||enemy.Dead)return;
+  reinforcementTimer-=Time.deltaTime;if(reinforcementTimer>0)return;reinforcementTimer=7;
+  int living=0;foreach(var e in game.enemies)if(e&&!e.Dead&&e.kind!=EnemyKind.Boss)living++;if(living>=4||game.PendingSpawns>0)return;
+  var kinds=game.level.waves[reinforcementIndex%2].enemyTypes;int kind=kinds[reinforcementIndex++%kinds.Length];if(kind<0||kind>=game.enemyPrefabs.Length||game.enemyPrefabs[kind].kind==EnemyKind.Boss)return;
+  float[] xs={-8,5,-4,8,0};Vector2 point=new Vector2(xs[reinforcementIndex%xs.Length],3.8f);
+  game.StartCoroutine(game.SpawnAnnounced(kind,point,this));
+ }
+ void Update(){Reinforce();if(coreArt){coreArt.color=Vulnerable?new Color(.5f,1,.85f):new Color(.3f,.65f,.9f,.3f);coreArt.transform.localScale=Vector3.one*(Vulnerable?1+Mathf.Sin(Time.time*7)*.08f:.75f);}if(GameManager.Instance&&!GameManager.Instance.Running&&!Defeated){StopAllCoroutines();Vulnerable=Attacking=Telegraphing=false;enemy.combatAttack=enemy.combatTelegraph=false;if(core)core.enabled=false;EncounterHazard.ClearOwned(this);}}
  public void Defeat(){if(Defeated)return;Defeated=true;defeatedAt=Time.time;Vulnerable=Attacking=Telegraphing=false;enemy.combatAttack=enemy.combatTelegraph=false;StopAllCoroutines();core.enabled=false;foreach(var c in GetComponentsInChildren<Collider2D>())c.enabled=false;EncounterHazard.ClearOwned(this);StartCoroutine(Fall());}
  IEnumerator Fall(){Hint="EL REY RECONOCE A LOS PRINCIPES";for(int i=0;i<12;i++){BeamFX.Burst(transform.position+(Vector3)Random.insideUnitCircle*1.5f,i%2==0?Color.cyan:Color.white,8);yield return new WaitForSeconds(.14f);}enemy.FinishDeath();}
  void OnDisable(){EncounterHazard.ClearOwned(this);}

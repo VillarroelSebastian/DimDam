@@ -21,8 +21,8 @@ public sealed class GameDuoEnemyVisual:MonoBehaviour {
   return frames;
  }
  void Start(){
-  if(GameDuoCandyEnemy.InFinalScene&&!GetComponent<CandyBoss>()){if(!GetComponent<GameDuoCandyEnemy>())gameObject.AddComponent<GameDuoCandyEnemy>();enabled=false;return;}
-  if(TutorialFactory.IsTutorial&&!GetComponent<IceKingBoss>()&&!GetComponent<CandyBoss>()){if(!GetComponent<TutorialSootEnemy>())gameObject.AddComponent<TutorialSootEnemy>();enabled=false;return;}
+  if((GameDuoCandyEnemy.InFinalScene||TutorialFactory.IsTutorial&&GetComponent<EnemyBase>().kind==EnemyKind.Flyer)&&!GetComponent<CandyBoss>()){if(!GetComponent<GameDuoCandyEnemy>())gameObject.AddComponent<GameDuoCandyEnemy>();enabled=false;return;}
+  if(TutorialFactory.IsTutorial&&GetComponent<EnemyBase>().kind!=EnemyKind.Flyer&&!GetComponent<IceKingBoss>()&&!GetComponent<CandyBoss>()){if(!GetComponent<TutorialSootEnemy>())gameObject.AddComponent<TutorialSootEnemy>();enabled=false;return;}
   enemy=GetComponent<EnemyBase>();ice=GetComponent<IceKingBoss>();candy=GetComponent<CandyBoss>();art=enemy.sprite;previous=enemy.Health;
   if(ice&&UnityEngine.SceneManagement.SceneManager.GetActiveScene().name=="03_ReyHielo"&&Resources.Load<Texture2D>("GameDuo/IceRefresh/King")){gameObject.AddComponent<GameDuoIceKingMotion>();enabled=false;return;}
   if(candy&&GameDuoCampaign.InCampaignScene){gameObject.AddComponent<GameDuoCandyKing>();enabled=false;return;}

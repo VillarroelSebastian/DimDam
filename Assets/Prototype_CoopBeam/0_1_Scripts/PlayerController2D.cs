@@ -34,7 +34,7 @@ public class PlayerController2D : MonoBehaviour {
   body.gravityScale=3;
   if(health.Stunned)return;
   var v=body.linearVelocity;v.x=Mathf.MoveTowards(v.x,axis*speed,acceleration*Time.fixedDeltaTime);
-  if(buffer>0&&coyote>0){v.y=jumpSpeed;buffer=0;coyote=0;BeamFX.Burst(transform.position+Vector3.down*.5f,Color.white,5);}
+  if(buffer>0&&coyote>0){v.y=jumpSpeed;buffer=0;coyote=0;BeamFX.Burst(transform.position+Vector3.down*.5f,Color.white,5);GameDuoAudio.PlayJump();}
   if(!jumpHeld&&v.y>0)v.y-=38*Time.fixedDeltaTime;
   v.y=Mathf.Max(v.y,-22);body.linearVelocity=v;
   if(transform.position.y< -7)health.Hit(Vector2.up);

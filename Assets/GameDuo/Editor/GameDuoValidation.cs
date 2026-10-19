@@ -12,6 +12,8 @@ public static class GameDuoValidation {
   string original=UnityEngine.SceneManagement.SceneManager.GetActiveScene().path;
   int checks=0;
   try {
+   var controlHeroes=Resources.Load<PixelAnimationSet>("GameDuoControlHeroes");
+   Require(controlHeroes&&controlHeroes.frames.Length==2&&controlHeroes.frames.All(s=>s&&s.texture),"Menu controls include both original hero sprites");checks++;
    for(int i=0;i<GameDuoCampaign.Scenes.Length;i++){
     string path=GameDuoCampaign.Scenes[i];
     Require(File.Exists(path),"Scene exists: "+path);checks++;
@@ -24,7 +26,7 @@ public static class GameDuoValidation {
     if(i==1)Require(UnityEngine.Object.FindAnyObjectByType<NeonLevel>(),"Neon completion source");
     if(i==3)Require(UnityEngine.Object.FindAnyObjectByType<IcePenguinRound>(),"Penguin completion source");
    }
-   Require(EditorBuildSettings.scenes.First(s=>s.enabled).path==GameDuoCampaign.Scenes[0],"Tutorial starts the build");checks++;
+   Require(EditorBuildSettings.scenes.First(s=>s.enabled).path==GameDuoMainMenu.ScenePath,"Menu starts the build");checks++;
    File.WriteAllText("Assets/GameDuo/Validation.txt","PASS: "+checks+" scene/build checks; all five completion sources present.\nGameplay traversal requires Play Mode.\n");
    Debug.Log("GameDuo validation passed: "+checks+" checks");
   }finally{if(!string.IsNullOrEmpty(original))EditorSceneManager.OpenScene(original);}

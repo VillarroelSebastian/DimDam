@@ -24,14 +24,22 @@ public sealed class TutorialFactoryPlayQA:MonoBehaviour {
   Check(!GameObject.Find("Original candy backdrop").GetComponent<SpriteRenderer>().enabled,"Old backdrop and baked characters hidden");
   game.Begin();foreach(var p in game.players)p.Protect(180);
   yield return Frames(10);
-  var guide=game.GetComponent<GameDuoTutorial>();Check(guide&&Time.timeScale==0,"One explanation appears automatically and pauses combat");
+  var guide=game.GetComponent<GameDuoTutorial>();Check(guide&&Time.timeScale==0,"Cooperative start pauses combat");
   yield return Frames(3);
   yield return Frames(2,Key.F);yield return Frames(2);
   Check(guide&&guide.Confirmed(0)&&!guide.Confirmed(1)&&Time.timeScale==0,"Mimo confirms independently; Pipro still has to confirm");
   yield return Frames(2,Key.Enter);yield return Frames(3);
-  Check(guide&&guide.Step==1&&!guide.Confirmed(0)&&!guide.Confirmed(1)&&Time.timeScale==0,"Rescue instruction resets both confirmations");
-  for(int step=1;step<4;step++){yield return Frames(2,Key.F);yield return Frames(2);Check(guide&&guide.Confirmed(0)&&!guide.Confirmed(1),"Each tutorial step needs both players / "+step);yield return Frames(2,Key.Enter);yield return Frames(3);}
-  Check(!game.GetComponent<GameDuoTutorial>()&&Time.timeScale==1,"Four confirmed instructions resume combat");
+  Check(guide&&guide.Step==1&&!guide.Confirmed(0)&&!guide.Confirmed(1)&&Time.timeScale==0,"Revival page waits for both confirmations");
+  for(int step=1;step<4;step++){yield return Frames(2,Key.F);yield return Frames(2);Check(guide&&guide.Confirmed(0)&&!guide.Confirmed(1),"Each instruction needs both players / "+step);yield return Frames(2,Key.Enter);yield return Frames(3);}
+  Check(!game.GetComponent<GameDuoTutorial>()&&Time.timeScale==1,"Four tutorial instructions resume combat");
+  for(int wave=0;wave<3;wave++){int flyers=0;foreach(int kind in game.level.waves[wave].enemyTypes)if(game.enemyPrefabs[kind].kind==EnemyKind.Flyer){flyers++;Check(kind==4,"Only one flyer prefab appears in tutorial");}Check(flyers>=2&&game.level.waves[wave].enemyTypes.Length==6+wave*2,"Tutorial wave adds ground enemies and multiple flyers / "+wave);}
+
+  Check(GameManager.InitialBatchSize(6)==4&&GameManager.InitialBatchSize(10)==5,"Large waves start with four of six or five of ten enemies");
+  Vector2 unsafePoint=game.players[0].transform.position;
+  Check(!game.IsSpawnSafe(0,unsafePoint),"Spawning on top of a player is rejected");
+  bool safeFound=game.TrySpawnPosition(0,unsafePoint,out var safePoint);
+  Check(safeFound&&game.IsSpawnSafe(0,safePoint),"An unsafe requested spawn moves to a safe terrain position");
+  if(safeFound){var previous=game.players[0].transform.position;game.players[0].transform.position=safePoint;Physics2D.SyncTransforms();Check(!game.IsSpawnSafe(0,safePoint),"Approaching a warned spawn invalidates its position before arrival");game.players[0].transform.position=previous;Physics2D.SyncTransforms();}
   float x0=game.players[0].transform.position.x,x1=game.players[1].transform.position.x;
   yield return Frames(35,Key.D,Key.RightArrow);
   Check(game.players[0].transform.position.x>x0+2&&game.players[1].transform.position.x>x1+2,"Both players move using actual keyboard input");
@@ -104,20 +112,20 @@ public sealed class TutorialFactoryPlayQA:MonoBehaviour {
     if(!e||e.Dead)continue;
     yield return null;yield return null;
     if(game.Wave>=1&&!captured){Capture();captured=true;}
-    Check(e.GetComponent<TutorialSootEnemy>()&& !e.sprite.enabled,"Bill atlas replaces old art / "+e.kind);
+    Check(e.kind==EnemyKind.Flyer?e.sprite.enabled&&e.sprite.sprite.name.StartsWith("Wasp_")&&e.GetComponent<GameDuoCandyEnemy>().Type==GameDuoCandyEnemy.Species.Wasp:e.GetComponent<TutorialSootEnemy>()&&!e.sprite.enabled,"Tutorial ground and flyer art resolves / "+e.kind);
     var c=e.GetComponent<Collider2D>();var center=c.bounds.center;
     float before=e.Health;int hits=FindAnyObjectByType<CoopBeam>().DamageSegment(center+Vector3.left*2,center+Vector3.right*2,.10f);
     Check(hits>0&&e.Health<before,"Real beam linecast damages "+e.kind);
     yield return null;
     var soot=e.GetComponent<TutorialSootEnemy>();
-    Check(soot.Art.enabled&&soot.Art.sprite&&soot.Art.bounds.size.y>1f,"Bill has a live, visible sprite / "+e.kind);
+    if(soot){Check(soot.Art.enabled&&soot.Art.sprite&&soot.Art.bounds.size.y>1f,"Bill has a live, visible sprite / "+e.kind);
     Check(soot.Art.sprite.name.StartsWith("Bill /")&&soot.Art.sharedMaterial.GetFloat("_Hit")>.9f,"Damage flashes red with dedicated hurt expression / "+e.kind);
-    Check(Mathf.Abs(soot.Art.bounds.min.y-c.bounds.min.y)<.03f,"Bill feet align with physics feet / "+e.kind);
+    Check(Mathf.Abs(soot.Art.bounds.min.y-c.bounds.min.y)<.03f,"Bill feet align with physics feet / "+e.kind); }
     for(int n=0;n<120&&e&&!e.Dead;n++){
      var p=c.bounds.center;Position(0,p.x-1.6f,p.y-game.players[0].GetComponent<Collider2D>().bounds.extents.y);Position(1,p.x+1.6f,p.y-game.players[1].GetComponent<Collider2D>().bounds.extents.y);
      if(director.TutorialOpen){Keys(Key.Escape);}else Keys();yield return null;
     }
-    if(!e||e.Dead){kills++;if(e){yield return new WaitForSeconds(.16f);Check(soot&&soot.DissolveProgress>0&&soot.Art.sharedMaterial.GetFloat("_Dissolve")>0,"Death progressively disintegrates sprite / "+e.kind);Check(FindObjectsByType<TutorialAsh>().Length>0,"Ash particles separate on death");}}
+    if(!e||e.Dead){kills++;if(e&&soot){yield return new WaitForSeconds(.16f);Check(soot&&soot.DissolveProgress>0&&soot.Art.sharedMaterial.GetFloat("_Dissolve")>0,"Death progressively disintegrates sprite / "+e.kind);Check(FindObjectsByType<TutorialAsh>().Length>0,"Ash particles separate on death");}}
 
    }
    yield return null;

@@ -15,6 +15,7 @@ public class CandyPixelHUD:MonoBehaviour {
   if(game.Started&&game.Running||TutorialFactory.IsTutorial&&!game.Started)return;
   PixelFont.Panel(new Rect(65,74,510,235),new Color(.13f,.07f,.23f,.98f),PixelFont.Pink);
   string title=!game.Started?game.level.title:game.Victory?(game.level.number==5?"REINO COMPLETADO!":"VICTORIA!"):"FIN DE LA PARTIDA";PixelFont.Text(320,94,title,2,PixelFont.Mint,true);
+  if(!game.Started){game.startGate.Draw(210);return;}
   if(!game.Started&&!GameDuoCampaign.InCampaignScene){
    CoopPromptUI.Text(new Rect(110,125,420,24),"Rodeen al enemigo: el lazo entre ambos es su arma",12);
    for(int i=0;i<2;i++){

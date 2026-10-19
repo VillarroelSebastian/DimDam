@@ -14,7 +14,7 @@ public static class GameDuoVerificationRunner {
   if(EditorApplication.isPlayingOrWillChangePlaymode||EditorApplication.isCompiling)return;
   if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty){Debug.LogError("Guarda la escena antes de ejecutar la verificacion completa.");return;}
   SessionState.SetString(Key+".Scene",UnityEngine.SceneManagement.SceneManager.GetActiveScene().path);
-  EditorSceneManager.OpenScene(GameDuoCampaign.Scenes[0]);SessionState.SetBool(Key,true);EditorApplication.EnterPlaymode();
+  EditorSceneManager.OpenScene(GameDuoMainMenu.ScenePath);SessionState.SetBool(Key,true);EditorApplication.EnterPlaymode();
  }
  static void Changed(PlayModeStateChange state){
   if(state==PlayModeStateChange.EnteredPlayMode&&SessionState.GetBool(Key,false))new GameObject("QA / Campaign verification").AddComponent<GameDuoCampaignVerification>();
